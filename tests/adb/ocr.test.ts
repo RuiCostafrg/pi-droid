@@ -10,7 +10,8 @@ vi.mock("../../src/adb/screenshot.js", () => ({
 
 import { execFile } from "node:child_process";
 import { takeScreenshot } from "../../src/adb/screenshot.js";
-import { runOcrOnImage, runOcrOnCurrentScreen } from "../../src/adb/ocr.js";
+let runOcrOnImage: typeof import("../../src/adb/ocr.js").runOcrOnImage;
+let runOcrOnCurrentScreen: typeof import("../../src/adb/ocr.js").runOcrOnCurrentScreen;
 
 const mockExecFile = vi.mocked(execFile);
 const mockTakeScreenshot = vi.mocked(takeScreenshot);
@@ -21,7 +22,10 @@ const TSV_OUTPUT = [
   "5\t1\t1\t1\t1\t2\t240\t200\t150\t30\t42.0\tLowConf",
 ].join("\n");
 
-beforeEach(() => {
+beforeEach(async () => {
+  // The availability probe is cached in module state; isolate each test.
+  vi.resetModules();
+  ({ runOcrOnImage, runOcrOnCurrentScreen } = await import("../../src/adb/ocr.js"));
   vi.clearAllMocks();
   mockExecFile.mockImplementation((_cmd, _args, _opts, callback?: any) => {
     const cb = typeof _opts === "function" ? _opts : callback;
