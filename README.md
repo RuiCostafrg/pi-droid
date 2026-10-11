@@ -35,6 +35,36 @@ Pi-Droid is a [pi-agent](https://github.com/badlogic/pi-mono) extension that giv
 
 ---
 
+## Termux fork: secure wireless reconnect
+
+This fork fixes host-side temporary paths to use Node's system temporary directory (including Termux's `$TMPDIR`).
+
+`android_wifi { action: "auto" }` now discovers the current **secure Wireless debugging** connection port and reconnects an already-paired phone:
+
+1. Try `adb mdns services`.
+2. If unsupported or empty, independently browse `_adb-tls-connect._tcp.local` using `multicast-dns`.
+3. Resolve the advertised IPv4 address and port, connect, and verify the transport is authorized and online.
+
+Discovery is bounded (five seconds per discovery stage by default), and sockets/timers are released afterward. Pairing and legacy TCP services are ignored. When multiple endpoints are found, supply `host` (and optionally `port`) to choose a phone. Wireless debugging must be enabled, the host must already be paired, and multicast traffic must be reachable on the WiFi network.
+
+**Behavior change:** `auto` no longer runs `adb tcpip 5555` or enables unencrypted legacy mode. Explicit `connect`/`disconnect` remain available. Reconnect is invoked on demand; this is not a background reconnection daemon.
+
+To use this fork from a local checkout:
+
+```bash
+git clone https://github.com/RuiCostafrg/pi-droid.git
+cd pi-droid
+npm ci --ignore-scripts
+npm run build
+pi install "$(pwd)"
+```
+
+Run `/reload` in Pi after rebuilding. For phone-friendly unit testing:
+
+```bash
+npm run test:unit -- --maxWorkers=2 --testTimeout=30000
+```
+
 ## Prerequisites
 
 | Requirement | Notes |

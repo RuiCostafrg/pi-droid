@@ -344,14 +344,14 @@ export function registerDeviceTools(pi: ExtensionAPI, adbConfig: Record<string, 
   pi.registerTool({
     name: "android_wifi",
     label: "WiFi ADB",
-    description: "Manage WiFi ADB connections — connect, disconnect, or auto-setup wireless.",
+    description: "Manage WiFi ADB connections. Auto discovers the current secure Wireless debugging port via mDNS and reconnects an already-paired phone; never enables legacy TCP/IP mode.",
     parameters: Type.Object({
       action: Type.Union(
         [Type.Literal("connect"), Type.Literal("disconnect"), Type.Literal("auto")],
         { description: "WiFi action" },
       ),
-      host: Type.Optional(Type.String({ description: "Device IP for connect/disconnect" })),
-      port: Type.Optional(Type.Number({ description: "ADB port (default: 5555)" })),
+      host: Type.Optional(Type.String({ description: "Device IP for connect/disconnect; optional phone filter for auto" })),
+      port: Type.Optional(Type.Number({ description: "ADB port (connect/disconnect default: 5555; auto discovers it)" })),
     }),
     async execute(_id, args) {
       switch (args.action) {
@@ -366,7 +366,8 @@ export function registerDeviceTools(pi: ExtensionAPI, adbConfig: Record<string, 
           return { content: [{ type: "text", text: JSON.stringify({ disconnected: true }) }], details: {} };
         }
         case "auto": {
-          const result = await autoConnect({ serial: defaultSerial });
+          const result = await autoConnect({ serial: defaultSerial, host: args.host, port: args.port });
+          cachedDevice = null;
           return { content: [{ type: "text", text: JSON.stringify(result) }], details: {} };
         }
       }

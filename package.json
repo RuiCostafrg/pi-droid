@@ -91,6 +91,7 @@
     "@mariozechner/pi-ai": "^0.67.0",
     "@mariozechner/pi-coding-agent": "^0.67.0",
     "@sinclair/typebox": "^0.34.0",
+    "@types/multicast-dns": "^7.2.4",
     "@types/node": "^22.0.0",
     "tsx": "^4.21.0",
     "typescript": "^5.6.0",
@@ -102,5 +103,8 @@
   "author": "ArtemisAI",
   "funding": "https://github.com/sponsors/ArtemisAI",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "multicast-dns": "^7.2.5"
+  }
 }
