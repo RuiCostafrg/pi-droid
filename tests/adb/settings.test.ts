@@ -5,6 +5,11 @@ vi.mock("node:child_process", () => ({
   execFile: vi.fn(),
 }));
 
+// Keep transport-failure tests offline; recovery itself has dedicated tests.
+vi.mock("../../src/adb/wifi.js", () => ({
+  autoConnect: vi.fn().mockRejectedValue(new Error("No test device")),
+}));
+
 import { execFile } from "node:child_process";
 import {
   setWifiEnabled,

@@ -18,6 +18,7 @@ vi.mock("../../src/adb/app.js", () => ({
   launchApp: vi.fn(),
   wakeScreen: vi.fn(),
   isScreenOn: vi.fn(),
+  isKeyguardShowing: vi.fn(),
 }));
 
 vi.mock("../../src/adb/ui-tree.js", () => ({
@@ -32,7 +33,7 @@ vi.mock("../../src/adb/screenshot.js", () => ({
 
 import { adbShell, getForegroundPackage, getScreenSize } from "../../src/adb/exec.js";
 import { tap, typeText, scrollDown, scrollUp } from "../../src/adb/input.js";
-import { launchApp, wakeScreen, isScreenOn } from "../../src/adb/app.js";
+import { launchApp, wakeScreen, isScreenOn, isKeyguardShowing } from "../../src/adb/app.js";
 import { dumpUiTree, findElement, waitForElement } from "../../src/adb/ui-tree.js";
 import { takeScreenshot } from "../../src/adb/screenshot.js";
 import { createTaskBudget } from "../../src/adb/task-budget.js";
@@ -57,6 +58,7 @@ const mockScrollUp = vi.mocked(scrollUp);
 const mockLaunchApp = vi.mocked(launchApp);
 const mockWakeScreen = vi.mocked(wakeScreen);
 const mockIsScreenOn = vi.mocked(isScreenOn);
+const mockIsKeyguardShowing = vi.mocked(isKeyguardShowing);
 const mockDumpUiTree = vi.mocked(dumpUiTree);
 const mockFindElement = vi.mocked(findElement);
 const mockWaitForElement = vi.mocked(waitForElement);
@@ -113,66 +115,120 @@ beforeEach(() => {
 // ── ensureReady ────────────────────────────────────────────────────
 
 describe("ensureReady()", () => {
-  it("does nothing when screen is on and no package specified", async () => {
-    mockIsScreenOn.mockResolvedValue(true);
+  beforeEach(() => {
+    mockIsScreenOn.mockReset().mockResolvedValue(true);
+    mockIsKeyguardShowing.mockReset().mockResolvedValue(false);
+    mockGetForegroundPackage.mockReset().mockResolvedValue("com.example.myapp");
+    mockLaunchApp.mockReset().mockResolvedValue(undefined);
+    mockWakeScreen.mockReset().mockResolvedValue(undefined);
+    mockGetScreenSize.mockResolvedValue({ width: 1080, height: 1920 });
+    mockAdbShell.mockResolvedValue("");
+  });
 
-    const result = await ensureReady();
+  it("does nothing when awake and unlocked", async () => {
+    expect(await ensureReady()).toEqual({ wasAsleep: false, launched: false });
+    expect(mockWakeScreen).not.toHaveBeenCalled();
+    expect(mockAdbShell).not.toHaveBeenCalled();
+  });
 
-    expect(result.wasAsleep).toBe(false);
-    expect(result.launched).toBe(false);
+  it("waits for wake before dismissing and launching", async () => {
+    mockIsScreenOn.mockResolvedValueOnce(false).mockResolvedValueOnce(false).mockResolvedValue(true);
+    mockIsKeyguardShowing.mockResolvedValueOnce(true).mockResolvedValue(false);
+    mockGetForegroundPackage.mockResolvedValueOnce("com.android.launcher").mockResolvedValue("com.example.myapp");
+    const result = await ensureReady({ packageName: "com.example.myapp", pollInterval: 1 });
+    expect(result).toEqual({ wasAsleep: true, launched: true });
+    expect(mockAdbShell).toHaveBeenCalledWith("wm dismiss-keyguard", expect.anything());
+    expect(mockWakeScreen.mock.invocationCallOrder[0]).toBeLessThan(mockAdbShell.mock.invocationCallOrder[0]);
+    expect(mockAdbShell.mock.invocationCallOrder[0]).toBeLessThan(mockLaunchApp.mock.invocationCallOrder[0]);
+  });
+
+  it("dismisses keyguard even when screen was already on", async () => {
+    mockIsKeyguardShowing.mockResolvedValueOnce(true).mockResolvedValue(false);
+    expect((await ensureReady()).wasAsleep).toBe(false);
+    expect(mockAdbShell).toHaveBeenCalledWith("wm dismiss-keyguard", expect.anything());
     expect(mockWakeScreen).not.toHaveBeenCalled();
   });
 
-  it("wakes screen and swipes when screen is off", async () => {
+  it("swipes only if keyguard dismissal did not work", async () => {
+    let swiped = false;
+    mockIsKeyguardShowing.mockImplementation(async () => !swiped);
+    mockAdbShell.mockImplementation(async command => {
+      if (command.startsWith("input swipe")) swiped = true;
+      return "";
+    });
+    await ensureReady({ readinessTimeout: 5, pollInterval: 1 });
+    expect(mockAdbShell).toHaveBeenCalledWith("input swipe 540 1440 540 634 300", expect.anything());
+  });
+
+  it("fails without launching when the screen never wakes", async () => {
     mockIsScreenOn.mockResolvedValue(false);
-    mockWakeScreen.mockResolvedValue(undefined);
-    mockGetScreenSize.mockResolvedValue({ width: 1080, height: 1920 });
-    mockAdbShell.mockResolvedValue("");
-
-    const result = await ensureReady();
-
-    expect(result.wasAsleep).toBe(true);
-    expect(mockWakeScreen).toHaveBeenCalled();
-    // Should swipe to dismiss lock screen using dynamic coordinates
-    expect(mockAdbShell).toHaveBeenCalledWith(
-      "input swipe 540 1440 540 634 300",
-      expect.anything(),
-    );
+    await expect(ensureReady({ packageName: "com.example.myapp", readinessTimeout: 5, pollInterval: 1 })).rejects.toThrow("did not wake");
+    expect(mockLaunchApp).not.toHaveBeenCalled();
+    expect(mockAdbShell).not.toHaveBeenCalled();
   });
 
-  it("launches app when package specified and not in foreground", async () => {
-    mockIsScreenOn.mockResolvedValue(true);
-    mockGetForegroundPackage.mockResolvedValue("com.android.launcher");
-    mockLaunchApp.mockResolvedValue(undefined);
-
-    const result = await ensureReady({ packageName: "com.example.myapp" });
-
-    expect(result.launched).toBe(true);
-    expect(mockLaunchApp).toHaveBeenCalledWith("com.example.myapp", expect.anything());
-  });
-
-  it("does not launch app when already in foreground", async () => {
-    mockIsScreenOn.mockResolvedValue(true);
-    mockGetForegroundPackage.mockResolvedValue("com.example.testapp");
-
-    const result = await ensureReady({ packageName: "com.example.testapp" });
-
-    expect(result.launched).toBe(false);
+  it("fails without launching when credentials are required", async () => {
+    mockIsKeyguardShowing.mockResolvedValue(true);
+    await expect(ensureReady({ packageName: "com.example.myapp", readinessTimeout: 5, pollInterval: 1 })).rejects.toThrow("unlock it manually");
     expect(mockLaunchApp).not.toHaveBeenCalled();
   });
 
-  it("wakes screen AND launches app when both needed", async () => {
+  it("waits for foreground rather than assuming launch succeeded", async () => {
+    mockGetForegroundPackage.mockResolvedValueOnce("launcher").mockResolvedValueOnce("launcher").mockResolvedValue("com.example.myapp");
+    expect((await ensureReady({ packageName: "com.example.myapp", pollInterval: 1 })).launched).toBe(true);
+    expect(mockLaunchApp).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not relaunch the app already in foreground", async () => {
+    expect((await ensureReady({ packageName: "com.example.myapp" })).launched).toBe(false);
+    expect(mockLaunchApp).not.toHaveBeenCalled();
+  });
+
+  it("retries launch once then verifies foreground", async () => {
+    mockGetForegroundPackage.mockImplementation(async () => mockLaunchApp.mock.calls.length < 2 ? "launcher" : "com.example.myapp");
+    await ensureReady({ packageName: "com.example.myapp", readinessTimeout: 5, pollInterval: 1 });
+    expect(mockLaunchApp).toHaveBeenCalledTimes(2);
+  });
+
+  it("reports foreground failure after two attempts", async () => {
+    mockGetForegroundPackage.mockResolvedValue("launcher");
+    await expect(ensureReady({ packageName: "com.example.myapp", readinessTimeout: 5, pollInterval: 1 })).rejects.toThrow("did not reach the foreground");
+    expect(mockLaunchApp).toHaveBeenCalledTimes(2);
+  });
+
+  it("does not retry a launch error", async () => {
+    mockGetForegroundPackage.mockResolvedValue("launcher");
+    mockLaunchApp.mockRejectedValue(new Error("not installed"));
+    await expect(ensureReady({ packageName: "com.example.myapp" })).rejects.toThrow("not installed");
+    expect(mockLaunchApp).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not report success if screen sleeps again", async () => {
+    mockIsScreenOn.mockResolvedValueOnce(true).mockResolvedValue(false);
+    await expect(ensureReady()).rejects.toThrow("not awake and unlocked");
+  });
+
+  it("honors the task budget before waking", async () => {
     mockIsScreenOn.mockResolvedValue(false);
-    mockWakeScreen.mockResolvedValue(undefined);
-    mockGetScreenSize.mockResolvedValue({ width: 1080, height: 1920 });
-    mockAdbShell.mockResolvedValue("");
-    mockGetForegroundPackage.mockResolvedValue("com.android.launcher");
-    mockLaunchApp.mockResolvedValue(undefined);
+    await expect(ensureReady({ taskBudget: createTaskBudget({ stepLimit: 0 }) })).rejects.toThrow("budget_exceeded");
+    expect(mockWakeScreen).not.toHaveBeenCalled();
+  });
 
-    const result = await ensureReady({ packageName: "com.example.myapp" });
+  it("fails if a foreground app disappears before final verification", async () => {
+    mockGetForegroundPackage.mockResolvedValueOnce("com.example.myapp").mockResolvedValue("launcher");
+    await expect(ensureReady({ packageName: "com.example.myapp" })).rejects.toThrow("left the foreground");
+  });
 
-    expect(result.wasAsleep).toBe(true);
-    expect(result.launched).toBe(true);
+  it("does not retry launch if the device sleeps during launch", async () => {
+    mockGetForegroundPackage.mockResolvedValue("launcher");
+    mockIsScreenOn.mockImplementation(async () => mockLaunchApp.mock.calls.length === 0);
+    await expect(ensureReady({ packageName: "com.example.myapp", readinessTimeout: 5, pollInterval: 1 })).rejects.toThrow("slept or locked");
+    expect(mockLaunchApp).toHaveBeenCalledTimes(1);
+  });
+
+  it("validates bounded polling options", async () => {
+    await expect(ensureReady({ readinessTimeout: Infinity })).rejects.toThrow("finite positive");
+    await expect(ensureReady({ pollInterval: 0 })).rejects.toThrow("finite positive");
   });
 });
 

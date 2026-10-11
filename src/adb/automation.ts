@@ -8,7 +8,7 @@
 
 import { adbShell, getForegroundPackage, getScreenSize, type AdbExecOptions } from "./exec.js";
 import { tap, typeText } from "./input.js";
-import { launchApp, wakeScreen, isScreenOn } from "./app.js";
+import { launchApp, wakeScreen, isScreenOn, isKeyguardShowing } from "./app.js";
 import { dumpUiTree, findElement, waitForElement } from "./ui-tree.js";
 import { takeScreenshot } from "./screenshot.js";
 import type { ElementSelector, UIElement, ScreenshotResult, StuckDetector, TaskBudget } from "./types.js";
@@ -29,41 +29,79 @@ function assertBudgetAndTick(options: AutomationOptions): void {
  * home screen or the requested app. A common "get ready" preamble.
  */
 export async function ensureReady(
-  options: AutomationOptions & { packageName?: string } = {},
+  options: AutomationOptions & { packageName?: string; readinessTimeout?: number; pollInterval?: number } = {},
 ): Promise<{ wasAsleep: boolean; launched: boolean }> {
   const runOptions = options;
-  let wasAsleep = false;
+  const timeout = options.readinessTimeout ?? 5000;
+  const interval = options.pollInterval ?? 250;
+  if (!Number.isFinite(timeout) || timeout <= 0 || !Number.isFinite(interval) || interval <= 0) {
+    throw new Error("readinessTimeout and pollInterval must be finite positive numbers");
+  }
+  const waitUntil = async (check: () => Promise<boolean>): Promise<boolean> => {
+    const deadline = Date.now() + timeout;
+    do {
+      if (options.taskBudget?.exceeded()) {
+        throw new Error(`budget_exceeded: ${JSON.stringify(options.taskBudget.report())}`);
+      }
+      if (await check()) return true;
+      const remaining = deadline - Date.now();
+      if (remaining <= 0) return false;
+      await new Promise(r => setTimeout(r, Math.min(interval, remaining)));
+    } while (Date.now() <= deadline);
+    return false;
+  };
+  const wasAsleep = !await isScreenOn(runOptions);
   let launched = false;
-
-  // Wake screen if off
-  const on = await isScreenOn(runOptions);
-  if (!on) {
+  if (wasAsleep) {
     assertBudgetAndTick(runOptions);
     await wakeScreen(runOptions);
-    wasAsleep = true;
-    // Swipe up to dismiss lock screen (common gesture)
-    // Use dynamic coordinates based on actual screen size
-    const size = await getScreenSize(runOptions);
-    const cx = Math.round(size.width / 2);
-    const fromY = Math.round(size.height * 0.75);
-    const toY = Math.round(size.height * 0.33);
-    assertBudgetAndTick(runOptions);
-    await adbShell(`input swipe ${cx} ${fromY} ${cx} ${toY} 300`, runOptions);
-    // Wait a beat for the home screen
-    await new Promise((r) => setTimeout(r, 1000));
-  }
-
-  // Launch target app if specified and not already in foreground
-  if (options.packageName) {
-    const fg = await getForegroundPackage(runOptions);
-    if (fg !== options.packageName) {
-      assertBudgetAndTick(runOptions);
-      await launchApp(options.packageName, runOptions);
-      launched = true;
-      await new Promise((r) => setTimeout(r, 1500));
+    if (!await waitUntil(() => isScreenOn(runOptions))) {
+      throw new Error("Device screen did not wake before readiness timeout");
     }
   }
 
+  // A lit screen can still be locked. Ask Android to dismiss non-secure
+  // keyguard first; never enter credentials or change the user's lock settings.
+  if (await isKeyguardShowing(runOptions)) {
+    assertBudgetAndTick(runOptions);
+    await adbShell("wm dismiss-keyguard", runOptions);
+    if (!await waitUntil(async () => !await isKeyguardShowing(runOptions))) {
+      const size = await getScreenSize(runOptions);
+      const cx = Math.round(size.width / 2);
+      assertBudgetAndTick(runOptions);
+      await adbShell(`input swipe ${cx} ${Math.round(size.height * 0.75)} ${cx} ${Math.round(size.height * 0.33)} 300`, runOptions);
+      if (!await waitUntil(async () => !await isKeyguardShowing(runOptions))) {
+        throw new Error("Device remains locked; unlock it manually before automation");
+      }
+    }
+  }
+
+  if (options.packageName && await getForegroundPackage(runOptions) !== options.packageName) {
+    // Only app launch is retried, at most once, after a verified wake/unlock.
+    for (let attempt = 0; attempt < 2; attempt++) {
+      assertBudgetAndTick(runOptions);
+      await launchApp(options.packageName, runOptions);
+      launched = true;
+      if (await waitUntil(async () =>
+        await isScreenOn(runOptions) &&
+        !await isKeyguardShowing(runOptions) &&
+        await getForegroundPackage(runOptions) === options.packageName,
+      )) break;
+      if (attempt === 1) {
+        throw new Error(`App ${options.packageName} did not reach the foreground before readiness timeout`);
+      }
+      if (!await isScreenOn(runOptions) || await isKeyguardShowing(runOptions)) {
+        throw new Error("Device slept or locked during app launch; run readiness again");
+      }
+    }
+  }
+  // Do not report success if the device relocked/slept during preparation.
+  if (!await isScreenOn(runOptions) || await isKeyguardShowing(runOptions)) {
+    throw new Error("Device is not awake and unlocked after preparation");
+  }
+  if (options.packageName && await getForegroundPackage(runOptions) !== options.packageName) {
+    throw new Error(`App ${options.packageName} left the foreground during preparation`);
+  }
   return { wasAsleep, launched };
 }
 

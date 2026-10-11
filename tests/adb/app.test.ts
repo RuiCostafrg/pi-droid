@@ -16,6 +16,7 @@ import {
   restoreScreenTimeout,
   wakeScreen,
   isScreenOn,
+  isKeyguardShowing,
 } from "../../src/adb/app.js";
 
 const mockAdbShell = vi.mocked(adbShell);
@@ -23,6 +24,23 @@ const mockGetForegroundPackage = vi.mocked(getForegroundPackage);
 
 beforeEach(() => {
   vi.clearAllMocks();
+});
+
+describe("isKeyguardShowing()", () => {
+  it.each([
+    ["KeyguardServiceDelegate\n showing=true\n KeyguardStateMonitor\n mIsShowing=true", true],
+    ["KeyguardServiceDelegate\n showing=false\n KeyguardStateMonitor\n mIsShowing=false", false],
+    ["mShowingLockscreen=true", true],
+    ["isStatusBarKeyguard=false", false],
+  ])("parses window policy %s", async (output, expected) => {
+    mockAdbShell.mockResolvedValue(output);
+    expect(await isKeyguardShowing()).toBe(expected);
+  });
+
+  it("fails closed for an unknown dump", async () => {
+    mockAdbShell.mockResolvedValue("unknown Android policy");
+    await expect(isKeyguardShowing()).rejects.toThrow("Could not verify keyguard state");
+  });
 });
 
 // ── launchApp ───────────────────────────────────────────────────────
@@ -179,6 +197,16 @@ describe("wakeScreen()", () => {
 // ── isScreenOn ──────────────────────────────────────────────────────
 
 describe("isScreenOn()", () => {
+  it.each([
+    ["mWakefulness=Awake\nDisplay Power: PowerManagerService$2@123\n Display State=ON", true],
+    ["mWakefulness=Dozing\n Display State=OFF", false],
+    ["mWakefulness=Awake\n Display State=OFF", false],
+    ["mWakefulness=Awake", true],
+    ["mWakefulness=Asleep", false],
+  ])("supports OEM display state: %s", async (output, expected) => {
+    mockAdbShell.mockResolvedValue(output);
+    expect(await isScreenOn()).toBe(expected);
+  });
   it("returns true when display state is ON", async () => {
     mockAdbShell.mockResolvedValue("Display Power: state=ON");
     const result = await isScreenOn();

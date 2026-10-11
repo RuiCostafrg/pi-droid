@@ -47,7 +47,13 @@ This fork fixes host-side temporary paths to use Node's system temporary directo
 
 Discovery is bounded (five seconds per discovery stage by default), and sockets/timers are released afterward. Pairing and legacy TCP services are ignored. When multiple endpoints are found, supply `host` (and optionally `port`) to choose a phone. Wireless debugging must be enabled, the host must already be paired, and multicast traffic must be reachable on the WiFi network.
 
-**Behavior change:** `auto` no longer runs `adb tcpip 5555` or enables unencrypted legacy mode. Explicit `connect`/`disconnect` remain available. Reconnect is invoked on demand; this is not a background reconnection daemon.
+**Behavior change:** `auto` no longer runs `adb tcpip 5555` or enables unencrypted legacy mode. Explicit `connect`/`disconnect` remain available. Reconnect runs automatically when initial device selection finds no reachable phone, or a device command fails with a missing/offline transport. The action is retried once after secure discovery and authorization verification. Concurrent failures for the same host share one recovery, and old host:port callers use the recovered port. Explicit USB targets are never redirected to WiFi; ambiguous discovery fails instead of guessing. Timeouts, closed connections, authorization failures, and app/shell errors are not replayed because the action may already have executed. Low-level callers can opt out with `autoReconnect: false`. This is not a background reconnection daemon.
+
+### Verified wake → unlock → launch
+
+`android_ensure_ready` now waits for a confirmed awake screen, checks keyguard even when the screen was already on, requests non-secure keyguard dismissal (with one swipe fallback), and verifies the requested app reaches the foreground. App launch is retried at most once. Success is returned only after a final awake/unlocked/foreground check; credential-protected locks require manual unlocking. No credentials are entered and no screen timeout or lock settings are changed.
+
+Screen detection supports both the older `Display Power: state=ON` and ASUS/OEM `Display State=ON` formats. Library callers can set positive `readinessTimeout` (default 5000 ms per polling phase) and `pollInterval` (default 250 ms); ADB command timeouts remain independently bounded by execution options. Task budgets are honored during polling and before actions.
 
 To use this fork from a local checkout:
 

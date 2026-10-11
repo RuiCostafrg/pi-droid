@@ -7,6 +7,7 @@
  */
 
 import { adbShell, getForegroundPackage, type AdbExecOptions } from "./exec.js";
+import { parseScreenOn } from "./app.js";
 
 // ── Types ───────────────────────────────────────────────────────────
 
@@ -64,7 +65,7 @@ export async function getScreenState(options: AdbExecOptions = {}): Promise<Scre
       adbShell("dumpsys window", options),
       adbShell("dumpsys input_method | grep mInputShown", options).catch(() => ""),
       adbShell("dumpsys display | grep mCurrentOrientation", options).catch(() => ""),
-      adbShell("dumpsys power | grep 'Display Power'", options).catch(() => ""),
+      adbShell("dumpsys power", options).catch(() => ""),
       adbShell(
         "dumpsys window | grep 'mDreamingLockscreen\\|isStatusBarKeyguard\\|showing='",
         options,
@@ -72,7 +73,7 @@ export async function getScreenState(options: AdbExecOptions = {}): Promise<Scre
     ]);
 
   // Screen on/off
-  const screenOn = screenOnOutput.includes("state=ON");
+  const screenOn = parseScreenOn(screenOnOutput);
 
   // Lock screen
   const locked =

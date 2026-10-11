@@ -7,6 +7,7 @@
 
 import type { AdbExecOptions } from "./exec.js";
 import { listDevices, getScreenSize, isDeviceReady } from "./exec.js";
+import { reconnect, resolveSerial } from "./reconnect.js";
 import { tap, swipe, typeText, keyEvent, pressBack, pressHome, pressEnter, scrollDown, scrollUp } from "./input.js";
 import { takeScreenshot, screenshotBase64 } from "./screenshot.js";
 import { dumpUiTree, findElement, findElements, waitForElement, summarizeTree } from "./ui-tree.js";
@@ -41,15 +42,23 @@ export class Device {
    * Connect to a device by serial, or auto-detect the first available.
    */
   static async connect(serial?: string): Promise<Device> {
-    if (serial) {
-      const ready = await isDeviceReady(serial);
-      if (!ready) throw new Error(`Device ${serial} not ready`);
-      return new Device(serial);
-    }
+    serial = resolveSerial(serial);
     const devices = await listDevices();
-    const available = devices.find((d) => d.state === "device");
-    if (!available) throw new Error("No ADB devices found");
-    return new Device(available.serial);
+    if (serial) {
+      const target = devices.find(d => d.serial === serial);
+      if (target?.state === "device") return new Device(serial);
+      if (target?.state === "unauthorized" || !/^\d+\.\d+\.\d+\.\d+:\d+$/.test(serial)) {
+        throw new Error(`Device ${serial} not ready`);
+      }
+      return new Device(await reconnect(serial));
+    }
+    const available = devices.filter(d => d.state === "device");
+    if (available.length > 1) throw new Error("Multiple ADB devices found; specify a serial");
+    if (available.length === 1) return new Device(available[0].serial);
+    if (devices.some(d => d.state === "unauthorized")) {
+      throw new Error("ADB device unauthorized; authorize or pair the host first");
+    }
+    return new Device(await reconnect());
   }
 
   /**

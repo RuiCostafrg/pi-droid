@@ -30,6 +30,8 @@ export interface AdbExecOptions {
   timeout?: number;
   /** Max stdout buffer size in bytes (default: 10MB) */
   maxBuffer?: number;
+  /** Disable secure reconnect/retry for this command. */
+  autoReconnect?: boolean;
 }
 
 const DEFAULT_TIMEOUT = 30_000;
@@ -39,7 +41,10 @@ const DEFAULT_MAX_BUFFER = 10 * 1024 * 1024;
  * Execute an ADB command and return stdout.
  */
 export async function adb(args: string[], options: AdbExecOptions = {}): Promise<string> {
-  const fullArgs = options.serial ? ["-s", options.serial, ...args] : args;
+  const deviceCommand = ["shell", "exec-out", "push", "pull", "install", "uninstall", "get-state"].includes(args[0]);
+  const { resolveSerial, reconnect } = await import("./reconnect.js");
+  const serial = deviceCommand ? resolveSerial(options.serial) : options.serial;
+  const fullArgs = serial ? ["-s", serial, ...args] : args;
 
   try {
     const { stdout } = await execAsync("adb", fullArgs, {
@@ -49,12 +54,29 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
     return stdout.trim();
   } catch (err: unknown) {
     const error = err as { stderr?: string; code?: number | null; message?: string };
-    throw new AdbError(
+    const original = new AdbError(
       `ADB command failed: adb ${fullArgs.join(" ")}`,
       `adb ${fullArgs.join(" ")}`,
       error.stderr ?? "",
       error.code ?? null,
     );
+    // Only retry transport-selection failures: the command has not executed.
+    // Never replay timeouts, closed connections, authorization or app errors.
+    const unavailable = /^(?:adb: (?:error: )?|error: )?(?:no devices\/emulators found|device offline|device '[^']+' not found)\s*$/.test(original.stderr);
+    const wirelessTarget = !serial || /^\d+\.\d+\.\d+\.\d+:\d+$/.test(serial);
+    if (deviceCommand && options.autoReconnect !== false && unavailable && wirelessTarget) {
+      let recovered: string;
+      try {
+        recovered = await reconnect(serial);
+      } catch (recoveryError) {
+        throw new AdbError(
+          `${original.message}; secure reconnect failed: ${recoveryError instanceof Error ? recoveryError.message : String(recoveryError)}`,
+          original.command, original.stderr, original.exitCode,
+        );
+      }
+      return adb(args, { ...options, serial: recovered, autoReconnect: false });
+    }
+    throw original;
   }
 }
 

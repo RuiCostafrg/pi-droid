@@ -104,12 +104,34 @@ export async function wakeScreen(
   await adbShell("input keyevent KEYCODE_WAKEUP", options);
 }
 
+/** Check whether keyguard is showing, including when the screen was already on.
+ * Fail closed if the platform's policy dump cannot establish lock state.
+ */
+export async function isKeyguardShowing(options: AdbExecOptions = {}): Promise<boolean> {
+  const output = await adbShell("dumpsys window policy", options);
+  const section = output.slice(output.indexOf("KeyguardServiceDelegate"));
+  const matches = [...section.matchAll(/\b(?:showing|mIsShowing)=(true|false)\b/g)];
+  if (output.includes("KeyguardServiceDelegate") && matches.length) {
+    return matches.some(match => match[1] === "true");
+  }
+  const fallback = output.match(/\b(?:mShowingLockscreen|isStatusBarKeyguard|mKeyguardShowing)=(true|false)\b/);
+  if (fallback) return fallback[1] === "true";
+  throw new Error("Could not verify keyguard state from Android window policy");
+}
+
+/** Parse old Display Power dumps and newer OEM Display State dumps. */
+export function parseScreenOn(output: string): boolean {
+  const display = output.match(/Display Power:.*?\bstate=(\w+)/) ??
+    output.match(/\bDisplay State=(\w+)/);
+  if (display) return display[1] === "ON";
+  return /\bmWakefulness=Awake\b/.test(output);
+}
+
 /**
  * Check if screen is on.
  */
 export async function isScreenOn(
   options: AdbExecOptions = {},
 ): Promise<boolean> {
-  const output = await adbShell("dumpsys power | grep 'Display Power'", options);
-  return output.includes("state=ON");
+  return parseScreenOn(await adbShell("dumpsys power", options));
 }

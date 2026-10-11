@@ -755,8 +755,8 @@ export function registerDeviceTools(pi: ExtensionAPI, adbConfig: Record<string, 
     name: "android_ensure_ready",
     label: "Ensure Ready",
     description:
-      "Wake the device, dismiss lock screen, and optionally launch an app. " +
-      "Call at the start of any automation sequence.",
+      "Wake and verify the screen, dismiss non-secure keyguard, and optionally launch and verify an app in the foreground. " +
+      "Retries app launch once; reports locked devices or readiness failure instead of assuming success. Call at the start of automation.",
     parameters: Type.Object({
       package: Type.Optional(Type.String({ description: "App package to launch (optional)" })),
     }),

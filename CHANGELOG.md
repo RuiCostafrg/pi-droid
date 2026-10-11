@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] — Termux fork
+
+### Added
+
+- Automatic secure Wireless debugging recovery for missing/offline ADB transports, with a single retry, host-filtered discovery, concurrent recovery sharing, and changed-port tracking.
+- Verified device readiness: poll for wake and keyguard dismissal, verify foreground app, retry launch once, and report secure locks or failed readiness explicitly.
+
+### Fixed
+
+- ASUS/OEM screen detection now recognizes `Display State=ON` as well as older `Display Power: state=ON` dumps.
+
+### Safety
+
+- Recovery does not enable legacy TCP/IP debugging, redirect explicit USB targets, guess among multiple devices, or replay timeouts/closed connections/authorization errors.
+- Readiness never enters credentials or changes screen timeout or lock settings.
+
 ## [0.2.0] - 2026-04-14
 
 ### Changed
