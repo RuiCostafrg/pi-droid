@@ -1,4 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 
 vi.mock("../../src/adb/exec.js", () => ({
   adbShell: vi.fn(async () => ""),
@@ -127,7 +129,7 @@ describe("pullRecording()", () => {
     mockExistsSync.mockReturnValue(false);
     mockAdb.mockResolvedValue("");
     await pullRecording();
-    expect(mockMkdir).toHaveBeenCalledWith("/tmp/pi-droid/recordings", { recursive: true });
+    expect(mockMkdir).toHaveBeenCalledWith(join(tmpdir(), "pi-droid", "recordings"), { recursive: true });
   });
 
   it("skips mkdir if directory exists", async () => {
@@ -150,7 +152,8 @@ describe("pullRecording()", () => {
     mockExistsSync.mockReturnValue(true);
     mockAdb.mockResolvedValue("");
     const localPath = await pullRecording();
-    expect(localPath).toMatch(/\/tmp\/pi-droid\/recordings\/rec_.*\.mp4$/);
+    expect(localPath.startsWith(join(tmpdir(), "pi-droid", "recordings") + "/")).toBe(true);
+    expect(localPath).toMatch(/rec_.*\.mp4$/);
   });
 
   it("uses custom local directory", async () => {

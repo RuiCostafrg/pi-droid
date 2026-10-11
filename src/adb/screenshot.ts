@@ -4,13 +4,14 @@
 
 import { mkdir, readFile, unlink } from "node:fs/promises";
 import { join } from "node:path";
+import { tmpdir } from "node:os";
 import { existsSync } from "node:fs";
 import { adb, adbShell, type AdbExecOptions } from "./exec.js";
 import type { ScreenshotResult } from "./types.js";
 
 const REMOTE_PATH = "/sdcard/pi-droid-screen.png";
 
-let screenshotDir = "/tmp/pi-droid/screenshots";
+let screenshotDir = join(tmpdir(), "pi-droid", "screenshots");
 
 export function setScreenshotDir(dir: string): void {
   screenshotDir = dir;
@@ -58,7 +59,7 @@ export async function screenshotBase64(options: AdbExecOptions = {}): Promise<st
   await adbShell(`screencap -p ${REMOTE_PATH}`, options);
 
   // Pull to temp, read, return base64, then clean up
-  const tmpPath = `/tmp/pi-droid-quick-${Date.now()}.png`;
+  const tmpPath = join(tmpdir(), `pi-droid-quick-${Date.now()}.png`);
   await adb(["pull", REMOTE_PATH, tmpPath], options);
   try {
     const data = await readFile(tmpPath);

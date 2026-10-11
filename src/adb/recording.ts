@@ -7,6 +7,7 @@
 
 import { mkdir } from "node:fs/promises";
 import { join } from "node:path";
+import { tmpdir } from "node:os";
 import { existsSync } from "node:fs";
 import { adb, adbShell, type AdbExecOptions } from "./exec.js";
 
@@ -71,7 +72,7 @@ export async function pullRecording(
   localDir?: string,
   options: AdbExecOptions = {},
 ): Promise<string> {
-  const dir = localDir ?? "/tmp/pi-droid/recordings";
+  const dir = localDir ?? join(tmpdir(), "pi-droid", "recordings");
 
   if (!existsSync(dir)) {
     await mkdir(dir, { recursive: true });

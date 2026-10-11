@@ -5,6 +5,8 @@
  * direct control over the connected Android device.
  */
 
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
 import { Type } from "@sinclair/typebox";
 import { Device } from "../adb/index.js";
@@ -384,10 +386,10 @@ export function registerDeviceTools(pi: ExtensionAPI, adbConfig: Record<string, 
       ),
       name: Type.Optional(Type.String({ description: "Macro name (for run/save)" })),
       macro: Type.Optional(Type.String({ description: "JSON macro definition (for save)" })),
-      dir: Type.Optional(Type.String({ description: "Macros directory (default: /tmp/pi-droid/macros)" })),
+      dir: Type.Optional(Type.String({ description: "Macros directory (default: system temporary directory/pi-droid/macros)" })),
     }),
     async execute(_id, args) {
-      const dir = args.dir ?? "/tmp/pi-droid/macros";
+      const dir = args.dir ?? join(tmpdir(), "pi-droid", "macros");
       const opts = { serial: defaultSerial };
       switch (args.action) {
         case "list": {

@@ -7,6 +7,7 @@
 
 import { mkdir, readFile, readdir, unlink, stat } from "node:fs/promises";
 import { join } from "node:path";
+import { tmpdir } from "node:os";
 import { existsSync } from "node:fs";
 import { adb, adbShell, getForegroundPackage, type AdbExecOptions } from "./exec.js";
 import type { UIElement, UITreeResult, ElementSelector, Bounds } from "./types.js";
@@ -14,7 +15,7 @@ import { getCachedTree, setCachedTree } from "./cache.js";
 import { runOcrOnCurrentScreen } from "./ocr.js";
 
 const REMOTE_XML = "/sdcard/pi-droid-ui.xml";
-let uiDumpDir = "/tmp/pi-droid/ui-dumps";
+let uiDumpDir = join(tmpdir(), "pi-droid", "ui-dumps");
 
 export function setUiDumpDir(dir: string): void {
   uiDumpDir = dir;

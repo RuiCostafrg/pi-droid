@@ -1,4 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 
 // Mock exec module
 vi.mock("../../src/adb/exec.js", () => ({
@@ -37,7 +39,7 @@ beforeEach(() => {
   });
   mockAdb.mockResolvedValue("");
   mockExistsSync.mockReturnValue(true);
-  setScreenshotDir("/tmp/pi-droid/screenshots");
+  setScreenshotDir(join(tmpdir(), "pi-droid", "screenshots"));
 });
 
 describe("takeScreenshot()", () => {
@@ -135,7 +137,7 @@ describe("screenshotBase64()", () => {
   it("pulls to a temp path", async () => {
     await screenshotBase64();
     expect(mockAdb).toHaveBeenCalledWith(
-      ["pull", "/sdcard/pi-droid-screen.png", expect.stringContaining("/tmp/pi-droid-quick-")],
+      ["pull", "/sdcard/pi-droid-screen.png", expect.stringContaining(join(tmpdir(), "pi-droid-quick-"))],
       expect.any(Object),
     );
   });
