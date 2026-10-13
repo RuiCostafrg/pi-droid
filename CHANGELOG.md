@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Checked `android_app` launch with an explicit HTTP(S) `fallback_url` and optional installed `browser_package`; report missing apps without guessing websites or installing packages.
 - Automatic secure Wireless debugging recovery for missing/offline ADB transports, with a single retry, host-filtered discovery, concurrent recovery sharing, and changed-port tracking.
 - Verified device readiness: poll for wake and keyguard dismissal, verify foreground app, retry launch once, and report secure locks or failed readiness explicitly.
 

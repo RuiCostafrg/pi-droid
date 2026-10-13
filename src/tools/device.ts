@@ -10,6 +10,7 @@ import { join } from "node:path";
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
 import { Type } from "@sinclair/typebox";
 import { Device } from "../adb/index.js";
+import { launchAppWithFallback } from "../adb/app-fallback.js";
 import { DeviceRegistry } from "../adb/registry.js";
 import { annotatedScreenshot } from "../adb/annotate.js";
 import { getBatteryInfo, getNetworkInfo, getDeviceInfo } from "../adb/monitor.js";
@@ -202,20 +203,25 @@ export function registerDeviceTools(pi: ExtensionAPI, adbConfig: Record<string, 
   pi.registerTool({
     name: "android_app",
     label: "App Control",
-    description: "Launch, stop, or check status of an Android app by package name.",
+    description: "Launch, stop, or check status of an Android app by package name. Launch checks installation first; optionally supply fallback_url to open the intended website if the app is missing. Never installs apps or guesses websites.",
     parameters: Type.Object({
       action: Type.Union(
         [Type.Literal("launch"), Type.Literal("stop"), Type.Literal("status")],
         { description: "Action to perform" },
       ),
       package: Type.String({ description: "Android package name (e.g., com.example.myapp)" }),
+      fallback_url: Type.Optional(Type.String({ description: "Launch only: explicit HTTP(S) website to open if the app is not installed" })),
+      browser_package: Type.Optional(Type.String({ description: "Launch only: optional installed browser package; otherwise use Android's default URL handler" })),
     }),
     async execute(_id, args) {
       const device = await getDevice(defaultSerial);
       switch (args.action) {
-        case "launch":
-          await device.launchApp(args.package);
-          return { content: [{ type: "text", text: JSON.stringify({ launched: args.package }) }], details: {} };
+        case "launch": {
+          const result = await launchAppWithFallback(args.package, {
+            serial: device.serial, fallbackUrl: args.fallback_url, browserPackage: args.browser_package,
+          });
+          return { content: [{ type: "text", text: JSON.stringify(result) }], details: {}, ...(result.launched === null ? { isError: true } : {}) };
+        }
         case "stop":
           await device.stopApp(args.package);
           return { content: [{ type: "text", text: JSON.stringify({ stopped: args.package }) }], details: {} };

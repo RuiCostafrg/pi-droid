@@ -140,9 +140,35 @@ npm test
 
 | Tool | Description |
 |------|-------------|
-| `android_app` | Launch, stop, or check status of an app by package name |
+| `android_app` | Launch with installation check and optional website fallback, stop, or check status |
 | `android_wait` | Wait for an element to appear (by text or resource ID) with timeout |
 | `android_wait_activity` | Wait for a specific activity to reach the foreground |
+
+#### Missing-app fallback
+
+`android_app` checks whether the requested package is installed before launch.
+If it is missing and no alternative is supplied, it returns `app_not_installed`
+without launching or installing anything. Supply an explicit `fallback_url` to
+open the intended website instead:
+
+```json
+{
+  "action": "launch",
+  "package": "com.amazon.mShop.android.shopping",
+  "fallback_url": "https://www.amazon.de/s?k=versa+gripps",
+  "browser_package": "com.android.chrome"
+}
+```
+
+`browser_package` is optional; without it Android uses its default URL handler
+(which may require choosing a browser). The tool reports the actual handler
+package and whether fallback was used. Only HTTP(S) URLs without embedded
+credentials are accepted. Connection failures, launch failures for installed
+apps, and missing browsers are not silently converted into website launches.
+Use `android_ensure_ready` first when the screen may be asleep or locked; this
+fallback does not unlock the phone. The low-level `launchApp` and deterministic
+input router retain their original behavior; checked launches are available via
+`launchAppWithFallback` and the `android_app` tool.
 
 ### System (6 tools)
 

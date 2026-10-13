@@ -54,6 +54,7 @@ export type { OcrResult } from "./ocr.js";
 export { dumpUiTree, findElements, findElement, waitForElement, summarizeTree, setUiDumpDir } from "./ui-tree.js";
 
 // App management
+export { launchAppWithFallback, type AppLaunchResult } from "./app-fallback.js";
 export { launchApp, stopApp, getAppInfo, listPackages, keepScreenOn, restoreScreenTimeout, wakeScreen, isScreenOn } from "./app.js";
 
 // File management

@@ -176,7 +176,7 @@ export {
   takeScreenshot, screenshotBase64, annotatedScreenshot,
   dumpUiTree, findElements, findElement, waitForElement,
   // App management
-  launchApp, stopApp, getAppInfo, listPackages, wakeScreen, isScreenOn,
+  launchApp, launchAppWithFallback, stopApp, getAppInfo, listPackages, wakeScreen, isScreenOn,
   // Monitoring
   getBatteryInfo, getNetworkInfo, getDeviceInfo, isScreenLocked, getRunningApps,
   // Automation helpers
@@ -186,5 +186,5 @@ export {
   // OCR
   runOcrOnImage, runOcrOnCurrentScreen,
 } from "./adb/index.js";
-export type { AdbExecOptions } from "./adb/index.js";
+export type { AdbExecOptions, AppLaunchResult } from "./adb/index.js";
 export type { StuckEvent, UIElement, Bounds, ElementSelector } from "./adb/index.js";
