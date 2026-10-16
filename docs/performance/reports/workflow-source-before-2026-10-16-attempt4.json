@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 1,
+  "kind": "source-workflow-e2e",
+  "phase": "before",
+  "startedAt": "2026-10-16T22:42:47.106Z",
+  "sourceHash": "190cb06ce039a3afcb50b24a32a55feedd051771f92c089dbcaa3a10fee6edc4",
+  "harnessHash": "d05fad3de94c0626be96dc66cec0c934079455eabc0e154cdfcecb35263cdc1e",
+  "status": "fail",
+  "checks": [
+    {
+      "name": "fixture_screen_1080x2340",
+      "ok": true
+    },
+    {
+      "name": "amazon_search_field",
+      "ok": true
+    },
+    {
+      "name": "amazon_query_readback",
+      "ok": true
+    },
+    {
+      "name": "three_fixed_comparable_offers",
+      "ok": true
+    },
+    {
+      "name": "chosen_product_visible",
+      "ok": true
+    },
+    {
+      "name": "amazon_product_open",
+      "ok": true
+    },
+    {
+      "name": "original_ime_restored",
+      "ok": true
+    },
+    {
+      "name": "termux_restored",
+      "ok": true
+    }
+  ],
+  "operations": [
+    {
+      "stage": "shell",
+      "startMs": 16.099323000000027,
+      "durationMs": 132.641615,
+      "outcome": "ok"
+    },
+    {
+      "stage": "screen_size",
+      "startMs": 149.08317699999998,
+      "durationMs": 99.892292,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 249.70901100000003,
+      "durationMs": 91.98244799999998,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 341.715469,
+      "durationMs": 163.524635,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 505.630625,
+      "durationMs": 3463.000989,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 3968.9860929999995,
+      "durationMs": 2755.2769260000005,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 6724.810675,
+      "durationMs": 71.60838500000045,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 6796.696612,
+      "durationMs": 503.3757290000003,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 7300.1247889999995,
+      "durationMs": 107.12057300000015,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 7407.3618209999995,
+      "durationMs": 167.4629159999995,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 7574.8707269999995,
+      "durationMs": 3411.8865609999993,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 10987.320934,
+      "durationMs": 76.15406199999961,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 11063.503225,
+      "durationMs": 500.64770899999894,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 11564.176715,
+      "durationMs": 5214.695830999999,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 16781.228327,
+      "durationMs": 3538.5121340000005,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 20319.910253,
+      "durationMs": 86.88755200000014,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 20406.834316,
+      "durationMs": 501.6560929999978,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 20908.565097,
+      "durationMs": 7730.76859,
+      "outcome": "ok"
+    },
+    {
+      "stage": "app",
+      "startMs": 28640.09874,
+      "durationMs": 5629.797809999996,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 34269.936185,
+      "durationMs": 2617.975937000003,
+      "outcome": "ok"
+    },
+    {
+      "stage": "restore_ime",
+      "startMs": 36888.43358,
+      "durationMs": 76.83432300000277,
+      "outcome": "ok"
+    },
+    {
+      "stage": "restore_termux",
+      "startMs": 37037.024360999996,
+      "durationMs": 5626.306665000004,
+      "outcome": "ok"
+    }
+  ],
+  "captureSpans": [
+    {
+      "stage": "device_dump",
+      "startMs": 24.28244799999993,
+      "durationMs": 3245.3367179999996,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 3269.9876029999996,
+      "durationMs": 69.93692700000065,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 3339.957655,
+      "durationMs": 2.4491149999994377,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 3342.847759,
+      "durationMs": 19.541353999999956,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 3362.403488,
+      "durationMs": 98.92901100000017,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 3.8570320000007996,
+      "durationMs": 2587.1465609999996,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2591.1056770000005,
+      "durationMs": 30.200988999999936,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2621.335989,
+      "durationMs": 3.6061460000000807,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2624.9680200000003,
+      "durationMs": 16.00177100000019,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2641.0064580000007,
+      "durationMs": 113.69124999999985,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 4.941458999999668,
+      "durationMs": 3200.730675999999,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 3205.9105199999995,
+      "durationMs": 96.60671899999943,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 3302.536248999999,
+      "durationMs": 1.4413020000010874,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 3303.9859369999995,
+      "durationMs": 14.152500000000146,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 3318.146718,
+      "durationMs": 93.5799479999987,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 5.355781000000206,
+      "durationMs": 5048.5623940000005,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 5054.0133829999995,
+      "durationMs": 32.31322999999975,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 5086.349321,
+      "durationMs": 2.5895310000014433,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 5088.957863000001,
+      "durationMs": 22.29083299999911,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 5111.260831000001,
+      "durationMs": 103.29322899999897,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 4.2618230000007316,
+      "durationMs": 3376.9509880000005,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 3381.430155000002,
+      "durationMs": 32.71343699999852,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 3414.1723420000017,
+      "durationMs": 2.429791999998997,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 3416.6134359999996,
+      "durationMs": 18.539896000002045,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 3435.1636959999996,
+      "durationMs": 103.19145900000149,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 12.885989000002155,
+      "durationMs": 7513.7091120000005,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 7526.878017999999,
+      "durationMs": 63.46078100000159,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 7590.365049,
+      "durationMs": 5.382760000000417,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 7595.760101,
+      "durationMs": 41.345155999999406,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 7637.118485999999,
+      "durationMs": 93.42359399999987,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 15.47447899999679,
+      "durationMs": 2393.9735930000024,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2409.8802589999977,
+      "durationMs": 78.96775999999954,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2488.87328,
+      "durationMs": 1.5296349999989616,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2490.4107279999953,
+      "durationMs": 2.8143750000017462,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2493.2302589999963,
+      "durationMs": 124.569739999999,
+      "outcome": "ok"
+    }
+  ],
+  "captureSpansTruncated": false,
+  "publicOffers": [
+    {
+      "total": 16.99,
+      "perLitre": 2.12
+    },
+    {
+      "total": 16.99,
+      "perLitre": 2.12
+    },
+    {
+      "total": 18.94,
+      "perLitre": 2.37
+    }
+  ],
+  "failureCheckpoint": "control",
+  "durationMs": 42783.407484
+}

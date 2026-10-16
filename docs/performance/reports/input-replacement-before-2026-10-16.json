@@ -1,0 +1,43 @@
+{
+  "kind": "input-replacement-e2e",
+  "schemaVersion": 1,
+  "startedAt": "2026-10-16T23:13:08.381Z",
+  "sourceHash": "7b7b3c9b09e102f9cda8ad4d7a5b9c976540a53d6579eacf8f7a98f4fcb65ca9",
+  "status": "fail",
+  "samples": [
+    {
+      "name": "title_prefix",
+      "inputMs": 543.1286970000001,
+      "exactReadback": false,
+      "expectedLength": 15,
+      "actualLength": 27
+    },
+    {
+      "name": "numeric_shorten",
+      "inputMs": 542.420936999999,
+      "exactReadback": false,
+      "expectedLength": 1,
+      "actualLength": 5
+    },
+    {
+      "name": "unicode",
+      "inputMs": 489.99947899999825,
+      "exactReadback": false,
+      "expectedLength": 9,
+      "actualLength": 25
+    },
+    {
+      "name": "empty",
+      "inputMs": 530.691823000001,
+      "exactReadback": false,
+      "expectedLength": 0,
+      "actualLength": 7
+    }
+  ],
+  "cleanup": {
+    "fixtureTitleRestored": true,
+    "originalImeRestored": true,
+    "termuxRestored": true
+  },
+  "durationMs": 65140.080704
+}

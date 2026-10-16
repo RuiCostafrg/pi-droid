@@ -11,12 +11,19 @@ import type { DeviceInfo, ScreenSize } from "./types.js";
 
 const execAsync = promisify(execFile);
 
+/** Fixed categories safe to export; raw AdbError fields remain private. */
+export type ExecutionFailureKind = "timeout" | "cancelled" | "exit" | "signal" |
+  "spawn" | "buffer" | "unknown";
+
 export class AdbError extends Error {
   constructor(
     message: string,
     public readonly command: string,
     public readonly stderr: string,
     public readonly exitCode: number | null,
+    public readonly failureKind: ExecutionFailureKind = "unknown",
+    public readonly signal: string | null = null,
+    public readonly killed: boolean = false,
   ) {
     super(message);
     this.name = "AdbError";
@@ -28,6 +35,8 @@ export interface AdbExecOptions {
   serial?: string;
   /** Command timeout in ms (default: 30000) */
   timeout?: number;
+  /** Cancel this command; does not guarantee device-side or sibling-work termination. */
+  signal?: AbortSignal;
   /** Max stdout buffer size in bytes (default: 10MB) */
   maxBuffer?: number;
   /** Disable secure reconnect/retry for this command. */
@@ -49,25 +58,49 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
   const serial = deviceCommand && !options.exactSerial ? resolveSerial(options.serial) : options.serial;
   const fullArgs = serial ? ["-s", serial, ...args] : args;
 
+  const timeout = options.timeout ?? DEFAULT_TIMEOUT;
+  if (!Number.isInteger(timeout) || timeout < 0) throw new RangeError("Invalid ADB timeout");
+  // Own the deadline so timeout is an observed event, not a guess based on
+  // elapsed time, `killed`, signal, or an error-message substring. First abort wins.
+  const controller = new AbortController();
+  let interruption: "timeout" | "cancelled" | undefined;
+  const interrupt = (kind: "timeout" | "cancelled") => {
+    if (controller.signal.aborted) return;
+    interruption = kind;
+    controller.abort();
+  };
+  const cancel = () => interrupt("cancelled");
+  options.signal?.addEventListener("abort", cancel, { once: true });
+  if (options.signal?.aborted) cancel();
+  const timer = timeout > 0 ? setTimeout(() => interrupt("timeout"), timeout) : undefined;
+  timer?.unref();
   try {
     const { stdout } = await execAsync("adb", fullArgs, {
-      timeout: options.timeout ?? DEFAULT_TIMEOUT,
+      // Disable Node's opaque timeout; our deadline above has explicit provenance.
+      timeout: 0, signal: controller.signal,
       maxBuffer: options.maxBuffer ?? DEFAULT_MAX_BUFFER,
     });
     return stdout.trim();
   } catch (err: unknown) {
-    const error = err as { stderr?: string; code?: number | null; message?: string };
+    const error = err as { stderr?: string; code?: unknown; signal?: string; killed?: boolean };
+    const exitCode = typeof error.code === "number" ? error.code : null;
+    const failureKind: ExecutionFailureKind = interruption ?? (
+      error.code === "ERR_CHILD_PROCESS_STDIO_MAXBUFFER" ? "buffer" :
+      typeof error.code === "number" ? "exit" :
+      error.signal ? "signal" :
+      typeof error.code === "string" ? "spawn" : "unknown");
     const original = new AdbError(
       `ADB command failed: adb ${fullArgs.join(" ")}`,
       `adb ${fullArgs.join(" ")}`,
       error.stderr ?? "",
-      error.code ?? null,
+      exitCode, failureKind, error.signal ?? null, error.killed === true,
     );
     // Only retry transport-selection failures: the command has not executed.
     // Never replay timeouts, closed connections, authorization or app errors.
     const unavailable = /^(?:adb: (?:error: )?|error: )?(?:no devices\/emulators found|device offline|device '[^']+' not found)\s*$/.test(original.stderr);
     const wirelessTarget = !serial || /^\d+\.\d+\.\d+\.\d+:\d+$/.test(serial);
-    if (deviceCommand && !options.exactSerial && options.autoReconnect !== false && unavailable && wirelessTarget) {
+    if (failureKind === "exit" && !options.signal?.aborted && deviceCommand &&
+        !options.exactSerial && options.autoReconnect !== false && unavailable && wirelessTarget) {
       let recovered: string;
       try {
         recovered = await reconnect(serial);
@@ -75,11 +108,15 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
         throw new AdbError(
           `${original.message}; secure reconnect failed: ${recoveryError instanceof Error ? recoveryError.message : String(recoveryError)}`,
           original.command, original.stderr, original.exitCode,
+          original.failureKind, original.signal, original.killed,
         );
       }
       return adb(args, { ...options, serial: recovered, autoReconnect: false });
     }
     throw original;
+  } finally {
+    clearTimeout(timer);
+    options.signal?.removeEventListener("abort", cancel);
   }
 }
 

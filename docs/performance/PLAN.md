@@ -2,34 +2,65 @@
 
 ## Resume here
 
-**Current priority: Step 2 — opt-in internal capture timing spans.**
+**Next speed priority: reduce redundant fresh observations without weakening correctness.**
+First audit caller/tool capture duplication against the recorded workflow, then
+save a current-source baseline BEFORE any optimization. Choose a narrow text-only
+or observation-reuse path only where it actually removes capture work; the
+existing text dump is already screenshot-free. Fresh observation before
+coordinate-based actions remains mandatory. Keep the frozen v1 harness and
+historical reports intact; compare correctness, dump/screenshot counts and wall
+time on equivalent execution paths. No such optimization is implemented yet.
+Finer Step 2 spans and profiler ingestion remain unfinished follow-up work.
 Step 1's offline feedback loop and opt-in live runner are implemented and
 validated. A read-only live static-label baseline is now recorded: 20/20 correct
-captures on Settings → Termux app info. No paired optimization comparison or
-live editable-field validation exists yet; Step 1 is NOT fully complete.
+captures on Settings → Termux app info. A separate Amazon.de → Forge workflow
+now has a saved pre-implementation tool baseline and passing original/changed
+source pair, including editable-field persistence checks with an explicit clear
+workaround. A follow-up now fixes default whole-field clearing and Unicode XML
+readback, with **4/4 focused live cases passing without a replacement workaround**.
+See [input fix evidence](reports/input-replacement-fix-2026-10-16.md). No controlled
+full-workflow latency optimization exists; Step 1 is NOT fully complete.
+See [workflow protocol](WORKFLOW-E2E.md), [evidence](reports/workflow-evidence-2026-10-16.md)
+and [comparison](reports/workflow-comparison-2026-10-16.md).
 See [runner documentation](CAPTURE-BENCHMARK.md) and
 [live evidence](reports/settings-capture-baseline-2026-10-16.md).
 
 Recovery on 2026-10-16: the previous session stopped after launching validation
 without saving its result or updating this tracker. Revalidation passed 554 tests,
 type checking, build, script syntax and diff whitespace checks. That recovery
-preserved the existing edits; all performance work is now committed locally in
-both repositories (see commit checkpoint below).
+preserved the existing edits; prior performance work was committed locally in
+both repositories (see commit checkpoint below). The later execution-metadata,
+workflow harness/evidence and input fixes are included in the current publication
+checkpoint; do not conflate them with the earlier historical commits.
 
 Step 2's high-level timing and partial-span streaming slices are implemented at
 the public `dumpUiTree`/benchmark CLI seams, tested with synthetic ADB at the
-process boundary. Latest validation: **561 pi-droid unit tests, 16 companion tests,
-and 9 isolated sequential integration tests pass**. Default parallel CI still
+process boundary. Latest input-fix validation: **599 pi-droid unit tests and
+9 isolated sequential integration tests pass**; the preceding metadata slice
+also passed **16 companion tests**, rerun successfully with build/type checking
+for the publication checkpoint. Default parallel CI still
 hits the documented short integration time limits; it is NOT marked passing.
 
 Partial-span streaming is implemented and regression-tested under deadline and
 SIGTERM (including interruption before any stage completes). Parent retention is
 allowlisted and bounded, with explicit trace completeness/truncation flags.
 
-**Next exact action:** preserve explicit execution timeout/cancellation/error
-metadata through ADB/capture wrappers, starting at the existing process-boundary
-seam. Do not infer timeout from duration. Then add finer command-attempt,
-screenshot/OCR/reconnect spans and companion-profiler ingestion.
+**Next exact action:** inspect observation/caller paths and count avoidable fresh
+dumps/screenshots, preserving safety-critical observations. Save the next current
+baseline before implementation, then regression-test one scoped optimization.
+Finer command-attempt/screenshot/OCR/reconnect spans and profiler ingestion remain
+open; add them where required to attribute the change. Explicit execution metadata
+is implemented/tested (see validation below); do not infer timeout from duration. The workflow-reproduced input clear
+bug is now fixed and source-level live regression-tested; production automatic
+focus/value verification, broadcast exposure and active-session reload remain open.
+
+Workflow source pair: **361.679s before / 362.485s after (+0.22%)**, same harness
+hash and 364 operations each, all numeric write/persistence checks pass. This
+is diagnostic validation, NOT a speedup. The original chronological tool baseline
+was saved before source edits; the additional original-revision source reference
+was run afterward from an isolated git extraction. Failed harness attempts are
+preserved. Six explicitly test-created Forge drafts remain; no real workout was
+marked finished. Gboard and Termux restored/verified after every run.
 
 Live result: capture median 2.557s, p95 2.602s, max 2.610s; device-dump spans
 accounted for ~94.3% of cumulative capture time. This is one fixture baseline,
@@ -43,9 +74,16 @@ persistent phone changes; Termux foreground restored and verified.
 - [x] Opt-in high-level timing spans and bounded partial-span streaming.
 - [x] Content-free 20-round live static-label baseline and evidence report.
 - [x] Unit/build/type validation plus isolated integration verification.
-- [x] Review and local commits for all code, tests, documentation and evidence.
-- [ ] Full Step 2 instrumentation, explicit failure metadata and profiler ingestion.
-- [ ] Active-session tool reload verification and live editable-field/input checks.
+- [x] Review and local commits for the earlier capture/timing slice (hashes below).
+- [x] Explicit execution failure metadata and privacy/IPC regression coverage.
+- [x] User-requested Amazon.de → Forge E2E, immutable baseline and source-pair comparison.
+- [x] Review the metadata/workflow/input changes and prepare all code, tests and
+  sanitized evidence for the user-requested commit/push checkpoint below.
+- [ ] Full Step 2 instrumentation and companion-profiler ingestion.
+- [x] Fix default whole-field ADBKeyboard replacement and numeric Unicode XML
+  readback; 4/4 focused source live cases pass without a replacement workaround.
+- [ ] Active-session tool reload and production automatic focus/readback/IME
+  lifecycle verification (focused source harness is not a production guarantee).
 - [ ] Default CI scheduling/time-limit reliability on this Termux host.
 - [ ] Controlled optimization and paired before/after measurement.
 
@@ -64,7 +102,8 @@ not that the entire performance problem is solved.
 - [x] Re-run existing validation (results below).
 - [x] Confirm prior local changes exist and preserve them (initially uncommitted).
   The user subsequently authorized review/local commits; these are complete
-  and recorded below. Do not push without a separate request.
+  and recorded below. The later explicit commit/push request supersedes the
+  earlier local-only restriction; publish only to each repository's origin fork.
 
 Historical starting HEADs: pi-droid `e09bba3`, pi-android-perf `c950e08`.
 The local commits recorded below supersede these initial checkpoints.
@@ -76,8 +115,9 @@ The local commits recorded below supersede these initial checkpoints.
   `tests/core.test.mjs`, `README.md`.
 - [x] Input rejects inactive ADBKeyboard before clear/send:
   `src/adb/input.ts`, `tests/adb/input.test.ts`, `README.md`.
-- [ ] Input lifecycle verified end to end (focus → replacement → readback →
-  original IME restoration). The guard alone does not provide this.
+- [x] Focus → default replacement → exact readback → original IME restoration
+  verified in the dedicated source-level Forge fixture, on failure and success.
+- [ ] Make that verified lifecycle automatic in production tools and verify reload.
 - [ ] Running Pi tools reloaded and verified against changed source.
 
 ### Evidence, not causal conclusions
@@ -123,8 +163,9 @@ is NOT the same implementation as pi-droid capture/pull.
   repeated resource IDs. Static labels do not prove editable-field capture.
 - [x] Run repeated live static-label captures and retain a content-free baseline:
   20/20 correct, no timeout, all capture targets met. See linked evidence above.
-- [ ] Validate live known editable-field values separately, without conflating
-  static labels or empty switch text with verified text input.
+- [x] Validate live known editable-field values separately: Forge source workflow
+  wrote/reopened/read back all 30 exact numeric fields. Explicit ADB_CLEAR_TEXT
+  workaround required; does not verify/fix the default clear_first lifecycle.
 - [ ] Run paired before/after on the same fixture after one controlled change.
 
 **Approved Step 1 seams (also used for the next timing slice):**
@@ -161,7 +202,10 @@ as acceptance criteria. First deterministic slice should run in seconds offline.
   existing OCR behavior tests pass but do not assert span semantics.
 - [ ] Add finer command-attempt, screenshot capture/transfer, OCR-engine,
   annotation and reconnect spans (not provided by this first capture slice).
-- [ ] Preserve explicit timeout/cancellation/error metadata through wrappers.
+- [x] Preserve explicit timeout/cancellation/error metadata through ADB/capture
+  spans and benchmark IPC. Command AbortSignal supported; whole-observation and
+  sibling cancellation, reconnect cancellation and default tool signal forwarding
+  remain outside this slice.
 - [x] Verify first-slice capture spans contain only fixed fields/stages,
   relative timings, ok/error and optional cache-hit boolean; tests assert no
   page text, paths, serial, package or raw errors. Tracing is absent by default.
@@ -178,9 +222,9 @@ as acceptance criteria. First deterministic slice should run in seconds offline.
 - [x] Capture a controlled source-level live baseline with high-level spans.
 - [ ] Connect internal spans to the companion profiler; native/tool-level
   summaries do not yet ingest these source-level events.
-- [ ] Add direct regression coverage for the parent IPC allowlist, malformed
-  events, retention cap and truncation flags. Normal privacy/completeness tests
-  pass, but do not exercise the malformed/overflow branches.
+- [x] Add direct regression coverage for parent IPC allowlisting, malformed
+  events, fixed failure categories, retention cap and truncation flags:
+  tests/adb/capture-ipc.test.ts exercises the real CLI with adversarial worker IPC.
 - [ ] Decide whether active-stage start events are needed to identify work
   interrupted before completion. Current traces retain completed stages only;
   do not fabricate a completed stage or infer its cause from missing evidence.
@@ -213,8 +257,12 @@ currently proved better or ruled out.
 
 - [x] Fail before mutation when ADBKeyboard is inactive (prior change).
 - [ ] Reconcile preflight's component recognition with the input guard.
-- [ ] Review clear/replacement behavior and broadcast exposure.
-- [ ] Verify focus, replacement and accessible value, not just broadcast exit.
+- [x] Fix whole-field clearing using the active IME, not unreliable keyevent
+  selection. Non-IME fallback replacement now fails before mutation; insertion
+  remains supported. Dedicated live prefix/numeric-string/emoji/empty cases pass.
+- [ ] Review implicit broadcast exposure for sensitive input.
+- [x] Verify focus/replacement/exact accessible value in the dedicated source
+  fixture; production tools still require caller focus and readback.
 - [ ] Capture and restore original IME in failure paths as well as success.
 - [ ] Compare supported ADBKeyboard, `input text`, Accessibility and DOM paths
   only after approvals required by Step 4.
@@ -322,10 +370,74 @@ changes in both repositories and validated before committing; no pushes made.
   plan-only reconciliation records their hashes and separates completed work
   from remaining acceptance criteria; no new code or live test was run for it.
 
-Remaining: explicit ADB timeout/cancellation/error metadata; finer instrumentation
-and profiler ingestion; OCR span coverage; active-session reload verification;
-live input lifecycle; controlled optimization comparison; default CI time limits.
+Remaining at that historical checkpoint: explicit ADB metadata (now implemented
+in the continuation below); finer instrumentation/profiler ingestion, OCR span
+coverage, active-session reload, default input lifecycle, controlled optimization
+and default CI scheduling/time limits remain open.
 No faster-backend choice or demonstrated device latency improvement is claimed.
+
+### Execution metadata + requested workflow E2E continuation
+
+See [workflow evidence](reports/workflow-evidence-2026-10-16.md) for chronology,
+all failed attempts, preserved baselines, source/harness hashes, validation and
+retained app artifacts. Core files: `src/adb/exec.ts`, `capture-timing.ts`,
+`index.ts`, both capture scripts; new `execution-boundary.test.ts` and
+`capture-ipc.test.ts`, plus existing capture/exec tests. Executable opt-in live
+runner: `scripts/workflow-e2e.mjs`; offline comparison:
+`scripts/compare-workflow.mjs`. No commit/push made in this continuation.
+
+- Red → green at the real fake-ADB subprocess boundary for explicit timeout.
+- Full unit suite: **586/586**; type check/build/script syntax/diff: PASS.
+- Sequential isolated integration: **9/9** with documented time allowances.
+- Companion tests/check: **16/16**, no source changes.
+- Original tool baseline saved BEFORE implementation: 512.882s / 253 calls,
+  strict clear-first correctness failure with successful explicit workaround.
+- Identical-harness original/changed source smoke pair: both PASS, 361.679s /
+  362.485s; no speedup or population-tail claim. No stale-session after claim.
+- Both passing runs created/reopened a NEW Lower draft with 15 unchecked sets,
+  each 20kg × 8 reps. No purchases or changes to existing training records.
+- User authorized Tesseract host install; no APK/debug exposure/permissions added.
+- Current phone foreground and original Gboard independently verified restored.
+
+### Whole-field input replacement continuation
+
+User selected the remaining clear-first issue. See
+[input replacement evidence](reports/input-replacement-fix-2026-10-16.md) and its
+three preserved JSON reports (before, intermediate Unicode readback failure,
+final success). Before: 0/4 exact live cases; final: **4/4**. Same existing test
+draft title reused and restored; no new drafts or workout numeric changes.
+
+- Root cause: sequential Shift/End keyevents are not a held chord; Delete removed
+  one character. ADBKeyboard clear now uses its InputConnection operation.
+- A separate raw-XML probe confirmed correct emoji insertion but undecoded
+  `&#129371;` readback. Parser now decodes valid decimal/hex XML references once.
+- New 9 input process-boundary tests and 4 capture/parser regressions, red → green.
+- **599 unit tests / 47 files, 9 isolated sequential integrations**, lint/build,
+  script syntax and whitespace PASS. Companion not rerun; no companion changes.
+- Small input-call median 536.56ms → 267.96ms, 5 → 3 ADB calls. Not a full-workflow
+  speedup, and before samples were incorrect. Frozen workflow comparison unchanged.
+- Gboard, fixture title and Termux restored/independently verified on every run.
+- Built code exists; current active-session tool reload remains unverified.
+- At completion of this input experiment there were no new commits/pushes.
+  The subsequent publication checkpoint below includes this work and preserves
+  the earlier metadata/workflow changes.
+
+### Publication checkpoint
+
+The user explicitly requested committing ALL accumulated changes, pushing and
+updating Markdown. Both origin forks were fetched; each local main is ahead
+with no remote-only commits. This checkpoint includes the metadata/capture IPC,
+workflow runners and all preserved success/failure reports, default replacement
+and XML fixes, regression tests and progress/changelog updates. No historical
+JSON evidence was rewritten. Publication results/hashes are recorded here after
+push verification; do not infer a successful push from commit preparation.
+
+Validation retained: pi-droid 599 unit tests and 9 isolated integrations;
+companion 16 tests plus build/type check rerun for publication. Default parallel
+CI and the running user-session extension reload remain unverified. Next work
+is the observation audit/current-source baseline above, not an implemented
+full-workflow speedup. Original Gboard/Termux were restored after the last live
+run; this publication task does not interact with the phone.
 
 ## Operating boundaries
 

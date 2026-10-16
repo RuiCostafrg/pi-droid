@@ -40,12 +40,15 @@ function validate(input) {
 const stages = new Set(["cache_lookup", "device_dump", "xml_transfer", "xml_read",
   "xml_parse", "foreground", "ocr_fallback"]);
 const MAX_SPANS = 128;
+const failureKinds = new Set(["timeout", "cancelled", "exit", "signal", "spawn", "buffer", "unknown"]);
 function safeSpan(span) {
   if (!span || !stages.has(span.stage) || !["ok", "error"].includes(span.outcome) ||
       !Number.isFinite(span.startMs) || span.startMs < 0 ||
       !Number.isFinite(span.durationMs) || span.durationMs < 0) return null;
   return { stage: span.stage, startMs: span.startMs, durationMs: span.durationMs,
     outcome: span.outcome,
+    ...(span.outcome === "error" && failureKinds.has(span.failureKind)
+      ? { failureKind: span.failureKind } : {}),
     ...(span.stage === "cache_lookup" && typeof span.cacheHit === "boolean"
       ? { cacheHit: span.cacheHit } : {}) };
 }
@@ -82,6 +85,8 @@ async function capture(config, serial, limitMs) {
           workerCompleted = true;
           result = {
             outcome: ["ok", "incorrect", "error"].includes(message.outcome) ? message.outcome : "error",
+            ...(message.outcome === "error" && failureKinds.has(message.failureKind)
+              ? { failureKind: message.failureKind } : {}),
             ...(Number.isFinite(message.captureMs) && message.captureMs >= 0
               ? { captureMs: message.captureMs } : {}),
           };
@@ -93,6 +98,8 @@ async function capture(config, serial, limitMs) {
         killActive = undefined;
         resolve({ outcome: interrupted ? "cancelled" : expired ? "timeout" : result?.outcome ?? "error",
           ms: performance.now() - start,
+          ...(interrupted ? { failureKind: "cancelled" } : expired ? { failureKind: "timeout" } :
+            result?.failureKind ? { failureKind: result.failureKind } : {}),
           ...(result?.captureMs !== undefined ? { captureMs: result.captureMs } : {}),
           ...(config.trace ? { spans, spansTruncated,
             traceComplete: workerCompleted && !expired && !interrupted && !spansTruncated } : {}) });

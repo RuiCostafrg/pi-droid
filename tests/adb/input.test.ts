@@ -164,13 +164,11 @@ describe("typeText()", () => {
 
   it("clears existing text when clear option is set", async () => {
     await typeText("new", { clear: true });
-    // Verify IME first, then send 3 clear commands and the text.
-    expect(mockAdbShell).toHaveBeenCalledTimes(5);
+    // Verify IME, clear the InputConnection, then commit replacement text.
+    expect(mockAdbShell).toHaveBeenCalledTimes(3);
     expect(mockAdbShell.mock.calls[0][0]).toBe("settings get secure default_input_method");
-    expect(mockAdbShell.mock.calls[1][0]).toBe("input keyevent KEYCODE_MOVE_HOME");
-    expect(mockAdbShell.mock.calls[2][0]).toContain("KEYCODE_SHIFT_LEFT");
-    expect(mockAdbShell.mock.calls[3][0]).toBe("input keyevent KEYCODE_DEL");
-    expect(mockAdbShell.mock.calls[4][0]).toContain("am broadcast -a ADB_INPUT_B64");
+    expect(mockAdbShell.mock.calls[1][0]).toBe("am broadcast -a ADB_CLEAR_TEXT");
+    expect(mockAdbShell.mock.calls[2][0]).toContain("am broadcast -a ADB_INPUT_B64");
   });
 
   it("invalidates cache", async () => {

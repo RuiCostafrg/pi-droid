@@ -64,16 +64,25 @@ function parseBounds(boundsStr: string): Bounds {
   };
 }
 
-/**
- * Decode standard XML entities in attribute values.
- */
+const XML_ENTITIES: Record<string, string> = {
+  "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"', "&apos;": "'",
+};
+
+/** Decode XML attributes once, including UIAutomator's numeric emoji references. */
 function decodeXmlEntities(s: string): string {
-  return s
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'");
+  return s.replace(/&(?:amp|lt|gt|quot|apos|#(?:x[0-9a-fA-F]+|[0-9]+));/g, entity => {
+    if (entity[1] !== "#") return XML_ENTITIES[entity];
+    const digits = entity.slice(2, -1);
+    const codePoint = digits.startsWith("x")
+      ? Number.parseInt(digits.slice(1), 16) : Number.parseInt(digits, 10);
+    // Preserve malformed/non-XML characters rather than throwing or inserting
+    // null/surrogate code points. Replacement text is not decoded recursively.
+    const valid = codePoint === 9 || codePoint === 10 || codePoint === 13 ||
+      (codePoint >= 0x20 && codePoint <= 0xd7ff) ||
+      (codePoint >= 0xe000 && codePoint <= 0xfffd) ||
+      (codePoint >= 0x10000 && codePoint <= 0x10ffff);
+    return valid ? String.fromCodePoint(codePoint) : entity;
+  });
 }
 
 /** Attributes whose values should be XML-entity-decoded. */

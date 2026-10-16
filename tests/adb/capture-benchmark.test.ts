@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 
-import { mkdtemp, writeFile, chmod, rm, access, readdir } from "node:fs/promises";
+import { mkdtemp, writeFile, readFile, chmod, rm, access, readdir } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { execFile, spawn } from "node:child_process";
@@ -142,6 +142,7 @@ it.each([
   const failed = report.samples[0].spans.filter((s: { outcome: string }) => s.outcome === "error");
   expect(failed).toHaveLength(1);
   expect(failed[0].stage).toBe(failedStage);
+  expect(failed[0].failureKind).toBe(mode === "pull-error" ? "exit" : "unknown");
   expect(failed[0].durationMs).toBeGreaterThan(0);
   expect(report.samples[0].spans.at(-1).stage).toBe("foreground");
   for (const secret of ["PRIVATE_TRANSPORT_ERROR", "synthetic-device", "almond milk", "/sdcard/"])
@@ -208,6 +209,7 @@ it("kills hung capture subprocesses and stops instead of starting overlapping re
   expect(report.completedRounds).toBe(1);
   expect(report.samples[0].outcome).toBe("timeout");
   expect(report.summary.timeouts).toBe(1);
+  expect(report.samples[0].failureKind).toBe("timeout");
   expect(report.summary.medianMs).toBeNull();
   await expect(access(join(dir, "started"))).resolves.toBeUndefined();
   await new Promise(resolve => setTimeout(resolve, 2000));
@@ -264,6 +266,22 @@ it.each([
   expect(report.samples[0].outcome).toBe("incorrect");
 });
 
+it.each([
+  ["Mandel &#129371;", "Mandel 🥛"],
+  ["Mandel &#x1F95B;", "Mandel 🥛"],
+  ["literal &amp;#129371; &amp;lt;", "literal &#129371; &lt;"],
+  ["invalid &#0; &#xD800; &#1114112;", "invalid &#0; &#xD800; &#1114112;"],
+])("decodes XML character references exactly once through the real capture path: %s", async (encoded, expected) => {
+  const xml = join(dir, "encoded.xml");
+  const fixture = await readFile(resolve("tests/fixtures/capture.xml"), "utf8");
+  await writeFile(xml, fixture.replace('text="almond milk"', `text="${encoded}"`));
+  const { code, report } = await run({ rounds: 1, assertions: [
+    { resourceId: "com.example.capture:id/query", text: expected },
+  ] }, { CAPTURE_XML: xml });
+  expect(code).toBe(0);
+  expect(report.samples[0].outcome).toBe("ok");
+});
+
 it("rejects invalid configuration before touching ADB", async () => {
   const { code, report } = await run({ rounds: 0 });
   expect(code).toBe(2);
@@ -294,6 +312,7 @@ it.each(["hang", "hang-foreground"])("preserves partial trace and cleans up on i
     await closed;
     const report = JSON.parse(stdout || "{}");
     expect(report.samples?.[0]?.outcome).toBe("cancelled");
+    expect(report.samples[0].failureKind).toBe("cancelled");
     expect(report.completedRounds).toBe(1);
     expect(report.samples[0].traceComplete).toBe(false);
     expect(report.samples[0].spans.map((s: { stage: string }) => s.stage)).toEqual(

@@ -1,0 +1,1936 @@
+{
+  "trace": {
+    "schemaVersion": 1,
+    "kind": "trace",
+    "recording": false,
+    "startedAt": "2026-10-16T21:43:34.805Z",
+    "durationMs": 512881.59334600007,
+    "androidBusyMs": 262513.82553399925,
+    "unobservedMs": 250367.76781200082,
+    "unfinished": 0,
+    "dropped": 0,
+    "spans": [
+      {
+        "tool": "android_shell",
+        "startMs": 5088.403278999962,
+        "ms": 183.16234400006942,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 5277.788591000019,
+        "ms": 3446.3120819999604,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 8725.934943999979,
+        "ms": 15969.215045999968,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 39315.259360000025,
+        "ms": 123.92463499994483,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 39441.79982800002,
+        "ms": 93.51661499997135,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 39543.51128700003,
+        "ms": 222.28015599993523,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 39768.30128599994,
+        "ms": 2921.880208000075,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 42694.19368100003,
+        "ms": 94.12567699991632,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 42793.458836999955,
+        "ms": 5293.613540000049,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 48091.26732500002,
+        "ms": 526.0371869999217,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_scroll",
+        "startMs": 54172.01466600003,
+        "ms": 594.4505729998928,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 54769.22279100004,
+        "ms": 3572.976925999974,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 58348.495497999946,
+        "ms": 569.5325000000885,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_scroll",
+        "startMs": 66296.65289100003,
+        "ms": 505.34458299994003,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 66806.228672,
+        "ms": 3693.9039570000023,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 70503.53924299998,
+        "ms": 107.48135500005446,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 70614.33585799998,
+        "ms": 8911.845882000052,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 79533.08981299994,
+        "ms": 611.3729160000803,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_scroll",
+        "startMs": 87402.99934099999,
+        "ms": 495.4885419999482,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 87900.66262199997,
+        "ms": 4359.3292170000495,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 92264.92428699997,
+        "ms": 572.1102599999867,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_app",
+        "startMs": 108145.49225000001,
+        "ms": 5811.777601999929,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 113963.60646599997,
+        "ms": 2618.7546350000193,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 116586.08167400002,
+        "ms": 522.5486449999735,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 133041.633438,
+        "ms": 131.54921900003683,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 133181.23109499994,
+        "ms": 2640.9354150000727,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 135825.83932299993,
+        "ms": 129.97307300008833,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 135961.60479100002,
+        "ms": 2619.9231769999024,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 138584.96718599997,
+        "ms": 115.69755200005602,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 138703.350936,
+        "ms": 2707.353800999932,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 141413.11338300002,
+        "ms": 496.9711459999671,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 165654.02576999995,
+        "ms": 144.27453100006096,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 165800.95644700003,
+        "ms": 562.8471869999776,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 166373.82238399994,
+        "ms": 107.68119800009299,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 166490.83774899994,
+        "ms": 2797.323592000059,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 169291.060039,
+        "ms": 519.7025519999443,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 182877.50555499992,
+        "ms": 136.71927100000903,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 183018.83946099994,
+        "ms": 202.50937500002328,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 183226.11159600003,
+        "ms": 216.0411459999159,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 183447.37419999996,
+        "ms": 108.15869800001383,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 183565.10456499993,
+        "ms": 2782.810051000095,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 186351.65539700002,
+        "ms": 133.76286499993876,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 186488.51492799993,
+        "ms": 577.2047400000738,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 187069.96675100003,
+        "ms": 108.5724999998929,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 187185.204303,
+        "ms": 2685.9483319999417,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 196757.78336200002,
+        "ms": 143.47624999994878,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 196904.33513299993,
+        "ms": 147.75927100004628,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 197059.14403900004,
+        "ms": 190.83864599990193,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 197253.61898699997,
+        "ms": 106.60093700001016,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 197363.29924700002,
+        "ms": 2727.0319779999554,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 213682.88267800002,
+        "ms": 2668.6776039999677,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 216357.98746899993,
+        "ms": 127.32739600003697,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 216490.61517699994,
+        "ms": 522.807031000033,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 217016.850125,
+        "ms": 118.32458300003782,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 217140.10028100002,
+        "ms": 2779.194373999955,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 219923.56929100002,
+        "ms": 117.68161400000099,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 220050.645593,
+        "ms": 510.2970310000237,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 220567.96319699998,
+        "ms": 117.82921800005715,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 220695.52387399995,
+        "ms": 2750.167863000068,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 223451.41204999993,
+        "ms": 125.62958300008904,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 223581.096945,
+        "ms": 493.5018749999581,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 224088.30397699995,
+        "ms": 103.88317699998152,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 224203.30965399998,
+        "ms": 2793.6545819999883,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_scroll",
+        "startMs": 227003.99803799996,
+        "ms": 507.5345310000703,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 227515.07126699993,
+        "ms": 2648.1547910000663,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 230166.68298499996,
+        "ms": 524.9846350000007,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 250655.39745599998,
+        "ms": 2659.880102999974,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 253319.66932999995,
+        "ms": 138.85875000001397,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 253466.626882,
+        "ms": 539.4706249999581,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 254014.223809,
+        "ms": 113.10499999998137,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 254132.191048,
+        "ms": 2755.9537489999784,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 256892.60474500002,
+        "ms": 142.45005200000014,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 257039.75844300003,
+        "ms": 525.8598439999623,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 257571.739068,
+        "ms": 101.37025999999605,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 257677.67365100002,
+        "ms": 2777.3160930000013,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 260464.98198399995,
+        "ms": 3.936822000076063,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 260472.54755599995,
+        "ms": 117.15083400008734,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_scroll",
+        "startMs": 260594.54474399996,
+        "ms": 508.63026000000536,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 261108.08187899995,
+        "ms": 2754.005780000007,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 263873.647763,
+        "ms": 474.1248439999763,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 275631.62453000003,
+        "ms": 2728.9626029999927,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 278367.21411199996,
+        "ms": 127.33546900004148,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 278499.708904,
+        "ms": 144.03760399995372,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 278647.39827899996,
+        "ms": 184.18895800004248,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 278835.48379900004,
+        "ms": 99.26645899994764,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 278941.21228899993,
+        "ms": 2701.252707000007,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 281646.811403,
+        "ms": 115.47828099993058,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 281766.53338199994,
+        "ms": 148.34895800007507,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 281919.525152,
+        "ms": 206.24151099997107,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 282142.31390199997,
+        "ms": 106.51854199997615,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 282263.323902,
+        "ms": 2637.334218000062,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 284906.89379699994,
+        "ms": 132.44182300008833,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 285044.07692200004,
+        "ms": 145.1528119998984,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 285193.48692199995,
+        "ms": 194.46760400000494,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 285396.919474,
+        "ms": 103.69260399998166,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 285506.733641,
+        "ms": 2730.0517169999657,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 288242.151452,
+        "ms": 127.38916699995752,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 288373.94082699995,
+        "ms": 140.75671900005545,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 288520.33145199995,
+        "ms": 201.27484399999958,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 288733.059629,
+        "ms": 115.98770800000057,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 288859.198848,
+        "ms": 2739.59411299997,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 291604.07244,
+        "ms": 122.08187499991618,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 291731.64619,
+        "ms": 148.41171899996698,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 291887.490461,
+        "ms": 211.58697900001425,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 292106.194628,
+        "ms": 105.82010399992578,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 292224.276346,
+        "ms": 2742.8767179999268,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 294973.67108500004,
+        "ms": 110.5294789999025,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 295093.3462929999,
+        "ms": 143.74770800000988,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 295241.2483239999,
+        "ms": 202.76895900000818,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 295453.398637,
+        "ms": 127.23187499993946,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 295584.57426200004,
+        "ms": 2752.2623419999145,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 298343.878427,
+        "ms": 119.62984399998095,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_scroll",
+        "startMs": 298469.25051099993,
+        "ms": 503.8156770000933,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 298976.229729,
+        "ms": 2713.095988999936,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 301696.31577,
+        "ms": 503.4278639999684,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 311845.40040099993,
+        "ms": 2719.933333000052,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 314572.060088,
+        "ms": 114.1386459999485,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 314691.86514,
+        "ms": 111.55296899995301,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 314807.1429,
+        "ms": 206.5547919999808,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 315020.982327,
+        "ms": 107.71843799995258,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 315138.31727500004,
+        "ms": 2754.5840619999217,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 317898.240503,
+        "ms": 122.96208399999887,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 318025.98331599997,
+        "ms": 157.0257289999863,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 318188.64071099996,
+        "ms": 215.6443229999859,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 318418.129201,
+        "ms": 105.39833300001919,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 318529.654722,
+        "ms": 2682.711718000006,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 321218.972377,
+        "ms": 140.13260399992578,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 321363.81784599996,
+        "ms": 137.45281200006139,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 321505.96164799994,
+        "ms": 193.290885000024,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 321710.79951199994,
+        "ms": 112.80119800008833,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 321830.04388699995,
+        "ms": 2817.6960410000756,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 324652.719251,
+        "ms": 129.7990099999588,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 324787.160084,
+        "ms": 149.18244799994864,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 324944.56998000003,
+        "ms": 196.297082999954,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 325153.11576099996,
+        "ms": 109.34791700006463,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 325269.44107299997,
+        "ms": 2690.272394999978,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 327964.600968,
+        "ms": 102.9316669999389,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 328071.694718,
+        "ms": 116.4982809999492,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 328193.0090409999,
+        "ms": 188.0644270000048,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 328384.746801,
+        "ms": 94.1053130000364,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 328484.111228,
+        "ms": 2675.8303120000055,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 331169.803207,
+        "ms": 100.64916599995922,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 331274.0815399999,
+        "ms": 138.5528120000381,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 331416.5756539999,
+        "ms": 192.99036500009242,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 331618.63909199997,
+        "ms": 104.75088499998674,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 331728.289769,
+        "ms": 2604.168644999969,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 334336.341591,
+        "ms": 107.89307300001383,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_scroll",
+        "startMs": 334451.841851,
+        "ms": 524.9349480000092,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 334983.58002799994,
+        "ms": 2828.340884000063,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 337816.206642,
+        "ms": 465.08098899992183,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 347511.547211,
+        "ms": 2769.9681759999366,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 350288.08278299996,
+        "ms": 134.41677000001073,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 350431.617678,
+        "ms": 145.59078199998476,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 350581.059762,
+        "ms": 195.0760930000106,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 350782.99231400003,
+        "ms": 123.16781199991237,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 350919.883928,
+        "ms": 2785.6761969999643,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 353708.9843959999,
+        "ms": 129.25234400003683,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 353843.456687,
+        "ms": 166.80744799994864,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 354014.454656,
+        "ms": 199.82994799991138,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 354222.97772900003,
+        "ms": 126.83359399996698,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 354353.01475999993,
+        "ms": 2709.8782800000627,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 357068.91080099996,
+        "ms": 130.19484400004148,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 357203.615228,
+        "ms": 149.6601560000563,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 357360.175592,
+        "ms": 198.84458399994764,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 357575.56944600004,
+        "ms": 113.34682299999986,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 357701.38179,
+        "ms": 2671.4255199999316,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 360378.70204999996,
+        "ms": 133.36812500003725,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 360516.33470599994,
+        "ms": 159.92536400002427,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 360681.063404,
+        "ms": 200.5819269999629,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 360886.605018,
+        "ms": 123.64427099993918,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 361016.53772599995,
+        "ms": 2738.506718000048,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 363759.62225699995,
+        "ms": 128.26541600003839,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 363891.64480899996,
+        "ms": 161.65515600005165,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 364059.679965,
+        "ms": 215.34442699991632,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 364291.358975,
+        "ms": 117.43333300005179,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 364424.58923599997,
+        "ms": 2763.0359879999887,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 367192.8790259999,
+        "ms": 108.80583300010767,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 367304.59110900003,
+        "ms": 134.64765699999407,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 367447.61011999997,
+        "ms": 196.07494800002314,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 367651.154599,
+        "ms": 127.19057299999986,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 367786.30491099996,
+        "ms": 2621.674114000052,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_scroll",
+        "startMs": 370413.131837,
+        "ms": 502.77489599992987,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 370923.432254,
+        "ms": 2671.4059359999374,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 373602.88168,
+        "ms": 490.7592710000463,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 388106.330476,
+        "ms": 143.69760499999393,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 388255.764539,
+        "ms": 2744.830050999997,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_scroll",
+        "startMs": 391002.98558,
+        "ms": 484.69848899997305,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 391490.21959,
+        "ms": 2640.972499000025,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 394133.513547,
+        "ms": 455.4439060000004,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_swipe",
+        "startMs": 401350.86182600004,
+        "ms": 522.6281759999692,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 401881.9987519999,
+        "ms": 2698.239843000076,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 417210.5981739999,
+        "ms": 2682.6582800000906,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 419899.420985,
+        "ms": 115.22593800001778,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 420019.484891,
+        "ms": 106.27937500004191,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 420131.09384999995,
+        "ms": 176.22031200001948,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 420314.479266,
+        "ms": 113.05817700002808,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 420436.32515199995,
+        "ms": 2754.1968220000854,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 423197.13140099996,
+        "ms": 111.68187500000931,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 423314.014265,
+        "ms": 147.33921899995767,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 423473.78676499997,
+        "ms": 183.9878650000319,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 423673.973692,
+        "ms": 108.07869799993932,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 423788.774265,
+        "ms": 2701.018956999993,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 426495.578951,
+        "ms": 126.66916699998546,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 426627.12603499996,
+        "ms": 137.48208300000988,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 426770.659368,
+        "ms": 187.72989600000437,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 426961.67775299994,
+        "ms": 103.3396359999897,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 427071.92541,
+        "ms": 2689.0821339999093,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 429765.024367,
+        "ms": 121.55135399999563,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 429891.15738799993,
+        "ms": 146.93869700003415,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 430043.16842899995,
+        "ms": 206.6698440000182,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 430259.36795999995,
+        "ms": 118.14411500003189,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 430383.93212699995,
+        "ms": 2726.64859300002,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 433114.563845,
+        "ms": 114.29234299995005,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 433232.64603199996,
+        "ms": 156.77666700002737,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 433395.500095,
+        "ms": 197.33713499992155,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 433603.75707399996,
+        "ms": 105.86708300001919,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 433715.67264699994,
+        "ms": 2694.8103110000957,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 436415.52275,
+        "ms": 102.41374999994878,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 436526.013166,
+        "ms": 149.98911500000395,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_type",
+        "startMs": 436682.13873899996,
+        "ms": 199.40187499998137,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 436886.683635,
+        "ms": 104.55187500000466,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 437009.047229,
+        "ms": 2742.9522899999283,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 439758.15983200003,
+        "ms": 104.9006769999396,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 439869.275457,
+        "ms": 2692.883071999997,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 442567.735612,
+        "ms": 517.8874480000231,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_scroll",
+        "startMs": 449149.534203,
+        "ms": 529.006614999962,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 449685.476703,
+        "ms": 2771.5347909999546,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 452459.20868099993,
+        "ms": 559.3034370000241,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 469139.706904,
+        "ms": 132.91874999995343,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 469275.873883,
+        "ms": 2712.8917699999874,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_scroll",
+        "startMs": 471993.12794399995,
+        "ms": 498.03046899999026,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 472494.48601699993,
+        "ms": 2730.787654999993,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screenshot",
+        "startMs": 475228.625547,
+        "ms": 584.7779690000461,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 490539.365646,
+        "ms": 2747.270102999988,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 493296.2610089999,
+        "ms": 116.22635400015861,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_swipe",
+        "startMs": 493426.107832,
+        "ms": 506.17104199994355,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 493942.057988,
+        "ms": 2687.0767179999966,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 496636.263039,
+        "ms": 5.596770999953151,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 496646.206685,
+        "ms": 108.79755200003274,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_swipe",
+        "startMs": 496762.7072579999,
+        "ms": 510.9388020001352,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 497283.033924,
+        "ms": 2759.3184889999684,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 500050.0425689999,
+        "ms": 4.8223960001487285,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 500059.2949130001,
+        "ms": 113.09942699992098,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_swipe",
+        "startMs": 500185.2867879999,
+        "ms": 501.4023430000525,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 500695.07319400006,
+        "ms": 2732.19958200003,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 503433.042516,
+        "ms": 4.366978999925777,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_tap",
+        "startMs": 503441.311474,
+        "ms": 117.84291699994355,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_swipe",
+        "startMs": 503571.65137,
+        "ms": 499.37390600005165,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_ui_dump",
+        "startMs": 504080.9453279999,
+        "ms": 2580.3914050001185,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_key",
+        "startMs": 506670.8968900001,
+        "ms": 102.18463499983773,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_shell",
+        "startMs": 506778.79912900005,
+        "ms": 87.76249999995343,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_app",
+        "startMs": 506871.99371199997,
+        "ms": 5675.593956999946,
+        "outcome": "ok",
+        "nested": true
+      },
+      {
+        "tool": "android_screen_state",
+        "startMs": 512560.0413670001,
+        "ms": 309.734998999862,
+        "outcome": "ok",
+        "nested": true
+      }
+    ],
+    "summary": [
+      {
+        "stage": "android_ui_dump",
+        "count": 71,
+        "minMs": 3.936822000076063,
+        "medianMs": 2727.0319779999554,
+        "p95Ms": 3693.9039570000023,
+        "maxMs": 8911.845882000052,
+        "totalMs": 195125.97279100027,
+        "attempts": 71,
+        "wallTotalMs": 195125.97279100027,
+        "failedMs": 0,
+        "failures": 0,
+        "timeouts": 0
+      },
+      {
+        "stage": "android_screenshot",
+        "count": 17,
+        "minMs": 455.4439060000004,
+        "medianMs": 522.5486449999735,
+        "p95Ms": 15969.215045999968,
+        "maxMs": 15969.215045999968,
+        "totalMs": 24363.280614999938,
+        "attempts": 17,
+        "wallTotalMs": 24363.280614999938,
+        "failedMs": 0,
+        "failures": 0,
+        "timeouts": 0
+      },
+      {
+        "stage": "android_app",
+        "count": 2,
+        "minMs": 5675.593956999946,
+        "medianMs": 5743.685779499938,
+        "p95Ms": 5811.777601999929,
+        "maxMs": 5811.777601999929,
+        "totalMs": 11487.371558999876,
+        "attempts": 2,
+        "wallTotalMs": 11487.371558999876,
+        "failedMs": 0,
+        "failures": 0,
+        "timeouts": 0
+      },
+      {
+        "stage": "android_type",
+        "count": 34,
+        "minMs": 176.22031200001948,
+        "medianMs": 200.92838549998123,
+        "p95Ms": 562.8471869999776,
+        "maxMs": 577.2047400000738,
+        "totalMs": 9111.61786499957,
+        "attempts": 34,
+        "wallTotalMs": 9111.61786499957,
+        "failedMs": 0,
+        "failures": 0,
+        "timeouts": 0
+      },
+      {
+        "stage": "android_tap",
+        "count": 47,
+        "minMs": 93.51661499997135,
+        "medianMs": 122.96208399999887,
+        "p95Ms": 143.47624999994878,
+        "maxMs": 144.27453100006096,
+        "totalMs": 5767.661512000137,
+        "attempts": 47,
+        "wallTotalMs": 5767.661512000137,
+        "failedMs": 0,
+        "failures": 0,
+        "timeouts": 0
+      },
+      {
+        "stage": "android_scroll",
+        "count": 11,
+        "minMs": 484.69848899997305,
+        "medianMs": 505.34458299994003,
+        "p95Ms": 594.4505729998928,
+        "maxMs": 594.4505729998928,
+        "totalMs": 5654.709582999814,
+        "attempts": 11,
+        "wallTotalMs": 5654.709582999814,
+        "failedMs": 0,
+        "failures": 0,
+        "timeouts": 0
+      },
+      {
+        "stage": "android_shell",
+        "count": 29,
+        "minMs": 87.76249999995343,
+        "medianMs": 146.93869700003415,
+        "p95Ms": 183.16234400006942,
+        "maxMs": 202.50937500002328,
+        "totalMs": 4188.930415000068,
+        "attempts": 29,
+        "wallTotalMs": 4188.930415000068,
+        "failedMs": 0,
+        "failures": 0,
+        "timeouts": 0
+      },
+      {
+        "stage": "android_key",
+        "count": 36,
+        "minMs": 94.1053130000364,
+        "medianMs": 107.89856799994595,
+        "p95Ms": 127.19057299999986,
+        "maxMs": 127.23187499993946,
+        "totalMs": 3964.0319259995595,
+        "attempts": 36,
+        "wallTotalMs": 3964.0319259995595,
+        "failedMs": 0,
+        "failures": 0,
+        "timeouts": 0
+      },
+      {
+        "stage": "android_swipe",
+        "count": 5,
+        "minMs": 499.37390600005165,
+        "medianMs": 506.17104199994355,
+        "p95Ms": 522.6281759999692,
+        "maxMs": 522.6281759999692,
+        "totalMs": 2540.514269000152,
+        "attempts": 5,
+        "wallTotalMs": 2540.514269000152,
+        "failedMs": 0,
+        "failures": 0,
+        "timeouts": 0
+      },
+      {
+        "stage": "android_screen_state",
+        "count": 1,
+        "minMs": 309.734998999862,
+        "medianMs": 309.734998999862,
+        "p95Ms": 309.734998999862,
+        "maxMs": 309.734998999862,
+        "totalMs": 309.734998999862,
+        "attempts": 1,
+        "wallTotalMs": 309.734998999862,
+        "failedMs": 0,
+        "failures": 0,
+        "timeouts": 0
+      }
+    ],
+    "notes": [
+      "Tool-level wall times only; overlapping calls are unioned for androidBusyMs.",
+      "Summary sorted by all-attempt wallTotalMs; failedMs includes errors, timeouts, not-found and cancellation. Distribution statistics and totalMs are success-only; stage totals may overlap.",
+      "Unobserved time includes model work, user pauses, other tools and orchestration; it is not an LLM-latency measurement.",
+      "No arguments, results, selectors, screen text, device serials or credentials are retained.",
+      "Failure counts describe explicit error/timeout/not-found results, not inferred retries. Cache hits and ADB reconnect internals are unknown."
+    ]
+  },
+  "lastBenchmark": null
+}

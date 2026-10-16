@@ -88,7 +88,7 @@ export interface SwipeOptions {
 }
 
 export interface TypeOptions {
-  /** Clear existing text before typing */
+  /** Clear the whole focused field using ADBKeyboard; unsupported with useAdbKeyboard: false. */
   clear?: boolean;
   /** Use ADBKeyboard broadcast (required for Unicode) */
   useAdbKeyboard?: boolean;

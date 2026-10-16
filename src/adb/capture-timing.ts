@@ -1,4 +1,5 @@
 import { performance } from "node:perf_hooks";
+import { AdbError, type ExecutionFailureKind } from "./exec.js";
 
 /** Fixed vocabulary only: never attach commands, selectors, content or errors. */
 export type CaptureStage = "cache_lookup" | "device_dump" | "xml_transfer" |
@@ -9,6 +10,8 @@ export interface CaptureSpan {
   startMs: number;
   durationMs: number;
   outcome: "ok" | "error";
+  /** Fixed category only; absent for successes. Non-ADB errors are unknown. */
+  failureKind?: ExecutionFailureKind;
   /** Present only on a cache lookup; skipCache produces no lookup span. */
   cacheHit?: boolean;
 }
@@ -18,11 +21,12 @@ export type CaptureSpanSink = (span: CaptureSpan) => void;
 /** Per-observation clock and sink, never global; diagnostics cannot break capture. */
 export function captureTiming(sink?: CaptureSpanSink) {
   const origin = sink ? performance.now() : 0;
-  function finish(stage: CaptureStage, start: number, outcome: CaptureSpan["outcome"], cacheHit?: boolean) {
+  function finish(stage: CaptureStage, start: number, outcome: CaptureSpan["outcome"], cacheHit?: boolean, failureKind?: ExecutionFailureKind) {
     if (!sink) return;
     const span: CaptureSpan = {
       stage, startMs: start - origin, durationMs: performance.now() - start, outcome,
       ...(cacheHit === undefined ? {} : { cacheHit }),
+      ...(failureKind === undefined ? {} : { failureKind }),
     };
     try { sink(span); } catch { /* Diagnostic consumers must not alter capture behavior. */ }
   }
@@ -37,7 +41,10 @@ export function captureTiming(sink?: CaptureSpanSink) {
         outcome = "ok";
         if (stage === "cache_lookup") cacheHit = value !== null;
         return value;
-      } finally { finish(stage, start, outcome, cacheHit); }
+      } catch (error) {
+        finish(stage, start, "error", cacheHit, error instanceof AdbError ? error.failureKind : "unknown");
+        throw error;
+      } finally { if (outcome === "ok") finish(stage, start, outcome, cacheHit); }
     },
     async async<T>(stage: CaptureStage, operation: () => Promise<T>): Promise<T> {
       if (!sink) return operation();
@@ -47,7 +54,10 @@ export function captureTiming(sink?: CaptureSpanSink) {
         const value = await operation();
         outcome = "ok";
         return value;
-      } finally { finish(stage, start, outcome); }
+      } catch (error) {
+        finish(stage, start, "error", undefined, error instanceof AdbError ? error.failureKind : "unknown");
+        throw error;
+      } finally { if (outcome === "ok") finish(stage, start, outcome); }
     },
   };
 }

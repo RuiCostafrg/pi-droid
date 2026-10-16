@@ -133,10 +133,16 @@ npm test
 | Tool | Description |
 |------|-------------|
 | `android_tap` | Tap by coordinates, text match, or resource ID; supports long press |
-| `android_type` | Type text into the focused field; optional `clear_first` to replace. Requires ADBKeyboard to be the active IME; otherwise fails before clearing or sending text. |
+| `android_type` | Type text into the focused field; optional `clear_first` clears the whole field through ADBKeyboard before insertion. Requires ADBKeyboard to be the active IME; otherwise fails before clearing or sending text. Callers must focus and read back the intended field. |
 | `android_swipe` | Swipe between two coordinates with configurable duration |
 | `android_scroll` | Scroll up or down on the current screen |
 | `android_key` | Press a key: `back`, `home`, `enter`, `tab`, or any `KEYCODE_*` |
+
+For source/API callers, `typeText(..., { clear: true })` requires active
+ADBKeyboard. Combining `clear: true` with `useAdbKeyboard: false` fails before
+mutation; fallback `input text` insertion without clearing remains available.
+Command completion is not verification of the intended field: focus it first
+and read back the value afterward.
 
 ### App and Navigation (3 tools)
 

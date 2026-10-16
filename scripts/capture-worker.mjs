@@ -1,6 +1,7 @@
 // Development harness: execute the current source, not potentially stale dist/.
 import { dumpUiTree, setUiDumpDir, findElements } from "../src/adb/ui-tree.ts";
 import { performance } from "node:perf_hooks";
+import { AdbError } from "../src/adb/exec.ts";
 
 process.once("message", async ({ config, directory, serial }) => {
   setUiDumpDir(directory);
@@ -26,9 +27,10 @@ process.once("message", async ({ config, directory, serial }) => {
             key => el.bounds[key] === assertion.bounds[key])));
       });
     result = { outcome: correct ? "ok" : "incorrect", captureMs: performance.now() - start };
-  } catch {
+  } catch (error) {
     // Never serialize commands, errors, page text, identifiers or selectors.
-    result = { outcome: "error", captureMs: performance.now() - start };
+    result = { outcome: "error", captureMs: performance.now() - start,
+      failureKind: error instanceof AdbError ? error.failureKind : "unknown" };
   }
   process.send({ type: "result", ...result }, () => process.disconnect());
 });

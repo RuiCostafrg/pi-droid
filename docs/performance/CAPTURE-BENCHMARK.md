@@ -89,7 +89,9 @@ interactive output. Use direct `node` when redirecting JSON: npm prints headers.
    production currently shares a fixed remote XML path.
 6. Repeat with the same fixture, transport and budgets after one controlled
    implementation change. Retain the first sample and all failures.
-   No paired live comparison has been performed yet.
+   No paired comparison on this static capture fixture has been performed.
+   A separate multi-app source workflow pair is linked below; it is not a
+   static-fixture optimization comparison.
 
 ## Opt-in internal timing spans
 
@@ -100,7 +102,9 @@ Each observation has its own monotonic clock and callback (no global collector).
 A callback that throws is ignored so diagnostics do not break capture.
 
 Span fields are fixed: `stage`, `startMs`, `durationMs`, `outcome` (`ok`/`error`).
-Cache lookup spans additionally contain a boolean `cacheHit`. No raw error,
+Failed spans additionally include a fixed `failureKind`: `timeout`, `cancelled`,
+`exit`, `signal`, `spawn`, `buffer` or `unknown`. Cache lookup spans additionally
+contain a boolean `cacheHit`. No raw error,
 command, path, selector, device identifier or screen content is attached.
 
 | Stage | Boundary |
@@ -135,8 +139,12 @@ Only completed spans received by the parent survive. A hard kill can lose queued
 events; no span is fabricated for a stage that has not completed, and an empty
 partial trace does not prove capture never started. No stage-start events or
 interrupted-stage label are currently provided. Parent outcomes still record
-explicit timeout/cancellation and elapsed time. Finer error metadata remains
-follow-up work. The companion profiler does not yet ingest these spans. Do not
+explicit timeout/cancellation and elapsed time. The worker/parent now retain
+allowlisted execution failure categories, including capture failures swallowed
+by the existing fallback path (in their failed spans). Failed worker results
+and parent-enforced interruption/deadline samples also carry `failureKind`.
+A parent hard kill cannot fabricate the interrupted stage's failure metadata.
+The companion profiler does not yet ingest these spans. Do not
 treat this as complete Step 2 instrumentation or evidence of a device performance
 improvement.
 
@@ -173,5 +181,37 @@ improvement.
   Optional high-level stage attribution is described above; no model latency,
   keyboard correctness, wireless stability guarantee or faster-backend claim
   is provided.
+
+## Explicit execution metadata
+
+`AdbError` preserves numeric exit code, signal/killed fields when provided by
+Node, and a fixed `failureKind`. Raw command/stderr/message fields remain private;
+only the category is attached to exported capture spans/results. Invalid or
+unknown IPC categories are discarded, not copied into JSON. Parent retention,
+malformed IPC and truncation are regression-tested through the actual CLI.
+
+The ADB wrapper owns its deadline and records whether its timer or an explicit
+`AdbExecOptions.signal` aborted first. It never infers timeout from elapsed time,
+`killed`, SIGTERM or an error-message substring. Native execFile's opaque timer
+is disabled. `timeout: 0` still disables the per-command deadline. Timeout,
+cancellation, signal and buffer failures are not eligible for reconnect replay.
+Ordinary classified transport-selection exit errors retain the existing retry.
+
+This bounds/cancels a local ADB command via Node AbortSignal, not the whole
+observation or its siblings, device-side UIAutomator, OCR subprocesses or
+reconnect discovery. Node abort rejection need not wait for every descendant's
+exit; it is not the benchmark parent's separate process-group cleanup guarantee.
+Default tools do not yet uniformly forward their host cancellation signal.
+Existing capture fallback behavior is unchanged; a caught dump timeout may
+therefore leave a failed span followed by a successful fallback/foreground call.
+Non-ADB capture errors remain `unknown`. Tracing is still off by default.
+
+## User-requested multi-app workflow
+
+The separate opt-in [Amazon.de → Forge protocol](WORKFLOW-E2E.md) and
+[stored evidence](reports/workflow-evidence-2026-10-16.md) cover real typed values,
+persisted workout drafts and the source before/after comparison. This capture-only
+runner still never navigates or writes keyboard data. Do not conflate their
+measurement scopes or reuse the workflow pair as a static-fixture speedup.
 
 See [PLAN.md](PLAN.md) for progress and the exact next session action.

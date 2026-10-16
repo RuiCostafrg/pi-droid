@@ -38,7 +38,7 @@ export type {
 
 // Command execution
 export { adb, adbShell, AdbError, listDevices, getScreenSize, isDeviceReady, getForegroundPackage } from "./exec.js";
-export type { AdbExecOptions } from "./exec.js";
+export type { AdbExecOptions, ExecutionFailureKind } from "./exec.js";
 
 // Input actions
 export { tap, swipe, typeText, keyEvent, pressBack, pressHome, pressEnter, scrollDown, scrollUp } from "./input.js";

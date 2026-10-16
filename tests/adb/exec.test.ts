@@ -46,7 +46,7 @@ describe("adb()", () => {
     expect(mockExecFile).toHaveBeenCalledWith(
       "adb",
       ["devices"],
-      expect.objectContaining({ timeout: 30_000 }),
+      expect.objectContaining({ timeout: 0, signal: expect.any(AbortSignal) }),
       expect.any(Function),
     );
   });

@@ -63,7 +63,8 @@ export async function swipe(
  * Type text using ADBKeyboard (supports Unicode, spaces, special chars).
  *
  * Requires ADBKeyboard APK installed and set as default IME.
- * Falls back to `input text` for ASCII-only strings if useAdbKeyboard is false.
+ * Falls back to `input text` for ASCII-only insertion if useAdbKeyboard is false.
+ * Whole-field replacement requires ADBKeyboard; keyevent selection is not reliable.
  */
 export async function typeText(
   text: string,
@@ -83,12 +84,20 @@ export async function typeText(
     }
   }
 
+  if (options.clear && options.useAdbKeyboard === false) {
+    throw new Error(
+      "Whole-field replacement requires active ADBKeyboard. " +
+      "The input text fallback cannot reliably select and clear a field. " +
+      "No text was cleared or sent.",
+    );
+  }
+
   invalidateCache();
   if (options.clear) {
-    // Select all + delete
-    await adbShell("input keyevent KEYCODE_MOVE_HOME", options);
-    await adbShell("input keyevent --longpress $(printf 'KEYCODE_SHIFT_LEFT KEYCODE_MOVE_END')", options);
-    await adbShell("input keyevent KEYCODE_DEL", options);
+    // Android's `input keyevent` sends separate press/release pairs, not a
+    // held Shift+End chord. Home/End is also line-scoped. Let the active IME
+    // clear its InputConnection instead of deleting one character or one line.
+    await adbShell("am broadcast -a ADB_CLEAR_TEXT", options);
   }
 
   if (options.useAdbKeyboard !== false) {
