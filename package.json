@@ -65,6 +65,8 @@
     "dev": "pi -e ./src/index.ts",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:capture": "vitest run tests/adb/capture-benchmark.test.ts",
+    "benchmark:capture": "node scripts/capture-benchmark.mjs",
     "test:unit": "vitest run tests/adb/ tests/plugins/ tests/notifications/ tests/tools/",
     "test:ci": "vitest run tests/adb/ tests/plugins/ tests/notifications/ tests/tools/ tests/integration/extension-load.test.ts tests/integration/sandbox-install.test.ts",
     "test:integration": "vitest run tests/integration/",

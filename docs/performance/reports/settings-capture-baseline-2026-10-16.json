@@ -1,0 +1,842 @@
+{
+  "schemaVersion": 1,
+  "status": "pass",
+  "requestedRounds": 20,
+  "completedRounds": 20,
+  "desiredMs": 5000,
+  "observationMs": 10000,
+  "budgetMs": 120000,
+  "budgetExhausted": false,
+  "cancelled": false,
+  "durationMs": 63766.959351,
+  "samples": [
+    {
+      "round": 1,
+      "outcome": "ok",
+      "ms": 3197.726405,
+      "captureMs": 2547.4959360000003,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 1.802238999999986,
+          "durationMs": 2396.21802,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2400.83453,
+          "durationMs": 35.78468799999973,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2436.811405,
+          "durationMs": 3.2674999999999272,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2440.35979,
+          "durationMs": 7.3958339999999225,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2447.846561,
+          "durationMs": 98.05515600000035,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 2,
+      "outcome": "ok",
+      "ms": 3217.490311,
+      "captureMs": 2592.8090620000003,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 1.867917000000034,
+          "durationMs": 2457.808332,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2461.887499,
+          "durationMs": 26.378385999999864,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2488.405312,
+          "durationMs": 2.2061979999998584,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2490.8332809999997,
+          "durationMs": 6.177552000000105,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2497.1172389999997,
+          "durationMs": 92.41317700000036,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 3,
+      "outcome": "ok",
+      "ms": 3218.2582280000006,
+      "captureMs": 2601.75526,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 1.7793229999999767,
+          "durationMs": 2445.6318220000003,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2449.93052,
+          "durationMs": 32.68781200000012,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2482.94901,
+          "durationMs": 6.808593000000201,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2490.320624,
+          "durationMs": 7.299947999999858,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2497.71578,
+          "durationMs": 101.9372400000002,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 4,
+      "outcome": "ok",
+      "ms": 3138.4723429999995,
+      "captureMs": 2526.585468,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.3486460000000307,
+          "durationMs": 2389.416197,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2393.987447,
+          "durationMs": 29.022707999999966,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2423.1955199999998,
+          "durationMs": 3.0439060000003337,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2426.5077069999998,
+          "durationMs": 7.054167000000234,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2433.679947,
+          "durationMs": 91.08947899999976,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 5,
+      "outcome": "ok",
+      "ms": 3183.0325510000002,
+      "captureMs": 2580.003541,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 1.7530209999999897,
+          "durationMs": 2439.069738,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2445.183384,
+          "durationMs": 26.9397399999998,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2472.3261970000003,
+          "durationMs": 3.2515619999999217,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2475.8731239999997,
+          "durationMs": 7.271614000000227,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2483.2424469999996,
+          "durationMs": 94.7487500000002,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 6,
+      "outcome": "ok",
+      "ms": 3157.8767700000008,
+      "captureMs": 2535.162186,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 1.7220310000000154,
+          "durationMs": 2402.422291,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2406.96677,
+          "durationMs": 27.662759999999707,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2434.810207,
+          "durationMs": 3.0398959999997714,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2438.13854,
+          "durationMs": 7.004844000000048,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2445.237655,
+          "durationMs": 88.34895800000004,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 7,
+      "outcome": "ok",
+      "ms": 3159.618279999999,
+      "captureMs": 2539.814739,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.304114000000027,
+          "durationMs": 2412.487708,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2417.347343,
+          "durationMs": 27.425364000000172,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2444.911822,
+          "durationMs": 2.2649999999998727,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2447.406613,
+          "durationMs": 5.622395999999753,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2453.126665,
+          "durationMs": 84.69557300000042,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 8,
+      "outcome": "ok",
+      "ms": 3151.199425999999,
+      "captureMs": 2537.2240620000002,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 1.7886459999999715,
+          "durationMs": 2404.6047909999998,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2408.7880720000003,
+          "durationMs": 27.330207999999857,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2436.2840100000003,
+          "durationMs": 2.987655999999788,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2439.579739,
+          "durationMs": 7.247551999999814,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2446.927708,
+          "durationMs": 88.68208300000015,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 9,
+      "outcome": "ok",
+      "ms": 3166.710675999999,
+      "captureMs": 2546.8859359999997,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 1.739844000000062,
+          "durationMs": 2375.335989,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2379.3785930000004,
+          "durationMs": 37.2754689999997,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2416.9916140000005,
+          "durationMs": 6.004374999999982,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2423.4933849999998,
+          "durationMs": 11.848437000000104,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2435.493437,
+          "durationMs": 109.27822900000001,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 10,
+      "outcome": "ok",
+      "ms": 3184.574738000003,
+      "captureMs": 2555.6330199999998,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 1.776719000000071,
+          "durationMs": 2419.7666139999997,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2423.9079680000004,
+          "durationMs": 26.18796899999961,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2450.2695830000002,
+          "durationMs": 2.851822000000084,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2453.3671350000004,
+          "durationMs": 6.751665999999659,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2460.2189049999997,
+          "durationMs": 93.47119800000019,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 11,
+      "outcome": "ok",
+      "ms": 3178.5013529999997,
+      "captureMs": 2548.69578,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 1.9429159999999683,
+          "durationMs": 2406.021978,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2410.792394,
+          "durationMs": 27.319270999999844,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2438.250155,
+          "durationMs": 2.379218999999921,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2440.836874,
+          "durationMs": 6.192500000000109,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2447.135624,
+          "durationMs": 99.51057200000014,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 12,
+      "outcome": "ok",
+      "ms": 3220.1868209999957,
+      "captureMs": 2594.0272379999997,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.317448000000013,
+          "durationMs": 2439.988593,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2447.564062,
+          "durationMs": 27.51161400000001,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2475.2243740000004,
+          "durationMs": 2.4128129999999146,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2477.842239,
+          "durationMs": 5.737447999999858,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2483.671353,
+          "durationMs": 108.15166700000009,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 13,
+      "outcome": "ok",
+      "ms": 3169.633695999997,
+      "captureMs": 2554.863801,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 3.4551040000000057,
+          "durationMs": 2406.13578,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2411.742863,
+          "durationMs": 41.932292000000416,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2453.8846860000003,
+          "durationMs": 3.0355209999997896,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2457.187238,
+          "durationMs": 6.328698000000259,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2463.6177070000003,
+          "durationMs": 89.37531199999967,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 14,
+      "outcome": "ok",
+      "ms": 3177.026300999998,
+      "captureMs": 2532.4754669999998,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.523437999999942,
+          "durationMs": 2385.1625510000003,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2390.383645,
+          "durationMs": 27.442239999999856,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2418.0409369999998,
+          "durationMs": 3.697813000000224,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2422.05651,
+          "durationMs": 8.629010000000108,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2430.802447,
+          "durationMs": 99.97619799999984,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 15,
+      "outcome": "ok",
+      "ms": 3167.853176000004,
+      "captureMs": 2557.595625,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.3027079999999387,
+          "durationMs": 2418.0631240000002,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2423.042551,
+          "durationMs": 30.712864999999965,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2453.9687489999997,
+          "durationMs": 4.268021000000317,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2458.571926,
+          "durationMs": 8.36260399999992,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2467.061353,
+          "durationMs": 88.5421879999999,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 16,
+      "outcome": "ok",
+      "ms": 3199.5003639999995,
+      "captureMs": 2570.231406,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.3377089999999043,
+          "durationMs": 2414.5078630000003,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2422.2148429999997,
+          "durationMs": 35.95125000000007,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2458.357291,
+          "durationMs": 2.915729000000283,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2461.4841659999997,
+          "durationMs": 5.513854000000265,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2467.118489,
+          "durationMs": 100.8895309999998,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 17,
+      "outcome": "ok",
+      "ms": 3221.858592000004,
+      "captureMs": 2609.766405,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.392865000000029,
+          "durationMs": 2462.6067700000003,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2468.350833,
+          "durationMs": 33.833853999999974,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2502.34776,
+          "durationMs": 4.194165999999768,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2506.79052,
+          "durationMs": 5.630572999999913,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2512.509531,
+          "durationMs": 95.30963500000007,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 18,
+      "outcome": "ok",
+      "ms": 3196.0138529999967,
+      "captureMs": 2584.179009,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 1.8028130000000147,
+          "durationMs": 2444.2141650000003,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2449.090885,
+          "durationMs": 31.31395799999973,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2480.54203,
+          "durationMs": 2.5732819999998355,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2483.364999,
+          "durationMs": 6.1942189999999755,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2489.6604159999997,
+          "durationMs": 92.96062500000016,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 19,
+      "outcome": "ok",
+      "ms": 3193.510728000001,
+      "captureMs": 2558.328593,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 1.9132809999999836,
+          "durationMs": 2391.0575519999998,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2395.035885,
+          "durationMs": 38.35718700000007,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2433.573333,
+          "durationMs": 3.174322000000302,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2437.03151,
+          "durationMs": 7.121458000000075,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2444.246093,
+          "durationMs": 112.341406,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 20,
+      "outcome": "ok",
+      "ms": 3236.2652069999967,
+      "captureMs": 2593.5751550000004,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 1.776301999999987,
+          "durationMs": 2456.083541,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2460.022187,
+          "durationMs": 32.44380199999978,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2492.778124,
+          "durationMs": 5.9513019999999415,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2499.144843,
+          "durationMs": 9.364634999999907,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2508.663645,
+          "durationMs": 83.1794789999999,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    }
+  ],
+  "summary": {
+    "attempts": 20,
+    "successes": 20,
+    "failures": 0,
+    "timeouts": 0,
+    "wallTotalMs": 63735.309818999995,
+    "failedMs": 0,
+    "minMs": 3138.4723429999995,
+    "medianMs": 3183.8036445000016,
+    "p95Ms": 3221.858592000004,
+    "maxMs": 3236.2652069999967,
+    "totalMs": 63735.309818999995,
+    "capture": {
+      "minMs": 2526.585468,
+      "medianMs": 2556.6143224999996,
+      "p95Ms": 2601.75526,
+      "maxMs": 2609.766405,
+      "totalMs": 51267.107689
+    }
+  },
+  "notes": [
+    "Fresh source-level dumpUiTree captures; cache reads, OCR and reconnect disabled.",
+    "ms includes worker startup and capture; captureMs measures dumpUiTree only.",
+    "Hard deadlines kill local worker/ADB subprocesses; device-side UIAutomator may outlive ADB.",
+    "Cleanup is best effort outside deadlines. Production remote XML path is unchanged.",
+    "Success latency statistics exclude failures; all attempts and failed elapsed time are retained.",
+    "Few samples do not establish a population p95. No selectors, content, serials or errors retained."
+  ]
+}

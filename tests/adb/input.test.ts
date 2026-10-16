@@ -29,6 +29,9 @@ const mockInvalidate = vi.mocked(invalidateCache);
 
 beforeEach(() => {
   vi.clearAllMocks();
+  mockAdbShell.mockImplementation(async (command) =>
+    command === "settings get secure default_input_method" ? "com.android.adbkeyboard/.AdbIME" : "",
+  );
 });
 
 describe("tap()", () => {
@@ -101,6 +104,37 @@ describe("typeText()", () => {
     );
   });
 
+  it("checks the active IME using the requested device options", async () => {
+    await typeText("hello", { serial: "phone", timeout: 1000 });
+    expect(mockAdbShell.mock.calls[0]).toEqual([
+      "settings get secure default_input_method", { serial: "phone", timeout: 1000 },
+    ]);
+  });
+
+  it.each(["com.google.android.inputmethod.latin/.LatinIME", "null", ""])(
+    "rejects inactive ADBKeyboard (%s) before clearing or sending input", async (ime) => {
+      mockAdbShell.mockResolvedValue(ime);
+      await expect(typeText("private text", { clear: true })).rejects.toThrow(
+        "ADBKeyboard is not the active input method",
+      );
+      expect(mockAdbShell).toHaveBeenCalledTimes(1);
+      expect(mockInvalidate).not.toHaveBeenCalled();
+    },
+  );
+
+  it("accepts the fully qualified ADBKeyboard component", async () => {
+    mockAdbShell.mockResolvedValue("com.android.adbkeyboard/com.android.adbkeyboard.AdbIME\n");
+    await expect(typeText("hello")).resolves.toBeUndefined();
+    expect(mockAdbShell).toHaveBeenLastCalledWith(expect.stringContaining("ADB_INPUT_B64"), {});
+  });
+
+  it("propagates IME-query failures without clearing or broadcasting", async () => {
+    mockAdbShell.mockRejectedValue(new Error("device offline"));
+    await expect(typeText("hello", { clear: true })).rejects.toThrow("device offline");
+    expect(mockAdbShell).toHaveBeenCalledTimes(1);
+    expect(mockInvalidate).not.toHaveBeenCalled();
+  });
+
   it("encodes Unicode text correctly", async () => {
     await typeText("cafe\u0301");
     const encoded = Buffer.from("cafe\u0301", "utf-8").toString("base64");
@@ -112,6 +146,7 @@ describe("typeText()", () => {
 
   it("uses fallback input text when useAdbKeyboard is false", async () => {
     await typeText("hello", { useAdbKeyboard: false });
+    expect(mockAdbShell).toHaveBeenCalledTimes(1);
     expect(mockAdbShell).toHaveBeenCalledWith(
       "input text 'hello'",
       { useAdbKeyboard: false },
@@ -129,12 +164,13 @@ describe("typeText()", () => {
 
   it("clears existing text when clear option is set", async () => {
     await typeText("new", { clear: true });
-    // Should send 3 clear commands then the text
-    expect(mockAdbShell).toHaveBeenCalledTimes(4);
-    expect(mockAdbShell.mock.calls[0][0]).toBe("input keyevent KEYCODE_MOVE_HOME");
-    expect(mockAdbShell.mock.calls[1][0]).toContain("KEYCODE_SHIFT_LEFT");
-    expect(mockAdbShell.mock.calls[2][0]).toBe("input keyevent KEYCODE_DEL");
-    expect(mockAdbShell.mock.calls[3][0]).toContain("am broadcast -a ADB_INPUT_B64");
+    // Verify IME first, then send 3 clear commands and the text.
+    expect(mockAdbShell).toHaveBeenCalledTimes(5);
+    expect(mockAdbShell.mock.calls[0][0]).toBe("settings get secure default_input_method");
+    expect(mockAdbShell.mock.calls[1][0]).toBe("input keyevent KEYCODE_MOVE_HOME");
+    expect(mockAdbShell.mock.calls[2][0]).toContain("KEYCODE_SHIFT_LEFT");
+    expect(mockAdbShell.mock.calls[3][0]).toBe("input keyevent KEYCODE_DEL");
+    expect(mockAdbShell.mock.calls[4][0]).toContain("am broadcast -a ADB_INPUT_B64");
   });
 
   it("invalidates cache", async () => {

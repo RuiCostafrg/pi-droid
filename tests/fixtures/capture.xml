@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hierarchy rotation="0">
+  <node text="" resource-id="" class="android.widget.FrameLayout" package="com.example.capture" content-desc="" enabled="true" bounds="[0,0][1080,1920]">
+    <node text="Ready &amp; steady" resource-id="com.example.capture:id/status" class="android.widget.TextView" package="com.example.capture" content-desc="" clickable="false" focusable="false" enabled="true" bounds="[20,40][500,100]" />
+    <node text="almond milk" resource-id="com.example.capture:id/query" class="android.widget.EditText" package="com.example.capture" content-desc="Search fixture" clickable="true" focusable="true" enabled="true" bounds="[20,120][700,200]" />
+  </node>
+</hierarchy>

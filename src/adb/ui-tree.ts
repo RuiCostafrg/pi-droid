@@ -13,6 +13,7 @@ import { adb, adbShell, getForegroundPackage, type AdbExecOptions } from "./exec
 import type { UIElement, UITreeResult, ElementSelector, Bounds } from "./types.js";
 import { getCachedTree, setCachedTree } from "./cache.js";
 import { runOcrOnCurrentScreen } from "./ocr.js";
+import { captureTiming, type CaptureSpanSink } from "./capture-timing.js";
 
 const REMOTE_XML = "/sdcard/pi-droid-ui.xml";
 let uiDumpDir = join(tmpdir(), "pi-droid", "ui-dumps");
@@ -195,11 +196,22 @@ function mergeElements(uiElements: UIElement[], ocrElements: UIElement[]): UIEle
  * Uses cache if available and fresh (avoids redundant ~500ms dumps).
  */
 export async function dumpUiTree(
-  options: AdbExecOptions & { skipCache?: boolean; ocrConfidenceThreshold?: number; debug?: boolean } = {},
+  options: AdbExecOptions & {
+    skipCache?: boolean;
+    /** Opt-in per-observation, content-free timings; callback failures are ignored. */
+    onCaptureSpan?: CaptureSpanSink;
+    /** Disable screenshot/OCR fallback for controlled hierarchy-only captures. Default: true. */
+    ocrFallback?: boolean;
+    /** Reject a zero-exit dump without its success marker instead of pulling stale XML. */
+    requireDumpSuccess?: boolean;
+    ocrConfidenceThreshold?: number;
+    debug?: boolean;
+  } = {},
 ): Promise<UITreeResult> {
+  const timing = captureTiming(options.onCaptureSpan);
   // Check cache first
   if (!options.skipCache) {
-    const cached = getCachedTree();
+    const cached = timing.sync("cache_lookup", () => getCachedTree());
     if (cached) return cached;
   }
 
@@ -217,32 +229,39 @@ export async function dumpUiTree(
 
   try {
     // Dump UI hierarchy on device
-    await adbShell(`uiautomator dump ${REMOTE_XML}`, options);
+    await timing.async("device_dump", async () => {
+      const dumpOutput = await adbShell(`uiautomator dump ${REMOTE_XML}`, options);
+      if (options.requireDumpSuccess && !dumpOutput.includes(`dumped to: ${REMOTE_XML}`)) {
+        throw new Error("UIAutomator did not confirm a fresh hierarchy dump");
+      }
+    });
 
     // Pull XML
     const ts = new Date().toISOString().replace(/[:.]/g, "-");
     localXml = join(uiDumpDir, `ui_${ts}.xml`);
-    await adb(["pull", REMOTE_XML, localXml], options);
+    await timing.async("xml_transfer", () => adb(["pull", REMOTE_XML, localXml], options));
 
     // Read and parse
-    rawXml = await readFile(localXml, "utf-8");
-    elements = parseXml(rawXml);
-    interactive = getInteractiveElements(elements);
+    rawXml = await timing.async("xml_read", () => readFile(localXml, "utf-8"));
+    timing.sync("xml_parse", () => {
+      elements = parseXml(rawXml);
+      interactive = getInteractiveElements(elements);
+    });
   } catch (err) {
     if (options.debug) {
       console.warn("uiautomator dump failed, trying OCR fallback:", err);
     }
   }
 
-  const foregroundPackage = await getForegroundPackage(options);
+  const foregroundPackage = await timing.async("foreground", () => getForegroundPackage(options));
 
   const needsOcrFallback = elements.length === 0 || isMinimalUiDump(rawXml, elements, interactive);
-  if (needsOcrFallback) {
+  if (needsOcrFallback && options.ocrFallback !== false) {
     try {
-      const ocrResult = await runOcrOnCurrentScreen({
+      const ocrResult = await timing.async("ocr_fallback", () => runOcrOnCurrentScreen({
         ...options,
         confidenceThreshold: options.ocrConfidenceThreshold,
-      });
+      }));
       const ocrElements = ocrResult.elements.map((el, i) => ({ ...el, index: i }));
 
       if (elements.length === 0) {

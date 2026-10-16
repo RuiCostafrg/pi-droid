@@ -17,6 +17,8 @@ Pi-Droid is a [pi-agent](https://github.com/badlogic/pi-mono) extension that giv
 
 ---
 
+Performance work in progress: [implementation checklist and session resume point](docs/performance/PLAN.md).
+
 ## What it does
 
 | Category | Tools | Highlights |
@@ -131,7 +133,7 @@ npm test
 | Tool | Description |
 |------|-------------|
 | `android_tap` | Tap by coordinates, text match, or resource ID; supports long press |
-| `android_type` | Type text into the focused field; optional `clear_first` to replace |
+| `android_type` | Type text into the focused field; optional `clear_first` to replace. Requires ADBKeyboard to be the active IME; otherwise fails before clearing or sending text. |
 | `android_swipe` | Swipe between two coordinates with configurable duration |
 | `android_scroll` | Scroll up or down on the current screen |
 | `android_key` | Press a key: `back`, `home`, `enter`, `tab`, or any `KEYCODE_*` |

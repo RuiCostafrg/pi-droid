@@ -69,6 +69,20 @@ export async function typeText(
   text: string,
   options: TypeOptions & AdbExecOptions = {},
 ): Promise<void> {
+  // A broadcast can exit successfully without inserting anything when another
+  // IME is selected. Check before clearing text or claiming input succeeded.
+  if (options.useAdbKeyboard !== false) {
+    const ime = (await adbShell("settings get secure default_input_method", options)).trim();
+    if (ime !== "com.android.adbkeyboard/.AdbIME" &&
+        ime !== "com.android.adbkeyboard/com.android.adbkeyboard.AdbIME") {
+      throw new Error(
+        "ADBKeyboard is not the active input method. Select it with " +
+        "`adb shell ime set com.android.adbkeyboard/.AdbIME` before typing. " +
+        "No text was cleared or sent.",
+      );
+    }
+  }
+
   invalidateCache();
   if (options.clear) {
     // Select all + delete
