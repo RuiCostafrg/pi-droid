@@ -12,12 +12,15 @@ See [runner documentation](CAPTURE-BENCHMARK.md) and
 
 Recovery on 2026-10-16: the previous session stopped after launching validation
 without saving its result or updating this tracker. Revalidation passed 554 tests,
-type checking, build, script syntax and diff whitespace checks. Preserve all local
-uncommitted changes in both repositories.
+type checking, build, script syntax and diff whitespace checks. That recovery
+preserved the existing edits; all performance work is now committed locally in
+both repositories (see commit checkpoint below).
 
-First Step 2 slice is now implemented: content-free, opt-in capture-stage spans
-at the public `dumpUiTree`/benchmark CLI seams, tested with synthetic ADB at the
-process boundary. Full validation: 559 pi-droid tests and 16 companion tests pass.
+Step 2's high-level timing and partial-span streaming slices are implemented at
+the public `dumpUiTree`/benchmark CLI seams, tested with synthetic ADB at the
+process boundary. Latest validation: **561 pi-droid unit tests, 16 companion tests,
+and 9 isolated sequential integration tests pass**. Default parallel CI still
+hits the documented short integration time limits; it is NOT marked passing.
 
 Partial-span streaming is implemented and regression-tested under deadline and
 SIGTERM (including interruption before any stage completes). Parent retention is
@@ -33,6 +36,19 @@ accounted for ~94.3% of cumulative capture time. This is one fixture baseline,
 not a speedup or a diagnosis of UIAutomator internals. No new installs or
 persistent phone changes; Termux foreground restored and verified.
 
+## Completion snapshot
+
+- [x] Prior active-IME safety guard and failure-aware profiler summaries.
+- [x] Deterministic capture correctness/deadline/cleanup feedback loop.
+- [x] Opt-in high-level timing spans and bounded partial-span streaming.
+- [x] Content-free 20-round live static-label baseline and evidence report.
+- [x] Unit/build/type validation plus isolated integration verification.
+- [x] Review and local commits for all code, tests, documentation and evidence.
+- [ ] Full Step 2 instrumentation, explicit failure metadata and profiler ingestion.
+- [ ] Active-session tool reload verification and live editable-field/input checks.
+- [ ] Default CI scheduling/time-limit reliability on this Termux host.
+- [ ] Controlled optimization and paired before/after measurement.
+
 Read this file first, then [the original handoff](handoff-2026-10-16.md).
 Companion repository: `~/projects/pi-android-perf`.
 Update this tracker after each slice with files, commands, results, limitations,
@@ -47,8 +63,8 @@ not that the entire performance problem is solved.
 - [x] Verify phone foreground is `com.termux` before coding/reporting.
 - [x] Re-run existing validation (results below).
 - [x] Confirm prior local changes exist and preserve them (initially uncommitted).
-  The user subsequently authorized review/local commits in this continuation;
-  record commit results below. Do not push without a separate request.
+  The user subsequently authorized review/local commits; these are complete
+  and recorded below. Do not push without a separate request.
 
 Historical starting HEADs: pi-droid `e09bba3`, pi-android-perf `c950e08`.
 The local commits recorded below supersede these initial checkpoints.
@@ -130,8 +146,9 @@ as acceptance criteria. First deterministic slice should run in seconds offline.
 
 ### 2. P0 — Instrument real pi-droid stages
 
-- [ ] Inspect `exec.ts`, `ui-tree.ts`, `screenshot.ts`, `cache.ts`, `ocr.ts`,
-  `reconnect.ts`, `annotate.ts` for instrumentation boundaries.
+- [x] Inspect `exec.ts`, `ui-tree.ts` and `cache.ts` for the first timing slice.
+- [ ] Finish the instrumentation-boundary audit of `screenshot.ts`, `ocr.ts`,
+  `reconnect.ts` and `annotate.ts` before instrumenting those internal paths.
 - [x] Add opt-in high-level `dumpUiTree` spans: device dump, XML transfer,
   local read, parsing/filtering, foreground, cache lookup/hit and whole OCR call.
   `src/adb/capture-timing.ts` supplies fixed fields/stages and per-call monotonic
@@ -154,8 +171,19 @@ as acceptance criteria. First deterministic slice should run in seconds offline.
   Timeout and SIGTERM regressions preserve earlier stages without fabricating
   success for the interrupted stage. Already queued IPC events may still be
   lost on hard kill; active-stage start events are not implemented.
-- [ ] Verify whole-observation cancellation, including parallel work.
-- [ ] Connect internal evidence to the profiler and capture a controlled baseline.
+- [x] Verify local worker/ADB process-group cleanup under timeout and SIGTERM
+  in the development harness, including the synthetic orphan-work regression.
+- [ ] Verify whole-observation cancellation in production tools, including
+  parallel/sibling work. Harness process-group cleanup is not this guarantee.
+- [x] Capture a controlled source-level live baseline with high-level spans.
+- [ ] Connect internal spans to the companion profiler; native/tool-level
+  summaries do not yet ingest these source-level events.
+- [ ] Add direct regression coverage for the parent IPC allowlist, malformed
+  events, retention cap and truncation flags. Normal privacy/completeness tests
+  pass, but do not exercise the malformed/overflow branches.
+- [ ] Decide whether active-stage start events are needed to identify work
+  interrupted before completion. Current traces retain completed stages only;
+  do not fabricate a completed stage or infer its cause from missing evidence.
 
 Depends on Step 1's feedback loop. Do not assign the variable dump latency to
 cache/OCR/reconnect until spans distinguish them.
@@ -225,9 +253,11 @@ Prior session recorded red → green for correctness, unwanted OCR, timeout stop
 SIGTERM cleanup and zero-exit stale XML rejection. Recovery validation log:
 `$TMPDIR/pi-droid-recovery-validation.log` (temporary, may disappear).
 
-No new live capture/input experiment has been run. Test passes are not proof
-of corrected device latency, reliable text insertion or wireless stability.
-The running extension has not been verified against the rebuilt source.
+At this recovery checkpoint no new live capture/input experiment had been run;
+the subsequent static-label baseline is recorded below. Test passes are not
+proof of corrected device latency, reliable text insertion or wireless stability.
+The active user's running extension still has not been verified against the
+rebuilt source.
 
 2026-10-16 first timing-span slice:
 
@@ -248,8 +278,8 @@ new APK/helper/permissions, commits or backend changes were performed.
 Changed in this slice: `src/adb/capture-timing.ts`, `src/adb/ui-tree.ts`, both
 capture scripts, `tests/adb/capture-benchmark.test.ts`, this tracker and
 `CAPTURE-BENCHMARK.md`. Stage sums exclude setup/cleanup and result assembly;
-command retry/reconnect time is not separately attributed. At that point, full Step 2, live baseline and any demonstrated latency improvement
-remained incomplete. The next continuation below supersedes the baseline status.
+command retry/reconnect time is not separately attributed. At that point, full
+Step 2, live baseline and any demonstrated latency improvement remained incomplete. The next continuation below supersedes the baseline status.
 
 2026-10-16 streaming + live continuation:
 
@@ -285,11 +315,12 @@ User requested finishing the outstanding work and next priority. Reviewed local
 changes in both repositories and validated before committing; no pushes made.
 
 - Companion profiler: `d7d1193` — `Count failed work in performance bottleneck summaries`.
-- pi-droid checkpoint message: `Add bounded capture benchmark with streaming stage timings`.
+- pi-droid: `3055003` — `Add bounded capture benchmark with streaming stage timings`.
   Includes the earlier active-IME guard, benchmark/fixtures, fixed-field tracing,
   streamed partial evidence, progress documents and sanitized live report.
-  Look up the resulting hash with `git log -1`; do not embed a self-referential
-  hash in this committed file.
+- Both working trees were verified clean after these commits. This subsequent
+  plan-only reconciliation records their hashes and separates completed work
+  from remaining acceptance criteria; no new code or live test was run for it.
 
 Remaining: explicit ADB timeout/cancellation/error metadata; finer instrumentation
 and profiler ingestion; OCR span coverage; active-session reload verification;
