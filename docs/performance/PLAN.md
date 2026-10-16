@@ -77,8 +77,8 @@ persistent phone changes; Termux foreground restored and verified.
 - [x] Review and local commits for the earlier capture/timing slice (hashes below).
 - [x] Explicit execution failure metadata and privacy/IPC regression coverage.
 - [x] User-requested Amazon.de → Forge E2E, immutable baseline and source-pair comparison.
-- [x] Review the metadata/workflow/input changes and prepare all code, tests and
-  sanitized evidence for the user-requested commit/push checkpoint below.
+- [x] Review, commit and push all metadata/workflow/input changes, tests and
+  sanitized evidence to origin/main; see the verified publication checkpoint.
 - [ ] Full Step 2 instrumentation and companion-profiler ingestion.
 - [x] Fix default whole-field ADBKeyboard replacement and numeric Unicode XML
   readback; 4/4 focused source live cases pass without a replacement workaround.
@@ -425,15 +425,27 @@ draft title reused and restored; no new drafts or workout numeric changes.
 ### Publication checkpoint
 
 The user explicitly requested committing ALL accumulated changes, pushing and
-updating Markdown. Both origin forks were fetched; each local main is ahead
-with no remote-only commits. This checkpoint includes the metadata/capture IPC,
-workflow runners and all preserved success/failure reports, default replacement
-and XML fixes, regression tests and progress/changelog updates. No historical
-JSON evidence was rewritten. Publication results/hashes are recorded here after
-push verification; do not infer a successful push from commit preparation.
+updating Markdown. Both origin forks were fetched before publication; neither
+had remote-only commits. All pushes succeeded without force, and remote main
+hashes were independently checked against the local implementation HEADs:
 
-Validation retained: pi-droid 599 unit tests and 9 isolated integrations;
-companion 16 tests plus build/type check rerun for publication. Default parallel
+- **pi-droid:** `f41350c` — Improve ADB failure diagnostics and fix whole-field
+  text replacement. Published to `https://github.com/RuiCostafrg/pi-droid`, main.
+  The push also includes earlier local commits `3055003`, `3439e6d`, `4a2b4f6`.
+- **pi-android-perf:** `d7d1193` — Count failed work in performance bottleneck
+  summaries. Published to `https://github.com/RuiCostafrg/pi-android-perf`, main.
+  No new companion edits were needed; its previously local commit is now remote.
+
+The implementation checkpoint includes metadata/capture IPC, workflow runners,
+ALL preserved success/failure reports, default replacement and XML fixes,
+regression tests and progress/changelog updates. No historical JSON evidence
+was rewritten. Both working trees were clean after the verified implementation
+push; this follow-up Markdown-only commit records those publication results.
+
+Publication validation: pi-droid **599 unit tests / 47 files**, lint/build,
+all five runner script syntax checks and staged diff whitespace PASS; the
+preceding input-fix validation also passed **9 isolated integrations** with the
+documented time allowances. Companion **16 tests**, build/type check rerun PASS. Default parallel
 CI and the running user-session extension reload remain unverified. Next work
 is the observation audit/current-source baseline above, not an implemented
 full-workflow speedup. Original Gboard/Termux were restored after the last live
