@@ -303,6 +303,13 @@ Environment variables:
 
 ---
 
+## Local reliability helpers
+
+Read-only host identity (`pi-droid/host`) and passive exact-transport power
+observations are available as library helpers. They do not supervise services,
+pair/wake/unlock devices or claim Android survival. See
+[contracts, limits and Pocket adapter boundary](docs/local-reliability-helpers.md).
+
 ## Programmatic Usage
 
 Pi-Droid exports its full ADB layer for use in custom automation scripts, external plugins, or standalone tools:

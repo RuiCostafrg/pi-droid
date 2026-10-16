@@ -177,6 +177,8 @@ export {
   dumpUiTree, findElements, findElement, waitForElement,
   // App management
   launchApp, launchAppWithFallback, stopApp, getAppInfo, listPackages, wakeScreen, isScreenOn,
+  // Passive power observation (never wakes or reconnects)
+  readPowerSample, parsePowerSample, PowerObservationTracker,
   // Monitoring
   getBatteryInfo, getNetworkInfo, getDeviceInfo, isScreenLocked, getRunningApps,
   // Automation helpers
@@ -186,5 +188,6 @@ export {
   // OCR
   runOcrOnImage, runOcrOnCurrentScreen,
 } from "./adb/index.js";
+export type { PowerSample, PowerObservation } from "./adb/power-observation.js";
 export type { AdbExecOptions, AppLaunchResult } from "./adb/index.js";
 export type { StuckEvent, UIElement, Bounds, ElementSelector } from "./adb/index.js";

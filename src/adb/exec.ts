@@ -32,6 +32,8 @@ export interface AdbExecOptions {
   maxBuffer?: number;
   /** Disable secure reconnect/retry for this command. */
   autoReconnect?: boolean;
+  /** Pin this exact authorized transport; bypass remembered endpoints and recovery. */
+  exactSerial?: boolean;
 }
 
 const DEFAULT_TIMEOUT = 30_000;
@@ -43,7 +45,8 @@ const DEFAULT_MAX_BUFFER = 10 * 1024 * 1024;
 export async function adb(args: string[], options: AdbExecOptions = {}): Promise<string> {
   const deviceCommand = ["shell", "exec-out", "push", "pull", "install", "uninstall", "get-state"].includes(args[0]);
   const { resolveSerial, reconnect } = await import("./reconnect.js");
-  const serial = deviceCommand ? resolveSerial(options.serial) : options.serial;
+  if (options.exactSerial && !options.serial?.trim()) throw new Error("Exact transport requires an explicit serial.");
+  const serial = deviceCommand && !options.exactSerial ? resolveSerial(options.serial) : options.serial;
   const fullArgs = serial ? ["-s", serial, ...args] : args;
 
   try {
@@ -64,7 +67,7 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
     // Never replay timeouts, closed connections, authorization or app errors.
     const unavailable = /^(?:adb: (?:error: )?|error: )?(?:no devices\/emulators found|device offline|device '[^']+' not found)\s*$/.test(original.stderr);
     const wirelessTarget = !serial || /^\d+\.\d+\.\d+\.\d+:\d+$/.test(serial);
-    if (deviceCommand && options.autoReconnect !== false && unavailable && wirelessTarget) {
+    if (deviceCommand && !options.exactSerial && options.autoReconnect !== false && unavailable && wirelessTarget) {
       let recovered: string;
       try {
         recovered = await reconnect(serial);

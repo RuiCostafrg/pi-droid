@@ -61,6 +61,9 @@ export { launchApp, stopApp, getAppInfo, listPackages, keepScreenOn, restoreScre
 export { pushFile, pullFile, listDir, deleteFile, getStorageInfo, fileExists } from "./files.js";
 export type { DirEntry, StorageInfo, PushPullResult } from "./files.js";
 
+export { readPowerSample, parsePowerSample, PowerObservationTracker } from "./power-observation.js";
+export type { PowerSample, PowerObservation } from "./power-observation.js";
+
 // Device monitoring
 export { getBatteryInfo, getNetworkInfo, getDeviceInfo, isScreenLocked, getRunningApps } from "./monitor.js";
 

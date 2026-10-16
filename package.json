@@ -9,17 +9,23 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./host": {
+      "types": "./dist/host/index.d.ts",
+      "import": "./dist/host/index.js"
     }
   },
   "files": [
     "dist/index.*",
     "dist/adb/**",
+    "dist/host/**",
     "dist/plugins/**",
     "dist/notifications/**",
     "dist/tools/**",
     "skills",
     "config/default.json",
     "README.md",
+    "docs/local-reliability-helpers.md",
     "LICENSE"
   ],
   "keywords": [
