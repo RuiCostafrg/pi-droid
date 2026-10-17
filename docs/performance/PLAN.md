@@ -1,5 +1,47 @@
 # Android automation performance: implementation tracker
 
+## Mandatory real-phone acceptance gate
+
+User requirement: **every performance implementation slice must run the existing
+Amazon.de → Forge real-phone E2E**, not just unit tests, synthetic ADB,
+host-side integrations or the Settings fixture. Documentation-only updates do
+not require another phone run. A slice is not fully validated until this gate
+passes; if blocked or skipped, record that explicitly and leave acceptance open.
+
+- Use the existing versioned [workflow protocol](WORKFLOW-V2.md) and preserve
+  frozen drivers, archived adapters and historical success/failure evidence.
+  Capture a current equivalent baseline BEFORE each implementation change, then
+  run the changed path with the same driver, correctness checks and comparable
+  fixture/transport. Do not use an old historical run as a controlled new baseline.
+- Verify shopping observations, all 30 exact numeric writes and all 30 persisted
+  readbacks under the existing protocol. Record failures and retained test drafts;
+  never weaken checks or discard failed runs to manufacture a faster result.
+- Verify the changed extension is actually loaded in a fresh/reloaded Pi session
+  and exercise the relevant registered tools on the real phone. A source-level
+  workflow pass alone is NOT proof that the loaded extension works. If the frozen
+  workflow does not cover the loaded path, add a separately disclosed loaded-tool
+  check rather than silently altering the historical driver.
+- Collect and validate the metrics as well as functional outcomes: source/driver
+  revisions, completed/failed attempts, elapsed times, capture/command counts,
+  available internal spans and completeness/truncation flags. Distinguish source
+  instrumentation from loaded-tool profiler data; never pretend they share a
+  clock or measure model latency. Newly instrumented paths not exercised by the
+  workflow also need focused success/failure coverage; do not fabricate spans.
+- Preserve before/after JSON and Markdown and report the measured delta, including
+  regressions or no improvement. Correctness is mandatory. Instrumentation-only
+  work need not be faster, but it must be checked for overhead; a speed-change
+  slice needs equivalent paired evidence before any performance-gain claim.
+  One pair is descriptive, not proof of a population effect or causality.
+- Keep Amazon read-only: no cart, checkout or account changes. Forge changes stay
+  within disclosed test drafts; never finish a real workout. Restore the original
+  IME on success AND failure, return to Termux and independently verify both.
+  Existing APK/permission/helper/debugging approval boundaries still apply.
+
+**Current gap:** the command/reconnect instrumentation checkpoint passed offline
+validation and a loaded Settings check, but did NOT run the full real-phone
+Amazon.de → Forge workflow or a live before/after timing pair. It therefore does
+not satisfy this newly required gate; no new performance gain is established.
+
 ## Resume here
 
 **Latest: loaded native-only tool verified; command/reconnect timing and offline
@@ -44,10 +86,16 @@ Bounded concurrency success is NOT default full-suite/parallel-CI success.
 Loaded native-only observation is now verified above; production automatic
 input lifecycle remains unverified.
 
-**Next exact action:** instrument screenshot capture/transfer/read/dimension and
-OCR availability/engine/parse with shared-clock success/failure/default/privacy
-coverage. Then annotation and automatic profiler runtime ingestion before
-choosing another speed change.
+**Next exact action:** close the current live-validation gap first: run the
+existing Amazon.de → Forge real-phone workflow on the command/reconnect
+checkpoint, verify the loaded extension separately and validate the emitted
+metrics. For overhead comparison, preserve a separately labelled reference run
+from an isolated pre-instrumentation revision with the same driver; this reference
+is collected AFTER implementation and must not be called a chronological baseline.
+Then capture a fresh current baseline BEFORE implementing screenshot capture/
+transfer/read/dimension and OCR availability/engine/parse spans. Repeat the full
+real-phone E2E and loaded-tool checks afterward under the mandatory gate above.
+Annotation and automatic profiler runtime ingestion follow in separate slices.
 The live driver exercises source-registered tools, not the currently loaded tools
 or model latency. Default CI reliability and automatic input lifecycle remain open.
 
