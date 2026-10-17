@@ -113,7 +113,7 @@ it("exports opt-in content-free capture-stage timings through the real capture p
   expect(report.samples[0].traceComplete).toBe(true);
   expect(report.samples[0].spansTruncated).toBe(false);
   expect(spans.map((s: { stage: string }) => s.stage)).toEqual([
-    "device_dump", "xml_transfer", "xml_read", "xml_parse", "foreground",
+    "adb_attempt", "device_dump", "adb_attempt", "xml_transfer", "xml_read", "xml_parse", "adb_attempt", "foreground",
   ]);
   for (const span of spans) {
     expect(Object.keys(span).sort()).toEqual(["durationMs", "outcome", "stage", "startMs"]);
@@ -140,10 +140,10 @@ it.each([
   expect(code).toBe(1);
   expect(report.samples[0].outcome).toBe("incorrect");
   const failed = report.samples[0].spans.filter((s: { outcome: string }) => s.outcome === "error");
-  expect(failed).toHaveLength(1);
-  expect(failed[0].stage).toBe(failedStage);
-  expect(failed[0].failureKind).toBe(mode === "pull-error" ? "exit" : "unknown");
-  expect(failed[0].durationMs).toBeGreaterThan(0);
+  expect(failed).toHaveLength(mode === "pull-error" ? 2 : 1);
+  expect(failed.at(-1).stage).toBe(failedStage);
+  expect(failed.at(-1).failureKind).toBe(mode === "pull-error" ? "exit" : "unknown");
+  expect(failed.at(-1).durationMs).toBeGreaterThan(0);
   expect(report.samples[0].spans.at(-1).stage).toBe("foreground");
   for (const secret of ["PRIVATE_TRANSPORT_ERROR", "synthetic-device", "almond milk", "/sdcard/"])
     expect(JSON.stringify(report)).not.toContain(secret);
@@ -223,7 +223,7 @@ it("preserves completed stage spans when a later stage exceeds the hard deadline
   expect(report.completedRounds).toBe(1);
   expect(report.samples[0].outcome).toBe("timeout");
   expect(report.samples[0].spans.map((s: { stage: string }) => s.stage)).toEqual([
-    "device_dump", "xml_transfer", "xml_read", "xml_parse",
+    "adb_attempt", "device_dump", "adb_attempt", "xml_transfer", "xml_read", "xml_parse",
   ]);
   expect(report.samples[0].spans.every((s: { outcome: string }) => s.outcome === "ok")).toBe(true);
   expect(report.samples[0]).not.toHaveProperty("captureMs");
@@ -316,7 +316,7 @@ it.each(["hang", "hang-foreground"])("preserves partial trace and cleans up on i
     expect(report.completedRounds).toBe(1);
     expect(report.samples[0].traceComplete).toBe(false);
     expect(report.samples[0].spans.map((s: { stage: string }) => s.stage)).toEqual(
-      mode === "hang" ? [] : ["device_dump", "xml_transfer", "xml_read", "xml_parse"]);
+      mode === "hang" ? [] : ["adb_attempt", "device_dump", "adb_attempt", "xml_transfer", "xml_read", "xml_parse"]);
     await new Promise(resolve => setTimeout(resolve, 3700));
     await expect(access(join(dir, "orphan"))).rejects.toThrow();
   } finally {

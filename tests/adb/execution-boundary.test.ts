@@ -13,6 +13,7 @@ beforeEach(async () => {
   await writeFile(join(dir, "adb"), `#!${process.execPath}
 const command = process.argv.join(" ");
 if (command.includes("mCurrentFocus")) { console.log("mCurrentFocus=Window{x u0 com.example/.Main}"); }
+else if (process.env.EXEC_MODE === "disabled") { console.log("ok"); }
 else if (process.env.EXEC_MODE === "exit") { process.stderr.write("PRIVATE_ERROR"); process.exit(7); }
 else if (process.env.EXEC_MODE === "signal") { process.kill(process.pid, "SIGTERM"); }
 else if (process.env.EXEC_MODE === "buffer") { process.stdout.write("x".repeat(100000)); }
@@ -37,7 +38,8 @@ if (mode === "cancel" || mode === "capture-cancel") timer = setTimeout(() => con
 const spans = [];
 const options = { serial: "PRIVATE_SERIAL", exactSerial: true, autoReconnect: false,
   timeout: mode === "timeout" ? 300 : 3000, signal: controller.signal,
-  maxBuffer: mode === "buffer" ? 100 : undefined };
+  maxBuffer: mode === "buffer" ? 100 : undefined,
+  onCaptureSpan: mode === "disabled" ? undefined : span => { spans.push(span); if (mode === "exit") throw Error("PRIVATE_SINK"); } };
 let failure;
 try {
   if (mode === "capture" || mode === "capture-cancel") {
@@ -60,24 +62,38 @@ console.log(JSON.stringify({ failure, spans }));
 }
 
 it("preserves explicit command timeout metadata at the real process boundary", async () => {
-  expect((await probe("timeout")).failure).toMatchObject({ name: "AdbError", failureKind: "timeout", exitCode: null });
+  const result = await probe("timeout");
+  expect(result.failure).toMatchObject({ name: "AdbError", failureKind: "timeout", exitCode: null });
+  expect(result.spans).toMatchObject([{ stage: "adb_attempt", outcome: "error", failureKind: "timeout" }]);
 });
 
 it.each(["cancel", "pre-cancel"])("preserves explicit cancellation: %s", async mode => {
-  expect((await probe(mode)).failure).toMatchObject({ name: "AdbError", failureKind: "cancelled", exitCode: null });
+  const result = await probe(mode);
+  expect(result.failure).toMatchObject({ name: "AdbError", failureKind: "cancelled", exitCode: null });
+  expect(result.spans).toMatchObject([{ stage: "adb_attempt", outcome: "error", failureKind: "cancelled" }]);
 });
 
 it.each([["exit", "exit", 7], ["signal", "signal", null], ["buffer", "buffer", null], ["spawn", "spawn", null]])(
   "does not mislabel other execution failures as timeout: %s", async (mode, failureKind, exitCode) => {
-    expect((await probe(mode as string)).failure).toMatchObject({ failureKind, exitCode });
+    const result = await probe(mode as string);
+    expect(result.failure).toMatchObject({ failureKind, exitCode });
+    expect(result.spans).toMatchObject([{ stage: "adb_attempt", outcome: "error", failureKind }]);
+    expect(Object.keys(result.spans[0]).sort()).toEqual(["durationMs", "failureKind", "outcome", "stage", "startMs"]);
+    expect(JSON.stringify(result)).not.toContain("PRIVATE_");
   },
 );
+
+it("does not emit command diagnostics without opt-in", async () => {
+  expect((await probe("disabled")).spans).toEqual([]);
+});
 
 it("preserves cancellation through capture wrappers without leaking raw errors", async () => {
   const result = await probe("capture-cancel");
   expect(result.failure.failureKind).toBe("cancelled");
   expect(result.spans).toMatchObject([
+    { stage: "adb_attempt", outcome: "error", failureKind: "cancelled" },
     { stage: "device_dump", outcome: "error", failureKind: "cancelled" },
+    { stage: "adb_attempt", outcome: "error", failureKind: "cancelled" },
     { stage: "foreground", outcome: "error", failureKind: "cancelled" },
   ]);
   expect(JSON.stringify(result)).not.toContain("PRIVATE_");
@@ -87,7 +103,9 @@ it("retains swallowed capture failures as content-free span metadata without cha
   const result = await probe("capture");
   expect(result.failure).toBeUndefined();
   expect(result.spans).toMatchObject([
+    { stage: "adb_attempt", outcome: "error", failureKind: "timeout" },
     { stage: "device_dump", outcome: "error", failureKind: "timeout" },
+    { stage: "adb_attempt", outcome: "ok" },
     { stage: "foreground", outcome: "ok" },
   ]);
   for (const secret of ["PRIVATE_ERROR", "PRIVATE_SERIAL", "PRIVATE_COMMAND", dir])

@@ -2,7 +2,24 @@
 
 ## Resume here
 
-**Latest: registered text-observation slice implemented and compared.**
+**Latest: loaded native-only tool verified; command/reconnect timing and offline
+companion ingestion implemented.** See [COMMAND-TIMING.md](COMMAND-TIMING.md).
+The fresh continuation session exposes both options; direct loaded
+`android_ui_dump(all_elements:true, ocr_fallback:false)` on Settings → Termux
+app info returned the exact non-interactive title and OPEN control. Gboard stayed
+unchanged; original IME and Termux foreground independently verified afterward.
+No new live timing or speedup claim. Historical evidence/drivers untouched.
+
+Opt-in `adb_attempt` and `reconnect` completed spans now share the capture clock,
+retain explicit failure categories and stream through the bounded IPC allowlist.
+Companion offline CLI ingests traced reports with privacy/bounds validation,
+per-capture clocks, partial flags and failure-aware summaries; the preserved
+20-round historical baseline imported successfully without modification.
+Automatic runtime ingestion and finer screenshot/OCR/annotation spans remain open.
+Validation: **665/665 units, 51 files; 9/9 isolated integrations; lint/build/syntax**.
+Companion **36/36**, build/check. Default parallel CI is not claimed fixed.
+
+**Prior: registered text-observation slice implemented and compared.**
 Existing `android_ui_dump` now accepts `all_elements:true` and
 `ocr_fallback:false`: include information labels, force a fresh native hierarchy,
 never capture screenshots/OCR or reuse cached OCR/merged text, propagate native
@@ -24,11 +41,13 @@ script syntax/diff checks; companion **16/16**, build/check, unchanged.
 The initial DEFAULT unit run was **661/662** (existing old-adapter test hit its
 5s test limit); isolated workflow rerun **5/5**. No old tests/limits were changed.
 Bounded concurrency success is NOT default full-suite/parallel-CI success.
-Active-session reload is still unverified.
+Loaded native-only observation is now verified above; production automatic
+input lifecycle remains unverified.
 
-**Next exact action:** verify the new schema/native-only output in a freshly
-loaded Pi session on a read-only fixture. Then finish finer command/screenshot/
-OCR/reconnect spans and companion ingestion before choosing another speed change.
+**Next exact action:** instrument screenshot capture/transfer/read/dimension and
+OCR availability/engine/parse with shared-clock success/failure/default/privacy
+coverage. Then annotation and automatic profiler runtime ingestion before
+choosing another speed change.
 The live driver exercises source-registered tools, not the currently loaded tools
 or model latency. Default CI reliability and automatic input lifecycle remain open.
 
@@ -131,8 +150,9 @@ persistent phone changes; Termux foreground restored and verified.
 - [ ] Full Step 2 instrumentation and companion-profiler ingestion.
 - [x] Fix default whole-field ADBKeyboard replacement and numeric Unicode XML
   readback; 4/4 focused source live cases pass without a replacement workaround.
-- [ ] Active-session tool reload and production automatic focus/readback/IME
-  lifecycle verification (focused source harness is not a production guarantee).
+- [x] Fresh loaded-session native-only observation schema/output on a read-only fixture.
+- [ ] Production automatic focus/readback/IME lifecycle verification (focused
+  source harness is not a production guarantee).
 - [ ] Default CI scheduling/time-limit reliability on this Termux host.
 - [x] Controlled focused source-operation optimization and paired before/after
   measurement with exact action/readback checks and verified capture counts.
@@ -172,7 +192,8 @@ The local commits recorded below supersede these initial checkpoints.
 - [x] Focus → default replacement → exact readback → original IME restoration
   verified in the dedicated source-level Forge fixture, on failure and success.
 - [ ] Make that verified lifecycle automatic in production tools and verify reload.
-- [ ] Running Pi tools reloaded and verified against changed source.
+- [x] Fresh-session loaded native-only dump schema/output verified on the fixture;
+  this does not verify every changed source path or automatic input lifecycle.
 
 ### Evidence, not causal conclusions
 
@@ -244,8 +265,9 @@ as acceptance criteria. First deterministic slice should run in seconds offline.
 ### 2. P0 — Instrument real pi-droid stages
 
 - [x] Inspect `exec.ts`, `ui-tree.ts` and `cache.ts` for the first timing slice.
-- [ ] Finish the instrumentation-boundary audit of `screenshot.ts`, `ocr.ts`,
-  `reconnect.ts` and `annotate.ts` before instrumenting those internal paths.
+- [x] Finish the instrumentation-boundary audit of `screenshot.ts`, `ocr.ts`,
+  `reconnect.ts` and `annotate.ts`; see COMMAND-TIMING.md. Only command/recovery
+  wait spans implemented in this slice, not the remaining internal stages.
 - [x] Add opt-in high-level `dumpUiTree` spans: device dump, XML transfer,
   local read, parsing/filtering, foreground, cache lookup/hit and whole OCR call.
   `src/adb/capture-timing.ts` supplies fixed fields/stages and per-call monotonic
@@ -256,8 +278,10 @@ as acceptance criteria. First deterministic slice should run in seconds offline.
   APIs with fake ADB at the process boundary. Assert private values stay absent.
 - [ ] Exercise the OCR span with a controlled OCR success/failure boundary;
   existing OCR behavior tests pass but do not assert span semantics.
-- [ ] Add finer command-attempt, screenshot capture/transfer, OCR-engine,
-  annotation and reconnect spans (not provided by this first capture slice).
+- [x] Add opt-in command-attempt and reconnect-wait spans sharing the capture
+  clock; explicit failure metadata, callback safety and concurrent recovery tests.
+- [ ] Add screenshot capture/transfer, OCR-engine, annotation and finer reconnect
+  discovery/connect spans (not provided by the command timing slice).
 - [x] Preserve explicit timeout/cancellation/error metadata through ADB/capture
   spans and benchmark IPC. Command AbortSignal supported; whole-observation and
   sibling cancellation, reconnect cancellation and default tool signal forwarding
@@ -276,8 +300,10 @@ as acceptance criteria. First deterministic slice should run in seconds offline.
 - [ ] Verify whole-observation cancellation in production tools, including
   parallel/sibling work. Harness process-group cleanup is not this guarantee.
 - [x] Capture a controlled source-level live baseline with high-level spans.
-- [ ] Connect internal spans to the companion profiler; native/tool-level
-  summaries do not yet ingest these source-level events.
+- [x] Companion offline ingestion of bounded traced source-capture reports;
+  preserves partial flags, separate clocks, explicit failures and old evidence.
+- [ ] Automatic runtime internal-span ingestion into companion tool traces;
+  offline summaries are not merged clocks or runtime hook integration.
 - [x] Add direct regression coverage for parent IPC allowlisting, malformed
   events, fixed failure categories, retention cap and truncation flags:
   tests/adb/capture-ipc.test.ts exercises the real CLI with adversarial worker IPC.
@@ -626,6 +652,27 @@ README, changelog and screen skill now correctly describe text output (not raw X
   This follow-up Markdown-only commit records publication. Companion remains
   unchanged at published `d7d1193`; its clean tree and matching remote main were
   independently verified. Active-session schema reload remains the next action.
+
+### Loaded native-only observation + command timing continuation — 2026-10-17
+
+See [COMMAND-TIMING.md](COMMAND-TIMING.md) for the loaded-tool fixture result,
+restoration, exact boundaries, companion CLI, validation and remaining work.
+Original checkpoint `4a8534d`; historical evidence/drivers preserved unchanged.
+
+- Loaded direct `android_ui_dump` accepts both options and reads the title/control
+  on Settings → Termux app info. Gboard unchanged; Termux/IME separately verified.
+- Source `adb_attempt` and `reconnect` spans share the observation clock; IPC
+  allowlist extended without changing retry rules, retention or fallback defaults.
+- `npm run test:unit -- --maxWorkers=2`: **665/665, 51 files**, twice. `npm run lint`,
+  `npm run build`, both capture-script syntax checks and `git diff --check`: PASS.
+- Isolated integration command unchanged from above: **9/9** with 20s/30s limits.
+  Final follow-up changed only concurrent-recovery assertions/docs in pi-droid;
+  full units rerun. Default full-parallel CI reliability is still not claimed.
+- Companion `npm test` / `npm run check`: **36/36**, build/check PASS. Initial test
+  regex failure disclosed in COMMAND-TIMING.md. Historical 20-round source report
+  ingests offline successfully; raw report untouched. No automatic runtime hooks.
+- No new live timing run or speedup claim. Next: finer screenshot/OCR stages,
+  then annotation and runtime companion ingestion. Production input lifecycle open.
 
 ## Operating boundaries
 

@@ -3,7 +3,8 @@ import { AdbError, type ExecutionFailureKind } from "./exec.js";
 
 /** Fixed vocabulary only: never attach commands, selectors, content or errors. */
 export type CaptureStage = "cache_lookup" | "device_dump" | "xml_transfer" |
-  "xml_read" | "xml_parse" | "foreground" | "ocr_fallback";
+  "xml_read" | "xml_parse" | "foreground" | "ocr_fallback" |
+  "adb_attempt" | "reconnect";
 
 export interface CaptureSpan {
   stage: CaptureStage;
@@ -17,6 +18,7 @@ export interface CaptureSpan {
 }
 
 export type CaptureSpanSink = (span: CaptureSpan) => void;
+export type CaptureTiming = ReturnType<typeof captureTiming>;
 
 /** Per-observation clock and sink, never global; diagnostics cannot break capture. */
 export function captureTiming(sink?: CaptureSpanSink) {

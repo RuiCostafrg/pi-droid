@@ -38,7 +38,7 @@ function validate(input) {
 // Defense in depth at the IPC/export boundary: fixed fields, finite timings,
 // bounded event count. Never spread a diagnostic payload into the report.
 const stages = new Set(["cache_lookup", "device_dump", "xml_transfer", "xml_read",
-  "xml_parse", "foreground", "ocr_fallback"]);
+  "xml_parse", "foreground", "ocr_fallback", "adb_attempt", "reconnect"]);
 const MAX_SPANS = 128;
 const failureKinds = new Set(["timeout", "cancelled", "exit", "signal", "spawn", "buffer", "unknown"]);
 function safeSpan(span) {

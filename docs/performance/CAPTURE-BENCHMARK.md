@@ -116,16 +116,22 @@ command, path, selector, device identifier or screen content is attached.
 | `xml_parse` | Production parser and interactive-element filtering |
 | `foreground` | Foreground-package query |
 | `ocr_fallback` | Entire OCR fallback call, when enabled by a source API caller |
+| `adb_attempt` | One local execFile attempt through completion/rejection and explicit failure classification; excludes reconnect and preflight validation |
+| `reconnect` | Awaited secure reconnect, including shared single-flight recovery waiting; discovery subcommands are not separately attached |
 
 The benchmark disables cache reads, OCR and reconnect. Its normal trace therefore
-contains five stages, not fabricated zero-duration spans for skipped work.
+contains five high-level spans plus three nested `adb_attempt` spans, not fabricated
+zero-duration spans for skipped work. Historical reports retain their original
+five-span shape. All nested command/retry events share the observation clock.
 `startMs` is relative to entry into this observation's timing context, not a
 wall-clock timestamp. Errors caught by the existing fallback path still produce
 an `error` stage even when `dumpUiTree` subsequently returns a result. This does
 not change existing exception/fallback behavior or infer a timeout from duration.
 
-**Limits:** these are high-level capture stages, not command-attempt, reconnect,
-screenshot, OCR-engine or annotation spans. Directory setup/cleanup, result
+**Limits:** screenshot, OCR-engine and annotation spans remain unimplemented.
+`adb_attempt` is local command-await time, not device CPU/UIAutomator internals.
+`reconnect` measures caller waiting, not separate discovery/connect attempts.
+Command and enclosing capture spans overlap; never sum them as elapsed wall time. Directory setup/cleanup, result
 assembly, callback time and other uninstrumented work mean stage totals are not
 the whole capture duration. Completed spans are streamed immediately over IPC,
 validated/allowlisted by the parent and retained even if a later stage times out
@@ -144,9 +150,12 @@ allowlisted execution failure categories, including capture failures swallowed
 by the existing fallback path (in their failed spans). Failed worker results
 and parent-enforced interruption/deadline samples also carry `failureKind`.
 A parent hard kill cannot fabricate the interrupted stage's failure metadata.
-The companion profiler does not yet ingest these spans. Do not
-treat this as complete Step 2 instrumentation or evidence of a device performance
-improvement.
+The companion profiler can now ingest these reports **offline** with
+`node ~/projects/pi-android-perf/dist/capture-cli.js REPORT.json` after its build.
+It preserves capture-local clocks and incomplete/truncated flags with sanitized,
+failure-aware summaries. Automatic runtime hook ingestion is not implemented. Do
+not treat this as complete Step 2 instrumentation or evidence of a device
+performance improvement.
 
 ## Semantics and limits
 

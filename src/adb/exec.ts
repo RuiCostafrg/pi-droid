@@ -8,6 +8,7 @@
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import type { DeviceInfo, ScreenSize } from "./types.js";
+import { captureTiming, type CaptureTiming, type CaptureSpanSink } from "./capture-timing.js";
 
 const execAsync = promisify(execFile);
 
@@ -31,6 +32,10 @@ export class AdbError extends Error {
 }
 
 export interface AdbExecOptions {
+  /** Opt-in content-free completed spans; diagnostic exceptions are ignored. */
+  onCaptureSpan?: CaptureSpanSink;
+  /** Internal shared observation clock; nested/retried work must not reset origin. */
+  captureClock?: CaptureTiming;
   /** Device serial to target */
   serial?: string;
   /** Command timeout in ms (default: 30000) */
@@ -52,6 +57,8 @@ const DEFAULT_MAX_BUFFER = 10 * 1024 * 1024;
  * Execute an ADB command and return stdout.
  */
 export async function adb(args: string[], options: AdbExecOptions = {}): Promise<string> {
+  const timing = options.captureClock ?? captureTiming(options.onCaptureSpan);
+  options = { ...options, captureClock: timing };
   const deviceCommand = ["shell", "exec-out", "push", "pull", "install", "uninstall", "get-state"].includes(args[0]);
   const { resolveSerial, reconnect } = await import("./reconnect.js");
   if (options.exactSerial && !options.serial?.trim()) throw new Error("Exact transport requires an explicit serial.");
@@ -75,26 +82,33 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
   const timer = timeout > 0 ? setTimeout(() => interrupt("timeout"), timeout) : undefined;
   timer?.unref();
   try {
-    const { stdout } = await execAsync("adb", fullArgs, {
-      // Disable Node's opaque timeout; our deadline above has explicit provenance.
-      timeout: 0, signal: controller.signal,
-      maxBuffer: options.maxBuffer ?? DEFAULT_MAX_BUFFER,
+    return await timing.async("adb_attempt", async () => {
+      try {
+        const { stdout } = await execAsync("adb", fullArgs, {
+          // Disable Node's opaque timeout; our deadline above has explicit provenance.
+          timeout: 0, signal: controller.signal,
+          maxBuffer: options.maxBuffer ?? DEFAULT_MAX_BUFFER,
+        });
+        return stdout.trim();
+      } catch (err: unknown) {
+        const error = err as { stderr?: string; code?: unknown; signal?: string; killed?: boolean };
+        const exitCode = typeof error.code === "number" ? error.code : null;
+        const failureKind: ExecutionFailureKind = interruption ?? (
+          error.code === "ERR_CHILD_PROCESS_STDIO_MAXBUFFER" ? "buffer" :
+          typeof error.code === "number" ? "exit" :
+          error.signal ? "signal" :
+          typeof error.code === "string" ? "spawn" : "unknown");
+        throw new AdbError(
+          `ADB command failed: adb ${fullArgs.join(" ")}`,
+          `adb ${fullArgs.join(" ")}`,
+          error.stderr ?? "",
+          exitCode, failureKind, error.signal ?? null, error.killed === true,
+        );
+      }
     });
-    return stdout.trim();
   } catch (err: unknown) {
-    const error = err as { stderr?: string; code?: unknown; signal?: string; killed?: boolean };
-    const exitCode = typeof error.code === "number" ? error.code : null;
-    const failureKind: ExecutionFailureKind = interruption ?? (
-      error.code === "ERR_CHILD_PROCESS_STDIO_MAXBUFFER" ? "buffer" :
-      typeof error.code === "number" ? "exit" :
-      error.signal ? "signal" :
-      typeof error.code === "string" ? "spawn" : "unknown");
-    const original = new AdbError(
-      `ADB command failed: adb ${fullArgs.join(" ")}`,
-      `adb ${fullArgs.join(" ")}`,
-      error.stderr ?? "",
-      exitCode, failureKind, error.signal ?? null, error.killed === true,
-    );
+    const original = err as AdbError;
+    const failureKind = original.failureKind;
     // Only retry transport-selection failures: the command has not executed.
     // Never replay timeouts, closed connections, authorization or app errors.
     const unavailable = /^(?:adb: (?:error: )?|error: )?(?:no devices\/emulators found|device offline|device '[^']+' not found)\s*$/.test(original.stderr);
@@ -103,7 +117,8 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
         !options.exactSerial && options.autoReconnect !== false && unavailable && wirelessTarget) {
       let recovered: string;
       try {
-        recovered = await reconnect(serial);
+        // Includes single-flight waiting, not just discovery owned by this caller.
+        recovered = await timing.async("reconnect", () => reconnect(serial));
       } catch (recoveryError) {
         throw new AdbError(
           `${original.message}; secure reconnect failed: ${recoveryError instanceof Error ? recoveryError.message : String(recoveryError)}`,

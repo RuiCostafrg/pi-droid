@@ -219,7 +219,8 @@ export async function dumpUiTree(
     debug?: boolean;
   } = {},
 ): Promise<UITreeResult> {
-  const timing = captureTiming(options.onCaptureSpan);
+  const timing = options.captureClock ?? captureTiming(options.onCaptureSpan);
+  options = { ...options, captureClock: timing };
   // Check cache first
   if (!options.skipCache) {
     const cached = timing.sync("cache_lookup", () => getCachedTree());

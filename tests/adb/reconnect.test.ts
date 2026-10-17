@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import type { CaptureSpan } from "../../src/adb/capture-timing.js";
 
 const mocks = vi.hoisted(() => ({ exec: vi.fn(), connect: vi.fn() }));
 vi.mock("node:child_process", () => ({ execFile: mocks.exec }));
@@ -105,14 +106,54 @@ describe("automatic secure reconnect", () => {
     expect(mocks.exec).toHaveBeenCalledTimes(1);
   });
 
+  it("times failed attempt, shared recovery wait and retry on one clock without private fields", async () => {
+    respond(fail("error: device offline"), "recovered");
+    mocks.connect.mockImplementation(async () => {
+      await new Promise(resolve => setTimeout(resolve, 80));
+      return "192.168.1.42:42000";
+    });
+    const { adb } = await import("../../src/adb/exec.js");
+    const spans: CaptureSpan[] = [];
+    expect(await adb(["shell", "PRIVATE_COMMAND"], { onCaptureSpan: span => {
+      spans.push(span); throw Error("PRIVATE_SINK");
+    } })).toBe("recovered");
+    expect(spans.map(s => [s.stage, s.outcome, s.failureKind])).toEqual([
+      ["adb_attempt", "error", "exit"], ["reconnect", "ok", undefined], ["adb_attempt", "ok", undefined],
+    ]);
+    expect(spans[1].durationMs).toBeGreaterThanOrEqual(75);
+    expect(spans[2].startMs).toBeGreaterThanOrEqual(spans[1].startMs + spans[1].durationMs);
+    expect(JSON.stringify(spans)).not.toMatch(/PRIVATE|192\.168|shell/);
+  });
+
+  it("retains a failed recovery span but preserves the original command error", async () => {
+    respond(fail("error: device offline"));
+    mocks.connect.mockRejectedValue(new Error("PRIVATE_DISCOVERY"));
+    const { adb } = await import("../../src/adb/exec.js");
+    const spans: CaptureSpan[] = [];
+    await expect(adb(["shell", "true"], { onCaptureSpan: span => spans.push(span) }))
+      .rejects.toMatchObject({ failureKind: "exit" });
+    expect(spans.map(s => [s.stage, s.outcome, s.failureKind])).toEqual([
+      ["adb_attempt", "error", "exit"], ["reconnect", "error", "unknown"],
+    ]);
+    expect(JSON.stringify(spans)).not.toContain("PRIVATE");
+  });
+
   it("shares recovery between concurrent commands", async () => {
     respond(fail("error: device offline"), fail("error: device offline"), "one", "two");
     let release!: (serial: string) => void;
     mocks.connect.mockImplementation(() => new Promise(resolve => { release = resolve; }));
     const { adb } = await import("../../src/adb/exec.js");
-    const results = Promise.all([adb(["shell", "true"]), adb(["shell", "true"])]);
+    const traces: CaptureSpan[][] = [[], []];
+    const results = Promise.all(traces.map(spans => adb(["shell", "true"], {
+      onCaptureSpan: span => spans.push(span),
+    })));
     await vi.waitFor(() => expect(mocks.connect).toHaveBeenCalledTimes(1));
     release("192.168.1.42:42000");
     expect(await results).toEqual(["one", "two"]);
+    for (const spans of traces) {
+      expect(spans.map(s => s.stage)).toEqual(["adb_attempt", "reconnect", "adb_attempt"]);
+      expect(spans[2].startMs).toBeGreaterThanOrEqual(spans[1].startMs + spans[1].durationMs);
+    }
+    expect(mocks.connect).toHaveBeenCalledTimes(1);
   });
 });
