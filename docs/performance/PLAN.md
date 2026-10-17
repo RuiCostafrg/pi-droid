@@ -562,8 +562,11 @@ consumer sites changed; all src/ files and frozen v1 remain unchanged.
   build/check PASS, no companion edits. Default parallel CI remains unverified.
 - Original Gboard and Termux restored on every live outcome and independently
   verified at completion. No new APKs/helpers/permissions/debugging exposure.
-- Standing instruction: commit/push all new consumers/tests/evidence/Markdown,
-  then verify clean trees and remote refs. Publication checkpoint follows.
+- Published consumer/evidence checkpoint: **`ef767eb`**, `Adopt bounded field
+  selection in versioned full workflow`, pushed to the user's origin/main.
+  Remote main was independently verified against local HEAD and the working tree
+  was clean after push. This follow-up Markdown-only commit records publication.
+  Companion remains unchanged at published `d7d1193` with its validation rerun.
 
 ## Operating boundaries
 
