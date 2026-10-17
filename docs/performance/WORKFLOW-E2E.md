@@ -1,5 +1,10 @@
 # Amazon.de → Forge end-to-end regression protocol (v1)
 
+**Historical frozen v1.** The later bounded-field consumer migration and its
+separate, equivalent baseline are in [WORKFLOW-V2.md](WORKFLOW-V2.md). Do not
+compare timings across versions or reinterpret this metadata-only v1 pair as
+a speedup. The v1 runner and its raw reports remain unchanged.
+
 User-requested, opt-in real-phone E2E. The original agent-assisted acceptance
 protocol is below; an executable source/API fixture runner and offline comparison
 are now available (usage at the end). Neither is an unattended/default CI test.

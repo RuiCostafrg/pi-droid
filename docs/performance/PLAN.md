@@ -2,19 +2,23 @@
 
 ## Resume here
 
-**Implemented: bounded fresh read → synchronous select → guarded tap.**
-The user approved the interface and both test seams. The public source/SDK
-`readSelectTap` removes an inspect-then-click duplicate capture without cached
-coordinates. Equivalent old-path baseline was saved BEFORE production edits;
-same live driver hash, **4/4 exact readbacks on both paths**, **2 → 1 captures**,
-median operation **5322.77ms → 2806.34ms (47.28% lower)**. Full focused runner:
-84.52s → 74.36s. This is one focused fixture, NOT a full-workflow speedup.
-See [interface, evidence and limits](READ-SELECT-TAP.md).
+**Implemented: full v2 source-workflow adoption of bounded field selection.**
+The public `readSelectTap` now backs all 30 numeric-field selections in the
+versioned Amazon.de → Forge consumer. Baseline JSON AND Markdown were saved
+before consumer migration; the original adapter is archived byte-for-byte.
+Same driver/recorded engine hashes and public offers, identical correctness
+checks: **370.746s → 289.733s (81.012s / 21.85% lower in this pair)**.
+Captures **104 → 73**: 30 intentional duplicate removals, PLUS one fewer
+alignment cycle under unchanged polling. Do NOT attribute all time/capture
+variation solely to the migration or claim a population effect. All 30 values
+and all 30 persisted values pass. See [WORKFLOW-V2.md](WORKFLOW-V2.md).
+The earlier focused operation result remains in [READ-SELECT-TAP.md](READ-SELECT-TAP.md).
 
-**Next speed priority:** adopt it at eligible synchronous selection sites in a
-versioned consumer/workflow, preserving polling and independent readback. Save
-an equivalent whole-workload baseline before that migration; keep frozen v1 and
-its reports intact. Text-only registered-tool output is a separate later slice.
+**Next speed priority:** design information-reading output at the registered
+text-observation seam, including non-interactive text and explicit no-screenshot/
+OCR policy. Agree that tool-output seam and save an equivalent baseline before
+implementation. Existing text dump is already screenshot-free on native success.
+Do not introduce a new name or extend cache TTL and call that a speedup.
 Finer Step 2 spans and profiler ingestion remain unfinished follow-up work.
 Step 1's offline feedback loop and opt-in live runner are implemented and
 validated. A read-only live static-label baseline is now recorded: 20/20 correct
@@ -23,8 +27,9 @@ now has a saved pre-implementation tool baseline and passing original/changed
 source pair, including editable-field persistence checks with an explicit clear
 workaround. A follow-up now fixes default whole-field clearing and Unicode XML
 readback, with **4/4 focused live cases passing without a replacement workaround**.
-See [input fix evidence](reports/input-replacement-fix-2026-10-16.md). No controlled
-full-workflow latency optimization exists; Step 1 is NOT fully complete.
+See [input fix evidence](reports/input-replacement-fix-2026-10-16.md). The later
+v2 consumer now has the controlled migration pair above; broader acceptance
+(independent name/stock/detail-price checks and loaded-tool path) remains open.
 See [workflow protocol](WORKFLOW-E2E.md), [evidence](reports/workflow-evidence-2026-10-16.md)
 and [comparison](reports/workflow-comparison-2026-10-16.md).
 See [runner documentation](CAPTURE-BENCHMARK.md) and
@@ -40,9 +45,10 @@ checkpoint; do not conflate them with the earlier historical commits.
 
 Step 2's high-level timing and partial-span streaming slices are implemented at
 the public `dumpUiTree`/benchmark CLI seams, tested with synthetic ADB at the
-process boundary. Latest bounded-operation validation: **629 pi-droid unit
-tests / 48 files, 9 isolated sequential integration tests, and 16 companion tests
-pass**, plus both builds/type checks. Default parallel CI still
+process boundary. Latest consumer-migration validation: **649 pi-droid unit
+tests / 50 files, 9 isolated sequential integration tests, and 16 companion tests
+pass**, plus both builds/type checks. The initial full unit run was 647/648;
+its test-only timing follow-up and final rerun are disclosed below. Default parallel CI still
 hits the documented short integration time limits; it is NOT marked passing.
 
 Partial-span streaming is implemented and regression-tested under deadline and
@@ -56,23 +62,26 @@ reference (median 2589.66ms); this is not a paired-operation or workflow baselin
 **Bounded-operation slice complete:** consent, pre-change operation baseline,
 30 process-level regressions, public implementation/export and same-driver live
 pair are recorded in [READ-SELECT-TAP.md](READ-SELECT-TAP.md).
-**Next exact action:** identify a real synchronous consumer and plan its versioned
-migration/comparison without deleting polling, foreground checks or readbacks.
-The current production helper is not automatically used by existing tools or
-frozen v1. Do not obtain apparent library speedups merely by weakening a driver.
+**Consumer slice complete:** [v2 protocol and results](WORKFLOW-V2.md), including
+failed baseline attempts, frozen passing driver, archived before adapter and
+strict offline comparison. No production src/ changes were needed for adoption.
+**Next exact action:** specify registered text-only information output and its
+public tool-output test seam; establish the equivalent old-path task baseline.
+Existing registered tools and frozen v1 remain unchanged.
 Finer command-attempt/screenshot/OCR/reconnect spans and profiler ingestion remain
 open; add them where required to attribute the change. Explicit execution metadata
 is implemented/tested (see validation below); do not infer timeout from duration. The workflow-reproduced input clear
 bug is now fixed and source-level live regression-tested; production automatic
 focus/value verification, broadcast exposure and active-session reload remain open.
 
-Workflow source pair: **361.679s before / 362.485s after (+0.22%)**, same harness
+Historical metadata-only v1 source pair: **361.679s before / 362.485s after (+0.22%)**, same harness
 hash and 364 operations each, all numeric write/persistence checks pass. This
 is diagnostic validation, NOT a speedup. The original chronological tool baseline
 was saved before source edits; the additional original-revision source reference
 was run afterward from an isolated git extraction. Failed harness attempts are
-preserved. Six explicitly test-created Forge drafts remain; no real workout was
-marked finished. Gboard and Termux restored/verified after every run.
+preserved. Six v1 test drafts remain; v2 adds three disclosed test drafts,
+**nine total**. No real workout was marked finished. Gboard and Termux were
+restored/verified after every run.
 
 Live result: capture median 2.557s, p95 2.602s, max 2.610s; device-dump spans
 accounted for ~94.3% of cumulative capture time. This is one fixture baseline,
@@ -99,7 +108,9 @@ persistent phone changes; Termux foreground restored and verified.
 - [ ] Default CI scheduling/time-limit reliability on this Termux host.
 - [x] Controlled focused source-operation optimization and paired before/after
   measurement with exact action/readback checks and verified capture counts.
-- [ ] Full-workflow adoption and equivalent whole-workload comparison.
+- [x] Versioned full source-workflow consumer adoption and equivalent comparison,
+  with identical correctness, preserved polling and explicit alignment variation.
+- [ ] Registered information-reading tool interface and equivalent task comparison.
 
 Read this file first, then [the original handoff](handoff-2026-10-16.md).
 Companion repository: `~/projects/pi-android-perf`.
@@ -180,7 +191,9 @@ is NOT the same implementation as pi-droid capture/pull.
 - [x] Validate live known editable-field values separately: Forge source workflow
   wrote/reopened/read back all 30 exact numeric fields. Explicit ADB_CLEAR_TEXT
   workaround required; does not verify/fix the default clear_first lifecycle.
-- [ ] Run paired before/after on the same fixture after one controlled change.
+- [x] Paired focused-operation and v2 multi-app source fixtures after controlled
+  changes; v2 keeps its own equivalent baseline rather than using old v1 timings.
+  This is not a static Settings-backend or loaded Pi-tool comparison.
 
 **Approved Step 1 seams (also used for the next timing slice):**
 
@@ -259,7 +272,10 @@ cache/OCR/reconnect until spans distinguish them.
 - [ ] Add information-reading output including non-interactive text.
 - [ ] Add focused output and bounded action/wait/observe batches, with explicit
   verification checkpoints and cancellation.
-- [ ] Compare correctness and latency against the Step 1 baseline.
+- [x] Compare bounded v2 consumer correctness and latency against its equivalent
+  pre-migration baseline; all values/reopen pass and 30 targeted captures removed.
+- [ ] Equivalent registered text-observation task baseline/comparison (separate
+  from the static Settings reference or the v2 source workflow).
 
 Do not raise cache TTL blindly or reuse stale coordinates.
 
@@ -507,6 +523,47 @@ JSON reports, source/driver hashes and limitations.
   was clean after push. This follow-up Markdown-only commit records that result.
   Companion remains unchanged at previously published `d7d1193`; its validation
   was rerun successfully for this slice.
+
+### Workflow v2 consumer migration — 2026-10-17
+
+See [WORKFLOW-V2.md](WORKFLOW-V2.md), its immutable baseline Markdown/JSON,
+failed attempts and generated comparison. Only the 30 numeric-field selection
+consumer sites changed; all src/ files and frozen v1 remain unchanged.
+
+- Baseline old consumer preserved as `scripts/workflow-field-action-before.mjs`.
+  Active `workflow-field-action.mjs` now delegates to the public bounded helper.
+  Same frozen `workflow-v2.mjs` for the successful pair, source hashes verified.
+- **370745.62ms before → 289733.50ms after**, 81.01s / 21.85% lower in this pair;
+  **104 → 73** completed hierarchy captures. 30 deliberate removals plus ONE
+  alignment-cycle difference (2 → 1); not all elapsed improvement is causal proof.
+- All 30 numeric values and all 30 persisted values pass; same 34 correctness/
+  count entries, public offers and nine-file recorded engine hash. Query focus,
+  polling, clipping alignment, input, settles and readback were not removed.
+- Failed baseline 1: all numeric writes pass but OCR label misread; persisted
+  reopen unverified. Failed baseline 2: query empty at readback; no Forge draft.
+  Both restored IME/Termux and are preserved, not successful reference runs.
+  Before the successful baseline the driver gained stable exact search-field
+  and explicit focus checks; final before/after hash matches. OCR threshold and
+  exact identity matching were NOT weakened.
+- Three new test drafts retained: `E2E Lower v2 source-v2before1`,
+  `E2E Lower v2 source-before55`, `E2E Lower v2 source-after55`; nine including
+  earlier v1 artifacts. No purchases, existing training edits or completed sets.
+- Public consumer/external ADB red → green (expected one dump, observed two),
+  five adapter/guard cases; strict offline comparison CLI has 15 tests, including
+  failures/provenance/correctness/removed work/privacy/output exclusivity.
+- Initial full unit run: 647/648 (one rejected positive consumer functional test).
+  Its original caught error was not retained, so host-load/selection-window cause
+  is not asserted proven. Offline tests now expose failure diagnostics, use the
+  supported 1000ms window ONLY for synthetic functional count tests, and add a
+  controlled 700ms final-foreground delay proving the PRODUCTION DEFAULT 500ms
+  window rejects before tap. No live driver, helper window or src/ changes.
+- Final full unit rerun **649/649, 50 files PASS**. Isolated sequential integration
+  **9/9**, lint/build/four new script syntax checks PASS. Companion **16/16** plus
+  build/check PASS, no companion edits. Default parallel CI remains unverified.
+- Original Gboard and Termux restored on every live outcome and independently
+  verified at completion. No new APKs/helpers/permissions/debugging exposure.
+- Standing instruction: commit/push all new consumers/tests/evidence/Markdown,
+  then verify clean trees and remote refs. Publication checkpoint follows.
 
 ## Operating boundaries
 

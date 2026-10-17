@@ -24,7 +24,9 @@ driver hash before/after:
 2 → 1 capture reduction. Full focused runner was 12.02% lower. These are four
 samples per path on one fixture, not a population/tail claim or a whole-workflow
 speedup. The prior 46 adjacent captures remain candidates, not proven removals.
-The existing workflow has NOT been migrated or remeasured with this operation.
+At this focused-operation checkpoint, the full workflow had not yet been
+migrated. The subsequent [v2 consumer adoption](WORKFLOW-V2.md) now has its own
+complete pre-migration/after comparison; do not substitute focused timings for it.
 
 Immutable evidence:
 - [Before](reports/read-select-tap-before-2026-10-17.json)
@@ -183,7 +185,8 @@ See [PLAN.md](PLAN.md) for the final validation counts and published checkpoint.
 - No registered-tool changes, active-session reload proof, automatic migration of
   existing workflows, UI backend change or fix to `typeIntoField(clearFirst)`.
 
-Next: adopt the helper in a versioned workflow/consumer at explicitly eligible
-synchronous selection sites, keep polling/checkpoints, freeze an equivalent
-baseline and measure the complete workload. Non-interactive text-only tool output
-is another separate slice, not part of this comparison.
+Follow-up complete: [v2](WORKFLOW-V2.md) adopts this helper for 30 eligible
+numeric-field selections, preserves polling/checkpoints and records a separate
+equivalent full source-workflow pair. Original v1 and registered tools remain
+unchanged. Non-interactive text-only tool output is the next separate slice,
+not part of either this focused comparison or the v2 migration.

@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Versioned Amazon.de → Forge source workflow adopting bounded field selection, with preserved old consumer, pre-migration evidence and strict offline comparison gates. Existing v1 and registered tools remain unchanged.
 - Public `readSelectTap` source/SDK operation: one fresh native hierarchy, immutable synchronous target selection, foreground/identity/bounds checks, cooperative deadlines and cancellation, with no cached coordinates or tap retries. Includes a frozen live comparison driver and preserved pre-change evidence.
 - Explicit ADB execution failure categories and `AbortSignal` command cancellation, propagated through content-free capture timing and bounded benchmark IPC.
 - Opt-in capture and source/API workflow regression runners, preserved before/after evidence, and offline workflow comparison.

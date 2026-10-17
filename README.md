@@ -149,7 +149,9 @@ for a bounded fresh read → synchronous selection → guarded tap without a sec
 hierarchy dump. It requires an explicit authorized serial, expected package,
 pure local selector and exclusive device interaction. It rejects ambiguous or
 stale/forged selections; callers must still read back the app outcome. Existing
-registered tools are unchanged.
+registered tools are unchanged. The [versioned Amazon → Forge consumer](docs/performance/WORKFLOW-V2.md)
+now uses it for 30 numeric-field selections, with a saved pre-migration baseline,
+full readback/persistence comparison and explicitly reported polling variation.
 
 ### App and Navigation (3 tools)
 

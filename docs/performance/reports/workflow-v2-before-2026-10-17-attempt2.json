@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 2,
+  "kind": "source-workflow-e2e-v2",
+  "selectionStrategy": "inspect-then-verify",
+  "consumerHash": "b4a1747e406a88cfe40b15339dd893f478c6204e672bbd2ffaf345b4107c698e",
+  "engineHash": "2a78ae7818fa317be9585b1877eb55ac52c22fa20b1d0ba0d1b3d79bc45d3ce6",
+  "phase": "before",
+  "startedAt": "2026-10-17T09:09:54.863Z",
+  "harnessHash": "eb8da7b703fe01572f5befb4fe9b74fece395729a135bb1bcc10ebe469c1be7b",
+  "status": "fail",
+  "checks": [
+    {
+      "name": "fixture_screen_1080x2340",
+      "ok": true
+    },
+    {
+      "name": "amazon_search_field",
+      "ok": true
+    },
+    {
+      "name": "amazon_query_readback",
+      "ok": false
+    },
+    {
+      "name": "original_ime_restored",
+      "ok": true
+    },
+    {
+      "name": "termux_restored",
+      "ok": true
+    }
+  ],
+  "operations": [
+    {
+      "stage": "shell",
+      "startMs": 14.550572999999986,
+      "durationMs": 109.18661400000008,
+      "outcome": "ok"
+    },
+    {
+      "stage": "screen_size",
+      "startMs": 123.99880200000007,
+      "durationMs": 91.6791659999999,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 216.479427,
+      "durationMs": 87.07276000000002,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 303.56651,
+      "durationMs": 138.3664060000001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 442.572499,
+      "durationMs": 3415.38828,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 3858.2801019999997,
+      "durationMs": 2603.875156,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 6462.3897369999995,
+      "durationMs": 106.47020800000064,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 6569.070883,
+      "durationMs": 504.095781,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 7073.212445,
+      "durationMs": 92.58713499999976,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 7165.865986,
+      "durationMs": 137.84198000000015,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 7303.739372,
+      "durationMs": 3008.6800509999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "restore_ime",
+      "startMs": 10313.465412,
+      "durationMs": 69.4811979999995,
+      "outcome": "ok"
+    },
+    {
+      "stage": "restore_termux",
+      "startMs": 10434.336975,
+      "durationMs": 5611.613851999999,
+      "outcome": "ok"
+    }
+  ],
+  "captureSpans": [
+    {
+      "stage": "device_dump",
+      "startMs": 8.673489000000018,
+      "durationMs": 3262.3745819999995,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 3271.5096339999996,
+      "durationMs": 31.376406000000316,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 3302.904425,
+      "durationMs": 1.3071359999994456,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 3304.4315089999996,
+      "durationMs": 14.191666000000623,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 3318.632134,
+      "durationMs": 87.69958299999962,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 2.35171900000023,
+      "durationMs": 2452.7132279999996,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2455.1873430000005,
+      "durationMs": 46.65656299999955,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2501.9064580000004,
+      "durationMs": 2.2639579999995476,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2504.202187,
+      "durationMs": 12.168594000000667,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2516.414635,
+      "durationMs": 87.33760400000028,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 6.09286499999962,
+      "durationMs": 2853.042759000001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2859.3282280000003,
+      "durationMs": 32.18057299999964,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2891.5300509999997,
+      "durationMs": 1.3455730000005133,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2892.8880200000003,
+      "durationMs": 16.157968999999866,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2909.0555719999993,
+      "durationMs": 99.44171900000038,
+      "outcome": "ok"
+    }
+  ],
+  "captureSpansTruncated": false,
+  "failureCheckpoint": "assertion",
+  "captureCounts": {
+    "completedDeviceDumps": 3,
+    "captureStageErrors": 0,
+    "explicitOcrCalls": 0
+  },
+  "durationMs": 16181.952441
+}
