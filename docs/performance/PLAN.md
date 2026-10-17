@@ -501,8 +501,12 @@ JSON reports, source/driver hashes and limitations.
   requires exclusive device interaction; guards do not make Android atomic or
   preempt infinite JS callbacks. Always verify app outcome; never replay a failed
   tap automatically. Reports omit raw content/errors/transport identifiers.
-- Standing user instruction: commit/push implementation, tests, evidence and
-  Markdown to origin/main; verify clean state/remote refs after publication.
+- Published implementation/evidence checkpoint: **`9264bb3`**, `Capture once in
+  bounded read-select-tap operations`, pushed to the user's pi-droid origin/main.
+  Remote main independently matched the implementation HEAD and the working tree
+  was clean after push. This follow-up Markdown-only commit records that result.
+  Companion remains unchanged at previously published `d7d1193`; its validation
+  was rerun successfully for this slice.
 
 ## Operating boundaries
 
