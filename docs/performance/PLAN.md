@@ -673,6 +673,12 @@ Original checkpoint `4a8534d`; historical evidence/drivers preserved unchanged.
   ingests offline successfully; raw report untouched. No automatic runtime hooks.
 - No new live timing run or speedup claim. Next: finer screenshot/OCR stages,
   then annotation and runtime companion ingestion. Production input lifecycle open.
+- Published implementation checkpoints (both origin/main hashes independently
+  matched to local HEAD after push, both working trees clean): pi-droid
+  **`fca7737`** — `Trace ADB attempts and reconnect waits on the capture clock`;
+  companion **`b18e04a`** — `Ingest bounded source capture timings offline`.
+  This subsequent tracker-only commit records publication; no new phone test or
+  implementation change was made after the validated implementation checkpoints.
 
 ## Operating boundaries
 
