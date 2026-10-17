@@ -620,7 +620,12 @@ README, changelog and screen skill now correctly describe text output (not raw X
   lint/build/syntax/diff checks and companion **16/16** plus build/check pass.
 - No source/workflow edits after measured after-hashes; baseline reports frozen.
   Original Gboard and Termux independently verified restored; no new phone records.
-- Publication checkpoint will be recorded after commit/push verification.
+- Published implementation/evidence checkpoint: **`2664006`**, `Expose native-only
+  information in registered text observations`, pushed to the user's origin/main.
+  Remote main independently matched local HEAD and the working tree was clean.
+  This follow-up Markdown-only commit records publication. Companion remains
+  unchanged at published `d7d1193`; its clean tree and matching remote main were
+  independently verified. Active-session schema reload remains the next action.
 
 ## Operating boundaries
 
