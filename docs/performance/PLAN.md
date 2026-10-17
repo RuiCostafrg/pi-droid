@@ -45,9 +45,15 @@ Partial-span streaming is implemented and regression-tested under deadline and
 SIGTERM (including interruption before any stage completes). Parent retention is
 allowlisted and bounded, with explicit trace completeness/truncation flags.
 
-**Next exact action:** inspect observation/caller paths and count avoidable fresh
-dumps/screenshots, preserving safety-critical observations. Save the next current
-baseline before implementation, then regression-test one scoped optimization.
+**Audit/reference complete:** see [OBSERVATION-AUDIT.md](OBSERVATION-AUDIT.md).
+Historical workflow has 46 adjacent second captures (120.63s), not 46 proven-safe
+removals. Current unchanged source passed a new **6/6** read-only Settings capture
+reference (median 2589.66ms); this is not a paired-operation or workflow baseline.
+**Next exact action:** confirm the proposed bounded fresh read/select/tap public
+source seam and live CLI seam, then freeze/save the equivalent old-path operation
+baseline BEFORE implementation. No new public-operation tests or production
+optimization have been written yet. Do not obtain apparent library speedups by
+merely deleting checks from the benchmark.
 Finer command-attempt/screenshot/OCR/reconnect spans and profiler ingestion remain
 open; add them where required to attribute the change. Explicit execution metadata
 is implemented/tested (see validation below); do not infer timeout from duration. The workflow-reproduced input clear
@@ -234,6 +240,12 @@ cache/OCR/reconnect until spans distinguish them.
 
 ### 3. P1 — Reduce unnecessary observation work and round trips
 
+- [x] Audit production callers/output and historical workflow adjacency; preserve
+  a fresh current-source capture-only reference before implementation. See
+  [observation audit](OBSERVATION-AUDIT.md), including the safe-removal limits,
+  proposed source/API test seams and a separate input-helper issue discovered.
+- [ ] Confirm the bounded fresh read/select/tap interface/test seams and preserve
+  its equivalent old-path operation baseline, then implement one vertical slice.
 - [ ] Add text-only observation with no screenshot capture.
 - [ ] Add information-reading output including non-interactive text.
 - [ ] Add focused output and bounded action/wait/observe batches, with explicit

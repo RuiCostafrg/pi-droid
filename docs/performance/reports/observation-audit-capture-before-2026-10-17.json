@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "status": "pass",
+  "requestedRounds": 6,
+  "completedRounds": 6,
+  "desiredMs": 5000,
+  "observationMs": 10000,
+  "budgetMs": 45000,
+  "budgetExhausted": false,
+  "cancelled": false,
+  "durationMs": 19330.953743000002,
+  "samples": [
+    {
+      "round": 1,
+      "outcome": "ok",
+      "ms": 3235.33427,
+      "captureMs": 2594.001978,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.319219000000089,
+          "durationMs": 2460.72854,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2467.442916,
+          "durationMs": 27.961874999999964,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2495.548384,
+          "durationMs": 2.305989999999838,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2498.0807800000002,
+          "durationMs": 6.077032000000145,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2504.258228,
+          "durationMs": 88.04583300000013,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 2,
+      "outcome": "ok",
+      "ms": 3198.4409370000003,
+      "captureMs": 2570.105364,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.362969000000021,
+          "durationMs": 2433.394582,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2438.612082,
+          "durationMs": 31.179740000000038,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2469.980572,
+          "durationMs": 2.7716669999999795,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2473.0348950000002,
+          "durationMs": 5.874530999999934,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2479.008228,
+          "durationMs": 89.34890700000005,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 3,
+      "outcome": "ok",
+      "ms": 3214.121457000001,
+      "captureMs": 2585.3103109999997,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.5608849999999848,
+          "durationMs": 2432.1833850000003,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2438.009113,
+          "durationMs": 28.085677999999916,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2466.266145,
+          "durationMs": 2.6877599999997983,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2469.225832,
+          "durationMs": 6.92208299999993,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2476.259686,
+          "durationMs": 106.92885400000023,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 4,
+      "outcome": "ok",
+      "ms": 3180.747864000001,
+      "captureMs": 2575.0626549999997,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.3696350000000166,
+          "durationMs": 2436.670989,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2441.487916,
+          "durationMs": 26.793281000000206,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2468.4355720000003,
+          "durationMs": 2.1756249999998545,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2470.847291,
+          "durationMs": 5.731666000000132,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2476.6767179999997,
+          "durationMs": 96.71531199999981,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 5,
+      "outcome": "ok",
+      "ms": 3228.2241129999984,
+      "captureMs": 2611.590624,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.4004690000000437,
+          "durationMs": 2452.927447,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2459.328072,
+          "durationMs": 28.547759999999926,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2488.042499,
+          "durationMs": 4.7212499999996,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2493.35677,
+          "durationMs": 10.150468000000274,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2503.627291,
+          "durationMs": 106.2408330000003,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    },
+    {
+      "round": 6,
+      "outcome": "ok",
+      "ms": 3261.214269,
+      "captureMs": 2605.5092700000005,
+      "spans": [
+        {
+          "stage": "device_dump",
+          "startMs": 2.5474479999999176,
+          "durationMs": 2471.421874,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2477.020416,
+          "durationMs": 27.294166000000132,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2504.482916,
+          "durationMs": 2.693072999999913,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2507.45927,
+          "durationMs": 6.758280999999897,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2514.313385,
+          "durationMs": 89.50291599999991,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true
+    }
+  ],
+  "summary": {
+    "attempts": 6,
+    "successes": 6,
+    "failures": 0,
+    "timeouts": 0,
+    "wallTotalMs": 19318.08291,
+    "failedMs": 0,
+    "minMs": 3180.747864000001,
+    "medianMs": 3221.1727849999997,
+    "p95Ms": 3261.214269,
+    "maxMs": 3261.214269,
+    "totalMs": 19318.082909999997,
+    "capture": {
+      "minMs": 2570.105364,
+      "medianMs": 2589.6561444999998,
+      "p95Ms": 2611.590624,
+      "maxMs": 2611.590624,
+      "totalMs": 15541.580202000001
+    }
+  },
+  "notes": [
+    "Fresh source-level dumpUiTree captures; cache reads, OCR and reconnect disabled.",
+    "ms includes worker startup and capture; captureMs measures dumpUiTree only.",
+    "Hard deadlines kill local worker/ADB subprocesses; device-side UIAutomator may outlive ADB.",
+    "Cleanup is best effort outside deadlines. Production remote XML path is unchanged.",
+    "Success latency statistics exclude failures; all attempts and failed elapsed time are retained.",
+    "Few samples do not establish a population p95. No selectors, content, serials or errors retained."
+  ]
+}
