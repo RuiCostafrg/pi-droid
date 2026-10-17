@@ -151,10 +151,20 @@ export class Device {
 
   /**
    * Get a text summary of the current screen (for LLM context).
+   * Defaults preserve interactive output and automatic OCR fallback/cache reads.
+   * ocrFallback:false bypasses cache and fails closed on native acquisition errors;
+   * it never captures screenshots or returns older OCR/merged information.
    */
-  async describeScreen(): Promise<string> {
-    const tree = await dumpUiTree(this.opts);
-    return summarizeTree(tree);
+  async describeScreen(options: { allElements?: boolean; ocrFallback?: boolean } = {}): Promise<string> {
+    const tree = await dumpUiTree({
+      ...this.opts,
+      ocrFallback: options.ocrFallback,
+      // Native-only means this observation, not an older merged/OCR snapshot.
+      skipCache: options.ocrFallback === false,
+      requireDumpSuccess: options.ocrFallback === false,
+      throwOnError: options.ocrFallback === false,
+    });
+    return summarizeTree(tree, options);
   }
 
   // --- Selector-based actions ---

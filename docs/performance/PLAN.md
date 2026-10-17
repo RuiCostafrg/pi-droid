@@ -2,7 +2,37 @@
 
 ## Resume here
 
-**Implemented: full v2 source-workflow adoption of bounded field selection.**
+**Latest: registered text-observation slice implemented and compared.**
+Existing `android_ui_dump` now accepts `all_elements:true` and
+`ocr_fallback:false`: include information labels, force a fresh native hierarchy,
+never capture screenshots/OCR or reuse cached OCR/merged text, propagate native
+acquisition errors. Defaults are unchanged. User confirmed this interface and
+registered-tool/synthetic-ADB output seam before tests; equivalent old-path
+baseline JSON + Markdown were saved BEFORE source edits.
+See [TEXT-OBSERVATION.md](TEXT-OBSERVATION.md) for the contract, evidence and limits.
+
+Live same-driver read-only task: **6/6 correct on both paths**, image captures and
+pulls **6 → 0**, native captures **6 → 6**. Median **3077.87 → 3128.77ms (+1.65%)**:
+**no demonstrated latency speedup**. Old native-only summary omitted the title;
+old `android_look(all_elements:true)` was the equivalent information-reading path.
+No new drafts/typing/settings/installs; original Gboard and Termux verified restored.
+Frozen v1/v2 workflows/evidence remain untouched.
+
+Latest validation: **662/662 unit tests / 51 files with `--maxWorkers=2`**, 13 new
+registered-tool regressions, **9/9 isolated sequential integrations**, lint/build/
+script syntax/diff checks; companion **16/16**, build/check, unchanged.
+The initial DEFAULT unit run was **661/662** (existing old-adapter test hit its
+5s test limit); isolated workflow rerun **5/5**. No old tests/limits were changed.
+Bounded concurrency success is NOT default full-suite/parallel-CI success.
+Active-session reload is still unverified.
+
+**Next exact action:** verify the new schema/native-only output in a freshly
+loaded Pi session on a read-only fixture. Then finish finer command/screenshot/
+OCR/reconnect spans and companion ingestion before choosing another speed change.
+The live driver exercises source-registered tools, not the currently loaded tools
+or model latency. Default CI reliability and automatic input lifecycle remain open.
+
+**Prior completed slice: full v2 source-workflow adoption of bounded field selection.**
 The public `readSelectTap` now backs all 30 numeric-field selections in the
 versioned Amazon.de → Forge consumer. Baseline JSON AND Markdown were saved
 before consumer migration; the original adapter is archived byte-for-byte.
@@ -14,11 +44,9 @@ variation solely to the migration or claim a population effect. All 30 values
 and all 30 persisted values pass. See [WORKFLOW-V2.md](WORKFLOW-V2.md).
 The earlier focused operation result remains in [READ-SELECT-TAP.md](READ-SELECT-TAP.md).
 
-**Next speed priority:** design information-reading output at the registered
-text-observation seam, including non-interactive text and explicit no-screenshot/
-OCR policy. Agree that tool-output seam and save an equivalent baseline before
-implementation. Existing text dump is already screenshot-free on native success.
-Do not introduce a new name or extend cache TTL and call that a speedup.
+**Information-reading follow-up is now implemented above.** The prior text dump
+was already screenshot-free on native success; this slice exposes omitted text
+and adds an explicit no-screenshot/OCR policy without a new tool or TTL change.
 Finer Step 2 spans and profiler ingestion remain unfinished follow-up work.
 Step 1's offline feedback loop and opt-in live runner are implemented and
 validated. A read-only live static-label baseline is now recorded: 20/20 correct
@@ -65,9 +93,9 @@ pair are recorded in [READ-SELECT-TAP.md](READ-SELECT-TAP.md).
 **Consumer slice complete:** [v2 protocol and results](WORKFLOW-V2.md), including
 failed baseline attempts, frozen passing driver, archived before adapter and
 strict offline comparison. No production src/ changes were needed for adoption.
-**Next exact action:** specify registered text-only information output and its
-public tool-output test seam; establish the equivalent old-path task baseline.
-Existing registered tools and frozen v1 remain unchanged.
+**Text-output follow-up complete:** the agreed registered-tool seam, equivalent
+old-path task baseline and same-driver comparison are in [TEXT-OBSERVATION.md](TEXT-OBSERVATION.md).
+Only the existing dump gains optional parameters; frozen v1/v2 remain unchanged.
 Finer command-attempt/screenshot/OCR/reconnect spans and profiler ingestion remain
 open; add them where required to attribute the change. Explicit execution metadata
 is implemented/tested (see validation below); do not infer timeout from duration. The workflow-reproduced input clear
@@ -110,7 +138,8 @@ persistent phone changes; Termux foreground restored and verified.
   measurement with exact action/readback checks and verified capture counts.
 - [x] Versioned full source-workflow consumer adoption and equivalent comparison,
   with identical correctness, preserved polling and explicit alignment variation.
-- [ ] Registered information-reading tool interface and equivalent task comparison.
+- [x] Registered information-reading tool interface and equivalent task comparison;
+  image work removed, no latency speedup demonstrated. See TEXT-OBSERVATION.md.
 
 Read this file first, then [the original handoff](handoff-2026-10-16.md).
 Companion repository: `~/projects/pi-android-perf`.
@@ -268,14 +297,16 @@ cache/OCR/reconnect until spans distinguish them.
 - [x] User confirmed bounded fresh read/select/tap interface/test seams; preserved
   equivalent old-path baseline before edits, implemented public helper and guards,
   30 regressions and 4/4 live cases on both paths with the same frozen driver.
-- [ ] Add text-only observation with no screenshot capture.
-- [ ] Add information-reading output including non-interactive text.
+- [x] Explicit native-only registered observation with no screenshots/OCR, fresh
+  capture and error propagation (`android_ui_dump`, optional `ocr_fallback:false`).
+- [x] Information-reading output including non-interactive text (`all_elements:true`).
 - [ ] Add focused output and bounded action/wait/observe batches, with explicit
   verification checkpoints and cancellation.
 - [x] Compare bounded v2 consumer correctness and latency against its equivalent
   pre-migration baseline; all values/reopen pass and 30 targeted captures removed.
-- [ ] Equivalent registered text-observation task baseline/comparison (separate
-  from the static Settings reference or the v2 source workflow).
+- [x] Equivalent source-registered text-observation task baseline/comparison
+  (separate from the static Settings reference or v2 source workflow). 6/6 both
+  paths; screenshots removed but median +1.65%, NOT a speedup. Active reload open.
 
 Do not raise cache TTL blindly or reuse stale coordinates.
 
@@ -567,6 +598,29 @@ consumer sites changed; all src/ files and frozen v1 remain unchanged.
   Remote main was independently verified against local HEAD and the working tree
   was clean after push. This follow-up Markdown-only commit records publication.
   Companion remains unchanged at published `d7d1193` with its validation rerun.
+
+### Registered text-observation continuation — 2026-10-17
+
+User confirmed the existing-tool optional interface and registered-output test
+seam. Implemented in `src/tools/device.ts`, `src/adb/device.ts` and
+`src/adb/ui-tree.ts`; 13 process-level regressions in `tests/tools/ui-dump.test.ts`.
+Pre-change equivalent-task JSON/Markdown, frozen driver, after evidence and
+validation/failure disclosures: [TEXT-OBSERVATION.md](TEXT-OBSERVATION.md).
+README, changelog and screen skill now correctly describe text output (not raw XML).
+
+- Both live paths: all exact non-interactive title/control/foreground checks pass,
+  6 native captures; screenshots/image pulls/dimension queries 6 → 0 each.
+- Median 3077.87 → 3128.77ms (+1.65%); no demonstrated speedup, no attribution of
+  small timing variation. Wrapper observes fixed external command categories.
+- Red → green: missing information option, OCR policy, cached OCR contamination,
+  and silent native acquisition failures. Defaults/fallback remain covered.
+- First DEFAULT unit attempt: 661/662 (one old-adapter test exceeded 5000ms).
+  Isolated unchanged workflow suite 5/5; bounded full run **662/662**, 51 files.
+  No claim of default CI repair. Isolated sequential integrations **9/9**;
+  lint/build/syntax/diff checks and companion **16/16** plus build/check pass.
+- No source/workflow edits after measured after-hashes; baseline reports frozen.
+  Original Gboard and Termux independently verified restored; no new phone records.
+- Publication checkpoint will be recorded after commit/push verification.
 
 ## Operating boundaries
 

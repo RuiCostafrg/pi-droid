@@ -123,10 +123,26 @@ npm test
 |------|-------------|
 | `android_look` | Annotated screenshot with numbered element index — primary perception tool |
 | `android_screenshot` | Raw screenshot — use for failure diagnosis only |
-| `android_ui_dump` | Raw UI tree XML for full element hierarchy |
+| `android_ui_dump` | Text hierarchy summary; optional information labels and strict native-only acquisition |
 | `android_ocr` | Tesseract OCR on current screen or saved screenshot |
 | `android_observe` | Continuous screen state observation |
 | `android_screen_state` | Current activity, package, orientation, lock state as JSON |
+
+For information reading without screenshots or OCR, use:
+
+```json
+{"all_elements": true, "ocr_fallback": false}
+```
+
+with `android_ui_dump`. `all_elements` includes non-interactive labels (marked
+`[non-interactive]`), not just controls; these labels are not tap targets.
+`ocr_fallback: false` forces a fresh native hierarchy, bypasses cached OCR/merged
+results and propagates acquisition errors rather than silently returning empty
+success. Native text can still be incomplete in WebViews/custom rendering.
+Omitting the options preserves interactive-only output, existing cache behavior
+and automatic screenshot/OCR fallback. See the
+[text-observation comparison](docs/performance/TEXT-OBSERVATION.md): fewer image
+operations were verified, but this fixture did **not** show a latency speedup.
 
 ### Input (5 tools)
 

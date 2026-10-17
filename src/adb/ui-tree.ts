@@ -379,13 +379,15 @@ export async function waitForElement(
 }
 
 /**
- * Get a text summary of interactive elements (for LLM context).
+ * Get a text summary (interactive elements by default) for LLM context.
  */
-export function summarizeTree(tree: UITreeResult): string {
-  const lines = tree.interactive.map((el, i) => {
+export function summarizeTree(tree: UITreeResult, options: { allElements?: boolean } = {}): string {
+  const elements = options.allElements ? tree.elements : tree.interactive;
+  const lines = elements.map((el, i) => {
     const label = el.text || el.contentDesc || el.resourceId.split("/").pop() || el.className.split(".").pop();
     const type = el.className.split(".").pop() ?? "View";
-    return `[${i}] ${type}: "${label}" at (${el.center.x}, ${el.center.y})${el.scrollable ? " [scrollable]" : ""}`;
+    const information = options.allElements && !tree.interactive.includes(el) ? " [non-interactive]" : "";
+    return `[${i}] ${type}: "${label}" at (${el.center.x}, ${el.center.y})${el.scrollable ? " [scrollable]" : ""}${information}`;
   });
-  return `Package: ${tree.foregroundPackage}\nElements (${tree.interactive.length}):\n${lines.join("\n")}`;
+  return `Package: ${tree.foregroundPackage}\nElements (${elements.length}):\n${lines.join("\n")}`;
 }

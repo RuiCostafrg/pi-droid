@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "mode": "before",
+  "fixture": "settings-termux-app-info",
+  "rounds": 6,
+  "startedAt": "2026-10-17T10:04:41.216Z",
+  "driverHash": "68a295ec48d859066c1e4e624bc31f9738f3abe489c5f550294cd0b9b9f81a22",
+  "sources": {
+    "src/adb/annotate.ts": "9763cef104fffe304cd1f4cfeb2167723378a7413446eca9702dcdff3577b523",
+    "src/adb/app-fallback.ts": "9dc6d5486de925fa699ad23d366387a80ba0199e2fbd67229fd561f179c5f098",
+    "src/adb/app.ts": "0e1f136cbdda47f7e1063728d2372a84afb27549a32b1a5443f7a0e8ff04c3c8",
+    "src/adb/automation.ts": "eaa063e6532a952802adeb5b85c9aa94505250d0514caa9b90f93585b2196c08",
+    "src/adb/cache.ts": "494d93ad114dec388b277919eadf336f82f5f6c427175e8e99f1096dcef8a752",
+    "src/adb/capture-timing.ts": "23372f8c28d8bd851cc48671cf301458a3a94c5f56c3ee6a704de659a4c8d10d",
+    "src/adb/device.ts": "013ed6b16e24c34eb6a9db97035ecdb9990336aa700cdbf6ed05b5622a903394",
+    "src/adb/exec.ts": "47096dabaa6f65ec4f3a3ec8aa77eac47ab2ec33908e24f9cab2eb3af09915ff",
+    "src/adb/files.ts": "aa3d88eaf94a0bc6b06b2d42c8a42327c177771cfb21350b7991dacd5decac37",
+    "src/adb/index.ts": "1d198a9a9ec56351a3467e001a2636d7962202e9e314d58b3b00b0ddcb49c952",
+    "src/adb/input.ts": "eb81ded44946935a1337a93718e38103fd337b1b8b6d3ad2277c6924c68e74a9",
+    "src/adb/installer.ts": "6590c324a796be1ffd4fc33685ae2d59fb84352e01ccdcf97ae44baebc9df048",
+    "src/adb/intents.ts": "1213bfffe6a06deec5ee5371ac070e4cb081ae78cacd0aac724683ffce95197e",
+    "src/adb/lock.ts": "e5b14d1c2c3ee6dc2e0a4bec6d3fff55969ba0cdba374b4e9c21afccab92e435",
+    "src/adb/logcat.ts": "b01e124f120954d3694c769b17cf5baed24e0ebd775cc9ae3613ace6faa51106",
+    "src/adb/macros.ts": "329f57e4b25ec119479b9854439282fffe45e59c82a621d829fd823109a6f005",
+    "src/adb/mdns.ts": "ff0b00e95ba5d260f7d0067d7c93b164bb6b53309c1a962fa47dd5520cc3449d",
+    "src/adb/monitor.ts": "48b5057b27646e38c806062f8f716a62a6c0087d56122828ed876e3b079b1afa",
+    "src/adb/ocr.ts": "a911011f3767eb9e1bbd03559dfcf596d83c99d30d5dc891c7cb0980f1110844",
+    "src/adb/power-observation.ts": "efe1477720d7ea57398248e361c8cc43daa030f5641662ee3f7d7a91cf979aee",
+    "src/adb/preflight.ts": "ba2ab11a68a96dbb54673870084f52c7b9414873d916172cceb8fa5246d51a98",
+    "src/adb/read-select-tap.ts": "3d226d1baa600a95f10862c4629a79f18afe34b854f31c0779b4acf8a7ad439d",
+    "src/adb/reconnect.ts": "e8b300e4aa8800fcd356e24e49adc80f972be4cfc6a8201b2be5b6a65da5f58a",
+    "src/adb/recording.ts": "cc40f1254eae5f4dc2e8ca2b142a39c5886baa905b22c8013f7e297a4dcf4127",
+    "src/adb/registry.ts": "73716fd3eff5d94c80146cf8b7a9b4266ee1c20b88d4da610ef6fb8018afd1f5",
+    "src/adb/screen-state.ts": "9f41abe23e3e1e5bef17fb26b20ed0e02b17b9c873727939d36eb633a2455738",
+    "src/adb/screenshot.ts": "09057c8b16020773e5a594d5638af4ece95ebe3c1d25221529e20a946315c7f7",
+    "src/adb/settings.ts": "8b89eb7bda39f9df7f8aac29ec4994026261a36a60932c94de699e22d51173b8",
+    "src/adb/shell.ts": "8eb3318378a1636e120bdf56173720e5285eb6d17d8cf0205aa19bc79e5f5859",
+    "src/adb/stuck-detector.ts": "d3e0f50ac5966b5157f4a73939671a2608f87deaf68496f316c88408074223ac",
+    "src/adb/task-budget.ts": "a677b0284279b2865b02f568ddadb52f09cb8ef5ed5a1e1a8a7f897b0fb514f3",
+    "src/adb/types.ts": "4c7acd9119737007b57f95d6079ec33929bca99128a09dc612264d371500d88f",
+    "src/adb/ui-tree.ts": "ce80f388482060709ec8d3c85dce44f5b73e3d6d45b12ae6a37559df0e7ba397",
+    "src/adb/wifi.ts": "731753f9ab0503f714e246daed319eacc8cf221e92971cca0bec67ce7c4e6b0d",
+    "src/host/index.ts": "dad3474151ab9beebb3f774ade5c0884273165067ba2cf1b8901fa811bf3d822",
+    "src/index.ts": "48265ea23a7328f73790e4f01d7cf89dbe8df7e22005f764a5a93fcc3542535d",
+    "src/notifications/approval-queue.ts": "6ce926da3d5725a93907a270c3db7714819132c3eace1ceaab1cf48193ffdb3a",
+    "src/notifications/interface.ts": "908445b88b42515d1a6d15db5c0023fba13411c6fd766a5ea1db6f30157f8256",
+    "src/notifications/telegram.ts": "8a096eda72a8069cd92bb692886bb80dfb5ae3694e7c4b986bf58a858aa2c804",
+    "src/plugins/cli-plugin.ts": "32026d350781ed8be73898a8fa38b6b4b25e05bdacff181323458c9f85f941a0",
+    "src/plugins/interface.ts": "42a7cf888d1098ff835a0c8731f2897e5afb7398f2996e0402d832c6d377a888",
+    "src/plugins/loader.ts": "bffd6dcac53212e50c831408a7e1bcde32d154eaace18816d5c294ce0226715e",
+    "src/plugins/manifest.ts": "935b3f9f08abab8ee4c0d7eda89f35f82f624a4f96855931a6d8e11e671a9251",
+    "src/plugins/marketplace.ts": "3cec57109b54a549c1cdff1535a61ca4c0015c2032c42ceefbe2a0c28845d853",
+    "src/plugins/skill.ts": "e2f7f20d3aa1b61b524d695dfd7ad2b54f2e7a9d3e1ddf0f2cbf71b2e67792b0",
+    "src/plugins/telegram.ts": "7d25b8a6cf12b8da1210735ed8dc62bff2d354c9f641bc3cc9f1e8510d0dc3b4",
+    "src/tools/android.ts": "409bf521ea2d1a7d89e6c3016bda5c2de8b56226c6257c4393d0a9ed7030c3b7",
+    "src/tools/device.ts": "6f96a9945e7d628b32e8f354e88d5674653dc17a9c539ddebbb6d92d64138b50",
+    "src/tools/router.ts": "4ae4a7def39e4e13c9f4792c514ccc95d8ef7e06e021809c08716cbd24c5825b"
+  },
+  "status": "pass",
+  "samples": [
+    {
+      "round": 1,
+      "elapsedMs": 2996.087603,
+      "checks": {
+        "foreground": true,
+        "title": true,
+        "open": true
+      },
+      "counts": {
+        "hierarchy": 1,
+        "screenshot": 1,
+        "imagePull": 1,
+        "dimensions": 1,
+        "xmlPull": 1,
+        "foreground": 1
+      },
+      "ok": true
+    },
+    {
+      "round": 2,
+      "elapsedMs": 3025.206822,
+      "checks": {
+        "foreground": true,
+        "title": true,
+        "open": true
+      },
+      "counts": {
+        "screenshot": 1,
+        "hierarchy": 1,
+        "imagePull": 1,
+        "dimensions": 1,
+        "xmlPull": 1,
+        "foreground": 1
+      },
+      "ok": true
+    },
+    {
+      "round": 3,
+      "elapsedMs": 3033.242811,
+      "checks": {
+        "foreground": true,
+        "title": true,
+        "open": true
+      },
+      "counts": {
+        "screenshot": 1,
+        "hierarchy": 1,
+        "imagePull": 1,
+        "dimensions": 1,
+        "xmlPull": 1,
+        "foreground": 1
+      },
+      "ok": true
+    },
+    {
+      "round": 4,
+      "elapsedMs": 3122.489476999999,
+      "checks": {
+        "foreground": true,
+        "title": true,
+        "open": true
+      },
+      "counts": {
+        "screenshot": 1,
+        "hierarchy": 1,
+        "imagePull": 1,
+        "dimensions": 1,
+        "xmlPull": 1,
+        "foreground": 1
+      },
+      "ok": true
+    },
+    {
+      "round": 5,
+      "elapsedMs": 3133.796040000001,
+      "checks": {
+        "foreground": true,
+        "title": true,
+        "open": true
+      },
+      "counts": {
+        "screenshot": 1,
+        "hierarchy": 1,
+        "imagePull": 1,
+        "dimensions": 1,
+        "xmlPull": 1,
+        "foreground": 1
+      },
+      "ok": true
+    },
+    {
+      "round": 6,
+      "elapsedMs": 3131.3764569999985,
+      "checks": {
+        "foreground": true,
+        "title": true,
+        "open": true
+      },
+      "counts": {
+        "screenshot": 1,
+        "hierarchy": 1,
+        "imagePull": 1,
+        "dimensions": 1,
+        "xmlPull": 1,
+        "foreground": 1
+      },
+      "ok": true
+    }
+  ],
+  "cleanup": {
+    "imeRestored": true,
+    "termuxRestored": true
+  },
+  "defaultDump": {
+    "titleVisible": false,
+    "openVisible": true
+  },
+  "tool": "android_look",
+  "args": {
+    "all_elements": true,
+    "include_image": false
+  },
+  "schemaFields": [],
+  "measuredRunMs": 18452.200462,
+  "summary": {
+    "medianMs": 3077.8661439999996,
+    "maxMs": 3133.796040000001,
+    "correct": 6
+  }
+}

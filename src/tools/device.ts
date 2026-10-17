@@ -72,12 +72,17 @@ export function registerDeviceTools(pi: ExtensionAPI, adbConfig: Record<string, 
     name: "android_ui_dump",
     label: "UI Dump",
     description:
-      "Dump the current UI hierarchy. Returns interactive elements with their text, coordinates, and properties. " +
-      "Use this before tapping to get fresh element positions.",
-    parameters: Type.Object({}),
-    async execute() {
+      "Dump the UI hierarchy as text (interactive elements by default). " +
+      "Use all_elements to include information labels; ocr_fallback:false forces a fresh native-only dump " +
+      "without screenshots or OCR, and propagates acquisition errors. " +
+      "Non-interactive labels are not tap targets. Native hierarchy text can be incomplete.",
+    parameters: Type.Object({
+      all_elements: Type.Optional(Type.Boolean({ description: "Include non-interactive elements too (default false)" })),
+      ocr_fallback: Type.Optional(Type.Boolean({ description: "Allow screenshot/OCR fallback (default true). False forces a fresh native-only dump and propagates acquisition errors." })),
+    }),
+    async execute(_id, args) {
       const device = await getDevice(defaultSerial);
-      const summary = await device.describeScreen();
+      const summary = await device.describeScreen({ allElements: args.all_elements, ocrFallback: args.ocr_fallback });
       return { content: [{ type: "text", text: summary }], details: {} };
     },
   });

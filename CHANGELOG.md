@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Existing `android_ui_dump` gains optional `all_elements` information output and `ocr_fallback: false` for a fresh native-only observation without screenshots/OCR or cached OCR/merged text. Acquisition errors propagate in native-only mode; defaults stay unchanged. Registered-tool regressions and a preserved live comparison verify image-work removal, **not a latency speedup**.
 - Versioned Amazon.de → Forge source workflow adopting bounded field selection, with preserved old consumer, pre-migration evidence and strict offline comparison gates. Existing v1 and registered tools remain unchanged.
 - Public `readSelectTap` source/SDK operation: one fresh native hierarchy, immutable synchronous target selection, foreground/identity/bounds checks, cooperative deadlines and cancellation, with no cached coordinates or tap retries. Includes a frozen live comparison driver and preserved pre-change evidence.
 - Explicit ADB execution failure categories and `AbortSignal` command cancellation, propagated through content-free capture timing and bounded benchmark IPC.
