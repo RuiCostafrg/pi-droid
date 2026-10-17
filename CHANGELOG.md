@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Public `readSelectTap` source/SDK operation: one fresh native hierarchy, immutable synchronous target selection, foreground/identity/bounds checks, cooperative deadlines and cancellation, with no cached coordinates or tap retries. Includes a frozen live comparison driver and preserved pre-change evidence.
 - Explicit ADB execution failure categories and `AbortSignal` command cancellation, propagated through content-free capture timing and bounded benchmark IPC.
 - Opt-in capture and source/API workflow regression runners, preserved before/after evidence, and offline workflow comparison.
 - Checked `android_app` launch with an explicit HTTP(S) `fallback_url` and optional installed `browser_package`; report missing apps without guessing websites or installing packages.

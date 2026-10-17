@@ -144,6 +144,13 @@ mutation; fallback `input text` insertion without clearing remains available.
 Command completion is not verification of the intended field: focus it first
 and read back the value afterward.
 
+Source/SDK consumers can use [`readSelectTap`](docs/performance/READ-SELECT-TAP.md)
+for a bounded fresh read → synchronous selection → guarded tap without a second
+hierarchy dump. It requires an explicit authorized serial, expected package,
+pure local selector and exclusive device interaction. It rejects ambiguous or
+stale/forged selections; callers must still read back the app outcome. Existing
+registered tools are unchanged.
+
 ### App and Navigation (3 tools)
 
 | Tool | Description |

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "kind": "read-select-tap-e2e",
+  "mode": "after",
+  "startedAt": "2026-10-17T08:44:51.571Z",
+  "harnessHash": "2a1ffb2842f2ccd965a29718dba2c476cc8888dc02832cdcc0c5d6d27e477ba7",
+  "sources": {
+    "src/adb/automation.ts": "eaa063e6532a952802adeb5b85c9aa94505250d0514caa9b90f93585b2196c08",
+    "src/adb/ui-tree.ts": "ce80f388482060709ec8d3c85dce44f5b73e3d6d45b12ae6a37559df0e7ba397",
+    "src/adb/input.ts": "eb81ded44946935a1337a93718e38103fd337b1b8b6d3ad2277c6924c68e74a9",
+    "src/adb/read-select-tap.ts": "3d226d1baa600a95f10862c4629a79f18afe34b854f31c0779b4acf8a7ad439d"
+  },
+  "status": "pass",
+  "samples": [
+    {
+      "round": 1,
+      "operationMs": 2837.523593,
+      "exactReadback": true,
+      "hierarchyAttempts": 1,
+      "captureFailures": 0
+    },
+    {
+      "round": 2,
+      "operationMs": 2812.193905,
+      "exactReadback": true,
+      "hierarchyAttempts": 1,
+      "captureFailures": 0
+    },
+    {
+      "round": 3,
+      "operationMs": 2793.770623999997,
+      "exactReadback": true,
+      "hierarchyAttempts": 1,
+      "captureFailures": 0
+    },
+    {
+      "round": 4,
+      "operationMs": 2800.4956759999986,
+      "exactReadback": true,
+      "hierarchyAttempts": 1,
+      "captureFailures": 0
+    }
+  ],
+  "cleanup": {
+    "fixtureTitleRestored": true,
+    "originalImeRestored": true,
+    "termuxRestored": true
+  },
+  "durationMs": 74357.491014
+}

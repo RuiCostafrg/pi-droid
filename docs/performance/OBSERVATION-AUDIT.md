@@ -2,11 +2,14 @@
 
 ## Status
 
-Audit and read-only capture reference complete; **no production optimization has
-been implemented**. Starting source revision: `4222a47` (origin/main). This audit
-changes only documentation and saves new evidence. Historical JSON and the v1
-workflow driver are untouched. The next implementation needs an agreed public
-interface/test seam; see the proposal below.
+At this audit checkpoint, the read-only capture reference was complete and
+**no production optimization had been implemented**. Starting source revision:
+`4222a47` (origin/main); audit published as `ea6b97f`. Historical JSON and the v1
+workflow driver remain untouched. The user subsequently approved the proposal
+and both seams below. The bounded operation is now implemented and measured:
+see [READ-SELECT-TAP.md](READ-SELECT-TAP.md) for the new equivalent pre-change
+operation baseline, results and limitations. The findings below remain the
+historical audit, not a retroactive claim that all 46 captures are removable.
 
 ## What the saved workflow actually shows
 

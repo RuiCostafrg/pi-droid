@@ -182,12 +182,12 @@ export {
   // Monitoring
   getBatteryInfo, getNetworkInfo, getDeviceInfo, isScreenLocked, getRunningApps,
   // Automation helpers
-  ensureReady, findAndTap, scrollToFind,
+  ensureReady, findAndTap, scrollToFind, readSelectTap,
   // Stuck detection & budget
   DefaultStuckDetector, createTaskBudget,
   // OCR
   runOcrOnImage, runOcrOnCurrentScreen,
 } from "./adb/index.js";
 export type { PowerSample, PowerObservation } from "./adb/power-observation.js";
-export type { AdbExecOptions, AppLaunchResult } from "./adb/index.js";
+export type { AdbExecOptions, AppLaunchResult, ReadSelectTapOptions, FreshTargetSelector, FreshUIElement } from "./adb/index.js";
 export type { StuckEvent, UIElement, Bounds, ElementSelector } from "./adb/index.js";

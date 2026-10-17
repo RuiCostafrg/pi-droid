@@ -213,6 +213,8 @@ export async function dumpUiTree(
     ocrFallback?: boolean;
     /** Reject a zero-exit dump without its success marker instead of pulling stale XML. */
     requireDumpSuccess?: boolean;
+    /** Opt-in fail-closed acquisition: propagate hierarchy errors instead of fallback. */
+    throwOnError?: boolean;
     ocrConfidenceThreshold?: number;
     debug?: boolean;
   } = {},
@@ -257,6 +259,7 @@ export async function dumpUiTree(
       interactive = getInteractiveElements(elements);
     });
   } catch (err) {
+    if (options.throwOnError) throw err;
     if (options.debug) {
       console.warn("uiautomator dump failed, trying OCR fallback:", err);
     }

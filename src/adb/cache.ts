@@ -19,6 +19,10 @@ const DEFAULT_TTL_MS = 2000; // 2 seconds — UI is likely unchanged
 
 let cache: CacheEntry | null = null;
 let ttlMs = DEFAULT_TTL_MS;
+let revision = 0;
+
+/** Internal guard for intervening captures/input, independent of cache TTL. */
+export function getCacheRevision(): number { return revision; }
 
 /**
  * Set the cache TTL in milliseconds (default: 2000).
@@ -43,6 +47,7 @@ export function getCachedTree(): UITreeResult | null {
  * Store a UI tree in the cache.
  */
 export function setCachedTree(tree: UITreeResult): void {
+  revision++;
   cache = { tree, timestamp: Date.now() };
 }
 
@@ -50,6 +55,7 @@ export function setCachedTree(tree: UITreeResult): void {
  * Invalidate the cache (call after any input action).
  */
 export function invalidateCache(): void {
+  revision++;
   cache = null;
 }
 

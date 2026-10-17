@@ -2,14 +2,19 @@
 
 ## Resume here
 
-**Next speed priority: reduce redundant fresh observations without weakening correctness.**
-First audit caller/tool capture duplication against the recorded workflow, then
-save a current-source baseline BEFORE any optimization. Choose a narrow text-only
-or observation-reuse path only where it actually removes capture work; the
-existing text dump is already screenshot-free. Fresh observation before
-coordinate-based actions remains mandatory. Keep the frozen v1 harness and
-historical reports intact; compare correctness, dump/screenshot counts and wall
-time on equivalent execution paths. No such optimization is implemented yet.
+**Implemented: bounded fresh read → synchronous select → guarded tap.**
+The user approved the interface and both test seams. The public source/SDK
+`readSelectTap` removes an inspect-then-click duplicate capture without cached
+coordinates. Equivalent old-path baseline was saved BEFORE production edits;
+same live driver hash, **4/4 exact readbacks on both paths**, **2 → 1 captures**,
+median operation **5322.77ms → 2806.34ms (47.28% lower)**. Full focused runner:
+84.52s → 74.36s. This is one focused fixture, NOT a full-workflow speedup.
+See [interface, evidence and limits](READ-SELECT-TAP.md).
+
+**Next speed priority:** adopt it at eligible synchronous selection sites in a
+versioned consumer/workflow, preserving polling and independent readback. Save
+an equivalent whole-workload baseline before that migration; keep frozen v1 and
+its reports intact. Text-only registered-tool output is a separate later slice.
 Finer Step 2 spans and profiler ingestion remain unfinished follow-up work.
 Step 1's offline feedback loop and opt-in live runner are implemented and
 validated. A read-only live static-label baseline is now recorded: 20/20 correct
@@ -35,10 +40,9 @@ checkpoint; do not conflate them with the earlier historical commits.
 
 Step 2's high-level timing and partial-span streaming slices are implemented at
 the public `dumpUiTree`/benchmark CLI seams, tested with synthetic ADB at the
-process boundary. Latest input-fix validation: **599 pi-droid unit tests and
-9 isolated sequential integration tests pass**; the preceding metadata slice
-also passed **16 companion tests**, rerun successfully with build/type checking
-for the publication checkpoint. Default parallel CI still
+process boundary. Latest bounded-operation validation: **629 pi-droid unit
+tests / 48 files, 9 isolated sequential integration tests, and 16 companion tests
+pass**, plus both builds/type checks. Default parallel CI still
 hits the documented short integration time limits; it is NOT marked passing.
 
 Partial-span streaming is implemented and regression-tested under deadline and
@@ -49,11 +53,13 @@ allowlisted and bounded, with explicit trace completeness/truncation flags.
 Historical workflow has 46 adjacent second captures (120.63s), not 46 proven-safe
 removals. Current unchanged source passed a new **6/6** read-only Settings capture
 reference (median 2589.66ms); this is not a paired-operation or workflow baseline.
-**Next exact action:** confirm the proposed bounded fresh read/select/tap public
-source seam and live CLI seam, then freeze/save the equivalent old-path operation
-baseline BEFORE implementation. No new public-operation tests or production
-optimization have been written yet. Do not obtain apparent library speedups by
-merely deleting checks from the benchmark.
+**Bounded-operation slice complete:** consent, pre-change operation baseline,
+30 process-level regressions, public implementation/export and same-driver live
+pair are recorded in [READ-SELECT-TAP.md](READ-SELECT-TAP.md).
+**Next exact action:** identify a real synchronous consumer and plan its versioned
+migration/comparison without deleting polling, foreground checks or readbacks.
+The current production helper is not automatically used by existing tools or
+frozen v1. Do not obtain apparent library speedups merely by weakening a driver.
 Finer command-attempt/screenshot/OCR/reconnect spans and profiler ingestion remain
 open; add them where required to attribute the change. Explicit execution metadata
 is implemented/tested (see validation below); do not infer timeout from duration. The workflow-reproduced input clear
@@ -91,7 +97,9 @@ persistent phone changes; Termux foreground restored and verified.
 - [ ] Active-session tool reload and production automatic focus/readback/IME
   lifecycle verification (focused source harness is not a production guarantee).
 - [ ] Default CI scheduling/time-limit reliability on this Termux host.
-- [ ] Controlled optimization and paired before/after measurement.
+- [x] Controlled focused source-operation optimization and paired before/after
+  measurement with exact action/readback checks and verified capture counts.
+- [ ] Full-workflow adoption and equivalent whole-workload comparison.
 
 Read this file first, then [the original handoff](handoff-2026-10-16.md).
 Companion repository: `~/projects/pi-android-perf`.
@@ -244,8 +252,9 @@ cache/OCR/reconnect until spans distinguish them.
   a fresh current-source capture-only reference before implementation. See
   [observation audit](OBSERVATION-AUDIT.md), including the safe-removal limits,
   proposed source/API test seams and a separate input-helper issue discovered.
-- [ ] Confirm the bounded fresh read/select/tap interface/test seams and preserve
-  its equivalent old-path operation baseline, then implement one vertical slice.
+- [x] User confirmed bounded fresh read/select/tap interface/test seams; preserved
+  equivalent old-path baseline before edits, implemented public helper and guards,
+  30 regressions and 4/4 live cases on both paths with the same frozen driver.
 - [ ] Add text-only observation with no screenshot capture.
 - [ ] Add information-reading output including non-interactive text.
 - [ ] Add focused output and bounded action/wait/observe batches, with explicit
@@ -462,6 +471,38 @@ CI and the running user-session extension reload remain unverified. Next work
 is the observation audit/current-source baseline above, not an implemented
 full-workflow speedup. Original Gboard/Termux were restored after the last live
 run; this publication task does not interact with the phone.
+
+### Bounded read/select/tap continuation — 2026-10-17
+
+User confirmed the recommended interface and both proposed seams. See
+[READ-SELECT-TAP.md](READ-SELECT-TAP.md) for contract, reproduction, both immutable
+JSON reports, source/driver hashes and limitations.
+
+- Before production edits: existing test title fixture, 4/4 exact readbacks,
+  2 captures per measured operation, median 5322.77ms; report created exclusively.
+- New public `readSelectTap` in its own module, exported from ADB and package
+  entry points. Exact pinned transport; fresh native hierarchy; frozen local
+  synchronous selection; unique captured identity/actionable geometry/package;
+  foreground recheck; cancellation, operation/selection time bounds and revision
+  guard against observed intervening input/capture. No retries or cached tokens.
+- `dumpUiTree(throwOnError)` is opt-in; new internal cache revision does not alter
+  TTL/default reads. Existing tools, automatic fallback and old workflows intact.
+- Red → green at the approved source/external-ADB seam; **30 new cases**.
+- Live after: 4/4 exact readbacks, 1 capture per measured operation, median
+  2806.34ms. **47.28% lower operation median**, focused runner 84.52s → 74.36s.
+  Not an Amazon/full-workout speedup or a population-tail claim.
+- Both reports have the same driver hash; source hashes checked after measurement.
+  Same seed/probe/readback/restoration on both paths. Test draft reused/restored;
+  no new drafts, workout numeric changes, completed sets or purchases.
+- Final validation: **629/629 unit tests, 48 files; 9/9 isolated sequential
+  integrations; lint/build/script syntax PASS**. Companion **16/16**, build/check
+  PASS, no companion edits. Default parallel CI/reload not claimed.
+- Original Gboard and Termux restored and independently verified. Public helper
+  requires exclusive device interaction; guards do not make Android atomic or
+  preempt infinite JS callbacks. Always verify app outcome; never replay a failed
+  tap automatically. Reports omit raw content/errors/transport identifiers.
+- Standing user instruction: commit/push implementation, tests, evidence and
+  Markdown to origin/main; verify clean state/remote refs after publication.
 
 ## Operating boundaries
 

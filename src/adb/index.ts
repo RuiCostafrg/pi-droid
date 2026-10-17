@@ -120,6 +120,8 @@ export { captureLogcat, searchLogcat, clearLogcat, getLogcatStats } from "./logc
 export type { CaptureLogcatOptions, CaptureLogcatResult, SearchLogcatOptions, LogcatStats } from "./logcat.js";
 
 // Automation helpers
+export { readSelectTap } from "./read-select-tap.js";
+export type { ReadSelectTapOptions, FreshTargetSelector, FreshUIElement } from "./read-select-tap.js";
 export { ensureReady, observe, findAndTap, tapAndWait, typeIntoField, scrollToFind } from "./automation.js";
 export { DefaultStuckDetector } from "./stuck-detector.js";
 export { createTaskBudget, TaskBudgetTracker, DEFAULT_TASK_BUDGET } from "./task-budget.js";
