@@ -825,6 +825,12 @@ extended; no runtime hooks. Frozen workflows/adapters/historical reports unchang
   build/check. Syntax/privacy/diff checks; unchanged frozen hashes. Default CI open.
 - Next: separate annotation slice, NEW baseline first. Runtime ingestion remains
   another slice. No new APK/helper/permission/debugging exposure.
+- Published implementation/evidence: pi-droid **`5669bcd`** (`Trace screenshot and
+  OCR stages with preserved real-phone evidence`); companion **`93fbf54`**
+  (`Accept screenshot and OCR stages in offline capture ingestion`). Pushed only
+  to user-owned origin/main forks; remote main independently matched each HEAD,
+  both trees clean afterward. This subsequent docs-only checkpoint records those
+  verified hashes; no production/frozen driver/live evidence changed after validation.
 
 ## Operating boundaries
 

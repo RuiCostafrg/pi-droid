@@ -48,9 +48,11 @@ Earlier command checkpoint remains in COMMAND-TIMING.md and historical reports.
   New offline audit: scripts/validate-screenshot-ocr-pair.mjs (does NOT change old
   migration comparator). Engine hashes independently recomputed from baseline
   git source and measured current source. Full report has reproduction command.
-- See latest git logs for publication commits in BOTH repositories. Publish only
-  to user's origin forks; never upstream. Historical evidence/adapters/drivers
-  untouched. Private loaded JSONL stays temporary; only allowlisted metadata saved.
+- Published implementation/evidence: pi-droid `5669bcd`, companion `93fbf54`, both
+  pushed to user-owned origin/main with remote hashes independently verified and
+  clean trees afterward. This subsequent docs-only checkpoint records the hashes.
+  Publish only to those origin forks; never upstream. Historical evidence/adapters/
+  drivers untouched. Private loaded JSONL stays temporary; allowlisted metadata only.
 
 ## Next exact actions
 
