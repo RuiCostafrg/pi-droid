@@ -9,6 +9,9 @@ import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { takeScreenshot } from "./screenshot.js";
 import type { AdbExecOptions } from "./exec.js";
+import { captureTiming } from "./capture-timing.js";
+
+type OcrTimingOptions = Pick<AdbExecOptions, "onCaptureSpan" | "captureClock">;
 import type { Bounds, UIElement } from "./types.js";
 
 const execAsync = promisify(execFile);
@@ -18,15 +21,25 @@ const MISSING_TESSERACT_ERROR =
 let tesseractAvailable: boolean | null = null;
 
 /** Non-throwing check for Tesseract availability. Result is cached after first call. */
-export async function isTesseractAvailable(timeout = 30_000): Promise<boolean> {
-  if (tesseractAvailable !== null) return tesseractAvailable;
+export async function isTesseractAvailable(timeout = 30_000, options: OcrTimingOptions = {}): Promise<boolean> {
+  const timing = options.captureClock ?? captureTiming(options.onCaptureSpan);
   try {
-    await execAsync("tesseract", ["--version"], { timeout });
-    tesseractAvailable = true;
+    return await timing.async("ocr_availability", async () => {
+      if (tesseractAvailable === false) throw new Error(MISSING_TESSERACT_ERROR);
+      if (tesseractAvailable === true) return true;
+      try {
+        await execAsync("tesseract", ["--version"], { timeout });
+        tesseractAvailable = true;
+        return true;
+      } catch (error) {
+        tesseractAvailable = false;
+        throw error;
+      }
+    });
   } catch {
-    tesseractAvailable = false;
+    // Preserve the cached non-throwing boolean API; unavailable is an error span.
+    return false;
   }
-  return tesseractAvailable;
 }
 
 export interface OcrResult {
@@ -103,35 +116,41 @@ function parseTesseractTsv(tsv: string, confidenceThreshold: number): UIElement[
 
 export async function runOcrOnImage(
   screenshotPath: string,
-  options: { confidenceThreshold?: number; timeout?: number } = {},
+  options: OcrTimingOptions & { confidenceThreshold?: number; timeout?: number } = {},
 ): Promise<OcrResult> {
+  const timing = options.captureClock ?? captureTiming(options.onCaptureSpan);
+  options = { ...options, captureClock: timing };
   const confidenceThreshold =
     options.confidenceThreshold ??
     Number.parseFloat(process.env.PI_DROID_OCR_CONFIDENCE ?? `${DEFAULT_OCR_CONFIDENCE}`);
 
-  if (!await isTesseractAvailable(options.timeout ?? 30_000)) {
+  if (!await isTesseractAvailable(options.timeout ?? 30_000, options)) {
     throw new Error(MISSING_TESSERACT_ERROR);
   }
 
-  const { stdout } = await execAsync(
+  const { stdout } = await timing.async("ocr_engine", () => execAsync(
     "tesseract",
     [screenshotPath, "stdout", "tsv"],
     { timeout: options.timeout ?? 30_000, maxBuffer: 20 * 1024 * 1024 },
-  );
+  ));
 
   return {
     source: "ocr",
     screenshotPath,
     confidenceThreshold,
-    elements: parseTesseractTsv(stdout, confidenceThreshold),
+    elements: timing.sync("ocr_parse", () => parseTesseractTsv(stdout, confidenceThreshold)),
   };
 }
 
 export async function runOcrOnCurrentScreen(
   options: AdbExecOptions & { confidenceThreshold?: number } = {},
 ): Promise<OcrResult> {
+  const timing = options.captureClock ?? captureTiming(options.onCaptureSpan);
+  options = { ...options, captureClock: timing };
   const screenshot = await takeScreenshot(options);
   return runOcrOnImage(screenshot.path, {
+    captureClock: timing,
+    onCaptureSpan: options.onCaptureSpan,
     confidenceThreshold: options.confidenceThreshold,
     timeout: options.timeout,
   });

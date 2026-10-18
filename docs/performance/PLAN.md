@@ -48,10 +48,32 @@ regressions remain the evidence. See [full evidence and limits](reports/workflow
 
 ## Resume here
 
-**Latest: command instrumentation successful-path live acceptance recorded.**
-Both frozen source workflows and a separate loaded Settings fixture check pass;
-see the checkpoint above and [full evidence](reports/workflow-command-validation-2026-10-18.md).
-No production implementation changed. Next is a fresh baseline before finer spans.
+**Latest: screenshot/OCR timing implemented and live-checked (2026-10-18).**
+Fresh chronological baseline saved before code; full workflow before PASS
+286223.78ms / 72 captures, after attempt 1 FAIL at exact draft-card OCR identity
+(all 30 writes pass, persistence unverified), unchanged after attempt 2 PASS
+309218.63ms / 74 captures. All 30 writes + 30 persisted values pass the completed
+pair. **After is +8.03% slower**, two extra alignment cycles total 7044.88ms;
+remaining variation unexplained. No demonstrated speedup/isolated overhead estimate.
+
+Separate same-driver Settings pair: 9/9 correct each; screenshot median −1.24%,
+quick-base64 **+7.43%**, OCR −0.68% (three rounds/API, not non-inferiority).
+All seven new stages exercise one clock per API, not the frozen workflow's OCR
+(which has no sink). A real fresh nonpersistent Pi CLI session loading rebuilt
+dist passes actual registered native dump, screenshot dimensions and exact OCR
+Termux fixture; parent session not reloaded. Source/tool clocks remain separate.
+
+See [full evidence, boundaries and failures](reports/screenshot-ocr-timing-2026-10-18.md)
+and [validated pair](reports/screenshot-ocr-comparison-2026-10-18.json).
+Three new TEST drafts retained, **14 total**. Gboard/Termux independently verified
+after every attempt/check. No shopping changes, completed sets or real workouts.
+
+Validation: **682/682 units, 52 files**, lint/build, **9 isolated integrations**;
+companion **37/37**, build/check. Partial IPC retention, privacy, default-off,
+controlled failures and native fallback share-clock tests pass. Annotation,
+finer reconnect subcommands, runtime ingestion, default parallel CI and automatic
+production input lifecycle remain open. Next is annotation as a separate slice,
+with a NEW equivalent baseline before implementation and the mandatory live gate.
 
 **Prior implementation: loaded native-only tool verified; command/reconnect timing
 and offline companion ingestion implemented.** See [COMMAND-TIMING.md](COMMAND-TIMING.md).
@@ -96,7 +118,7 @@ Bounded concurrency success is NOT default full-suite/parallel-CI success.
 Loaded native-only observation is now verified above; production automatic
 input lifecycle remains unverified.
 
-**Next exact action:** capture a fresh equivalent current baseline BEFORE
+**Prior next action (now completed above):** capture a fresh equivalent current baseline BEFORE
 implementing screenshot capture/transfer/read/dimension and OCR availability/
 engine/parse spans. The command checkpoint's live-validation gap is closed within
 the disclosed successful-path scope; see the new evidence above. Preserve frozen
@@ -331,12 +353,16 @@ as acceptance criteria. First deterministic slice should run in seconds offline.
 - [x] Test normal/default-disabled traces, a controlled dump delay, failed dump
   success marker/pull, cache miss/hit and throwing consumers through real source
   APIs with fake ADB at the process boundary. Assert private values stay absent.
-- [ ] Exercise the OCR span with a controlled OCR success/failure boundary;
-  existing OCR behavior tests pass but do not assert span semantics.
+- [x] Exercise OCR with controlled screenshot/availability/engine failures and
+  successful parse, shared-clock nesting and default-off/privacy tests at the
+  public source/process seam. Engine timeout remains unknown, not inferred ADB provenance.
 - [x] Add opt-in command-attempt and reconnect-wait spans sharing the capture
   clock; explicit failure metadata, callback safety and concurrent recovery tests.
-- [ ] Add screenshot capture/transfer, OCR-engine, annotation and finer reconnect
-  discovery/connect spans (not provided by the command timing slice).
+- [x] Add screenshot capture/transfer/dimensions/base64-read and OCR availability/
+  engine/parse spans; chronological baseline, retained failed run, passing full
+  workflow, equivalent focused pair and fresh loaded registered tools checked.
+- [ ] Add annotation sibling shared-clock spans and finer reconnect discovery/
+  connect spans as separate slices under the mandatory live gate.
 - [x] Preserve explicit timeout/cancellation/error metadata through ADB/capture
   spans and benchmark IPC. Command AbortSignal supported; whole-observation and
   sibling cancellation, reconnect cancellation and default tool signal forwarding
@@ -344,7 +370,8 @@ as acceptance criteria. First deterministic slice should run in seconds offline.
 - [x] Verify first-slice capture spans contain only fixed fields/stages,
   relative timings, ok/error and optional cache-hit boolean; tests assert no
   page text, paths, serial, package or raw errors. Tracing is absent by default.
-- [ ] Extend privacy/default-behavior coverage to all future instrumented paths.
+- [x] Extend privacy/default-off and diagnostic safety coverage to screenshot/OCR.
+- [ ] Extend coverage again for future annotation/reconnect/runtime paths.
 - [x] Stream completed span events before final worker result. Parent retains
   up to 128 allowlisted events, with `traceComplete`/`spansTruncated` flags.
   Timeout and SIGTERM regressions preserve earlier stages without fabricating
@@ -768,6 +795,36 @@ No production code, frozen driver, archived adapter or historical report changed
   Default parallel CI and automatic production input lifecycle remain open.
 - No finer screenshot/OCR implementation started. Fresh equivalent baseline is
   required before that next slice; this checkpoint is not an evergreen baseline.
+
+### Screenshot/OCR timing continuation — 2026-10-18
+
+[Detailed evidence](reports/screenshot-ocr-timing-2026-10-18.md) is authoritative.
+Before source `22af80b`; new source spans and IPC vocabulary in screenshot.ts,
+ocr.ts, capture-timing.ts and capture-benchmark.mjs. Companion offline allowlist
+extended; no runtime hooks. Frozen workflows/adapters/historical reports unchanged.
+
+- Fresh before 286223.78ms, 72 captures, PASS; after1 248255.74ms FAIL at draft-card
+  OCR identity (30 writes pass, persistence unverified); unchanged after2
+  309218.63ms, 74 captures, PASS with 30 writes + 30 persisted readbacks.
+- Raw +22994.85ms / +8.03%; after2 needs two extra alignment cycles (7044.88ms).
+  Remaining variation unexplained; no overhead isolation/non-inferiority/speedup.
+- Scoped command attempts 276 → 282, NOT whole workflow. Frozen OCR receives no
+  sink; no independent screenshot count/traceComplete flag inferred from workflow.
+- Equivalent same-driver Settings pair 9/9 each, all seven new stages measured.
+  Screenshot −1.24%, quick-base64 **+7.43%**, OCR −0.68% medians; three samples/API.
+  Each source call has its own clock and complete synchronous sink, not IPC/tool time.
+- Fresh actual Pi CLI session with explicit rebuilt dist/index.js: native dump
+  2643ms, screenshot 439ms (1080×2340), OCR 1259ms (exact Termux). Three actual
+  registered calls, no mocks, agent settled. Metadata-only report/hashes retained;
+  parent active session was NOT reloaded. No clocks merged or internal spans inferred.
+- Three new TEST drafts: source-shot-before91, source-shot-after91 (failed reopen),
+  source-shot-post88; **14 total**. All unchecked, no real workout finished. Amazon
+  read-only. Gboard/Termux independently restored/verified after EACH attempt/check.
+- Validation: **682 units / 52 files**, 16 new source process regressions plus new
+  partial-IPC test, lint/build, **9 isolated integrations**, companion **37/37**
+  build/check. Syntax/privacy/diff checks; unchanged frozen hashes. Default CI open.
+- Next: separate annotation slice, NEW baseline first. Runtime ingestion remains
+  another slice. No new APK/helper/permission/debugging exposure.
 
 ## Operating boundaries
 

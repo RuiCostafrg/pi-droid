@@ -1,71 +1,94 @@
 # Next-session handoff
 
 Read `docs/performance/PLAN.md` first (mandatory real-phone acceptance gate),
-then `COMMAND-TIMING.md` and
-`reports/workflow-command-validation-2026-10-18.md` in this directory.
+then `reports/screenshot-ocr-timing-2026-10-18.md` and `CAPTURE-BENCHMARK.md`.
+Earlier command checkpoint remains in COMMAND-TIMING.md and historical reports.
 
 ## Latest checkpoint
 
-- Closed the command instrumentation's successful-path live-validation gap:
-  current and isolated pre-instrumentation reference both pass frozen Amazon.de
-  → Forge workflow, all 30 exact numeric writes and all 30 persisted readbacks.
-- Current source `e3bc49e` (contains `fca7737`) ran FIRST: 283.303s, 72 captures.
-  Reference `4a8534d` ran SECOND: 290.458s, 74 captures. It was collected AFTER
-  implementation, NOT a chronological pre-change baseline. Same frozen driver
-  and bounded consumer. Reference's two extra alignment cycles total 7.173s:
-  **no demonstrated speedup or isolated instrumentation-overhead estimate**.
-- Current 636 source spans: 360 high-level + 276 successful command attempts
-  within traced hierarchy/selection paths, NOT whole-workflow command count.
-  Zero errors/nontruncated; frozen driver emits NO traceComplete flag. No live
-  reconnect/failure forced, no independent screenshot counts. Details in report.
-- Separate actual loaded native-only dump passes Settings → Termux title/OPEN
-  fixture, both options accepted, metadata-only 2654.78ms. Changed dist files
-  already existed and rebuild byte-identical. Initial interrupted failed probe
-  is disclosed, not discarded. Source/tool clocks are not merged.
-- Two new test drafts remain: `E2E Lower v2 source-cmd-current88` and
-  `E2E Lower v2 source-cmd-reference88`; **11 total** with prior nine. All unchecked,
-  no real workout finished, Amazon read-only. Gboard/Termux independently verified
-  after EACH run and after loaded check. User authorized hands-off control.
-- Validation rerun: **665 units / 51 files, 9 isolated integrations**, lint/build,
-  changed-dist byte equality; companion **36 tests**, build/check. Default
-  parallel CI and automatic input lifecycle NOT claimed fixed.
-- This is an evidence/docs checkpoint only. No production code, frozen driver,
-  archived adapter or historical evidence changed. See latest git log for its
-  publication commit. Companion remains unchanged at published `b18e04a`.
+- Screenshot/OCR opt-in spans implemented in screenshot.ts, ocr.ts and
+  capture-timing.ts: capture, pull, dimensions, local read+base64; availability,
+  engine and TSV parse. One clock across a source call and native OCR fallback.
+  Default-off, no retry/backend/timeout-policy change. Tesseract failures remain
+  unknown (even its own Node timeout), not invented ADB deadline provenance.
+- Capture IPC and companion OFFLINE importer accept seven new stages with
+  existing privacy/128-event/partial flags. Automatic runtime ingestion separate.
+- Fresh chronological baseline source `22af80b` ran BEFORE implementation:
+  workflow PASS 286223.78ms / 72 captures. After attempt1 FAIL 248255.74ms at exact
+  draft-card OCR identity: shopping and 30 writes pass, persisted reopen UNVERIFIED.
+  Unchanged after attempt2 PASS 309218.63ms / 74 captures, 30 writes + 30 persisted
+  values pass. All attempts preserved; same frozen driver/consumer, no weakened checks.
+- Passing after is **+8.03% slower**, two extra alignment cycles 7044.88ms explain
+  only part of +22994.85ms. Remaining variation unexplained. NO demonstrated
+  speedup, isolated instrumentation overhead or non-inferiority estimate.
+- Separate same-driver read-only Settings pair: 9/9 each, three samples per API.
+  Screenshot median −1.24%, quick-base64 **+7.43%**, OCR −0.68%. All seven new
+  stages covered, 24 command spans before → 63 spans after. Source clocks per
+  API call, synchronous-sink traceComplete; NOT IPC or tool-clock completeness.
+- Frozen workflow DOES NOT pass sink to explicit OCR call: no finer screenshot/
+  OCR spans are expected there. Scoped command attempts 276 → 282, NOT workflow
+  command counts. No independent screenshot count or workflow traceComplete flag.
+- Actual freshly started nonpersistent Pi JSON CLI loaded rebuilt dist/index.js
+  explicitly, with no other extensions/MCP and a three-tool allowlist. Real
+  registered native UI dump 2643ms (Termux + OPEN), screenshot 439ms (1080×2340),
+  current-screen OCR 1259ms (exact Termux). All pass, agent settled; dist hashes
+  saved and checked afterward. Parent active session NOT reloaded. No source/tool
+  clocks merged; registered tools use default-disabled diagnostics.
+- Three new TEST drafts remain: `E2E Lower v2 source-shot-before91`,
+  `E2E Lower v2 source-shot-after91` (failed reopen), `E2E Lower v2 source-shot-post88`.
+  **14 total** including prior 11. All 15 sets unchecked at 20kg × 8. No real
+  workout finished or Amazon mutation. Original Gboard/Termux independently
+  verified AFTER EACH full attempt, focused run and loaded check. No new phone
+  APK/helper/permission/debugging exposure. Hands-off use was requested.
+- Validation: **682/682 units, 52 files**, lint/build; **9 isolated integrations**
+  with existing 20s/30s allowances. Companion **37/37**, build/check. Source failure,
+  timeout-unknown, fallback/shared-clock, privacy/default-off/throwing sink and
+  partial IPC tests pass. Default parallel CI and automatic input lifecycle open.
+- New focused runner: scripts/screenshot-ocr-check.mjs (frozen across its pair).
+  New offline audit: scripts/validate-screenshot-ocr-pair.mjs (does NOT change old
+  migration comparator). Engine hashes independently recomputed from baseline
+  git source and measured current source. Full report has reproduction command.
+- See latest git logs for publication commits in BOTH repositories. Publish only
+  to user's origin forks; never upstream. Historical evidence/adapters/drivers
+  untouched. Private loaded JSONL stays temporary; only allowlisted metadata saved.
 
 ## Next exact actions
 
-1. Discover the currently authorized phone afresh. Ensure exclusive device use,
-   original IME captured, Termux foreground and normal Forge navigation.
-2. Capture a FRESH equivalent current baseline BEFORE implementing finer
-   screenshot capture/transfer/read/dimension and OCR availability/engine/parse
-   spans. The completed current workflow is a checkpoint, not an evergreen
-   baseline to reuse across sessions/fixture changes. Preserve all attempts.
-3. Read screenshot.ts, ocr.ts, annotate.ts, capture-timing.ts, exec.ts and the
-   existing process-boundary/IPC tests. The boundary audit is in COMMAND-TIMING.md.
-   Implement shared-clock spans without changing backend/retry/timeout defaults;
-   controlled success/failure, privacy/default-off and partial-span tests first.
-4. Repeat mandatory full Amazon.de → Forge E2E and loaded-tool checks afterward.
-   Validate shopping observations, 30 writes + 30 persisted readbacks, elapsed,
-   failed/completed attempts, scoped capture/command counts, available spans and
-   completeness flags. Explicitly disclose unexercised paths. Do not alter the
-   frozen workflow or old migration comparator to make new results pass.
-5. Keep annotation and automatic runtime companion ingestion as separate slices.
-   Update PLAN.md, validate, commit and push only to the user's origin forks.
+1. Discover the currently authorized phone afresh; ensure exclusive use, capture
+   original IME, verify Termux foreground and normal Forge navigation.
+2. Next implementation priority is **annotation as a separate slice**. Inspect
+   annotate.ts: screenshot and dump currently start in parallel with independent
+   contexts unless caller supplies one; mapping/text-index construction follow.
+   No compositing is performed. Preserve default backend/concurrency/retry/
+   timeout/failure behavior; sibling cancellation is NOT currently implemented.
+3. Capture a FRESH equivalent baseline BEFORE that change: full frozen Amazon.de
+   → Forge workflow PLUS relevant focused annotated fixture and loaded-tool check.
+   Today's pair is not an evergreen baseline. Preserve all attempts. Workflow
+   does not exercise annotation, so cannot substitute for focused path coverage.
+4. Use the pre-agreed public source/external process seam for controlled success/
+   failure/default-off/privacy/partial tests, then implement shared-clock sibling
+   and mapping/text-index spans. Do not count nested sums as wall elapsed.
+5. Repeat full workflow and actual freshly loaded registered annotation-tool check.
+   Validate shopping observations, 30 writes + 30 persisted values, elapsed,
+   failed/completed attempts, scoped counts and flags. Disclose unexercised paths.
+   Do not alter frozen driver, old migration comparator or historical evidence.
+6. Keep automatic runtime companion ingestion, finer reconnect discovery/connect,
+   cancellation, fixed remote PNG concurrency safety and production input
+   lifecycle as explicit later slices. Update tracker, validate, commit and push
+   only to origin forks. Retain unexplained regressions honestly.
 
 ## Mandatory boundaries
 
 Every performance implementation slice needs the existing Amazon + Forge
-real-phone E2E, loaded-extension checks and validated equivalent before/after
-metrics. Instrumentation need not be faster, but overhead must be checked;
-passing tests/removing work is not speedup evidence. If blocked, leave acceptance
-open. Documentation-only updates need no extra phone run.
+real-phone E2E, actual loaded-extension checks and equivalent before/after metrics.
+Instrumentation need not be faster, but overhead must be checked; passing tests
+is not speedup evidence. If blocked, leave acceptance open. Docs-only updates
+need no extra phone run.
 
-Preserve frozen drivers, archived adapters and all historical reports. Amazon
-stays read-only: no cart, checkout or account changes. Forge mutations stay in
-explicitly disclosed TEST drafts; never finish a real workout. Restore original
-IME on success AND failure; return to Termux and independently verify both.
-No new APKs, permissions, helpers or debugging exposure without approval.
+Amazon stays read-only: no cart/checkout/account changes. Forge mutations stay
+in disclosed TEST drafts; never finish a real workout. Restore original IME on
+success AND failure; return to Termux and independently verify both. No new APKs,
+permissions, helpers or debugging exposure without approval.
 
 ## Phone-friendly handoff
 

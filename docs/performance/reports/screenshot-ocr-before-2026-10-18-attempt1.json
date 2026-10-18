@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "kind": "screenshot-ocr-fixture",
+  "status": "pass",
+  "samples": [
+    {
+      "round": 1,
+      "api": "screenshot",
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 3.3450520000001234,
+          "durationMs": 363.8717709999996,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2.622812000000067,
+          "durationMs": 28.565990000000056,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 1.727552000000287,
+          "durationMs": 63.8217709999999,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "ms": 466.87322900000026
+    },
+    {
+      "round": 1,
+      "api": "base64",
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 1.735885000000053,
+          "durationMs": 298.5625,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2.989843999999721,
+          "durationMs": 31.188906000000316,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "ms": 336.54359399999976
+    },
+    {
+      "round": 1,
+      "api": "ocr",
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 1.8926559999999881,
+          "durationMs": 334.22291700000005,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2.4810420000003433,
+          "durationMs": 28.05468699999983,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 1.5689060000004247,
+          "durationMs": 60.424167000000125,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "ms": 1097.7945829999999
+    },
+    {
+      "round": 2,
+      "api": "screenshot",
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 1.5598440000003393,
+          "durationMs": 314.379739,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2.1293750000004366,
+          "durationMs": 29.189478999999665,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2.091042000000016,
+          "durationMs": 70.26697899999999,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "ms": 423.61838500000067
+    },
+    {
+      "round": 2,
+      "api": "base64",
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 2.8867190000000846,
+          "durationMs": 322.1053119999997,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2.389948000000004,
+          "durationMs": 33.9535420000002,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "ms": 363.30307300000004
+    },
+    {
+      "round": 2,
+      "api": "ocr",
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 1.7374479999998584,
+          "durationMs": 329.2511969999996,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2.1076560000001336,
+          "durationMs": 27.51401100000021,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 1.7156779999995706,
+          "durationMs": 66.87083299999995,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "ms": 1076.0032809999993
+    },
+    {
+      "round": 3,
+      "api": "screenshot",
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 1.6679170000006707,
+          "durationMs": 318.62109299999975,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 1.5679170000003069,
+          "durationMs": 77.3664060000001,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 4.338801999999305,
+          "durationMs": 89.65765700000065,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "ms": 499.14843800000017
+    },
+    {
+      "round": 3,
+      "api": "base64",
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 4.521822999999131,
+          "durationMs": 338.34812500000044,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 3.9854169999998703,
+          "durationMs": 37.46567700000014,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "ms": 386.2037499999997
+    },
+    {
+      "round": 3,
+      "api": "ocr",
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 2.270676999999523,
+          "durationMs": 323.14963499999976,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 3.625781000000643,
+          "durationMs": 41.79359399999885,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2.0629169999992882,
+          "durationMs": 82.15099000000009,
+          "outcome": "ok"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "ms": 1116.2916139999998
+    }
+  ],
+  "driverHash": "d522a065fe1ac097757df98b3e4f5281b64b67224cf4d2d436204f796d4a8832",
+  "sourceHash": "0873debee01bd8e1db8cb40a6b67f24d9b9c0068161bd3a31f2c317b15049d8b",
+  "imeUnchanged": true,
+  "termuxRestored": true
+}

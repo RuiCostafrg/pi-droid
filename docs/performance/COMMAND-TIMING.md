@@ -1,5 +1,10 @@
 # Loaded native-only observation and command timing continuation
 
+**Later continuation:** screenshot/OCR timing is now implemented and live-checked;
+see [2026-10-18 evidence](reports/screenshot-ocr-timing-2026-10-18.md). The earlier
+checkpoint and remaining-path audit below describe their original chronology.
+Annotation and automatic runtime ingestion remain separate open slices.
+
 Checkpoint at start: pi-droid `4a8534d`, companion `d7d1193`, both clean.
 Historical reports, archived adapters and frozen v1/v2 drivers were not edited.
 This slice adds diagnostics, not an observation/backend speed optimization.

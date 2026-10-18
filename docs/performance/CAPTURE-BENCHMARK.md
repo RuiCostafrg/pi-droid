@@ -118,6 +118,13 @@ command, path, selector, device identifier or screen content is attached.
 | `ocr_fallback` | Entire OCR fallback call, when enabled by a source API caller |
 | `adb_attempt` | One local execFile attempt through completion/rejection and explicit failure classification; excludes reconnect and preflight validation |
 | `reconnect` | Awaited secure reconnect, including shared single-flight recovery waiting; discovery subcommands are not separately attached |
+| `screenshot_capture` | Existing screencap command await |
+| `screenshot_transfer` | Existing PNG pull await |
+| `screenshot_dimensions` | wm-size command and unchanged dimensions parsing |
+| `screenshot_read` | Local image read and base64 conversion, only when requested |
+| `ocr_availability` | Cached availability check or version probe; unavailable is error/unknown |
+| `ocr_engine` | Existing Tesseract execFile await; non-ADB failures remain unknown |
+| `ocr_parse` | Existing local TSV parsing and confidence filtering |
 
 The benchmark disables cache reads, OCR and reconnect. Its normal trace therefore
 contains five high-level spans plus three nested `adb_attempt` spans, not fabricated
@@ -128,7 +135,16 @@ wall-clock timestamp. Errors caught by the existing fallback path still produce
 an `error` stage even when `dumpUiTree` subsequently returns a result. This does
 not change existing exception/fallback behavior or infer a timeout from duration.
 
-**Limits:** screenshot, OCR-engine and annotation spans remain unimplemented.
+Screenshot/OCR APIs now share these opt-in spans through native fallback or a
+single public image/current-screen call; see [implementation and live evidence](reports/screenshot-ocr-timing-2026-10-18.md).
+`runOcrOnImage` accepts the sink directly; `isTesseractAvailable(timeout, options)`
+keeps its cached nonthrowing boolean contract. Cached false emits an error span;
+no availability cache-hit field is exported. The capture CLI still disables OCR,
+so it does not fabricate these spans. Its IPC allowlist and companion offline
+importer accept them without changing the 128-event bound.
+
+**Limits:** annotation shared sibling clocks/spans remain unimplemented.
+Tesseract keeps its existing Node timeout; no ADB timeout provenance is inferred.
 `adb_attempt` is local command-await time, not device CPU/UIAutomator internals.
 `reconnect` measures caller waiting, not separate discovery/connect attempts.
 Command and enclosing capture spans overlap; never sum them as elapsed wall time. Directory setup/cleanup, result

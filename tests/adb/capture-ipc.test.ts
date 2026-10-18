@@ -1,4 +1,40 @@
 import { expect, it } from "vitest";
+
+const imageStages = ["screenshot_capture", "screenshot_transfer", "screenshot_dimensions",
+  "screenshot_read", "ocr_availability", "ocr_engine", "ocr_parse"];
+
+it("retains bounded screenshot/OCR completed events when the worker never completes", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "capture-image-ipc-"));
+  try {
+    await copyFile(resolve("scripts/capture-benchmark.mjs"), join(dir, "capture-benchmark.mjs"));
+    await writeFile(join(dir, "capture-worker.mjs"), `
+process.once("message", () => {
+  for (const stage of ${JSON.stringify(imageStages)}) process.send({ type: "span", span: {
+    stage, startMs: 0, durationMs: 1, outcome: "ok", path: "PRIVATE_PATH", cacheHit: true,
+  } });
+  setInterval(() => {}, 1000);
+});
+`);
+    const config = join(dir, "config.json");
+    await writeFile(config, JSON.stringify({ foregroundPackage: "fictional.package",
+      assertions: [{ resourceId: "fictional:id/field", text: "PRIVATE_EXPECTATION" }],
+      rounds: 1, trace: true, desiredMs: 2000, observationMs: 2000 }));
+    let stdout = "";
+    try {
+      await promisify(execFile)(process.execPath, [join(dir, "capture-benchmark.mjs"), config], {
+        cwd: resolve("."), timeout: 10000, env: { ...process.env, ANDROID_SERIAL: "PRIVATE_SERIAL" },
+      });
+    } catch (error) { stdout = (error as { stdout: string }).stdout; }
+    const row = JSON.parse(stdout).samples[0];
+    expect(row.outcome).toBe("timeout");
+    expect(row.traceComplete).toBe(false);
+    expect(row.spansTruncated).toBe(false);
+    expect(row.spans.map((s: { stage: string }) => s.stage)).toEqual(imageStages);
+    expect(stdout).not.toContain("PRIVATE_");
+    expect(stdout).not.toContain("cacheHit");
+  } finally { await rm(dir, { recursive: true, force: true }); }
+}, 15000);
+
 import { mkdtemp, copyFile, writeFile, rm } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { tmpdir } from "node:os";

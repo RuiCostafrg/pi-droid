@@ -1,0 +1,39 @@
+{
+  "kind": "fresh-pi-cli-loaded-image-check",
+  "status": "pass",
+  "session": "fresh nonpersistent Pi JSON CLI; explicit dist/index.js only; MCP disabled",
+  "buildHashes": {
+    "dist/adb/screenshot.js": "40816735981a632ef1d633349f4334df9f15b2c2615b415a533c456a290aabed",
+    "dist/adb/ocr.js": "eef10e7619c278621bc0634b252a9463a7f669c887d2116b0350d52557d8bfaf",
+    "dist/adb/capture-timing.js": "6f97c5184f98f583396997577501b0aa1d86dedf2dd4f33c210136ea1330b69d"
+  },
+  "tools": [
+    {
+      "tool": "android_ui_dump",
+      "outcome": "ok",
+      "durationMs": 2643
+    },
+    {
+      "tool": "android_screenshot",
+      "outcome": "ok",
+      "durationMs": 439
+    },
+    {
+      "tool": "android_ocr",
+      "outcome": "ok",
+      "durationMs": 1259
+    }
+  ],
+  "checks": {
+    "nativeTitleAndOpen": true,
+    "screenshot1080x2340": true,
+    "ocrExactTermux": true,
+    "agentSettledNotAborted": true
+  },
+  "limits": [
+    "Tool execute durations, not source spans or model latency. No source clock merged.",
+    "Registered tools use default-disabled diagnostics; no internal spans inferred.",
+    "Read-only fixture; original IME and Termux verified independently afterward.",
+    "Raw temporary JSONL contains tool payloads; only allowlisted metadata exported here."
+  ]
+}

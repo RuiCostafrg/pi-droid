@@ -1,0 +1,92 @@
+{
+  "kind": "screenshot-ocr-instrumentation-pair",
+  "passed": true,
+  "before": {
+    "elapsedMs": 286223.78213,
+    "operations": 300,
+    "captures": 72,
+    "attempts": 276,
+    "alignmentCycles": 0,
+    "alignmentMs": 0,
+    "driverHash": "af7688014fa3e06fd07fd21c734aab86f2406c78ea988871dd2172231f068ca0",
+    "consumerHash": "3b5006b8ac22f74b7585bcb350edc295a5b588fee5e27af602334c2a6a6fba27",
+    "engineHash": "6fd6bbb66ed9dbd09a09211998e575ec487dffb258b3c692a7d481e76361363e"
+  },
+  "after": {
+    "elapsedMs": 309218.63321500004,
+    "operations": 306,
+    "captures": 74,
+    "attempts": 282,
+    "alignmentCycles": 2,
+    "alignmentMs": 7044.87614399998,
+    "driverHash": "af7688014fa3e06fd07fd21c734aab86f2406c78ea988871dd2172231f068ca0",
+    "consumerHash": "3b5006b8ac22f74b7585bcb350edc295a5b588fee5e27af602334c2a6a6fba27",
+    "engineHash": "2a4f0519431bbb00cc78f964edde99747e3277ee54bbd068e5f6e3a1ae43e57f"
+  },
+  "deltaMs": 22994.85108500003,
+  "deltaPct": 8.033871579041607,
+  "fixture": {
+    "screenshot": {
+      "before": {
+        "attempts": 3,
+        "failures": 0,
+        "medianMs": 466.87322900000026,
+        "totalMs": 1389.640052000001,
+        "spans": 9
+      },
+      "after": {
+        "attempts": 3,
+        "failures": 0,
+        "medianMs": 461.06901000000016,
+        "totalMs": 1340.9490610000003,
+        "spans": 21
+      },
+      "medianDeltaMs": -5.804219000000103,
+      "medianDeltaPct": -1.2432109273929015
+    },
+    "base64": {
+      "before": {
+        "attempts": 3,
+        "failures": 0,
+        "medianMs": 363.30307300000004,
+        "totalMs": 1086.0504169999995,
+        "spans": 6
+      },
+      "after": {
+        "attempts": 3,
+        "failures": 0,
+        "medianMs": 390.28015599999935,
+        "totalMs": 1157.3043749999993,
+        "spans": 15
+      },
+      "medianDeltaMs": 26.97708299999931,
+      "medianDeltaPct": 7.42550366481467
+    },
+    "ocr": {
+      "before": {
+        "attempts": 3,
+        "failures": 0,
+        "medianMs": 1097.7945829999999,
+        "totalMs": 3290.089477999999,
+        "spans": 9
+      },
+      "after": {
+        "attempts": 3,
+        "failures": 0,
+        "medianMs": 1090.3433850000001,
+        "totalMs": 3236.606352999999,
+        "spans": 27
+      },
+      "medianDeltaMs": -7.451197999999749,
+      "medianDeltaPct": -0.6787424637893058
+    }
+  },
+  "fixtureDriverHash": "d522a065fe1ac097757df98b3e4f5281b64b67224cf4d2d436204f796d4a8832",
+  "limits": [
+    "Failed after attempt 1 is retained separately; this comparison uses passing after attempt 2.",
+    "Workflow counts trace hierarchy/selection only; no independent screenshot counts or traceComplete flag.",
+    "Fixture has three rounds per API and synchronous local sink completeness, not IPC or tool-clock completeness.",
+    "Raw elapsed/counts are not normalized; extra alignment cycles are not instrumentation overhead.",
+    "No demonstrated speedup, isolated overhead estimate, population or non-inferiority claim."
+  ]
+}
