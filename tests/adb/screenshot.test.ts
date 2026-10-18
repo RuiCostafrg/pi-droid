@@ -46,7 +46,7 @@ describe("takeScreenshot()", () => {
   it("captures screencap on device", async () => {
     await takeScreenshot();
     expect(mockAdbShell).toHaveBeenCalledWith(
-      "screencap -p /sdcard/pi-droid-screen.png",
+      expect.stringMatching(/^screencap -p \/sdcard\/pi-droid-screen-[a-f0-9-]+\.png$/),
       expect.any(Object),
     );
   });
@@ -54,7 +54,7 @@ describe("takeScreenshot()", () => {
   it("pulls screenshot to local path", async () => {
     const result = await takeScreenshot();
     expect(mockAdb).toHaveBeenCalledWith(
-      ["pull", "/sdcard/pi-droid-screen.png", expect.stringContaining("screen_")],
+      ["pull", expect.stringMatching(/^\/sdcard\/pi-droid-screen-[a-f0-9-]+\.png$/), expect.stringContaining("screen_")],
       expect.any(Object),
     );
     expect(result.path).toContain("screen_");
@@ -137,7 +137,7 @@ describe("screenshotBase64()", () => {
   it("pulls to a temp path", async () => {
     await screenshotBase64();
     expect(mockAdb).toHaveBeenCalledWith(
-      ["pull", "/sdcard/pi-droid-screen.png", expect.stringContaining(join(tmpdir(), "pi-droid-quick-"))],
+      ["pull", expect.stringMatching(/^\/sdcard\/pi-droid-screen-[a-f0-9-]+\.png$/), expect.stringContaining(join(tmpdir(), "pi-droid-quick-"))],
       expect.any(Object),
     );
   });

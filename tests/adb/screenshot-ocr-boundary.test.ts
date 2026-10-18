@@ -25,7 +25,7 @@ if (args[0] === "pull") { if (mode !== "read-error") fs.writeFileSync(args[2], a
 else if (cmd.includes("uiautomator")) console.log("dumped");
 else if (cmd.includes("mCurrentFocus")) console.log("mCurrentFocus=Window{x u0 com.example/.Main}");
 else if (cmd === "shell wm size") console.log("Physical size: 1080x2340");
-else if (!cmd.includes("screencap")) process.exit(8);
+else if (!cmd.includes("screencap") && !cmd.startsWith("shell rm -f ")) process.exit(8);
 `);
   await chmod(join(dir, "adb"), 0o700);
   await writeFile(join(dir, "tesseract"), `#!${process.execPath}
@@ -93,7 +93,7 @@ it("returns unchanged image data and nests command attempts in screenshot stages
   expect(result).toMatchObject({ width: 1080, height: 2340, valid: true });
   expect(result.spans.map((s: { stage: string }) => s.stage)).toEqual([
     "adb_attempt", "screenshot_capture", "adb_attempt", "screenshot_transfer",
-    "adb_attempt", "screenshot_dimensions", "screenshot_read",
+    "adb_attempt", "screenshot_dimensions", "screenshot_read", "adb_attempt", // owned remote cleanup
   ]);
   for (const index of [0, 2, 4]) {
     const inner = result.spans[index];
@@ -112,7 +112,8 @@ it.each([
 ])("retains completed and failed stages, not unstarted work: %s", async (mode, stage, kind) => {
   const result = await probe(mode);
   expect(result.failure).toBeDefined();
-  expect(result.spans.at(-1)).toMatchObject({ stage, outcome: "error", failureKind: kind });
+  expect(result.spans.at(-2)).toMatchObject({ stage, outcome: "error", failureKind: kind });
+  expect(result.spans.at(-1)).toMatchObject({ stage: "adb_attempt", outcome: "ok" });
   expect(result.spans.filter((s: { outcome: string }) => s.outcome === "error")).toHaveLength(kind === "exit" ? 2 : 1);
   expect(JSON.stringify(result)).not.toContain("PRIVATE_");
 });
@@ -123,7 +124,7 @@ it.each(["disabled", "screenshot-disabled", "throwing", "ocr-throwing", "base64"
   expect(result.failure).toBeUndefined();
   if (mode.endsWith("disabled")) expect(result.spans).toEqual([]);
   if (mode === "base64") expect(result.spans.map((s: { stage: string }) => s.stage)).toEqual([
-    "adb_attempt", "screenshot_capture", "adb_attempt", "screenshot_transfer", "screenshot_read",
+    "adb_attempt", "screenshot_capture", "adb_attempt", "screenshot_transfer", "screenshot_read", "adb_attempt",
   ]);
   expect(JSON.stringify(result)).not.toContain("PRIVATE_");
 });
@@ -162,10 +163,10 @@ it("shares the screenshot clock with OCR availability, engine and parse stages",
   expect(result.valid).toBe(true);
   expect(result.spans.map((s: { stage: string }) => s.stage)).toEqual([
     "adb_attempt", "screenshot_capture", "adb_attempt", "screenshot_transfer",
-    "adb_attempt", "screenshot_dimensions", "screenshot_read",
+    "adb_attempt", "screenshot_dimensions", "screenshot_read", "adb_attempt",
     "ocr_availability", "ocr_engine", "ocr_parse",
   ]);
-  for (const span of result.spans.slice(7))
-    expect(span.startMs).toBeGreaterThanOrEqual(result.spans[6].startMs + result.spans[6].durationMs);
+  for (const span of result.spans.slice(8))
+    expect(span.startMs).toBeGreaterThanOrEqual(result.spans[7].startMs + result.spans[7].durationMs);
   expect(JSON.stringify(result)).not.toContain("PRIVATE_");
 });

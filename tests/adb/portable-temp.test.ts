@@ -36,7 +36,7 @@ describe("portable temporary storage defaults", () => {
   it("pulls quick screenshots into the system temp directory", async () => {
     await screenshotBase64();
     expect(adb).toHaveBeenCalledWith(
-      ["pull", "/sdcard/pi-droid-screen.png", expect.stringContaining(join("/custom-system-temp", "pi-droid-quick-"))],
+      ["pull", expect.stringMatching(/^\/sdcard\/pi-droid-screen-[a-f0-9-]+\.png$/), expect.stringContaining(join("/custom-system-temp", "pi-droid-quick-"))],
       expect.any(Object),
     );
   });

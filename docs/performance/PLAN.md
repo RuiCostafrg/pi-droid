@@ -58,7 +58,43 @@ rollback and measurement plan, and ask before risky/out-of-scope work, new APKs,
 permissions, helpers or debugging exposure. Keep every failed report and historical
 driver; acceptance checks remain intact. Carry this policy into future handoffs.
 
-## Latest slice — reconnect timing accepted; next scope pending
+## Latest slice — PNG concurrency safety accepted locally
+
+User approved the PNG isolation scope/validation sequence; implementation and live
+evidence survived the interrupted session. Continuation completed validation and
+reporting. [Full evidence and regressions](reports/png-concurrency-2026-10-18.md).
+
+- Only production change is screenshot.ts: UUID-owned device/host PNG files,
+  best-effort remote cleanup without recovery, retained successful saved files,
+  removed quick/failed local files. Public shapes and production timeouts unchanged.
+  No global serialization or guarantee of atomic concurrent phone interaction.
+- NEW chronological 72559c9 before **309200.60ms**, after **300495.09ms**, all
+  shopping + 30 writes + 30 persisted readbacks each. Comparator **16/16 gates**;
+  before 77 captures/291 scoped attempts, after 76/288. Three product cycles each,
+  two/one field cycles. **−2.82% descriptive only, NOT a PNG speedup claim.**
+  Initial failed baseline retained (8907.61ms, before shopping/Forge).
+- Focused **12/12 PNGs each**. Sequential screenshot/base64 medians **+52.38% /
+  +64.71% slower**; concurrent **+54.38% / +48.77% slower**. Cleanup adds a command;
+  its spans do not explain all variation. Ten controlled interleaving/failure cases
+  protect frame ownership, distinct same-timestamp files and cleanup/error policy.
+- Fresh actual registered screenshot/look before **472/2563ms**, after **511/2551ms**;
+  all image/index checks and six build hashes pass. Continuation's fresh rebuild
+  matches after hashes; parent extension not reloaded. No additional phone run.
+- Final **801/801 units / 59 files (--maxWorkers=2)**, lint/build/new syntax/diff
+  checks; **9/9 isolated integrations**. Initial 799/800 failure retained, followed
+  by unchanged isolated 11/11 and sequential 800/800. Synthetic 400ms startup delay
+  reproduced annotation sibling timeout RED; test-only 1500ms deadline/4000ms fake
+  screenshot delay passes both startup cases without relaxing assertions or changing
+  production. Default fully parallel CI unverified. Companion unchanged/not rerun.
+- Two retained TEST drafts source-png-before98 / source-png-after98, all values
+  persisted. Original Gboard/Termux independently verified after saved live blocks.
+  No shopping mutation/completed workout/new APK/helper/permission/debug exposure.
+- Historical scripts/reports untouched; reconnect comparator tests use isolated
+  matching 0034706 source. Work remains **local, not committed/pushed**. Publication
+  is separate; never push upstream. Next bounded slice needs approval and NEW
+  equivalent before/after live/loaded gates; do not bundle overhead optimization.
+
+## Previous slice — reconnect timing accepted; next scope was pending
 
 User approved and this slice is now **PASS within disclosed success/controlled-path
 scope**. Added opt-in discovery/selection and connect/authorization spans, owner-only

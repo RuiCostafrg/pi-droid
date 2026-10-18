@@ -1,5 +1,54 @@
 # Next-session handoff
 
+## Current continuation — PNG isolation accepted locally (supersedes older actions)
+
+Read PLAN.md and [PNG acceptance evidence](reports/png-concurrency-2026-10-18.md)
+first. The previously recommended PNG concurrency scope was approved/implemented
+in local session 2026-10-18T16-16-51-528Z_01a14fcd-3744-7341-adbb-d2f21d5bdb4d.
+Its tmux interruption left final validation/reporting unfinished; continuation
+completed those tasks without new phone interaction or production edits.
+
+- Only production change: src/adb/screenshot.ts. Invocation-owned UUID files,
+  best-effort remote cleanup/recovery disabled, retained successful saved PNGs,
+  removed quick/failed local files. Return shapes and production policies unchanged.
+- Fresh chronological 72559c9 full v3.2 before **309200.60ms**, after **300495.09ms**;
+  all shopping + 30 writes + 30 persisted values each, 16/16 comparator gates.
+  **−2.82% descriptive only**, before has one extra field alignment cycle.
+  Initial failed baseline retained. Historical evidence/driver/consumer unchanged.
+- Focused 12/12 each, but screenshot/base64 medians **48.77–64.71% slower** across
+  measured modes. Remote cleanup costs disclosed, not a demonstrated speedup.
+  Ten deterministic external-process tests cover ownership and failure cleanup.
+- Fresh actual registered screenshot/look pass before 472/2563ms, after 511/2551ms;
+  six build hashes independently matched a fresh rebuild on resume. Parent NOT
+  reloaded; saved original IME/Termux checks remain historical, not new live claims.
+- Final **801/801 units / 59 files (--maxWorkers=2)**, lint/build/syntax/whitespace;
+  **9/9 isolated integrations**. Initial annotation timeout-test failure retained.
+  Deterministic startup-delay RED → GREEN fixed the synthetic fixture only; both
+  no-delay/400ms cases still assert timeout provenance + successful sibling.
+  Default parallel CI unverified; companion unchanged/not rerun.
+- All work is **local and not committed/pushed** at this checkpoint. Do not claim
+  clean/published status from older sections. Two TEST drafts source-png-before98 /
+  source-png-after98 retained, 15 unchecked sets each, persisted 20kg × 8.
+  No new APK/helper/permission/debug exposure/shopping mutation/completed workout.
+
+### Next exact actions — current
+
+1. Inspect git status/diff and the full PNG report. Do not repeat the baseline or
+   phone workflow merely to resume: the recorded source/build hashes still match.
+2. If user requests publication, review all accumulated PNG source/tests/drivers/
+   raw numeric evidence/docs, commit and push only the user-owned origin fork,
+   independently verify remote full hash, then update this local-only checkpoint.
+   Do not silently push upstream. No publication performed by this continuation.
+3. Agree the next single bounded slice before implementation. Cleanup-command
+   overhead is a measured candidate, not an approved optimization. Runtime
+   ingestion, cancellation, input lifecycle and CI remain separate options.
+4. Any subsequent implementation needs NEW equivalent pre-edit baseline, same
+   full frozen v3.2 phone checks, focused coverage and fresh actual relevant loaded
+   tools. Preserve failures; never weaken checks or hide overhead. Restore/verify
+   original IME and Termux; respect all PLAN.md approval/privacy/safety boundaries.
+
+## Historical handoff below — superseded where noted
+
 Read `docs/performance/PLAN.md` first (mandatory real-phone acceptance gate),
 then `reports/annotation-timing-2026-10-18.md`,
 `reports/annotation-audit-2026-10-18.json` and `CAPTURE-BENCHMARK.md`.

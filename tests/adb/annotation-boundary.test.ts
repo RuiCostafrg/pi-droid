@@ -17,8 +17,10 @@ const args = process.argv.slice(4);
 const cmd = args.join(" ");
 const mode = process.env.ANN_MODE;
 async function main() {
+  // Simulate subprocess startup contention without depending on actual host load.
+  await new Promise(r => setTimeout(r, Number(process.env.ANN_STARTUP_DELAY_MS ?? 0)));
   if (cmd.includes("screencap")) {
-    await new Promise(r => setTimeout(r, ["foreground-error", "screenshot-timeout"].includes(mode) ? 600 : 150));
+    await new Promise(r => setTimeout(r, mode === "screenshot-timeout" ? 4000 : mode === "foreground-error" ? 600 : 150));
     if (mode === "screenshot-error") { process.stderr.write("PRIVATE_ERROR"); process.exit(7); }
   } else if (cmd.includes("uiautomator")) {
     await new Promise(r => setTimeout(r, mode === "screenshot-timeout" ? 50 : 350));
@@ -44,7 +46,7 @@ else console.log("level\\tpage_num\\tblock_num\\tpar_num\\tline_num\\tword_num\\
 });
 afterEach(async () => { await rm(dir, { recursive: true, force: true }); });
 
-async function probe(mode = "success") {
+async function probe(mode = "success", startupDelayMs = 0) {
   const path = join(dir, "probe.mjs");
   await writeFile(path, `
 import { annotatedScreenshot } from ${JSON.stringify(resolve("src/adb/annotate.ts"))};
@@ -56,7 +58,9 @@ setScreenshotDir(${JSON.stringify(join(dir, "images"))});
 const mode = process.env.ANN_MODE;
 const spans = [];
 const sink = s => { spans.push(s); if (mode === "throwing") throw Error("PRIVATE_SINK"); };
-const options = { serial: "PRIVATE_SERIAL", exactSerial: true, autoReconnect: false, timeout: mode === "screenshot-timeout" ? 300 : 3000,
+// Allow ordinary synthetic commands to start on a contended host, while the
+// screenshot fixture deliberately exceeds this explicit (non-production) deadline.
+const options = { serial: "PRIVATE_SERIAL", exactSerial: true, autoReconnect: false, timeout: mode === "screenshot-timeout" ? 1500 : 3000,
   includeBase64: mode !== "no-base64", allElements: mode === "all", onCaptureSpan: mode === "disabled" ? undefined : sink };
 if (mode === "context") {
   options.captureClock = captureTiming(sink);
@@ -84,7 +88,7 @@ if (failure) await new Promise(r => setTimeout(r, 1300));
 console.log(JSON.stringify({ valid, failure, spans, atReturn }));
 `);
   const { stdout } = await exec(process.execPath, ["--import", "tsx", path], {
-    timeout: 10000, env: { ...process.env, PATH: `${dir}:${process.env.PATH}`, ANN_MODE: mode },
+    timeout: 10000, env: { ...process.env, PATH: `${dir}:${process.env.PATH}`, ANN_MODE: mode, ANN_STARTUP_DELAY_MS: String(startupDelayMs) },
   });
   return JSON.parse(stdout);
 }
@@ -107,8 +111,8 @@ it("returns correct annotations with overlapping sibling spans and descendants o
   expect(JSON.stringify(result)).not.toContain("PRIVATE_");
 });
 
-it("preserves explicit ADB timeout provenance on the failed screenshot sibling", async () => {
-  const result = await probe("screenshot-timeout");
+it.each([0, 400])("preserves explicit ADB timeout provenance with %ims subprocess startup delay", async startupDelayMs => {
+  const result = await probe("screenshot-timeout", startupDelayMs);
   expect(result.failure).toBe("timeout");
   expect(result.spans.find((s: { stage: string }) => s.stage === "annotation_screenshot")).toMatchObject({ outcome: "error", failureKind: "timeout" });
   expect(result.spans.find((s: { stage: string }) => s.stage === "annotation_ui_dump")).toMatchObject({ outcome: "ok" });
