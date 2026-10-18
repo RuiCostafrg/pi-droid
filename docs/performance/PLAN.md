@@ -898,6 +898,12 @@ regressions; no backend/retry/timeout/failure-policy or workflow-driver changes.
 - Full-workflow acceptance stays OPEN. Close it without weakening frozen assertions;
   if a newly versioned protocol is required, agree it and collect a fresh equivalent
   before/after pair. No additional implementation slice until this is resolved.
+- Published implementation/evidence: pi-droid **`d119e04`** (`Trace annotation
+  stages with preserved open workflow acceptance`), companion **`57e04fc`**
+  (`Accept annotation stages in offline capture ingestion`). Pushed only to each
+  user-owned origin/main; remote main independently matched local HEAD, both
+  working trees clean afterward. This docs-only checkpoint records publication,
+  NOT completion of the still-OPEN mandatory full-workflow gate.
 
 ## Operating boundaries
 

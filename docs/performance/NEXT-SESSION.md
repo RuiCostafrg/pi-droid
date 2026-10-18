@@ -71,8 +71,11 @@ Prior screenshot/OCR evidence remains in its unchanged report and checkpoint.
   failed after created a draft. No real workout finished or Amazon mutation.
   Original Gboard/Termux independently verified after every attempt/check and
   read-only inspection. No new APK/helper/permission/debugging exposure.
-- Publication hashes recorded below after commit/push. Publish only user-owned
-  origin/main forks, never upstream. Historical drivers/adapters/evidence untouched.
+- Published implementation/evidence: pi-droid **`d119e04`**, companion
+  **`57e04fc`**, both pushed to user-owned origin/main forks. Remote main hashes
+  independently matched each local HEAD and both trees were clean afterward.
+  This subsequent docs-only checkpoint records publication; acceptance remains
+  OPEN. Never push upstream. Historical drivers/adapters/evidence untouched.
 
 ## Next exact actions
 
