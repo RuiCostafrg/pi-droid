@@ -118,7 +118,7 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
       let recovered: string;
       try {
         // Includes single-flight waiting, not just discovery owned by this caller.
-        recovered = await timing.async("reconnect", () => reconnect(serial));
+        recovered = await timing.async("reconnect", () => reconnect(serial, timing));
       } catch (recoveryError) {
         throw new AdbError(
           `${original.message}; secure reconnect failed: ${recoveryError instanceof Error ? recoveryError.message : String(recoveryError)}`,

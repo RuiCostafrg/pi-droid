@@ -1,0 +1,34 @@
+{
+  "kind": "fresh-pi-cli-loaded-reconnect-check",
+  "status": "pass",
+  "driverHash": "88844b913a21db293a5a4568de537cff7b01ff2488ab1d1affd4547c6e3885ac",
+  "session": "fresh nonpersistent Pi JSON CLI; explicit dist/index.js only; MCP disabled",
+  "buildHashes": {
+    "dist/index.js": "5734e85e140585f762ca33c969c061c26a0d82d8531dfe04aa299036056b99fd",
+    "dist/tools/device.js": "4598b6a243bdd6f38fbdd0af4f9d2c1984868d88a3d2896d5c3d48b10a325758",
+    "dist/adb/exec.js": "88673a592ad42e967bcdde1351d2666bb41ee05536d87dda5232e191ee8c1b37",
+    "dist/adb/reconnect.js": "756a5ddf61099a2201de867a15d209bc0b0d74ad6e6ac06f24a5b553712bad94",
+    "dist/adb/wifi.js": "f6b1901b210972e42cbeab1873abe63e3ea3b337c3e59efcc9abee91cf15fe38",
+    "dist/adb/capture-timing.js": "6f97c5184f98f583396997577501b0aa1d86dedf2dd4f33c210136ea1330b69d"
+  },
+  "tools": [
+    {
+      "tool": "android_look",
+      "outcome": "ok",
+      "durationMs": 2498
+    }
+  ],
+  "checks": {
+    "exactlyOneMatchingCall": true,
+    "noToolError": true,
+    "nativeTitleAndOpen": true,
+    "agentSettledNotAborted": true,
+    "buildUnchanged": true
+  },
+  "limits": [
+    "Tool execute clock, not source spans/model latency; diagnostics default-off.",
+    "Parent active session is not reloaded. Raw JSONL stays private in temporary storage. Recovery is not forced or covered by this success check."
+  ],
+  "imeUnchanged": true,
+  "termuxRestored": true
+}

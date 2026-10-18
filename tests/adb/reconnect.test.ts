@@ -51,7 +51,8 @@ describe("automatic secure reconnect", () => {
     respond(fail("error: no devices/emulators found"), "recovered");
     const { adb } = await import("../../src/adb/exec.js");
     expect(await adb(["shell", "wm size"])).toBe("recovered");
-    expect(mocks.connect).toHaveBeenCalledWith({ host: undefined, timeout: 5000, autoReconnect: false });
+    expect(mocks.connect).toHaveBeenCalledWith({ host: undefined, timeout: 5000, autoReconnect: false,
+      captureClock: { sync: expect.any(Function), async: expect.any(Function) } });
     expect(mocks.exec.mock.calls[1][1]).toEqual(["-s", "192.168.1.42:42000", "shell", "wm size"]);
   });
 

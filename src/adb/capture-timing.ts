@@ -4,7 +4,7 @@ import { AdbError, type ExecutionFailureKind } from "./exec.js";
 /** Fixed vocabulary only: never attach commands, selectors, content or errors. */
 export type CaptureStage = "cache_lookup" | "device_dump" | "xml_transfer" |
   "xml_read" | "xml_parse" | "foreground" | "ocr_fallback" |
-  "adb_attempt" | "reconnect" | "screenshot_capture" | "screenshot_transfer" |
+  "adb_attempt" | "reconnect" | "reconnect_discovery" | "reconnect_connect" | "screenshot_capture" | "screenshot_transfer" |
   "screenshot_dimensions" | "screenshot_read" | "ocr_availability" | "ocr_engine" | "ocr_parse" | "annotation_screenshot" |
   "annotation_ui_dump" | "annotation_map" | "annotation_text_index";
 

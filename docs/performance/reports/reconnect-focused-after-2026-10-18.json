@@ -1,0 +1,223 @@
+{
+  "kind": "reconnect-focused-success-check",
+  "status": "pass",
+  "driverHash": "6415b7d7f4c82d702529eea615fa6b9789409a8ef85a19b85adf4eaaf713b949",
+  "sourceHashes": {
+    "exec.ts": "f98b7d0eb141959cbf19cf8f16a86606e4bb01c5e81d912b923491f7678b1c32",
+    "reconnect.ts": "d0c1d5a6511da33568cf7dc95d94434abb2e4bb887aacedb0756ae6f313cd65a",
+    "wifi.ts": "f5183a2d16d72756a878f83f29e476960c4ede4d310272620f67ec2b0c49cdf6",
+    "capture-timing.ts": "a2a9748af4f6e1cd3294debaea8ceb435e7b5aee6380e0bffcdedbd9abd545fb",
+    "mdns.ts": "ff0b00e95ba5d260f7d0067d7c93b164bb6b53309c1a962fa47dd5520cc3449d",
+    "ui-tree.ts": "f33f82544290d09dbd534b29e946a2dd526ace558d39a594d9563f7642b616a2"
+  },
+  "samples": [
+    {
+      "round": 0,
+      "trace": false,
+      "ok": true,
+      "durationMs": 2504.9330200000004,
+      "spans": [],
+      "traceComplete": true,
+      "spansTruncated": false
+    },
+    {
+      "round": 0,
+      "trace": true,
+      "ok": true,
+      "durationMs": 2477.8741139999997,
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 8.675885000000108,
+          "durationMs": 2329.6244779999997,
+          "outcome": "ok"
+        },
+        {
+          "stage": "device_dump",
+          "startMs": 6.682239000000209,
+          "durationMs": 2331.780468,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2340.360051,
+          "durationMs": 25.23468700000012,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2338.5603109999997,
+          "durationMs": 27.08448000000044,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2365.6712490000004,
+          "durationMs": 1.308697999999822,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2366.9942180000003,
+          "durationMs": 1.4874479999998584,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2370.732343,
+          "durationMs": 106.3791140000003,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2368.494322,
+          "durationMs": 109.10484300000007,
+          "outcome": "ok"
+        }
+      ],
+      "traceComplete": true,
+      "spansTruncated": false
+    },
+    {
+      "round": 1,
+      "trace": false,
+      "ok": true,
+      "durationMs": 2503.5481759999993,
+      "spans": [],
+      "traceComplete": true,
+      "spansTruncated": false
+    },
+    {
+      "round": 1,
+      "trace": true,
+      "ok": true,
+      "durationMs": 2496.6310410000006,
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 7.858229000001302,
+          "durationMs": 2354.2920299999987,
+          "outcome": "ok"
+        },
+        {
+          "stage": "device_dump",
+          "startMs": 6.469531000000643,
+          "durationMs": 2355.8076550000005,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2364.488905,
+          "durationMs": 26.699947999999495,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2362.401822,
+          "durationMs": 28.815364000000045,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2391.225832,
+          "durationMs": 0.6640100000004168,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2391.9233839999997,
+          "durationMs": 1.3350000000009459,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2394.8968220000006,
+          "durationMs": 101.46093699999983,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2393.2628110000005,
+          "durationMs": 103.17062500000065,
+          "outcome": "ok"
+        }
+      ],
+      "traceComplete": true,
+      "spansTruncated": false
+    },
+    {
+      "round": 2,
+      "trace": false,
+      "ok": true,
+      "durationMs": 2487.6422390000007,
+      "spans": [],
+      "traceComplete": true,
+      "spansTruncated": false
+    },
+    {
+      "round": 2,
+      "trace": true,
+      "ok": true,
+      "durationMs": 2495.4602589999995,
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 7.613333000001148,
+          "durationMs": 2351.1623949999994,
+          "outcome": "ok"
+        },
+        {
+          "stage": "device_dump",
+          "startMs": 5.982656000000134,
+          "durationMs": 2353.0402080000003,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2364.278853,
+          "durationMs": 40.97786500000075,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_transfer",
+          "startMs": 2359.3200510000006,
+          "durationMs": 45.96546900000067,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_read",
+          "startMs": 2405.2943219999997,
+          "durationMs": 1.9559380000009696,
+          "outcome": "ok"
+        },
+        {
+          "stage": "xml_parse",
+          "startMs": 2407.258385000001,
+          "durationMs": 1.2388539999992645,
+          "outcome": "ok"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 2410.1541660000003,
+          "durationMs": 85.08890600000086,
+          "outcome": "ok"
+        },
+        {
+          "stage": "foreground",
+          "startMs": 2408.501249000001,
+          "durationMs": 86.80109400000038,
+          "outcome": "ok"
+        }
+      ],
+      "traceComplete": true,
+      "spansTruncated": false
+    }
+  ],
+  "limits": [
+    "Three native Settings samples per diagnostics mode; descriptive only, no isolated reconnect overhead.",
+    "Recovery disabled/exact transport; new discovery/connect stages require controlled process tests, not this fixture.",
+    "Per-call source clock; not loaded-tool or model latency."
+  ],
+  "imeUnchanged": true,
+  "termuxRestored": true
+}

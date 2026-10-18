@@ -6,6 +6,7 @@ const imageStages = ["screenshot_capture", "screenshot_transfer", "screenshot_di
 it.each([
   ["screenshot/OCR", imageStages],
   ["annotation", ["annotation_screenshot", "annotation_ui_dump", "annotation_map", "annotation_text_index"]],
+  ["reconnect", ["reconnect_discovery", "reconnect_connect"]],
 ])("retains bounded %s completed events when the worker never completes", async (_name, stages) => {
   const dir = await mkdtemp(join(tmpdir(), "capture-image-ipc-"));
   try {

@@ -5,7 +5,71 @@ then `reports/annotation-timing-2026-10-18.md`,
 `reports/annotation-audit-2026-10-18.json` and `CAPTURE-BENCHMARK.md`.
 Prior screenshot/OCR evidence remains in its unchanged report and checkpoint.
 
-## Latest continuation — annotation acceptance PASS under v3.2
+## Latest continuation — reconnect timing accepted
+
+User approved the bounded reconnect timing slice and final commit/push/handoff.
+[Full evidence](reports/reconnect-timing-2026-10-18.md) is current. Annotation
+acceptance remains closed; no historical drivers/comparators/reports changed.
+
+- Added opt-in `reconnect_discovery` (discovery + exact selection) and
+  `reconnect_connect` (connect + authorization verification). Only single-flight
+  owner emits substages; followers retain caller-local wait envelopes. Explicit
+  clock wins; diagnostics default-off, content-free, sink-safe. Existing recovery/
+  retry/timeout/fallback/cancellation behavior unchanged. IPC/OFFLINE importer
+  vocabulary extended; runtime ingestion is NOT implemented.
+- NEW chronological f061509 before **304521.52ms**, after **304066.19ms**:
+  both PASS, 77 captures / 291 scoped command spans, all shopping + 30 writes +
+  30 persisted values. Three product/two field alignment cycles each. All 16
+  separately versioned comparator gates pass, including supplemental wifi/reconnect
+  provenance. **−0.15% descriptive only**; no speedup/isolated overhead claim.
+- Exact transport disables recovery in live workflow. Fourteen controlled public
+  process cases cover new spans/failure/single-flight/explicit-timeout/privacy;
+  no live disconnect forced. Do not call this live recovery acceptance.
+- Focused Settings 6/6 each: disabled median **+3.12%**, enabled **+2.23% slower**.
+  First slow sample retained; three/mode, no non-inferiority claim.
+  Fresh rebuilt actual registered android_look 2523/2498ms PASS, six build hashes
+  checked. Fresh nonpersistent Pi CLI, parent NOT reloaded, no clocks merged.
+- Final **761/761 units / 57 files (--maxWorkers=2)**; lint/build/syntax/diff checks,
+  **9/9 isolated integrations** and companion **39/39** build/check pass.
+  Initial full units 733/736: frozen annotation comparator positive cases expected
+  its historical source. Tests now use isolated matching f061509 snapshot with
+  original comparator/reports intact. Other expected RED/mock-option/copied-delta
+  failures disclosed in full evidence. Default full-parallel CI still unverified.
+- Two retained TEST drafts `E2E Lower v3.2 source-recon-before96` and
+  `source-recon-after96`: 15 unchecked sets at 20kg × 8, all values persisted.
+  No Amazon mutation/completed workout/new APK/helper/permission/debug exposure.
+  Original Gboard and Termux independently verified after live blocks.
+- Companion published as **7894df4** to user-owned origin/main; full remote/local
+  hash independently matched and tree clean. pi-droid publication pending final
+  commit/push verification; update this line afterward. Never push upstream.
+
+### Next exact actions (supersedes older lists)
+
+1. Verify clean/published checkpoint and read PLAN.md plus the reconnect evidence.
+   No phone run needed merely to resume; annotation and this timing slice are closed
+   within their disclosed scopes. Preserve historical failures and frozen scripts.
+2. Recommend **fixed remote PNG concurrency safety** as the next single bounded
+   implementation slice; agree its exact scope/test seams with the user BEFORE
+   starting. Not yet approved or implemented. Runtime ingestion, cancellation,
+   input lifecycle and CI remain separate options, not bundled work.
+3. For any new performance slice, rediscover the authorized phone, confirm hands-off
+   use/original IME/Termux and normal Forge navigation. Save NEW equivalent baseline
+   before edits, then same frozen v3.2 full phone pair (30 writes + 30 persisted
+   readbacks), focused affected-path coverage and actual fresh relevant registered
+   tool verification with build hashes. Never reuse this pair indefinitely.
+4. Preserve every attempt, safety cleanup and regressions; version new comparators
+   if source assumptions change. Keep current tracker/handoff updated through
+   validation, review and verified origin-only publication.
+
+### Optimization latitude — preserve in future handoffs
+
+The user welcomes unconventional/“hacky” optimization ideas for the best experience.
+Think beyond the current design, propose bounded reversible experiments, and ask
+before risky/out-of-scope work or persistent device/security changes. Follow PLAN.md
+“Optimization latitude and approval”; this does not waive correctness, privacy,
+fresh-baseline, loaded-extension or APK/helper/permission/debugging gates.
+
+## Previous continuation — annotation acceptance PASS under v3.2
 
 Read [new complete evidence](reports/annotation-v3.2-acceptance-2026-10-18.md) and
 [active protocol](WORKFLOW-V3.md) before treating the older OPEN checkpoint below

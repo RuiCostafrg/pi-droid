@@ -1,5 +1,6 @@
 /** Bounded, single-flight secure recovery for missing/offline ADB transports. */
 import { autoConnect } from "./wifi.js";
+import type { CaptureTiming } from "./capture-timing.js";
 
 const endpoints = new Map<string, string>();
 const pending = new Map<string, Promise<string>>();
@@ -11,13 +12,16 @@ export function resolveSerial(serial?: string): string | undefined {
   return host ? endpoints.get(host) ?? serial : serial;
 }
 
-export async function reconnect(serial?: string): Promise<string> {
+// Only the single-flight owner emits substages on its own clock. Waiters retain
+// their caller-local reconnect envelope; never replay another caller’s spans.
+export async function reconnect(serial?: string, captureClock?: CaptureTiming): Promise<string> {
   const host = serial?.match(/^(\d+\.\d+\.\d+\.\d+):\d+$/)?.[1];
   const key = host ?? "<untargeted>";
   const existing = pending.get(key);
   if (existing) return existing;
   const recovery = (async () => {
-    const connected = await autoConnect({ host, timeout: 5000, autoReconnect: false });
+    const connected = await autoConnect({ host, timeout: 5000, autoReconnect: false,
+      ...(captureClock ? { captureClock } : {}), });
     const connectedHost = connected.match(/^(\d+\.\d+\.\d+\.\d+):\d+$/)?.[1];
     if (connectedHost) endpoints.set(connectedHost, connected);
     return connected;

@@ -47,9 +47,56 @@ needed two extra alignment cycles (7.173s): no demonstrated speedup or isolated
 overhead estimate. Live reconnect/error paths were not forced; their controlled
 regressions remain the evidence. See [full evidence and limits](reports/workflow-command-validation-2026-10-18.md).
 
-## Resume here
+## Optimization latitude and approval
 
-**Latest: annotation acceptance PASS under v3.2 (2026-10-18).**
+The user welcomes unconventional or “hacky” approaches when they can improve
+performance or the overall experience. Consider options beyond the current design;
+prefer bounded, reversible experiments with explicit correctness, privacy and
+before/after evidence. This is permission to propose experiments, not blanket
+approval for scope expansion or persistent changes. Explain the benefit, risks,
+rollback and measurement plan, and ask before risky/out-of-scope work, new APKs,
+permissions, helpers or debugging exposure. Keep every failed report and historical
+driver; acceptance checks remain intact. Carry this policy into future handoffs.
+
+## Latest slice — reconnect timing accepted; next scope pending
+
+User approved and this slice is now **PASS within disclosed success/controlled-path
+scope**. Added opt-in discovery/selection and connect/authorization spans, owner-only
+single-flight substage clocks, bounded IPC and OFFLINE companion vocabulary.
+Recovery behavior/defaults unchanged. [Full evidence](reports/reconnect-timing-2026-10-18.md).
+
+Fresh chronological f061509 before **304521.52ms**, after **304066.19ms**:
+both 77 captures / 291 scoped command spans, all shopping checks + 30 writes +
+30 persisted values. New comparator's 16 gates pass; source manifests independently
+checked, frozen v3.2 and historical annotation comparator/reports untouched.
+**−0.15% descriptive only, no demonstrated speedup or isolated reconnect overhead.**
+Exact transport disables live recovery; 14 controlled process tests cover the new
+success/failure/shared-clock paths. No live disconnect was forced.
+
+Focused native Settings 6/6 each; disabled median **+3.12% slower**, enabled
+**+2.23% slower** (three samples/mode; not isolated overhead/non-inferiority).
+Fresh rebuilt actual Pi CLI registered android_look passes before/after
+2523/2498ms; six build hashes checked, parent session NOT reloaded.
+Two retained TEST drafts source-recon-before96 / source-recon-after96, all values
+persisted. Original Gboard/Termux independently verified after live blocks.
+
+Final validation: **761/761 units / 57 files (--maxWorkers=2)**, lint/build,
+**9/9 isolated integrations**, companion **39/39**, build/check. Default parallel
+CI remains unverified. Preserve disclosed expected RED runs, initial 733/736 unit
+failure (historical comparator now tested in isolated matching f061509 snapshot)
+and new comparator test's copied-delta-literal failure; see evidence. Historical
+drivers and every failed report unchanged. Publication recorded in NEXT-SESSION.md.
+
+**Next recommendation, not approved/started:** fixed remote PNG concurrency safety.
+Agree one bounded scope/test seams first; no new implementation until confirmation.
+Runtime ingestion, cancellation, input lifecycle and CI remain separate.
+Every new performance slice still requires a NEW equivalent frozen v3.2 baseline
+before edits, full real-phone pair, focused coverage and fresh relevant actual
+registered-tool checks. Ask before forced disconnects or connectivity changes.
+
+## Earlier acceptance checkpoints
+
+**Prior: annotation acceptance PASS under v3.2 (2026-10-18).**
 User-approved separately versioned protocol preserves v2 and all failures.
 Real offscreen zero-area bounds made v3/v3.1 reverse direction; v3.2 retains
 last direction through unknown geometry without weakening visibility/actionability,
@@ -423,10 +470,12 @@ as acceptance criteria. First deterministic slice should run in seconds offline.
 - [x] Add screenshot capture/transfer/dimensions/base64-read and OCR availability/
   engine/parse spans; chronological baseline, retained failed run, passing full
   workflow, equivalent focused pair and fresh loaded registered tools checked.
-- [ ] Annotation sibling shared-clock/map/text-index spans IMPLEMENTED and focused/
-  loaded checks pass; mandatory full-workflow acceptance OPEN after two preserved
-  Amazon visibility failures before Forge. See latest evidence above.
-- [ ] Add finer reconnect discovery/connect spans as a separate later slice.
+- [x] Annotation sibling shared-clock/map/text-index spans, focused/loaded checks
+  and full-workflow acceptance PASS under v3.2. Earlier OPEN checkpoint and all
+  failed reports remain historical evidence; see latest acceptance report above.
+- [x] Finer reconnect discovery/selection and connect/authorization spans; fresh
+  workflow/focused/loaded success pair plus controlled failure/single-flight tests.
+  Live reconnect not forced; see reconnect timing evidence above.
 - [x] Preserve explicit timeout/cancellation/error metadata through ADB/capture
   spans and benchmark IPC. Command AbortSignal supported; whole-observation and
   sibling cancellation, reconnect cancellation and default tool signal forwarding

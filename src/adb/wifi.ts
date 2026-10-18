@@ -7,6 +7,7 @@
 
 import { adb, adbShell, listDevices, type AdbExecOptions } from "./exec.js";
 import { discoverWirelessEndpoints } from "./mdns.js";
+import { captureTiming } from "./capture-timing.js";
 
 const DEFAULT_PORT = 5555;
 
@@ -98,25 +99,32 @@ export async function isWifiConnected(
 export async function autoConnect(
   options: AdbExecOptions & { host?: string; port?: number } = {},
 ): Promise<string> {
-  const endpoints = await discoverWirelessEndpoints(options.timeout ?? 5000);
-  const host = options.host ?? (options.serial?.match(/^(\d+\.\d+\.\d+\.\d+):\d+$/)?.[1]);
-  const candidates = endpoints.filter(endpoint =>
-    (!host || endpoint.host === host) &&
-    (options.port === undefined || endpoint.port === options.port),
-  );
-  const unique = [...new Map(candidates.map(endpoint => [`${endpoint.host}:${endpoint.port}`, endpoint])).values()];
-  if (!unique.length) {
-    throw new Error("No secure Wireless debugging service found. Enable Wireless debugging on the same WiFi network and ensure this ADB host is paired.");
-  }
-  if (unique.length > 1) {
-    throw new Error("Multiple Wireless debugging endpoints found; specify host (and port if necessary) to select your phone.");
-  }
-  const endpoint = unique[0];
-  const result = await connectWifi(endpoint.host, endpoint.port, { timeout: options.timeout });
-  if (!result.success) throw new Error(`WiFi connect failed: ${result.message}`);
-  const devices = await listDevices();
-  if (!devices.some(device => device.serial === result.serial && device.state === "device")) {
-    throw new Error("Wireless debugging connection is not authorized or is offline. Pair this ADB host in Android settings first.");
-  }
-  return result.serial;
+  const timing = options.captureClock ?? captureTiming(options.onCaptureSpan);
+  // Includes discovery plus exact candidate selection; empty/ambiguous is failure.
+  const endpoint = await timing.async("reconnect_discovery", async () => {
+    const endpoints = await discoverWirelessEndpoints(options.timeout ?? 5000);
+    const host = options.host ?? (options.serial?.match(/^(\d+\.\d+\.\d+\.\d+):\d+$/)?.[1]);
+    const candidates = endpoints.filter(endpoint =>
+      (!host || endpoint.host === host) &&
+      (options.port === undefined || endpoint.port === options.port),
+    );
+    const unique = [...new Map(candidates.map(endpoint => [`${endpoint.host}:${endpoint.port}`, endpoint])).values()];
+    if (!unique.length) {
+      throw new Error("No secure Wireless debugging service found. Enable Wireless debugging on the same WiFi network and ensure this ADB host is paired.");
+    }
+    if (unique.length > 1) {
+      throw new Error("Multiple Wireless debugging endpoints found; specify host (and port if necessary) to select your phone.");
+    }
+    return unique[0];
+  });
+  // Includes authorization/device-list verification, not just connect stdout.
+  return timing.async("reconnect_connect", async () => {
+    const result = await connectWifi(endpoint.host, endpoint.port, { timeout: options.timeout, captureClock: timing });
+    if (!result.success) throw new Error(`WiFi connect failed: ${result.message}`);
+    const devices = await listDevices();
+    if (!devices.some(device => device.serial === result.serial && device.state === "device")) {
+      throw new Error("Wireless debugging connection is not authorized or is offline. Pair this ADB host in Android settings first.");
+    }
+    return result.serial;
+  });
 }

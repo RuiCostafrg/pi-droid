@@ -1,11 +1,29 @@
-import { afterEach, beforeEach, expect, it } from 'vitest';
-import { mkdtemp, writeFile, readFile, rm } from 'node:fs/promises';
+import { afterAll, afterEach, beforeAll, beforeEach, expect, it } from 'vitest';
+import { mkdtemp, mkdir, writeFile, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join, resolve } from 'node:path';
+import { join } from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 const exec = promisify(execFile);
 let dir: string;
+let snapshot: string;
+let gitDir: string;
+// This comparator is annotation-checkpoint-specific, not a current-source audit.
+// Preserve its implementation/reports; run it against the matching historical tree.
+beforeAll(async () => {
+  snapshot = await mkdtemp(join(tmpdir(), 'annotation-comparator-source-'));
+  gitDir = (await exec('git', ['rev-parse', '--absolute-git-dir'])).stdout.trim();
+  await mkdir(join(snapshot, 'src/adb'), { recursive: true });
+  await mkdir(join(snapshot, 'scripts'));
+  const files = ['exec.ts','capture-timing.ts','ui-tree.ts','cache.ts','input.ts',
+    'read-select-tap.ts','app.ts','ocr.ts','screenshot.ts','annotate.ts'].map(f=>'src/adb/'+f);
+  files.push('scripts/compare-workflow-v3.2.mjs','scripts/workflow-v3.2.mjs','scripts/workflow-field-action.mjs');
+  for (const file of files) {
+    const { stdout } = await exec('git', ['show', `f061509:${file}`]);
+    await writeFile(join(snapshot,file),stdout);
+  }
+}, 20000);
+afterAll(async () => { await rm(snapshot, { recursive: true, force: true }); });
 beforeEach(async () => { dir = await mkdtemp(join(tmpdir(), 'workflow-v32-compare-')); });
 afterEach(async () => { await rm(dir, { recursive: true, force: true }); });
 async function compare(change?: (before: any, after: any) => void) {
@@ -17,7 +35,7 @@ async function compare(change?: (before: any, after: any) => void) {
   await writeFile(a, JSON.stringify(before)); await writeFile(b, JSON.stringify(after));
   const args = ['scripts/compare-workflow-v3.2.mjs', a, b, output, markdown];
   let code = 0;
-  try { await exec(process.execPath, args, { cwd: resolve('.'), timeout: 10000 }); }
+  try { await exec(process.execPath, args, { cwd: snapshot, env: { ...process.env, GIT_DIR: gitDir }, timeout: 10000 }); }
   catch { code = 1; }
   let json = '', md = '';
   try { json = await readFile(output, 'utf8'); md = await readFile(markdown, 'utf8'); } catch {}
@@ -68,7 +86,7 @@ it('does not publish unexpected private payloads', async () => {
 it('refuses to overwrite either output', async () => {
   const r = await compare();
   expect(r.code).toBe(0);
-  await expect(exec(process.execPath, r.args, { cwd: resolve('.') })).rejects.toThrow();
+  await expect(exec(process.execPath, r.args, { cwd: snapshot, env: { ...process.env, GIT_DIR: gitDir } })).rejects.toThrow();
   expect(await readFile(r.args[3], 'utf8')).toBe(r.json);
   expect(await readFile(r.args[4], 'utf8')).toBe(r.md);
 });
