@@ -42,18 +42,22 @@ as current. Historical reports/audits remain untouched.
   whitespace checks pass. Six driver regressions (zero-area RED→GREEN), 21 offline
   comparator checks including 18 adversarial failures. Default parallel CI not
   verified, integration/companion results not rerun here. No new implementation.
-- Continuation files are not committed/pushed yet. Review/stage all protocol,
-  drivers, tests, failed/success reports and docs together; preserve historical
-  evidence. Only origin user fork if publishing, never upstream.
+- Acceptance continuation committed as **1bd456d** and pushed to the user-owned
+  `origin/main` fork (`RuiCostafrg/pi-droid`); remote main was independently
+  verified against the full local commit hash. All protocol/drivers/tests and
+  failed/success reports are included. This subsequent docs-only commit updates
+  the published handoff. Never push upstream.
 
 ### Next exact actions (supersedes older list)
 
-1. Review/commit this acceptance continuation, including all failed reports;
-   check git status and immutable driver hashes. No further phone run needed for
-   docs-only review. Do not relabel retrospective evidence chronological.
-2. Before a new implementation slice, select ONE from the existing backlog with
-   the user: runtime companion ingestion, finer reconnect, cancellation, fixed
-   remote PNG concurrency, production input lifecycle, or default CI reliability.
+1. Confirm clean git status and published checkpoint, then read PLAN.md and the
+   new acceptance evidence/active protocol linked above. Annotation acceptance
+   is closed; do not repeat the superseded OPEN-gate work below. Do not relabel
+   retrospective evidence chronological. No phone run needed just to resume.
+2. Recommend the next single bounded slice from the backlog and agree its scope
+   with the user before implementation: runtime companion ingestion, finer
+   reconnect, cancellation, fixed remote PNG concurrency, production input
+   lifecycle, or default CI reliability. Do not silently choose or start one.
 3. Any performance slice needs NEW fresh equivalent v3.2 baseline before edits,
    same frozen full after workflow with 30 writes/readbacks and actual fresh
    relevant registered-tool verification. Respect hands-off/IME/Termux boundaries.
