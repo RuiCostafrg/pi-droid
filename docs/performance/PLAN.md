@@ -8,7 +8,8 @@ host-side integrations or the Settings fixture. Documentation-only updates do
 not require another phone run. A slice is not fully validated until this gate
 passes; if blocked or skipped, record that explicitly and leave acceptance open.
 
-- Use the existing versioned [workflow protocol](WORKFLOW-V2.md) and preserve
+- Use the active versioned [workflow v3.2 protocol](WORKFLOW-V3.md), retaining
+  [v2](WORKFLOW-V2.md) as immutable historical evidence, and preserve
   frozen drivers, archived adapters and historical success/failure evidence.
   Capture a current equivalent baseline BEFORE each implementation change, then
   run the changed path with the same driver, correctness checks and comparable
@@ -48,7 +49,38 @@ regressions remain the evidence. See [full evidence and limits](reports/workflow
 
 ## Resume here
 
-**Latest: annotation timing implemented; mandatory full-workflow gate OPEN (2026-10-18).**
+**Latest: annotation acceptance PASS under v3.2 (2026-10-18).**
+User-approved separately versioned protocol preserves v2 and all failures.
+Real offscreen zero-area bounds made v3/v3.1 reverse direction; v3.2 retains
+last direction through unknown geometry without weakening visibility/actionability,
+identity, ambiguity, fresh-confirmation or eight-scroll guards. Select v3.2 as
+active acceptance protocol for correctness, not speed.
+
+Same frozen v3.2 retrospective 09c3cc8 reference PASS **313865.86ms / 79 captures /
+297 scoped command spans**, current PASS **311786.37ms / 78 / 294**. Both complete
+all shopping checks, 30 writes and 30 persisted values; all 15 comparison gates
+pass, independently verified source/driver/consumer hashes. **−0.66% descriptive**;
+reference has one extra 3464.07ms field-alignment cycle, never subtracted. Not
+chronological pre-code evidence, not a v2-v3 speed comparison, no speedup/isolated
+overhead/non-inferiority claim. Source workflow does not exercise annotation.
+
+Fresh rebuild + actual fresh Pi CLI registered android_look PASS **2998ms**,
+exact Settings/Termux/OPEN index and build hashes verified; parent session not
+reloaded. Existing focused pair remains valid for unchanged production source:
+interactive −2.14%, all/base64 **+1.22%**; regression still disclosed. Historical
+annotation report/audit remain unchanged OPEN-at-checkpoint evidence, superseded
+for acceptance only by [new complete evidence](reports/annotation-v3.2-acceptance-2026-10-18.md).
+
+Continuation retains two visibility failures and one later OCR-identity reference
+failure (30 writes, no persisted readbacks); passing retry changes only the public
+run label, not OCR threshold/identity guards. Three new retained TEST drafts;
+Gboard/Termux independently verified after every attempt/check. No production
+source changes. **721/721 units / 55 files (--maxWorkers=2)**, lint/build, script
+syntax/whitespace checks pass. Default parallel CI still unverified; historical
+integration/companion results not rerun. Next slices require a new fresh baseline,
+full v3.2 pair and relevant loaded-tool checks; none started here.
+
+**Previous checkpoint: annotation timing implemented; full-workflow gate OPEN.**
 Fresh chronological before source `09c3cc8` PASS **290991.75ms / 74 captures**,
 all shopping checks + 30 writes + 30 persisted values. Both unchanged-source after
 attempts FAIL at Amazon `chosen_product_visible`, **28415.32ms / 27662.10ms**,

@@ -1,0 +1,275 @@
+{
+  "kind": "annotation-workflow-v3-comparison",
+  "passed": true,
+  "gates": {
+    "bothPassed": true,
+    "correctPhases": true,
+    "sameFrozenDriver": true,
+    "sameBoundedConsumer": true,
+    "independentlyVerifiedSource": true,
+    "onlyAnnotationSourceSlice": true,
+    "allRequiredChecks": true,
+    "identicalChecks": true,
+    "thirtyWritesAndPersistedValues": true,
+    "sameOffersAndChosenProduct": true,
+    "completeScopedAccounting": true,
+    "allOperationsOk": true,
+    "all30SelectionsAnd32Types": true,
+    "oneOcrEach": true,
+    "retainedOtherWork": true
+  },
+  "fullWorkflowAcceptance": "pass",
+  "referenceChronology": "Retrospective isolated 09c3cc8 reference collected after annotation implementation; not pre-code evidence.",
+  "before": {
+    "status": "pass",
+    "elapsedMs": 313865.858162,
+    "operations": 321,
+    "captures": 79,
+    "scopedCommandAttempts": 297,
+    "alignment": {
+      "product_scroll": {
+        "cycles": 6,
+        "ms": 26657.759519999992
+      },
+      "field_scroll": {
+        "cycles": 1,
+        "ms": 3464.068643999999
+      }
+    },
+    "stageMetrics": {
+      "shell": {
+        "count": 36,
+        "totalMs": 4000.870312,
+        "medianMs": 110.80940100000589,
+        "p95Ms": 122.10828099999344,
+        "maxMs": 195.45557299999996
+      },
+      "screen_size": {
+        "count": 1,
+        "totalMs": 76.06526099999996,
+        "medianMs": 76.06526099999996,
+        "p95Ms": 76.06526099999996,
+        "maxMs": 76.06526099999996
+      },
+      "ui_dump": {
+        "count": 49,
+        "totalMs": 141349.30682199995,
+        "medianMs": 2596.357394999999,
+        "p95Ms": 3537.2466130000003,
+        "maxMs": 7810.427236000003
+      },
+      "tap": {
+        "count": 18,
+        "totalMs": 1698.343125000054,
+        "medianMs": 93.59596349999629,
+        "p95Ms": 123.05296899999666,
+        "maxMs": 123.05296899999666
+      },
+      "settle": {
+        "count": 99,
+        "totalMs": 49615.63878299998,
+        "medianMs": 501.1049479999929,
+        "p95Ms": 501.97770799999125,
+        "maxMs": 505.88937500000065
+      },
+      "type": {
+        "count": 32,
+        "totalMs": 6010.202400000062,
+        "medianMs": 188.29486950000864,
+        "p95Ms": 208.86453099999926,
+        "maxMs": 214.77010399999563
+      },
+      "key": {
+        "count": 34,
+        "totalMs": 3350.396816999957,
+        "medianMs": 99.07697899999039,
+        "p95Ms": 115.24656200000027,
+        "maxMs": 121.93229199999769
+      },
+      "product_scroll": {
+        "count": 6,
+        "totalMs": 4051.518068999998,
+        "medianMs": 676.205989,
+        "p95Ms": 678.3378119999979,
+        "maxMs": 678.3378119999979
+      },
+      "app": {
+        "count": 1,
+        "totalMs": 5730.843956000004,
+        "medianMs": 5730.843956000004,
+        "p95Ms": 5730.843956000004,
+        "maxMs": 5730.843956000004
+      },
+      "swipe": {
+        "count": 11,
+        "totalMs": 5635.815310000078,
+        "medianMs": 514.3390620000428,
+        "p95Ms": 530.0560420000111,
+        "maxMs": 530.0560420000111
+      },
+      "field_scroll": {
+        "count": 1,
+        "totalMs": 489.67979099998774,
+        "medianMs": 489.67979099998774,
+        "p95Ms": 489.67979099998774,
+        "maxMs": 489.67979099998774
+      },
+      "select_tap": {
+        "count": 30,
+        "totalMs": 83827.15986400004,
+        "medianMs": 2789.566848000002,
+        "p95Ms": 2858.3143220000056,
+        "maxMs": 2865.8449990000227
+      },
+      "ocr": {
+        "count": 1,
+        "totalMs": 2019.0402069999836,
+        "medianMs": 2019.0402069999836,
+        "p95Ms": 2019.0402069999836,
+        "maxMs": 2019.0402069999836
+      },
+      "restore_ime": {
+        "count": 1,
+        "totalMs": 101.91072899999563,
+        "medianMs": 101.91072899999563,
+        "p95Ms": 101.91072899999563,
+        "maxMs": 101.91072899999563
+      },
+      "restore_termux": {
+        "count": 1,
+        "totalMs": 5662.222705999971,
+        "medianMs": 5662.222705999971,
+        "p95Ms": 5662.222705999971,
+        "maxMs": 5662.222705999971
+      }
+    }
+  },
+  "after": {
+    "status": "pass",
+    "elapsedMs": 311786.372745,
+    "operations": 318,
+    "captures": 78,
+    "scopedCommandAttempts": 294,
+    "alignment": {
+      "product_scroll": {
+        "cycles": 6,
+        "ms": 27028.179264000006
+      },
+      "field_scroll": {
+        "cycles": 0,
+        "ms": 0
+      }
+    },
+    "stageMetrics": {
+      "shell": {
+        "count": 36,
+        "totalMs": 4068.5971329999256,
+        "medianMs": 109.54046849999577,
+        "p95Ms": 194.08182299999999,
+        "maxMs": 291.8846359999734
+      },
+      "screen_size": {
+        "count": 1,
+        "totalMs": 76.35119699999996,
+        "medianMs": 76.35119699999996,
+        "p95Ms": 76.35119699999996,
+        "maxMs": 76.35119699999996
+      },
+      "ui_dump": {
+        "count": 48,
+        "totalMs": 139615.14104700004,
+        "medianMs": 2602.375285499991,
+        "p95Ms": 3683.3699469999992,
+        "maxMs": 7754.616768
+      },
+      "tap": {
+        "count": 18,
+        "totalMs": 1704.468490000032,
+        "medianMs": 95.47466199999326,
+        "p95Ms": 112.74489599998924,
+        "maxMs": 112.74489599998924
+      },
+      "settle": {
+        "count": 98,
+        "totalMs": 49118.06831699997,
+        "medianMs": 501.08093749999534,
+        "p95Ms": 502.0444270000007,
+        "maxMs": 505.91333300000406
+      },
+      "type": {
+        "count": 32,
+        "totalMs": 6273.358745999938,
+        "medianMs": 190.51161450000654,
+        "p95Ms": 222.57807200000389,
+        "maxMs": 441.81333299999824
+      },
+      "key": {
+        "count": 34,
+        "totalMs": 3299.0400519999966,
+        "medianMs": 96.08624999999302,
+        "p95Ms": 108.14203099999577,
+        "maxMs": 117.29916600001161
+      },
+      "product_scroll": {
+        "count": 6,
+        "totalMs": 4054.2658840000076,
+        "medianMs": 674.419739500001,
+        "p95Ms": 683.0301560000007,
+        "maxMs": 683.0301560000007
+      },
+      "app": {
+        "count": 1,
+        "totalMs": 5718.9670289999995,
+        "medianMs": 5718.9670289999995,
+        "p95Ms": 5718.9670289999995,
+        "maxMs": 5718.9670289999995
+      },
+      "swipe": {
+        "count": 11,
+        "totalMs": 5561.185573000024,
+        "medianMs": 508.959010999999,
+        "p95Ms": 523.1387500000128,
+        "maxMs": 523.1387500000128
+      },
+      "select_tap": {
+        "count": 30,
+        "totalMs": 84100.01694599997,
+        "medianMs": 2814.6571344999975,
+        "p95Ms": 2857.967134000006,
+        "maxMs": 2901.9758319999964
+      },
+      "ocr": {
+        "count": 1,
+        "totalMs": 2190.4842179999687,
+        "medianMs": 2190.4842179999687,
+        "p95Ms": 2190.4842179999687,
+        "maxMs": 2190.4842179999687
+      },
+      "restore_ime": {
+        "count": 1,
+        "totalMs": 97.34520800004248,
+        "medianMs": 97.34520800004248,
+        "p95Ms": 97.34520800004248,
+        "maxMs": 97.34520800004248
+      },
+      "restore_termux": {
+        "count": 1,
+        "totalMs": 5652.813904999988,
+        "medianMs": 5652.813904999988,
+        "p95Ms": 5652.813904999988,
+        "maxMs": 5652.813904999988
+      }
+    }
+  },
+  "workflowDelta": {
+    "ms": -2079.485417000018,
+    "pct": -0.6625395413115354
+  },
+  "limits": [
+    "Same-v3 source workflow only; not v2-v3 speedup or isolated annotation overhead.",
+    "One pair is descriptive, not causal/population/non-inferiority evidence.",
+    "Alignment cycles are reported, never subtracted from elapsed time; only complete cycles normalized for retained-work gate.",
+    "Per-capture source clocks, operation clocks and loaded-tool clocks are separate. Nested spans are not additive wall time.",
+    "Scoped commands not whole-workflow counts. Source workflow does not exercise annotation; focused/loaded checks required separately."
+  ]
+}

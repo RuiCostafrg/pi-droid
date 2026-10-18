@@ -5,7 +5,61 @@ then `reports/annotation-timing-2026-10-18.md`,
 `reports/annotation-audit-2026-10-18.json` and `CAPTURE-BENCHMARK.md`.
 Prior screenshot/OCR evidence remains in its unchanged report and checkpoint.
 
-## Latest checkpoint — full-workflow acceptance OPEN
+## Latest continuation — annotation acceptance PASS under v3.2
+
+Read [new complete evidence](reports/annotation-v3.2-acceptance-2026-10-18.md) and
+[active protocol](WORKFLOW-V3.md) before treating the older OPEN checkpoint below
+as current. Historical reports/audits remain untouched.
+
+- Selected v3.2 for correct bounded offscreen product alignment, not speed. Frozen
+  v2, initial v3/v3.1 and all failures preserved. Zero-area origin geometry must
+  not reverse scroll direction; v3.2 retains last direction, initially forward.
+  All eight-scroll/identity/actionability/nonzero-bounds/visibility/fresh-confirm
+  guards, shopping assertions, Forge writes/persistence and cleanup retained.
+- New driver scripts/workflow-v3.2.mjs SHA-256
+  58b1d3034dfbfc1d903ff4d3cdbd515c0585b4dc5e2d2e5bcb4ec72c2515db9c;
+  new comparator scripts/compare-workflow-v3.2.mjs. No production source changes.
+- Retrospective isolated 09c3cc8 reference attempt2 PASS 313865.858162ms,
+  current attempt1 PASS 311786.372745ms. Both 30 writes + 30 persisted values;
+  all 15 comparator gates pass. Captures 79/78, scoped spans 297/294; six product
+  cycles each, one/zero field cycles. −2079.49ms (−0.66%) is descriptive only;
+  extra reference field cycle 3464.07ms not subtracted. No speedup, isolated
+  overhead, population/non-inferiority or v2-v3 performance inference.
+- Preserved failures: v3/v3.1 reference visibility (65.637s / 67.173s), no Forge;
+  v3.2 reference1 OCR exact token (297.316s), 30 writes but zero persisted values.
+  Diagnostic OCR found exact source-ann32-ref1 at confidence 44.42 (<50). Retry
+  used documented unique historical-style run label, no threshold/driver changes.
+- Three new retained TEST drafts: E2E Lower v3.2 source-ann32-ref1,
+  source-ann-before94, source-ann-after94 (latter two all persistence verified).
+  No Amazon mutation or completed workouts. Original Gboard and Termux independently
+  verified after every attempt/diagnosis/loaded check. Latest foreground Termux.
+- Fresh rebuild + unchanged annotation-loaded-check.mjs actual fresh Pi JSON CLI
+  registered android_look passes (2998ms), exact Termux/OPEN and all four build
+  hashes match prior after and remain unchanged during call. Parent NOT reloaded.
+  Existing focused annotation pair/failure/IPC/companion evidence still applicable
+  because production source unchanged. All/base64 +1.22% regression still disclosed.
+- Validation 721/721 units / 55 files with --maxWorkers=2; lint/build/new syntax/
+  whitespace checks pass. Six driver regressions (zero-area RED→GREEN), 21 offline
+  comparator checks including 18 adversarial failures. Default parallel CI not
+  verified, integration/companion results not rerun here. No new implementation.
+- Continuation files are not committed/pushed yet. Review/stage all protocol,
+  drivers, tests, failed/success reports and docs together; preserve historical
+  evidence. Only origin user fork if publishing, never upstream.
+
+### Next exact actions (supersedes older list)
+
+1. Review/commit this acceptance continuation, including all failed reports;
+   check git status and immutable driver hashes. No further phone run needed for
+   docs-only review. Do not relabel retrospective evidence chronological.
+2. Before a new implementation slice, select ONE from the existing backlog with
+   the user: runtime companion ingestion, finer reconnect, cancellation, fixed
+   remote PNG concurrency, production input lifecycle, or default CI reliability.
+3. Any performance slice needs NEW fresh equivalent v3.2 baseline before edits,
+   same frozen full after workflow with 30 writes/readbacks and actual fresh
+   relevant registered-tool verification. Respect hands-off/IME/Termux boundaries.
+4. Do not reuse this pair indefinitely or infer speedup; investigate CI separately.
+
+## Previous checkpoint — full-workflow acceptance OPEN
 
 - Annotation implemented as its own slice in annotate.ts/capture-timing.ts:
   `annotation_screenshot`, `annotation_ui_dump`, `annotation_map`,
