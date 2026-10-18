@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "command-instrumentation-live-validation",
+  "validationPassed": true,
+  "chronology": "Current implementation first, then isolated pre-instrumentation reference; both collected AFTER implementation, not a chronological pre-change baseline.",
+  "currentRevision": "e3bc49e099df8787746f0b7beb46bcd8a0875b05",
+  "referenceRevision": "4a8534df2a20f5359fa5032f44f5020961826a0f",
+  "driverHash": "af7688014fa3e06fd07fd21c734aab86f2406c78ea988871dd2172231f068ca0",
+  "consumerHash": "3b5006b8ac22f74b7585bcb350edc295a5b588fee5e27af602334c2a6a6fba27",
+  "reference": {
+    "status": "pass",
+    "durationMs": 290458.233899,
+    "operationRecords": 306,
+    "failedOperations": 0,
+    "captures": 74,
+    "selections": 30,
+    "numericValuesVerified": 30,
+    "persistedValuesVerified": 30,
+    "explicitOcrCalls": 1,
+    "alignmentCycles": 2,
+    "alignmentMs": 7173.103903999974,
+    "captureSpanRecords": 370,
+    "stages": {
+      "device_dump": 74,
+      "xml_transfer": 74,
+      "xml_read": 74,
+      "xml_parse": 74,
+      "foreground": 74
+    },
+    "captureSpansTruncated": false,
+    "traceCompleteFlag": "not emitted by frozen workflow",
+    "adbAttemptScope": "not instrumented; no measured command count",
+    "engineHash": "5158548fe7ee5141e14105ed74468099cb3d586a3b1470b3492e5a3dff79c96e"
+  },
+  "current": {
+    "status": "pass",
+    "durationMs": 283302.92707900004,
+    "operationRecords": 300,
+    "failedOperations": 0,
+    "captures": 72,
+    "selections": 30,
+    "numericValuesVerified": 30,
+    "persistedValuesVerified": 30,
+    "explicitOcrCalls": 1,
+    "alignmentCycles": 0,
+    "alignmentMs": 0,
+    "captureSpanRecords": 636,
+    "stages": {
+      "device_dump": 72,
+      "xml_transfer": 72,
+      "xml_read": 72,
+      "xml_parse": 72,
+      "foreground": 72,
+      "adb_attempt": 276,
+      "reconnect": 0
+    },
+    "captureSpansTruncated": false,
+    "traceCompleteFlag": "not emitted by frozen workflow",
+    "adbAttemptScope": "276 emitted attempts within traced hierarchy and field-selection paths; NOT whole-workflow commands",
+    "engineHash": "6fd6bbb66ed9dbd09a09211998e575ec487dffb258b3c692a7d481e76361363e"
+  },
+  "deltaCurrentMinusReferenceMs": -7155.30681999994,
+  "deltaCurrentMinusReferencePct": -2.4634546330292806,
+  "publicOffers": [
+    {
+      "total": 19.99,
+      "perLitre": 2.5
+    },
+    {
+      "total": 19.99,
+      "perLitre": 2.5
+    },
+    {
+      "total": 18.94,
+      "perLitre": 2.37
+    }
+  ],
+  "limits": [
+    "Two extra alignment cycles in reference; unchanged driver, raw wall time and counts unadjusted.",
+    "One pair cannot isolate instrumentation overhead or establish speedup/non-inferiority.",
+    "No forced live reconnect, timeout, cancellation or OCR fallback; exactSerial and autoReconnect:false in frozen workflow.",
+    "Screenshot and whole-workflow ADB counts unavailable; only explicit OCR and traced-path command attempts counted.",
+    "Capture spans use independent observation clocks concatenated without IDs; never merge into tool timeline or sum nested spans as wall time.",
+    "No traceComplete flag in frozen driver; cardinality, zero errors and nontruncation validated, not an IPC completeness guarantee.",
+    "Shopping checks cover query, three sampled offers and product URL; no independent stock/detail-price/exercise-name assertions."
+  ]
+}

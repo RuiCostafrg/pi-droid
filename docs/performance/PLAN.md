@@ -37,15 +37,25 @@ passes; if blocked or skipped, record that explicitly and leave acceptance open.
   IME on success AND failure, return to Termux and independently verify both.
   Existing APK/permission/helper/debugging approval boundaries still apply.
 
-**Current gap:** the command/reconnect instrumentation checkpoint passed offline
-validation and a loaded Settings check, but did NOT run the full real-phone
-Amazon.de → Forge workflow or a live before/after timing pair. It therefore does
-not satisfy this newly required gate; no new performance gain is established.
+**Live-validation checkpoint (2026-10-18):** command/reconnect instrumentation now
+passes the frozen Amazon.de → Forge workflow and a separate loaded native-only
+Settings check. A same-driver isolated pre-instrumentation reference was collected
+AFTER implementation. All 30 writes and 30 persisted readbacks pass both runs.
+Reference 290.458s / 74 captures; current 283.303s / 72 captures, but reference
+needed two extra alignment cycles (7.173s): no demonstrated speedup or isolated
+overhead estimate. Live reconnect/error paths were not forced; their controlled
+regressions remain the evidence. See [full evidence and limits](reports/workflow-command-validation-2026-10-18.md).
 
 ## Resume here
 
-**Latest: loaded native-only tool verified; command/reconnect timing and offline
-companion ingestion implemented.** See [COMMAND-TIMING.md](COMMAND-TIMING.md).
+**Latest: command instrumentation successful-path live acceptance recorded.**
+Both frozen source workflows and a separate loaded Settings fixture check pass;
+see the checkpoint above and [full evidence](reports/workflow-command-validation-2026-10-18.md).
+No production implementation changed. Next is a fresh baseline before finer spans.
+
+**Prior implementation: loaded native-only tool verified; command/reconnect timing
+and offline companion ingestion implemented.** See [COMMAND-TIMING.md](COMMAND-TIMING.md).
+The following implementation checkpoint predates the new live evidence.
 The fresh continuation session exposes both options; direct loaded
 `android_ui_dump(all_elements:true, ocr_fallback:false)` on Settings → Termux
 app info returned the exact non-interactive title and OPEN control. Gboard stayed
@@ -86,18 +96,15 @@ Bounded concurrency success is NOT default full-suite/parallel-CI success.
 Loaded native-only observation is now verified above; production automatic
 input lifecycle remains unverified.
 
-**Next exact action:** close the current live-validation gap first: run the
-existing Amazon.de → Forge real-phone workflow on the command/reconnect
-checkpoint, verify the loaded extension separately and validate the emitted
-metrics. For overhead comparison, preserve a separately labelled reference run
-from an isolated pre-instrumentation revision with the same driver; this reference
-is collected AFTER implementation and must not be called a chronological baseline.
-Then capture a fresh current baseline BEFORE implementing screenshot capture/
-transfer/read/dimension and OCR availability/engine/parse spans. Repeat the full
-real-phone E2E and loaded-tool checks afterward under the mandatory gate above.
-Annotation and automatic profiler runtime ingestion follow in separate slices.
-The live driver exercises source-registered tools, not the currently loaded tools
-or model latency. Default CI reliability and automatic input lifecycle remain open.
+**Next exact action:** capture a fresh equivalent current baseline BEFORE
+implementing screenshot capture/transfer/read/dimension and OCR availability/
+engine/parse spans. The command checkpoint's live-validation gap is closed within
+the disclosed successful-path scope; see the new evidence above. Preserve frozen
+drivers and historical reports, then repeat full Amazon.de → Forge E2E and loaded
+tool checks after the next implementation under the mandatory gate. Annotation
+and automatic profiler runtime ingestion follow separately. The live driver
+exercises source APIs, not loaded Pi tools or model latency; its frozen metric
+limits are documented. Default CI reliability and automatic input lifecycle remain open.
 
 **Prior completed slice: full v2 source-workflow adoption of bounded field selection.**
 The public `readSelectTap` now backs all 30 numeric-field selections in the
@@ -727,6 +734,40 @@ Original checkpoint `4a8534d`; historical evidence/drivers preserved unchanged.
   companion **`b18e04a`** — `Ingest bounded source capture timings offline`.
   This subsequent tracker-only commit records publication; no new phone test or
   implementation change was made after the validated implementation checkpoints.
+
+### Command timing live acceptance — 2026-10-18
+
+See [evidence](reports/workflow-command-validation-2026-10-18.md), both immutable
+attempt JSONs, [validated comparison](reports/workflow-command-comparison-2026-10-18.json)
+and separate [loaded-tool trace](reports/command-loaded-tool-2026-10-18.json).
+No production code, frozen driver, archived adapter or historical report changed.
+
+- Current `e3bc49e` first, isolated reference `4a8534d` second, both collected
+  after implementation; same frozen driver and bounded consumer, expected changed
+  engine hashes independently verified. Both PASS, identical 34 checks/counts,
+  offers, 30 selections, exact 30 writes and 30 persisted readbacks.
+- Current **283302.93ms / 72 captures / 300 successful operation records**;
+  reference **290458.23ms / 74 / 306**. Reference's two extra alignment cycles
+  total **7173.10ms**. Raw current delta **−7155.31ms / −2.46%**, not a proven
+  speedup or isolated overhead estimate. No failed full-workflow attempts.
+- Current has 636 source spans: 360 high-level and **276 successful command
+  attempts** in traced hierarchy/selection paths, NOT the whole workflow command
+  count. No reconnect exercised; no measured command count in reference. Both
+  nontruncated/zero errors; frozen driver does not emit traceComplete. Explicit
+  OCR one each; screenshot count unavailable. No clocks merged or nested sums.
+- Loaded native-only dump passes Settings title/control, **2654.78ms** metadata
+  time. Changed dist command/capture files predate session and rebuild byte-equal.
+  Initial interrupted probe's one failure and two wrong-fixture successes are
+  disclosed in evidence, not counted as fixture passes or inferred timeouts.
+- Two test drafts retained: `E2E Lower v2 source-cmd-current88` and
+  `E2E Lower v2 source-cmd-reference88`; **11 total** including historical nine.
+  No real workouts finished or shopping mutations. Gboard/Termux independently
+  verified after each run and loaded check. No new phone helper/permission/install.
+- Validation: **665/665 units (51 files), 9/9 isolated integrations**, lint/build,
+  unchanged dist hashes; companion **36/36**, build/check, unchanged source.
+  Default parallel CI and automatic production input lifecycle remain open.
+- No finer screenshot/OCR implementation started. Fresh equivalent baseline is
+  required before that next slice; this checkpoint is not an evergreen baseline.
 
 ## Operating boundaries
 

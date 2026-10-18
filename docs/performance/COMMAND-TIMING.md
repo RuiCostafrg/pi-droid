@@ -116,8 +116,33 @@ reconnect subcommands remain open.
   CI repair, device-side cancellation or automatic input lifecycle is claimed.
   Existing text-observation result remains **no demonstrated latency speedup**.
 
-Next: add screenshot capture/transfer/read/dimension and OCR availability/engine/
-parse spans sharing the same observation clock; test controlled success/failure,
-privacy and defaults before any live timing. Then annotation spans and automatic
-profiler runtime ingestion. Do not attribute UIAutomator variance to internals
-that have not been measured.
+## Live acceptance follow-up — 2026-10-18
+
+The successful-path full real-phone workflow and separate loaded-tool check now
+pass; see [complete evidence](reports/workflow-command-validation-2026-10-18.md).
+Both immutable live attempts preserve all 30 exact numeric writes and all 30
+persisted readbacks. Current ran first (283.303s / 72 captures), isolated
+pre-instrumentation reference second (290.458s / 74 captures), both collected
+AFTER implementation. Reference needed two additional unchanged alignment cycles
+(7.173s), approximately the raw difference: no demonstrated speedup or isolated
+instrumentation-overhead estimate. Same frozen driver and bounded consumer;
+expected engine differences were independently verified.
+
+Current emitted 276 successful command-attempt spans within traced hierarchy and
+selection paths, not a whole-workflow command count. No live reconnect/failure
+was forced; exact transport disables recovery in this driver. Nontruncation and
+stage accounting pass, but the frozen workflow has no traceComplete flag or
+independent screenshot counts. Loaded Settings dump passes both options and exact
+fixture labels; metadata-only tool time 2654.78ms. Source and tool clocks remain
+separate. Earlier failed/wrong-fixture loaded probes are disclosed, not hidden.
+
+Validation rerun: 665 units, 9 isolated integrations, lint/build and byte-equal
+changed dist files; companion 36 tests, build/check. Original Gboard and Termux
+independently verified after each run/check. Two new disclosed test drafts remain,
+11 including historical nine; no real workout finished or shopping mutation.
+
+Next: capture a FRESH equivalent baseline BEFORE screenshot capture/transfer/
+read/dimension and OCR availability/engine/parse spans. Test controlled success/
+failure, privacy and defaults, then repeat full real-phone E2E and loaded-tool
+acceptance. Annotation and automatic runtime ingestion follow separately. Do not
+attribute UIAutomator variance to internals that have not been measured.

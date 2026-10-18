@@ -1,0 +1,46 @@
+{
+  "trace": {
+    "schemaVersion": 1,
+    "kind": "trace",
+    "recording": false,
+    "startedAt": "2026-10-18T08:31:32.932Z",
+    "durationMs": 9524.511454999447,
+    "androidBusyMs": 2654.775468003005,
+    "unobservedMs": 6869.735986996442,
+    "unfinished": 0,
+    "dropped": 0,
+    "spans": [
+      {
+        "tool": "android_ui_dump",
+        "startMs": 3429.516925998032,
+        "ms": 2654.775468003005,
+        "outcome": "ok",
+        "nested": false
+      }
+    ],
+    "summary": [
+      {
+        "stage": "android_ui_dump",
+        "count": 1,
+        "minMs": 2654.775468003005,
+        "medianMs": 2654.775468003005,
+        "p95Ms": 2654.775468003005,
+        "maxMs": 2654.775468003005,
+        "totalMs": 2654.775468003005,
+        "attempts": 1,
+        "wallTotalMs": 2654.775468003005,
+        "failedMs": 0,
+        "failures": 0,
+        "timeouts": 0
+      }
+    ],
+    "notes": [
+      "Tool-level wall times only; overlapping calls are unioned for androidBusyMs.",
+      "Summary sorted by all-attempt wallTotalMs; failedMs includes errors, timeouts, not-found and cancellation. Distribution statistics and totalMs are success-only; stage totals may overlap.",
+      "Unobserved time includes model work, user pauses, other tools and orchestration; it is not an LLM-latency measurement.",
+      "No arguments, results, selectors, screen text, device serials or credentials are retained.",
+      "Failure counts describe explicit error/timeout/not-found results, not inferred retries. Cache hits and ADB reconnect internals are unknown."
+    ]
+  },
+  "lastBenchmark": null
+}
