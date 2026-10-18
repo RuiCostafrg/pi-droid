@@ -125,6 +125,10 @@ command, path, selector, device identifier or screen content is attached.
 | `ocr_availability` | Cached availability check or version probe; unavailable is error/unknown |
 | `ocr_engine` | Existing Tesseract execFile await; non-ADB failures remain unknown |
 | `ocr_parse` | Existing local TSV parsing and confidence filtering |
+| `annotation_screenshot` | Entire screenshot sibling in parallel annotation acquisition |
+| `annotation_ui_dump` | Entire hierarchy sibling, including existing cache/OCR behavior |
+| `annotation_map` | Select existing all/interactive elements and build numbered annotation data |
+| `annotation_text_index` | Build text lines/header and join the numbered index; no image rendering |
 
 The benchmark disables cache reads, OCR and reconnect. Its normal trace therefore
 contains five high-level spans plus three nested `adb_attempt` spans, not fabricated
@@ -143,7 +147,19 @@ no availability cache-hit field is exported. The capture CLI still disables OCR,
 so it does not fabricate these spans. Its IPC allowlist and companion offline
 importer accept them without changing the 128-event bound.
 
-**Limits:** annotation shared sibling clocks/spans remain unimplemented.
+`annotatedScreenshot({ onCaptureSpan })` now creates ONE context for both parallel
+siblings and their descendants, mapping and text-index construction, unless an
+explicit `captureClock` was supplied. No compositing is performed. Cache, fallback,
+backend, concurrency, retry, timeout and rejection policies remain unchanged.
+`Promise.all` can still reject while a sibling continues; a sink may receive late
+completed spans after rejection. The caller must not mistake an early snapshot for
+a complete trace or infer sibling cancellation. No total-annotation span is added.
+See [annotation evidence and OPEN workflow gate](reports/annotation-timing-2026-10-18.md).
+The capture CLI does NOT exercise annotation; synthetic worker IPC verifies only
+that the four completed stages survive bounded partial retention. The companion
+accepts them offline; automatic runtime ingestion remains separate.
+
+**Limits:** sibling/whole-observation cancellation remains unimplemented.
 Tesseract keeps its existing Node timeout; no ADB timeout provenance is inferred.
 `adb_attempt` is local command-await time, not device CPU/UIAutomator internals.
 `reconnect` measures caller waiting, not separate discovery/connect attempts.

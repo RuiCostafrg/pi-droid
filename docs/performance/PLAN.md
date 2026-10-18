@@ -48,7 +48,37 @@ regressions remain the evidence. See [full evidence and limits](reports/workflow
 
 ## Resume here
 
-**Latest: screenshot/OCR timing implemented and live-checked (2026-10-18).**
+**Latest: annotation timing implemented; mandatory full-workflow gate OPEN (2026-10-18).**
+Fresh chronological before source `09c3cc8` PASS **290991.75ms / 74 captures**,
+all shopping checks + 30 writes + 30 persisted values. Both unchanged-source after
+attempts FAIL at Amazon `chosen_product_visible`, **28415.32ms / 27662.10ms**,
+each 6 captures, before Forge navigation: no new after drafts/writes/persistence.
+Current read-only inspection finds the chosen Barista result clipped below the
+frozen visibility guard. Do NOT weaken driver checks or call failed runs faster.
+No passing workflow pair/delta; acceptance stays OPEN.
+
+Shared annotation clock + screenshot/UI sibling, map and text-index spans added,
+default-off, existing parallel/fallback/retry/timeout/failure policies unchanged.
+No compositing or sibling cancellation. Late sibling spans can follow rejection.
+IPC/offline companion vocabulary extended; automatic runtime ingestion separate.
+Focused Settings pair **6/6 each**, unchanged frozen driver, all four new stages;
+interactive/no-base64 median **−2.14%**, all/base64 **+1.22%**. No isolated
+overhead/non-inferiority/speedup claim. Actual fresh Pi CLI registered android_look
+passes before/after **2799ms / 2555ms** (one each, separate tool clocks), with
+rebuilt dist hashes checked. Two failed pre-code CLI-runner setup attempts retained;
+closing child stdin fixed the probe; no tool events or deadline provenance retained.
+Parent active session not reloaded. Detailed [evidence](reports/annotation-timing-2026-10-18.md),
+[checkpoint audit](reports/annotation-audit-2026-10-18.json) and NEXT-SESSION.md.
+
+Validation: **694/694 units / 53 files**, lint/build, **9 isolated integrations**;
+companion **38/38**, build/check. One new TEST draft, **15 total**; original
+Gboard/Termux independently restored/verified throughout. Historical evidence,
+frozen drivers/adapters/comparator untouched. Default parallel CI remains open.
+Next: close this slice's workflow gate before another implementation slice. If
+Amazon's fixture remains incompatible, agree a separate versioned protocol with
+fresh equivalent BEFORE/AFTER evidence, never rewrite the frozen driver.
+
+**Prior: screenshot/OCR timing implemented and live-checked (2026-10-18).**
 Fresh chronological baseline saved before code; full workflow before PASS
 286223.78ms / 72 captures, after attempt 1 FAIL at exact draft-card OCR identity
 (all 30 writes pass, persistence unverified), unchanged after attempt 2 PASS
@@ -361,8 +391,10 @@ as acceptance criteria. First deterministic slice should run in seconds offline.
 - [x] Add screenshot capture/transfer/dimensions/base64-read and OCR availability/
   engine/parse spans; chronological baseline, retained failed run, passing full
   workflow, equivalent focused pair and fresh loaded registered tools checked.
-- [ ] Add annotation sibling shared-clock spans and finer reconnect discovery/
-  connect spans as separate slices under the mandatory live gate.
+- [ ] Annotation sibling shared-clock/map/text-index spans IMPLEMENTED and focused/
+  loaded checks pass; mandatory full-workflow acceptance OPEN after two preserved
+  Amazon visibility failures before Forge. See latest evidence above.
+- [ ] Add finer reconnect discovery/connect spans as a separate later slice.
 - [x] Preserve explicit timeout/cancellation/error metadata through ADB/capture
   spans and benchmark IPC. Command AbortSignal supported; whole-observation and
   sibling cancellation, reconnect cancellation and default tool signal forwarding
@@ -371,7 +403,9 @@ as acceptance criteria. First deterministic slice should run in seconds offline.
   relative timings, ok/error and optional cache-hit boolean; tests assert no
   page text, paths, serial, package or raw errors. Tracing is absent by default.
 - [x] Extend privacy/default-off and diagnostic safety coverage to screenshot/OCR.
-- [ ] Extend coverage again for future annotation/reconnect/runtime paths.
+- [x] Annotation public process success/failure/default-off/privacy/cache/fallback/
+  explicit-clock/timeout/late-sibling coverage and bounded partial IPC acceptance.
+- [ ] Extend coverage again for future reconnect/runtime paths.
 - [x] Stream completed span events before final worker result. Parent retains
   up to 128 allowlisted events, with `traceComplete`/`spansTruncated` flags.
   Timeout and SIGTERM regressions preserve earlier stages without fabricating
@@ -831,6 +865,39 @@ extended; no runtime hooks. Frozen workflows/adapters/historical reports unchang
   to user-owned origin/main forks; remote main independently matched each HEAD,
   both trees clean afterward. This subsequent docs-only checkpoint records those
   verified hashes; no production/frozen driver/live evidence changed after validation.
+
+### Annotation timing continuation — 2026-10-18
+
+See [full evidence and OPEN gate](reports/annotation-timing-2026-10-18.md).
+Fresh baseline checkpoint saved before production edits; all full/focused/loaded
+attempts preserved, including two failed pre-code loaded-runner setup probes.
+New source annotation sibling/map/index spans, IPC/offline vocabulary and process
+regressions; no backend/retry/timeout/failure-policy or workflow-driver changes.
+
+- Full before PASS 290991.75ms / 74 captures / 282 scoped command spans; after1
+  FAIL 28415.32ms and after2 FAIL 27662.10ms, each 6 captures / 18 scoped command
+  spans at chosen-product visibility. No after Forge navigation or numeric writes.
+  All 3 attempts total 347069.18ms; failed work NOT called a workflow speedup.
+- Focused pair 6/6 each: 87 → 111 spans, +24 for four stages × six calls;
+  −2.14% interactive/no-base64, **+1.22%** all/base64 medians. Three rounds/mode,
+  no overhead isolation. After one clock/call; baseline independent sibling clocks.
+- Real fresh CLI android_look: exact Settings/Termux/OPEN index before and after,
+  2799ms / 2555ms, rebuilt dist checked unchanged; default-disabled source spans,
+  no merged clocks or active parent-session reload claim. Registered image inclusion
+  unexercised; source base64 covered separately.
+- New scripts annotation-check.mjs, annotation-loaded-check.mjs (passing pair
+  frozen), audit-annotation-checkpoint.mjs. Audit independently recomputes baseline
+  and current hashes and explicitly emits fullWorkflowAcceptance:open, no delta.
+  It is checkpoint-specific, NOT a passing-workflow comparator.
+- 11 public process regressions; annotation IPC retention test; **694/694 units**
+  (53 files), lint/build, **9/9** isolated integrations with existing 20s/30s
+  allowances. Companion **38/38**, build/check. Default parallel CI remains open.
+- One new TEST draft `E2E Lower v2 source-ann-before88`, **15 total**, all unchecked
+  20kg × 8 with 30 persisted values checked. No after drafts or shopping mutations.
+  Original Gboard/Termux independently verified after each attempt/check/inspection.
+- Full-workflow acceptance stays OPEN. Close it without weakening frozen assertions;
+  if a newly versioned protocol is required, agree it and collect a fresh equivalent
+  before/after pair. No additional implementation slice until this is resolved.
 
 ## Operating boundaries
 

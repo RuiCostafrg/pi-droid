@@ -40,7 +40,8 @@ function validate(input) {
 const stages = new Set(["cache_lookup", "device_dump", "xml_transfer", "xml_read",
   "xml_parse", "foreground", "ocr_fallback", "adb_attempt", "reconnect",
   "screenshot_capture", "screenshot_transfer", "screenshot_dimensions", "screenshot_read",
-  "ocr_availability", "ocr_engine", "ocr_parse"]);
+  "ocr_availability", "ocr_engine", "ocr_parse", "annotation_screenshot",
+  "annotation_ui_dump", "annotation_map", "annotation_text_index"]);
 const MAX_SPANS = 128;
 const failureKinds = new Set(["timeout", "cancelled", "exit", "signal", "spawn", "buffer", "unknown"]);
 function safeSpan(span) {

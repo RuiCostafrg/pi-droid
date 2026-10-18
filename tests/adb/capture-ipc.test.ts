@@ -3,13 +3,16 @@ import { expect, it } from "vitest";
 const imageStages = ["screenshot_capture", "screenshot_transfer", "screenshot_dimensions",
   "screenshot_read", "ocr_availability", "ocr_engine", "ocr_parse"];
 
-it("retains bounded screenshot/OCR completed events when the worker never completes", async () => {
+it.each([
+  ["screenshot/OCR", imageStages],
+  ["annotation", ["annotation_screenshot", "annotation_ui_dump", "annotation_map", "annotation_text_index"]],
+])("retains bounded %s completed events when the worker never completes", async (_name, stages) => {
   const dir = await mkdtemp(join(tmpdir(), "capture-image-ipc-"));
   try {
     await copyFile(resolve("scripts/capture-benchmark.mjs"), join(dir, "capture-benchmark.mjs"));
     await writeFile(join(dir, "capture-worker.mjs"), `
 process.once("message", () => {
-  for (const stage of ${JSON.stringify(imageStages)}) process.send({ type: "span", span: {
+  for (const stage of ${JSON.stringify(stages)}) process.send({ type: "span", span: {
     stage, startMs: 0, durationMs: 1, outcome: "ok", path: "PRIVATE_PATH", cacheHit: true,
   } });
   setInterval(() => {}, 1000);
@@ -29,7 +32,7 @@ process.once("message", () => {
     expect(row.outcome).toBe("timeout");
     expect(row.traceComplete).toBe(false);
     expect(row.spansTruncated).toBe(false);
-    expect(row.spans.map((s: { stage: string }) => s.stage)).toEqual(imageStages);
+    expect(row.spans.map((s: { stage: string }) => s.stage)).toEqual(stages);
     expect(stdout).not.toContain("PRIVATE_");
     expect(stdout).not.toContain("cacheHit");
   } finally { await rm(dir, { recursive: true, force: true }); }

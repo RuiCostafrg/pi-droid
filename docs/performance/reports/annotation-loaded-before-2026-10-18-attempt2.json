@@ -1,0 +1,21 @@
+{
+  "kind": "fresh-pi-cli-loaded-annotation-check",
+  "status": "fail",
+  "driverHash": "5d97f0d8e876cc272435f6ade01d7b052d1492239bdc4e05452a1eb38ffc65ad",
+  "session": "fresh nonpersistent Pi JSON CLI; explicit dist/index.js only; MCP disabled",
+  "buildHashes": {
+    "dist/index.js": "5734e85e140585f762ca33c969c061c26a0d82d8531dfe04aa299036056b99fd",
+    "dist/tools/device.js": "4598b6a243bdd6f38fbdd0af4f9d2c1984868d88a3d2896d5c3d48b10a325758",
+    "dist/adb/annotate.js": "9639fcf86ebdd645f3c9fdb97a4b91f2f3dbeabf5db599c7e81cb2275d732ace",
+    "dist/adb/capture-timing.js": "6f97c5184f98f583396997577501b0aa1d86dedf2dd4f33c210136ea1330b69d"
+  },
+  "tools": [],
+  "checks": {},
+  "limits": [
+    "Tool execute clock, not source spans/model latency; diagnostics default-off.",
+    "Parent active session is not reloaded. Raw JSONL stays private in temporary storage."
+  ],
+  "failureCheckpoint": "event-validation",
+  "imeUnchanged": true,
+  "termuxRestored": true
+}

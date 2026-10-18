@@ -1,0 +1,99 @@
+{
+  "kind": "annotation-checkpoint-audit",
+  "auditPassed": true,
+  "fullWorkflowAcceptance": "open",
+  "workflowDelta": null,
+  "workflows": [
+    {
+      "status": "pass",
+      "elapsedMs": 290991.75317100005,
+      "operations": 306,
+      "captures": 74,
+      "scopedCommandAttempts": 282,
+      "fieldSelections": 30,
+      "explicitOcrCalls": 1,
+      "captureSpansTruncated": false,
+      "captureStageErrors": 0,
+      "driverHash": "af7688014fa3e06fd07fd21c734aab86f2406c78ea988871dd2172231f068ca0",
+      "consumerHash": "3b5006b8ac22f74b7585bcb350edc295a5b588fee5e27af602334c2a6a6fba27",
+      "engineHash": "2a4f0519431bbb00cc78f964edde99747e3277ee54bbd068e5f6e3a1ae43e57f"
+    },
+    {
+      "status": "fail",
+      "elapsedMs": 28415.324989,
+      "operations": 18,
+      "captures": 6,
+      "scopedCommandAttempts": 18,
+      "fieldSelections": 0,
+      "explicitOcrCalls": 0,
+      "captureSpansTruncated": false,
+      "captureStageErrors": 0,
+      "driverHash": "af7688014fa3e06fd07fd21c734aab86f2406c78ea988871dd2172231f068ca0",
+      "consumerHash": "3b5006b8ac22f74b7585bcb350edc295a5b588fee5e27af602334c2a6a6fba27",
+      "engineHash": "cc6769c06b962e4230946c490ae0884f5a2f23e782d2a5461baa97e90a26284a"
+    },
+    {
+      "status": "fail",
+      "elapsedMs": 27662.099312000002,
+      "operations": 18,
+      "captures": 6,
+      "scopedCommandAttempts": 18,
+      "fieldSelections": 0,
+      "explicitOcrCalls": 0,
+      "captureSpansTruncated": false,
+      "captureStageErrors": 0,
+      "driverHash": "af7688014fa3e06fd07fd21c734aab86f2406c78ea988871dd2172231f068ca0",
+      "consumerHash": "3b5006b8ac22f74b7585bcb350edc295a5b588fee5e27af602334c2a6a6fba27",
+      "engineHash": "cc6769c06b962e4230946c490ae0884f5a2f23e782d2a5461baa97e90a26284a"
+    }
+  ],
+  "focused": {
+    "interactiveNoBase64": {
+      "before": {
+        "attempts": 3,
+        "failures": 0,
+        "medianMs": 2552.2343740000006,
+        "totalMs": 7612.055102,
+        "spans": 42
+      },
+      "after": {
+        "attempts": 3,
+        "failures": 0,
+        "medianMs": 2497.652395000001,
+        "totalMs": 7475.514112,
+        "spans": 54
+      },
+      "medianDeltaMs": -54.58197899999959,
+      "medianDeltaPct": -2.138595873327098
+    },
+    "allWithBase64": {
+      "before": {
+        "attempts": 3,
+        "failures": 0,
+        "medianMs": 2503.801458,
+        "totalMs": 7421.161924,
+        "spans": 45
+      },
+      "after": {
+        "attempts": 3,
+        "failures": 0,
+        "medianMs": 2534.37802,
+        "totalMs": 7495.063071,
+        "spans": 57
+      },
+      "medianDeltaMs": 30.576562000000195,
+      "medianDeltaPct": 1.2212055353791662
+    }
+  },
+  "loadedToolMs": {
+    "before": 2799,
+    "after": 2555
+  },
+  "limits": [
+    "Both after workflows failed before Forge; no passing wall-time/30-write/persistence comparison.",
+    "Focused pair has three samples/mode; no isolated overhead/non-inferiority/speedup claim.",
+    "Baseline sibling clocks independent; after shared clock; nested sums are not elapsed wall time.",
+    "Focused synchronous-sink traceComplete is not IPC/tool completeness. Workflow has no traceComplete flag or independent screenshot count.",
+    "Loaded tools are actual fresh sessions with default-disabled source diagnostics; clocks not merged."
+  ]
+}

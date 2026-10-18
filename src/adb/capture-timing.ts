@@ -5,7 +5,8 @@ import { AdbError, type ExecutionFailureKind } from "./exec.js";
 export type CaptureStage = "cache_lookup" | "device_dump" | "xml_transfer" |
   "xml_read" | "xml_parse" | "foreground" | "ocr_fallback" |
   "adb_attempt" | "reconnect" | "screenshot_capture" | "screenshot_transfer" |
-  "screenshot_dimensions" | "screenshot_read" | "ocr_availability" | "ocr_engine" | "ocr_parse";
+  "screenshot_dimensions" | "screenshot_read" | "ocr_availability" | "ocr_engine" | "ocr_parse" | "annotation_screenshot" |
+  "annotation_ui_dump" | "annotation_map" | "annotation_text_index";
 
 export interface CaptureSpan {
   stage: CaptureStage;

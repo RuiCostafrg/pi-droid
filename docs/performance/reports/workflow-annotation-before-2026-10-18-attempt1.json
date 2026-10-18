@@ -1,0 +1,5922 @@
+{
+  "schemaVersion": 2,
+  "kind": "source-workflow-e2e-v2",
+  "selectionStrategy": "bounded-read-select-tap",
+  "consumerHash": "3b5006b8ac22f74b7585bcb350edc295a5b588fee5e27af602334c2a6a6fba27",
+  "engineHash": "2a4f0519431bbb00cc78f964edde99747e3277ee54bbd068e5f6e3a1ae43e57f",
+  "phase": "before",
+  "startedAt": "2026-10-18T09:53:41.278Z",
+  "harnessHash": "af7688014fa3e06fd07fd21c734aab86f2406c78ea988871dd2172231f068ca0",
+  "status": "pass",
+  "checks": [
+    {
+      "name": "fixture_screen_1080x2340",
+      "ok": true
+    },
+    {
+      "name": "amazon_search_field",
+      "ok": true
+    },
+    {
+      "name": "amazon_search_focused",
+      "ok": true
+    },
+    {
+      "name": "amazon_query_readback",
+      "ok": true
+    },
+    {
+      "name": "three_fixed_comparable_offers",
+      "ok": true
+    },
+    {
+      "name": "chosen_product_visible",
+      "ok": true
+    },
+    {
+      "name": "amazon_product_open",
+      "ok": true
+    },
+    {
+      "name": "forge_popup_parent_activity",
+      "ok": true
+    },
+    {
+      "name": "forge_six_template_options",
+      "ok": true
+    },
+    {
+      "name": "new_lower_draft",
+      "ok": true
+    },
+    {
+      "name": "exercise_1_six_fields",
+      "ok": true
+    },
+    {
+      "name": "exercise_1_readback",
+      "ok": true
+    },
+    {
+      "name": "exercise_2_six_fields",
+      "ok": true
+    },
+    {
+      "name": "exercise_2_readback",
+      "ok": true
+    },
+    {
+      "name": "exercise_3_six_fields",
+      "ok": true
+    },
+    {
+      "name": "exercise_3_readback",
+      "ok": true
+    },
+    {
+      "name": "exercise_4_six_fields",
+      "ok": true
+    },
+    {
+      "name": "exercise_4_readback",
+      "ok": true
+    },
+    {
+      "name": "exercise_5_six_fields",
+      "ok": true
+    },
+    {
+      "name": "exercise_5_readback",
+      "ok": true
+    },
+    {
+      "name": "draft_card_visible",
+      "ok": true
+    },
+    {
+      "name": "draft_title_reopened",
+      "ok": true
+    },
+    {
+      "name": "exercise_1_persisted_field_count",
+      "count": 6
+    },
+    {
+      "name": "exercise_1_persisted",
+      "ok": true
+    },
+    {
+      "name": "exercise_2_persisted_field_count",
+      "count": 6
+    },
+    {
+      "name": "exercise_2_persisted",
+      "ok": true
+    },
+    {
+      "name": "exercise_3_persisted_field_count",
+      "count": 6
+    },
+    {
+      "name": "exercise_3_persisted",
+      "ok": true
+    },
+    {
+      "name": "exercise_4_persisted_field_count",
+      "count": 6
+    },
+    {
+      "name": "exercise_4_persisted",
+      "ok": true
+    },
+    {
+      "name": "exercise_5_persisted_field_count",
+      "count": 6
+    },
+    {
+      "name": "exercise_5_persisted",
+      "ok": true
+    },
+    {
+      "name": "original_ime_restored",
+      "ok": true
+    },
+    {
+      "name": "termux_restored",
+      "ok": true
+    }
+  ],
+  "operations": [
+    {
+      "stage": "shell",
+      "startMs": 11.182916999999975,
+      "durationMs": 88.95900999999992,
+      "outcome": "ok"
+    },
+    {
+      "stage": "screen_size",
+      "startMs": 100.31020899999999,
+      "durationMs": 86.93676999999991,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 187.6489069999999,
+      "durationMs": 83.49088500000016,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 271.15734399999985,
+      "durationMs": 201.589062,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 473.01015599999994,
+      "durationMs": 3855.5615610000004,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 4328.756405,
+      "durationMs": 2608.694686,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 6937.876769,
+      "durationMs": 2745.282811,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 9683.43859,
+      "durationMs": 84.68619799999942,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 9768.386195,
+      "durationMs": 503.97546800000055,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 10272.499788,
+      "durationMs": 3343.973124,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 13617.331817999999,
+      "durationMs": 92.39395800000057,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 13709.76161,
+      "durationMs": 202.45218699999896,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 13912.251505,
+      "durationMs": 3033.0927079999983,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 16946.001817,
+      "durationMs": 82.87833300000057,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 17028.911452,
+      "durationMs": 500.9294790000022,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 17529.864369000003,
+      "durationMs": 5138.914476999998,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 22672.090929,
+      "durationMs": 3397.5520819999983,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 26069.744522,
+      "durationMs": 77.10614500000156,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 26146.881397,
+      "durationMs": 501.09687399999893,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 26648.020199000002,
+      "durationMs": 7868.503798999998,
+      "outcome": "ok"
+    },
+    {
+      "stage": "app",
+      "startMs": 34517.226758,
+      "durationMs": 5630.101665000002,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 40147.349880999995,
+      "durationMs": 2521.1993740000034,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 42668.596962999996,
+      "durationMs": 88.21520900000178,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 42756.827432,
+      "durationMs": 501.2574999999997,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 43258.126546,
+      "durationMs": 2597.911301,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 45856.073264,
+      "durationMs": 89.41874999999709,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 45945.515191,
+      "durationMs": 501.25416699999914,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 46446.796806,
+      "durationMs": 2528.6781760000013,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 48975.497793999995,
+      "durationMs": 96.42161499999929,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 49071.940242,
+      "durationMs": 501.2176560000007,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 49573.202586,
+      "durationMs": 2591.266196999997,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 52164.501490999995,
+      "durationMs": 85.50031200000376,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 52250.017740999996,
+      "durationMs": 501.7880210000003,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 52751.877428,
+      "durationMs": 109.91098999999667,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 52861.925553,
+      "durationMs": 2562.0625509999954,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 55424.303833,
+      "durationMs": 92.47468800000206,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 55516.824146,
+      "durationMs": 2567.577498999999,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 58084.429404999995,
+      "durationMs": 86.2440110000025,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 58170.698206999994,
+      "durationMs": 500.9530210000012,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 58671.741697,
+      "durationMs": 2564.8820300000007,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 61237.38029,
+      "durationMs": 2587.1529669999945,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 63824.572371999995,
+      "durationMs": 90.34630200000538,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 63914.943466,
+      "durationMs": 501.4323430000004,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 64416.414715,
+      "durationMs": 91.61244799999986,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 64508.051434,
+      "durationMs": 156.7339579999898,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 64664.868569,
+      "durationMs": 102.28458399999363,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 64767.17643399999,
+      "durationMs": 501.2675520000048,
+      "outcome": "ok"
+    },
+    {
+      "stage": "swipe",
+      "startMs": 65269.170392,
+      "durationMs": 524.1207809999905,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 65793.312007,
+      "durationMs": 500.9819790000038,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 66294.339611,
+      "durationMs": 2584.764790000001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "field_scroll",
+      "startMs": 68880.133985,
+      "durationMs": 494.9512490000052,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 69375.11674499999,
+      "durationMs": 500.97541600000113,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 69876.12028599999,
+      "durationMs": 2589.801145000005,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 72466.158358,
+      "durationMs": 2810.5952589999943,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 75276.768201,
+      "durationMs": 501.05869799999346,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 75777.882992,
+      "durationMs": 108.1074479999952,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 75886.049711,
+      "durationMs": 198.69104199999128,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 76084.773044,
+      "durationMs": 101.17093799999566,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 76185.965857,
+      "durationMs": 501.1081770000019,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 76687.21309599999,
+      "durationMs": 2782.192603000003,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 79469.425439,
+      "durationMs": 501.63026000000536,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 79971.117209,
+      "durationMs": 98.87442699998792,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 80070.047991,
+      "durationMs": 187.0868230000051,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 80257.162939,
+      "durationMs": 96.3605719999905,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 80353.55273,
+      "durationMs": 501.737083,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 80855.428772,
+      "durationMs": 2857.047185999996,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 83712.499291,
+      "durationMs": 499.98979199999303,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 84212.616375,
+      "durationMs": 100.98734300000069,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 84313.648093,
+      "durationMs": 206.16531300000497,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 84519.84866599999,
+      "durationMs": 94.22093800001312,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 84614.092364,
+      "durationMs": 501.1348430000071,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 85115.336478,
+      "durationMs": 2792.5812489999953,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 87907.93949799999,
+      "durationMs": 501.7202600000019,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 88409.727519,
+      "durationMs": 106.62400999999954,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 88516.38559199999,
+      "durationMs": 204.22406200000842,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 88720.639081,
+      "durationMs": 90.88463499999489,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 88811.548456,
+      "durationMs": 500.9001559999888,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 89312.57824799999,
+      "durationMs": 2864.847290000005,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 92177.456163,
+      "durationMs": 500.1125000000029,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 92677.632465,
+      "durationMs": 111.8018230000016,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 92789.49225699999,
+      "durationMs": 184.7815100000007,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 92974.310382,
+      "durationMs": 101.87067699999898,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 93076.202777,
+      "durationMs": 501.68718799999624,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 93578.048454,
+      "durationMs": 2796.6183849999943,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 96374.68777599999,
+      "durationMs": 501.0893230000074,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 96875.836266,
+      "durationMs": 107.1204679999937,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 96983.00762,
+      "durationMs": 179.19505199999548,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 97162.236942,
+      "durationMs": 112.75593799998751,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 97275.01011999999,
+      "durationMs": 502.08838500001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 97777.209598,
+      "durationMs": 2585.7076039999956,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 100364.31746199999,
+      "durationMs": 2565.5220820000104,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 102929.883086,
+      "durationMs": 97.35901000000013,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 103027.286628,
+      "durationMs": 501.54275999999663,
+      "outcome": "ok"
+    },
+    {
+      "stage": "swipe",
+      "startMs": 103528.978867,
+      "durationMs": 527.7716669999936,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 104056.776054,
+      "durationMs": 501.1238539999904,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 104557.977669,
+      "durationMs": 2624.104947,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 107182.189178,
+      "durationMs": 2804.5684889999975,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 109986.791938,
+      "durationMs": 501.2087489999976,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 110488.070062,
+      "durationMs": 109.36718800000381,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 110597.49365599999,
+      "durationMs": 182.78750000000582,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 110780.315114,
+      "durationMs": 98.76187499999651,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 110879.106312,
+      "durationMs": 501.2703649999894,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 111380.49204099999,
+      "durationMs": 2851.032030000002,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 114231.555634,
+      "durationMs": 502.00593699999445,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 114733.623238,
+      "durationMs": 110.41114599999855,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 114844.090946,
+      "durationMs": 169.44776100000308,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 115013.571259,
+      "durationMs": 101.17447899999388,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 115114.77954,
+      "durationMs": 500.70307299999695,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 115615.600477,
+      "durationMs": 2816.382759,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 118432.01808,
+      "durationMs": 501.20770800000173,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 118933.287663,
+      "durationMs": 118.68135400000028,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 119052.021205,
+      "durationMs": 160.71333300000697,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 119212.761361,
+      "durationMs": 86.49171899999783,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 119299.27683,
+      "durationMs": 501.67223899999226,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 119801.081309,
+      "durationMs": 2762.545207000003,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 122563.66089099999,
+      "durationMs": 500.79468700000143,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 123064.514276,
+      "durationMs": 110.18182299999171,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 123174.739745,
+      "durationMs": 176.12651000000187,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 123350.904901,
+      "durationMs": 88.63536499999464,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 123439.570526,
+      "durationMs": 501.12989599999855,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 123940.830422,
+      "durationMs": 2733.5978630000027,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 126674.459587,
+      "durationMs": 500.24229199999536,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 127174.769327,
+      "durationMs": 98.94317699999374,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 127273.766827,
+      "durationMs": 172.24119800000335,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 127446.04239999999,
+      "durationMs": 88.71171800000593,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 127534.786098,
+      "durationMs": 502.05812400000286,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 128036.959899,
+      "durationMs": 2807.487083,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 130844.471253,
+      "durationMs": 500.6308849999914,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 131345.164742,
+      "durationMs": 102.70614600001136,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 131447.939169,
+      "durationMs": 187.5076560000016,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 131635.485315,
+      "durationMs": 103.51895800000057,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 131739.035106,
+      "durationMs": 501.3880730000092,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 132240.535419,
+      "durationMs": 2676.836196999997,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 134917.731668,
+      "durationMs": 2587.738956999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 137505.545781,
+      "durationMs": 93.22989600000437,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 137598.80781199998,
+      "durationMs": 502.1108860000095,
+      "outcome": "ok"
+    },
+    {
+      "stage": "swipe",
+      "startMs": 138100.984635,
+      "durationMs": 529.3787500000035,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 138630.393072,
+      "durationMs": 499.9781249999942,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 139130.399218,
+      "durationMs": 2533.7081759999855,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 141664.245051,
+      "durationMs": 2800.971456999978,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 144465.245206,
+      "durationMs": 501.1236970000027,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 144966.453643,
+      "durationMs": 93.16635400001542,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 145059.676508,
+      "durationMs": 180.0371349999914,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 145239.744737,
+      "durationMs": 91.1448429999873,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 145330.90656,
+      "durationMs": 501.17650999999023,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 145832.208278,
+      "durationMs": 2802.643592999986,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 148634.89124599998,
+      "durationMs": 501.08156200000667,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 149136.024214,
+      "durationMs": 87.40067699999781,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 149223.495152,
+      "durationMs": 194.41963499999838,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 149417.949839,
+      "durationMs": 100.97864600000321,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 149518.95791199998,
+      "durationMs": 500.36630200000945,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 150019.452391,
+      "durationMs": 2874.8602069999906,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 152894.335671,
+      "durationMs": 500.6390629999805,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 153395.052963,
+      "durationMs": 117.81338500001584,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 153512.932233,
+      "durationMs": 185.80098999998881,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 153698.765515,
+      "durationMs": 97.15656199998921,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 153796.024525,
+      "durationMs": 501.2241670000076,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 154297.420254,
+      "durationMs": 2789.348331999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 157086.804159,
+      "durationMs": 501.1857290000189,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 157588.050201,
+      "durationMs": 108.31979099998716,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 157696.419524,
+      "durationMs": 180.253801999992,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 157876.69593,
+      "durationMs": 87.35218700001133,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 157964.075565,
+      "durationMs": 500.84666700000525,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 158465.047596,
+      "durationMs": 2883.277499000018,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 161348.35796,
+      "durationMs": 501.6795829999901,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 161850.101553,
+      "durationMs": 107.54536499999813,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 161957.70759499999,
+      "durationMs": 190.93135400000028,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 162148.670459,
+      "durationMs": 103.06124999999884,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 162251.756397,
+      "durationMs": 501.78802000000724,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 162753.679209,
+      "durationMs": 2779.291614000016,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 165532.991343,
+      "durationMs": 501.0823439999949,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 166034.136916,
+      "durationMs": 101.23833400002331,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 166135.433791,
+      "durationMs": 189.83666699999594,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 166325.318791,
+      "durationMs": 110.97041700000409,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 166436.313479,
+      "durationMs": 501.7282290000003,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 166938.144103,
+      "durationMs": 2600.2015099999844,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 169538.606394,
+      "durationMs": 2574.118488999986,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 172112.769362,
+      "durationMs": 90.28604100001394,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 172203.082018,
+      "durationMs": 501.5977080000157,
+      "outcome": "ok"
+    },
+    {
+      "stage": "swipe",
+      "startMs": 172704.751549,
+      "durationMs": 525.3113019999873,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 173230.088111,
+      "durationMs": 500.9296360000153,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 173731.061497,
+      "durationMs": 2574.310467000003,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 176305.506444,
+      "durationMs": 2721.994478000008,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 179027.52212,
+      "durationMs": 500.02041599998483,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 179527.594099,
+      "durationMs": 111.81432199999108,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 179639.460244,
+      "durationMs": 184.18869800001266,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 179823.680713,
+      "durationMs": 88.53406199999154,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 179912.238421,
+      "durationMs": 500.9940630000201,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 180413.36264,
+      "durationMs": 2782.9564050000045,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 183196.344514,
+      "durationMs": 501.64958299999125,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 183698.062274,
+      "durationMs": 97.87203100000625,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 183795.981441,
+      "durationMs": 156.56203099997947,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 183952.569878,
+      "durationMs": 84.7052079999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 184037.292691,
+      "durationMs": 501.662290999986,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 184539.091284,
+      "durationMs": 2797.1393220000027,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 187336.261543,
+      "durationMs": 501.05786500000977,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 187837.37196,
+      "durationMs": 96.77333300001919,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 187934.204772,
+      "durationMs": 154.3259900000121,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 188088.558106,
+      "durationMs": 90.31802099998458,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 188178.894252,
+      "durationMs": 501.72364499999094,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 188680.75044899998,
+      "durationMs": 2787.502603000001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 191468.285709,
+      "durationMs": 501.11421800000244,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 191969.46232299999,
+      "durationMs": 104.97114600002533,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 192074.510813,
+      "durationMs": 196.78671799998847,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 192271.3305,
+      "durationMs": 110.63083299997379,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 192381.987062,
+      "durationMs": 501.55385399999795,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 192883.640812,
+      "durationMs": 2846.16343700001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 195729.843415,
+      "durationMs": 501.08713599998737,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 196230.992113,
+      "durationMs": 112.73072900000261,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 196343.781123,
+      "durationMs": 202.95208400001866,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 196546.777217,
+      "durationMs": 107.67833299998892,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 196654.700082,
+      "durationMs": 502.1256240000075,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 197156.92737299998,
+      "durationMs": 2838.4546340000234,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 199995.402216,
+      "durationMs": 501.67921800000477,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 200497.146643,
+      "durationMs": 110.22536400001263,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 200607.45008,
+      "durationMs": 182.22150999997393,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 200789.710757,
+      "durationMs": 108.98729200000525,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 200898.715809,
+      "durationMs": 500.95182300001034,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 201399.767476,
+      "durationMs": 2665.6863529999973,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 204065.734975,
+      "durationMs": 2604.6407279999985,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 206670.406536,
+      "durationMs": 96.04984399999375,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 206766.494974,
+      "durationMs": 499.89942599998903,
+      "outcome": "ok"
+    },
+    {
+      "stage": "swipe",
+      "startMs": 207266.465546,
+      "durationMs": 513.1545310000074,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 207779.641327,
+      "durationMs": 500.43468800000846,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 208280.12658799998,
+      "durationMs": 2687.297811000026,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 210967.688878,
+      "durationMs": 2808.661041000014,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 213776.388981,
+      "durationMs": 500.54781300001196,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 214276.989554,
+      "durationMs": 112.82775999998557,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 214389.882158,
+      "durationMs": 186.14349000001675,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 214576.059554,
+      "durationMs": 103.937603999977,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 214680.022731,
+      "durationMs": 501.0953639999789,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 215181.241585,
+      "durationMs": 2819.380883999984,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 218000.664084,
+      "durationMs": 501.96749999999884,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 218502.698042,
+      "durationMs": 118.30031200000667,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 218621.063615,
+      "durationMs": 174.09817700000713,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 218795.18674,
+      "durationMs": 88.39447899998049,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 218883.609604,
+      "durationMs": 501.66291700000875,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 219385.397677,
+      "durationMs": 2835.660727999988,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 222221.105489,
+      "durationMs": 500.8345310000004,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 222721.994811,
+      "durationMs": 101.69583399998373,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 222823.750697,
+      "durationMs": 203.62473899999168,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 223027.409499,
+      "durationMs": 105.34645799998543,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 223132.78345699998,
+      "durationMs": 501.6234890000196,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 223634.524707,
+      "durationMs": 2832.462394000002,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 226467.031841,
+      "durationMs": 501.15328100000625,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 226968.209862,
+      "durationMs": 82.76994800000102,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 227051.03532999998,
+      "durationMs": 200.23937500000466,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 227251.331216,
+      "durationMs": 99.12588500001584,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 227350.484341,
+      "durationMs": 500.22369700000854,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 227850.840851,
+      "durationMs": 2819.1682800000126,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 230670.037985,
+      "durationMs": 501.14572899998166,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 231171.241162,
+      "durationMs": 94.16677100001834,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 231265.458714,
+      "durationMs": 191.8906769999885,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 231457.383402,
+      "durationMs": 95.09458299999824,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 231552.494339,
+      "durationMs": 500.6663539999863,
+      "outcome": "ok"
+    },
+    {
+      "stage": "select_tap",
+      "startMs": 232053.295954,
+      "durationMs": 2849.1824459999916,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 234902.523296,
+      "durationMs": 501.22557300000335,
+      "outcome": "ok"
+    },
+    {
+      "stage": "shell",
+      "startMs": 235403.806733,
+      "durationMs": 108.6387499999837,
+      "outcome": "ok"
+    },
+    {
+      "stage": "type",
+      "startMs": 235512.499233,
+      "durationMs": 177.69567699998152,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 235690.233608,
+      "durationMs": 102.17703199997777,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 235792.433348,
+      "durationMs": 501.31520800001454,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 236293.822046,
+      "durationMs": 2607.3486970000085,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 238901.275378,
+      "durationMs": 89.86307300001499,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 238991.171888,
+      "durationMs": 501.1935419999936,
+      "outcome": "ok"
+    },
+    {
+      "stage": "swipe",
+      "startMs": 239492.433294,
+      "durationMs": 499.77218800000264,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 239992.227253,
+      "durationMs": 501.06703100001323,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 240493.342669,
+      "durationMs": 2595.404061999987,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ocr",
+      "startMs": 243088.792616,
+      "durationMs": 1469.631144999992,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 244558.79641799998,
+      "durationMs": 2578.402499000018,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 247137.233917,
+      "durationMs": 95.537290999986,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 247232.796937,
+      "durationMs": 501.6856770000013,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 247734.558916,
+      "durationMs": 2631.991561999981,
+      "outcome": "ok"
+    },
+    {
+      "stage": "swipe",
+      "startMs": 250367.376884,
+      "durationMs": 493.9061980000115,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 250861.306988,
+      "durationMs": 500.8169270000071,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 251362.19355,
+      "durationMs": 2548.108229000005,
+      "outcome": "ok"
+    },
+    {
+      "stage": "field_scroll",
+      "startMs": 253910.545789,
+      "durationMs": 479.7222910000128,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 254390.288653,
+      "durationMs": 500.9260420000064,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 254891.251986,
+      "durationMs": 2612.2027600000147,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 257503.740058,
+      "durationMs": 2562.416301999998,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 260066.191099,
+      "durationMs": 93.38963499999954,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 260159.60698399998,
+      "durationMs": 501.04572900000494,
+      "outcome": "ok"
+    },
+    {
+      "stage": "swipe",
+      "startMs": 260660.720109,
+      "durationMs": 528.7288540000154,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 261189.473078,
+      "durationMs": 500.07697899997584,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 261689.61266100002,
+      "durationMs": 2600.166613999987,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 264290.076462,
+      "durationMs": 2619.3844779999927,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 266909.492451,
+      "durationMs": 95.35807299998123,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 267004.875888,
+      "durationMs": 500.98369800002547,
+      "outcome": "ok"
+    },
+    {
+      "stage": "swipe",
+      "startMs": 267505.928909,
+      "durationMs": 521.8809370000381,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 268027.839638,
+      "durationMs": 500.8734370000311,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 268528.77437700005,
+      "durationMs": 2564.242290999973,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 271093.270939,
+      "durationMs": 2620.7728110000025,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 273714.07880200003,
+      "durationMs": 92.94526100001531,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 273807.05286500003,
+      "durationMs": 500.7812489999924,
+      "outcome": "ok"
+    },
+    {
+      "stage": "swipe",
+      "startMs": 274307.92151,
+      "durationMs": 502.88770800002385,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 274810.834791,
+      "durationMs": 500.9974999999977,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 275311.900833,
+      "durationMs": 2629.21317599999,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 277941.52572800004,
+      "durationMs": 2474.0134879999678,
+      "outcome": "ok"
+    },
+    {
+      "stage": "tap",
+      "startMs": 280415.565362,
+      "durationMs": 81.26598999998532,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 280496.85458100005,
+      "durationMs": 501.867082999961,
+      "outcome": "ok"
+    },
+    {
+      "stage": "swipe",
+      "startMs": 280998.824112,
+      "durationMs": 515.0004160000244,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 281513.85833,
+      "durationMs": 501.15666700003203,
+      "outcome": "ok"
+    },
+    {
+      "stage": "ui_dump",
+      "startMs": 282015.076768,
+      "durationMs": 2518.5406240000157,
+      "outcome": "ok"
+    },
+    {
+      "stage": "key",
+      "startMs": 284533.894111,
+      "durationMs": 81.3027600000496,
+      "outcome": "ok"
+    },
+    {
+      "stage": "settle",
+      "startMs": 284615.24244400003,
+      "durationMs": 501.64979100000346,
+      "outcome": "ok"
+    },
+    {
+      "stage": "restore_ime",
+      "startMs": 285117.65499600006,
+      "durationMs": 105.17307299998356,
+      "outcome": "ok"
+    },
+    {
+      "stage": "restore_termux",
+      "startMs": 285275.67598500004,
+      "durationMs": 5623.090049999999,
+      "outcome": "ok"
+    }
+  ],
+  "captureSpans": [
+    {
+      "stage": "adb_attempt",
+      "startMs": 5.587447999999995,
+      "durationMs": 3671.1515609999997,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 1.6499479999999949,
+      "durationMs": 3675.3776549999993,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 3680.183124,
+      "durationMs": 75.484375,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 3677.413437,
+      "durationMs": 78.33078099999966,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 3755.7630200000003,
+      "durationMs": 2.1234889999996085,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 3758.19203,
+      "durationMs": 18.908801999999923,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 3778.734009,
+      "durationMs": 75.55796900000041,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 3777.113332,
+      "durationMs": 77.41963599999963,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.9234899999992194,
+      "durationMs": 2478.550728,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 0.5024999999995998,
+      "durationMs": 2480.151822,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2483.646041,
+      "durationMs": 26.564738999999463,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2480.7607279999993,
+      "durationMs": 29.492761000000428,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2510.269321999999,
+      "durationMs": 1.0849480000006224,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2511.370623999999,
+      "durationMs": 23.74572900000021,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2536.639322,
+      "durationMs": 71.66718799999944,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2535.132968,
+      "durationMs": 73.46624999999949,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.0015620000003764,
+      "durationMs": 2581.5838009999998,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 0.6410420000001977,
+      "durationMs": 2582.9873940000007,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2585.335884,
+      "durationMs": 66.25697899999977,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2583.7282799999994,
+      "durationMs": 67.89192700000058,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2651.6316659999993,
+      "durationMs": 1.5004160000007687,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2653.1428109999997,
+      "durationMs": 16.217500000000655,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2670.9178630000006,
+      "durationMs": 74.18109399999958,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2669.368488,
+      "durationMs": 75.80541699999958,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 24.355729000000792,
+      "durationMs": 3090.14854,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 7.504687000000558,
+      "durationMs": 3107.045572000001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 3117.393384000001,
+      "durationMs": 42.125207999999475,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 3114.7048940000004,
+      "durationMs": 44.85114600000088,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 3159.568228,
+      "durationMs": 2.292916000000332,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 3161.8751550000015,
+      "durationMs": 25.919582999998966,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 3190.454009000001,
+      "durationMs": 153.17812500000036,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 3187.8051020000003,
+      "durationMs": 155.91114600000037,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 12.399739000000409,
+      "durationMs": 2846.914114000001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 4.9501040000013745,
+      "durationMs": 2854.4405719999995,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2863.1627590000007,
+      "durationMs": 57.31046900000001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2859.6034359999994,
+      "durationMs": 60.89447900000232,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2920.5068740000006,
+      "durationMs": 2.0705200000011246,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2922.5871860000025,
+      "durationMs": 10.897447999999713,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2935.181405000001,
+      "durationMs": 97.59390599999824,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2933.494374,
+      "durationMs": 99.37598900000012,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.062708000001294,
+      "durationMs": 4963.410519000001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 0.8330200000018522,
+      "durationMs": 4964.720728,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 4969.943852,
+      "durationMs": 52.417552000002615,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 4965.744216000003,
+      "durationMs": 56.68937499999811,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 5022.585310000002,
+      "durationMs": 3.0815629999997327,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 5025.683279000001,
+      "durationMs": 20.163124999999127,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 5047.7732270000015,
+      "durationMs": 90.92197899999883,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 5045.8554140000015,
+      "durationMs": 92.93161500000133,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.6834380000000237,
+      "durationMs": 3216.193019000002,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 1.1327090000013413,
+      "durationMs": 3217.8754149999986,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 3223.3383840000024,
+      "durationMs": 45.67088599999988,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 3219.196301,
+      "durationMs": 49.843854000002466,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 3269.056249000001,
+      "durationMs": 3.1239580000001297,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 3272.202759,
+      "durationMs": 24.99041700000089,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 3299.4027590000005,
+      "durationMs": 97.91781300000002,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 3297.206822,
+      "durationMs": 100.18901000000187,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.6444269999992684,
+      "durationMs": 7687.4670799999985,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 1.1259890000001178,
+      "durationMs": 7689.041142999999,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 7692.546142000003,
+      "durationMs": 39.68442800000048,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 7690.302288000003,
+      "durationMs": 41.95770899999479,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 7732.272704999999,
+      "durationMs": 4.143125000002328,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 7736.434163000002,
+      "durationMs": 38.392291999996814,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 7776.701298999997,
+      "durationMs": 91.57380200000625,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 7774.838485999997,
+      "durationMs": 93.51864600000408,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.4807290000026114,
+      "durationMs": 2389.767498999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 1.2339579999970738,
+      "durationMs": 2391.089635000004,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2394.5742180000016,
+      "durationMs": 30.05260399999679,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2392.4345299999986,
+      "durationMs": 32.21572900000319,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2424.663072000003,
+      "durationMs": 1.1738019999975222,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2425.8457800000033,
+      "durationMs": 3.812291999995068,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2431.3083840000036,
+      "durationMs": 89.54197899999417,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2429.667238000002,
+      "durationMs": 91.38729199999943,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 5.792551999998977,
+      "durationMs": 2395.0424989999956,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 2.8379169999971054,
+      "durationMs": 2398.084373999998,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2403.2656759999954,
+      "durationMs": 75.30099000000337,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2401.0868740000005,
+      "durationMs": 77.61161499999434,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2478.7190619999965,
+      "durationMs": 1.3942709999973886,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2480.1907809999975,
+      "durationMs": 3.367031000001589,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2486.9789059999966,
+      "durationMs": 110.54140600000392,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2483.568281,
+      "durationMs": 114.05645799999911,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.651561999999103,
+      "durationMs": 2397.5411449999956,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 1.1749479999998584,
+      "durationMs": 2399.0868740000005,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2403.6135399999985,
+      "durationMs": 36.26343800000177,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2400.455571999999,
+      "durationMs": 39.44828099999722,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2439.912446999995,
+      "durationMs": 0.970156000003044,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2440.888436000001,
+      "durationMs": 2.452655999994022,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2444.6617169999954,
+      "durationMs": 83.84932300000219,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2443.3463009999978,
+      "durationMs": 85.23380200000247,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 5.581978999995044,
+      "durationMs": 2414.1297909999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 2.7081770000004326,
+      "durationMs": 2417.1364049999975,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2424.823019999996,
+      "durationMs": 61.99197899999854,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2420.1011450000005,
+      "durationMs": 66.73458299999766,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2486.844999000001,
+      "durationMs": 0.6036979999989853,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2487.4554149999967,
+      "durationMs": 0.3666670000020531,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2489.1832799999975,
+      "durationMs": 101.9260940000022,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2487.8249989999968,
+      "durationMs": 103.34249999999884,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 3.959374999998545,
+      "durationMs": 2390.3439050000015,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 1.9168750000026193,
+      "durationMs": 2392.5527589999983,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2398.519060999999,
+      "durationMs": 48.19989599999826,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2394.9631759999975,
+      "durationMs": 51.797968999999284,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2446.777550999999,
+      "durationMs": 1.1186460000026273,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2447.907446999998,
+      "durationMs": 0.45640600000479026,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2450.313592999999,
+      "durationMs": 111.09640600000421,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2448.3690609999976,
+      "durationMs": 113.08557300000393,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 6.062812999996822,
+      "durationMs": 2425.419270000006,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 2.898281000001589,
+      "durationMs": 2428.758020000001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2437.148696999997,
+      "durationMs": 37.539323000004515,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2431.968488999999,
+      "durationMs": 42.7925000000032,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2474.773436999996,
+      "durationMs": 1.0066660000011325,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2475.788123999999,
+      "durationMs": 0.4549479999986943,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2477.9532279999985,
+      "durationMs": 89.46119800000452,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2476.246769999998,
+      "durationMs": 91.20687500000349,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 9.784269999996468,
+      "durationMs": 2407.0841660000006,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 5.337500000001455,
+      "durationMs": 2411.6274989999947,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2421.4370819999967,
+      "durationMs": 44.24697900000319,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2417.1763009999995,
+      "durationMs": 48.54380200000014,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2465.7318220000016,
+      "durationMs": 1.3256769999934477,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2467.06927,
+      "durationMs": 1.1948950000005425,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2470.2430719999975,
+      "durationMs": 94.50093699999707,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2468.2697379999954,
+      "durationMs": 96.52145900000323,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 4.926718000002438,
+      "durationMs": 2421.0430199999973,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 3.0988539999962086,
+      "durationMs": 2422.9474990000017,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2429.6519259999986,
+      "durationMs": 58.56942700000218,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2426.202498999999,
+      "durationMs": 62.039270000001125,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2488.2516130000004,
+      "durationMs": 0.5968229999998584,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2488.8548939999964,
+      "durationMs": 1.2408859999995911,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2492.1066649999993,
+      "durationMs": 94.897864999999,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2490.1033319999988,
+      "durationMs": 96.94838500000333,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 6.6545830000104615,
+      "durationMs": 2431.6957799999946,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 2.6356769999983953,
+      "durationMs": 2435.8095820000017,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2443.3391649999976,
+      "durationMs": 58.486250000001746,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2438.64067600001,
+      "durationMs": 63.218385000000126,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2501.8694260000048,
+      "durationMs": 0.688280999995186,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2502.5642170000065,
+      "durationMs": 1.1651049999927636,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2505.238645000005,
+      "durationMs": 79.42859300000418,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2503.7321860000084,
+      "durationMs": 80.97328099999868,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 9.020625000004657,
+      "durationMs": 2408.6793739999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 3.5180730000138283,
+      "durationMs": 2414.245935999992,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2421.345312000005,
+      "durationMs": 50.82151000000886,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2417.8991140000144,
+      "durationMs": 54.30176999999094,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2472.2142180000083,
+      "durationMs": 0.9341140000033192,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2473.162968000004,
+      "durationMs": 1.2966660000092816,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2475.980468000009,
+      "durationMs": 113.67625000000407,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2474.464791000006,
+      "durationMs": 115.25244799999928,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 4.918332999994163,
+      "durationMs": 2470.8002600000036,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 2.8795309999986785,
+      "durationMs": 2473.1086450000003,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2480.477343000006,
+      "durationMs": 42.296875,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2476.1934889999975,
+      "durationMs": 46.61927000001015,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2522.822134000002,
+      "durationMs": 0.9346360000054119,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2523.7640609999944,
+      "durationMs": 1.311667000001762,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2526.5586970000004,
+      "durationMs": 92.75312500000291,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2525.079217999999,
+      "durationMs": 94.28869800000393,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.5254160000040429,
+      "durationMs": 108.95692699999199,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.5083860000013374,
+      "durationMs": 75.02687499999593,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 8.636198000007425,
+      "durationMs": 2467.1716659999947,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 5.160417000006419,
+      "durationMs": 2470.7048429999995,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2477.428071999995,
+      "durationMs": 23.202656000008574,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2475.946093000006,
+      "durationMs": 24.717917000001762,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2500.670416000008,
+      "durationMs": 0.6036979999917094,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2501.279739000005,
+      "durationMs": 2.2734369999961928,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2504.7451030000084,
+      "durationMs": 82.39083399999072,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2503.556249000001,
+      "durationMs": 83.63364600000205,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.383125000007567,
+      "durationMs": 103.69848999999522,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.5407819999963976,
+      "durationMs": 85.23093700000027,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 11.277186999999685,
+      "durationMs": 2474.269790999999,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 6.2246350000059465,
+      "durationMs": 2479.438175999996,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2491.169477999996,
+      "durationMs": 40.751302000004216,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2485.853384000002,
+      "durationMs": 46.111822999999276,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2531.9736450000055,
+      "durationMs": 1.3322389999957522,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2533.3134359999967,
+      "durationMs": 1.8073440000007395,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2540.6286450000043,
+      "durationMs": 110.83926999999676,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2535.1246859999956,
+      "durationMs": 116.47854200001166,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.70276100000774,
+      "durationMs": 110.580363999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.569948000003933,
+      "durationMs": 87.54312499999651,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 8.084531000000425,
+      "durationMs": 2442.529582000003,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 4.4248959999968065,
+      "durationMs": 2446.3015090000117,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2454.606249000004,
+      "durationMs": 42.33317699999316,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2450.9274989999976,
+      "durationMs": 46.0909890000039,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2497.0360930000024,
+      "durationMs": 1.2564060000004247,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2498.303436000002,
+      "durationMs": 1.9661979999946197,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2502.307707,
+      "durationMs": 92.6072920000006,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2500.2747380000073,
+      "durationMs": 94.68807299999753,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.2874480000027688,
+      "durationMs": 97.37880200000654,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.2836460000107763,
+      "durationMs": 95.4833859999926,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 10.014114000005065,
+      "durationMs": 2491.0447910000075,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 5.817187000007834,
+      "durationMs": 2495.401352999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2505.7901550000097,
+      "durationMs": 49.37505200000305,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2501.4336970000004,
+      "durationMs": 53.767708000013954,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2555.2090610000014,
+      "durationMs": 0.9236460000101943,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2556.1412490000075,
+      "durationMs": 1.6954160000022966,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2559.4216650000017,
+      "durationMs": 114.98104199999943,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2557.8400510000065,
+      "durationMs": 116.66781199999969,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.130885999999009,
+      "durationMs": 94.41807299999346,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.6388020000013057,
+      "durationMs": 89.4523429999972,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 10.060624999998254,
+      "durationMs": 2440.137029999998,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 6.032760000001872,
+      "durationMs": 2444.267968,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2453.8165609999996,
+      "durationMs": 35.87765700000455,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2450.452550999995,
+      "durationMs": 39.340416999999434,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2489.8060410000035,
+      "durationMs": 0.7186969999893336,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2490.531197000004,
+      "durationMs": 1.7502600000007078,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2493.860572000005,
+      "durationMs": 87.33406199999445,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2492.284790999998,
+      "durationMs": 88.95890599999984,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.4519799999980023,
+      "durationMs": 112.78281200000492,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.1161450000072364,
+      "durationMs": 97.52697999999509,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 9.696301999996649,
+      "durationMs": 2432.6555720000033,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 5.744582999992417,
+      "durationMs": 2436.6480719999963,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2443.8055719999975,
+      "durationMs": 24.38640599999053,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2442.4641659999907,
+      "durationMs": 25.748697999995784,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2468.2187489999924,
+      "durationMs": 0.9147400000074413,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2469.1410929999984,
+      "durationMs": 1.5702599999931408,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2472.288800999988,
+      "durationMs": 113.24072900001192,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2470.7188529999985,
+      "durationMs": 114.88708299999416,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 4.490676999994321,
+      "durationMs": 2404.5619260000094,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 2.750625000000582,
+      "durationMs": 2406.4149990000005,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2413.9006760000048,
+      "durationMs": 47.48802099999739,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2409.375675999996,
+      "durationMs": 52.047239999999874,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2461.4338010000065,
+      "durationMs": 1.0370309999998426,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2462.481249000004,
+      "durationMs": 2.9882809999980964,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2467.2052070000063,
+      "durationMs": 98.19843799999217,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2465.4761969999963,
+      "durationMs": 99.97776000000886,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 8.915103999999701,
+      "durationMs": 2469.995154999997,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 4.017915999997058,
+      "durationMs": 2474.998384999999,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2483.5903629999957,
+      "durationMs": 43.41328200000862,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2479.257654999994,
+      "durationMs": 47.771562000009,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2527.0383319999964,
+      "durationMs": 1.6191150000086054,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2528.6648419999983,
+      "durationMs": 3.216562999994494,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2533.8267170000036,
+      "durationMs": 90.15229199999885,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2531.8878109999932,
+      "durationMs": 92.13750000001164,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 3.735728999992716,
+      "durationMs": 2391.40666600001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 2.3641139999963343,
+      "durationMs": 2392.8817700000072,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2399.045623999991,
+      "durationMs": 49.52822900000319,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2395.3879159999924,
+      "durationMs": 53.23947900001076,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2448.6375509999925,
+      "durationMs": 1.0739060000050813,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2449.7216659999976,
+      "durationMs": 2.015625,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2454.009791000004,
+      "durationMs": 112.10051999999268,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2451.741093000004,
+      "durationMs": 114.69749999999476,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 3.9108330000017304,
+      "durationMs": 134.23468799999682,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.332187000007252,
+      "durationMs": 95.53119799999695,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 5.928333999996539,
+      "durationMs": 2484.890520000001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 3.4392709999956423,
+      "durationMs": 2487.5321350000013,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2494.240103999997,
+      "durationMs": 44.63130200000887,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2491.120364000002,
+      "durationMs": 47.809582999994745,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2538.943696999995,
+      "durationMs": 1.4340110000048298,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2540.387604000003,
+      "durationMs": 2.0003120000037597,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2543.7705200000055,
+      "durationMs": 105.15598999999929,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2542.3915620000043,
+      "durationMs": 106.6122919999907,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.3563020000001416,
+      "durationMs": 99.71843799999624,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.166561999998521,
+      "durationMs": 95.65572999999858,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 6.9144799999921815,
+      "durationMs": 2455.6768740000116,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 4.4561459999968065,
+      "durationMs": 2458.252603000001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2466.0430199999973,
+      "durationMs": 40.30744800000684,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2462.835884999993,
+      "durationMs": 43.548646000010194,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2506.3926039999933,
+      "durationMs": 1.788073000003351,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2508.1893220000056,
+      "durationMs": 1.691979999988689,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2511.309479000003,
+      "durationMs": 114.44015599999693,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2509.885156000004,
+      "durationMs": 115.95239599999331,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.127707999999984,
+      "durationMs": 92.40994800000044,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.4986460000072839,
+      "durationMs": 92.73473899999226,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 10.57869799999753,
+      "durationMs": 2414.4786449999956,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 6.867968999998993,
+      "durationMs": 2418.2911969999986,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2428.482759999999,
+      "durationMs": 41.58520799998951,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2425.275155999989,
+      "durationMs": 44.83635399999912,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2470.120050999991,
+      "durationMs": 0.8427090000041062,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2470.970207999999,
+      "durationMs": 1.578801999989082,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2474.080050999997,
+      "durationMs": 109.01244799999404,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2472.5527599999914,
+      "durationMs": 110.59906200000842,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.0121349999972153,
+      "durationMs": 89.00744800000393,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.4838029999955324,
+      "durationMs": 85.11234300000069,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 11.902709000001778,
+      "durationMs": 2379.830468,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 7.517032000003383,
+      "durationMs": 2384.276509000003,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2393.684687000001,
+      "durationMs": 31.389374999998836,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2391.8764060000103,
+      "durationMs": 33.23900999999023,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2425.1232290000044,
+      "durationMs": 1.6540099999983795,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2426.78880200001,
+      "durationMs": 3.3307289999938803,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2432.3406250000116,
+      "durationMs": 105.7569269999949,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2430.1257810000097,
+      "durationMs": 108.04281199999969,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.6706770000018878,
+      "durationMs": 96.3927079999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.8399999999965075,
+      "durationMs": 93.29739599999448,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 11.307396000003791,
+      "durationMs": 2465.7036450000014,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 6.7618230000080075,
+      "durationMs": 2470.3413530000107,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2482.107029999999,
+      "durationMs": 42.49973999999929,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2477.225363999998,
+      "durationMs": 47.4259369999927,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2524.6622910000006,
+      "durationMs": 1.8738540000049397,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2526.551821999994,
+      "durationMs": 1.6987500000104774,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2530.5271860000066,
+      "durationMs": 105.87864599999739,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2528.256196999995,
+      "durationMs": 108.2208329999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.337396000017179,
+      "durationMs": 90.8790619999927,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.8902079999970738,
+      "durationMs": 74.75151000000187,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 10.453542000002926,
+      "durationMs": 2495.92551999999,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 6.082030999998096,
+      "durationMs": 2500.5370309999853,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2512.136456999986,
+      "durationMs": 45.52192699999432,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2506.805779999995,
+      "durationMs": 50.879635999997845,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2557.694530000008,
+      "durationMs": 1.1605209999834187,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2558.8640089999826,
+      "durationMs": 1.5621880000107922,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2562.0602589999908,
+      "durationMs": 114.30401100000017,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2560.4305199999944,
+      "durationMs": 116.00239599999622,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 5.249218999990262,
+      "durationMs": 2421.2017179999966,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 3.405312999995658,
+      "durationMs": 2423.1329149999947,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2430.2666659999813,
+      "durationMs": 42.7539580000157,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2426.6951560000016,
+      "durationMs": 46.36322899998049,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2473.072343000007,
+      "durationMs": 2.4832809999934398,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2475.5669259999995,
+      "durationMs": 1.7079689999809489,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2478.5974470000074,
+      "durationMs": 109.02656299999217,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2477.2778640000033,
+      "durationMs": 110.40374999999767,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 5.6759369999927,
+      "durationMs": 2349.702550999995,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 2.7237500000046566,
+      "durationMs": 2352.684269999998,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2356.888644999999,
+      "durationMs": 65.78989499999443,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2355.4665089999908,
+      "durationMs": 67.25427100001252,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2422.741508999985,
+      "durationMs": 1.1830729999928735,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2423.9390609999828,
+      "durationMs": 4.134479000000283,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2430.5218219999806,
+      "durationMs": 103.08036400002311,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2428.0794779999997,
+      "durationMs": 105.56963499999256,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 4.863020999997389,
+      "durationMs": 2458.339789999998,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 2.929999999993015,
+      "durationMs": 2460.4335929999943,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2468.5666130000027,
+      "durationMs": 46.477499999979045,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2463.552395000006,
+      "durationMs": 51.523176999995485,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2515.082498999982,
+      "durationMs": 0.8873440000170376,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2515.977237999992,
+      "durationMs": 1.467865000013262,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2519.4690609999816,
+      "durationMs": 88.03812500002095,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2517.448332,
+      "durationMs": 90.12270899998839,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.7966659999801777,
+      "durationMs": 105.51218799999333,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.5161459999799263,
+      "durationMs": 83.69380200002342,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 11.661458999995375,
+      "durationMs": 2445.3735400000005,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 8.201197999995202,
+      "durationMs": 2448.9405200000037,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2460.752655999997,
+      "durationMs": 39.68156200001249,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2457.265103999991,
+      "durationMs": 43.21421800000826,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2500.4880720000074,
+      "durationMs": 0.7878649999911431,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2501.2844259999983,
+      "durationMs": 1.6589070000045467,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2504.515207999997,
+      "durationMs": 113.32604099999298,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2502.9469790000003,
+      "durationMs": 114.96817700000247,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.2860409999848343,
+      "durationMs": 90.80807300002198,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.9145830000052229,
+      "durationMs": 88.37354200001573,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 11.04968799999915,
+      "durationMs": 2525.4005199999956,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 7.248542000015732,
+      "durationMs": 2529.303904999979,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2540.1721350000007,
+      "durationMs": 37.90479200001573,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2536.7022390000056,
+      "durationMs": 41.41921900000307,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2578.132708000019,
+      "durationMs": 1.1142709999985527,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2579.2579160000023,
+      "durationMs": 2.0369789999967907,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2583.397291000001,
+      "durationMs": 117.66156300000148,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2581.299218,
+      "durationMs": 119.83916699999827,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.3745310000085738,
+      "durationMs": 91.78401000000304,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.7228119999927003,
+      "durationMs": 76.5000519999885,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 11.891979999985779,
+      "durationMs": 2430.79692600001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 7.6973959999741055,
+      "durationMs": 2435.099895000021,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2446.3776039999793,
+      "durationMs": 39.46932200001902,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2442.9407289999945,
+      "durationMs": 43.00557199999457,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2485.9594259999867,
+      "durationMs": 0.8170840000093449,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2486.78489499999,
+      "durationMs": 1.6501040000002831,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2490.0508329999866,
+      "durationMs": 91.52578100000392,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2488.438228999992,
+      "durationMs": 93.18515599999228,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.4435930000036024,
+      "durationMs": 95.59203200001502,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.1007300000055693,
+      "durationMs": 107.54791600001045,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 10.641353999992134,
+      "durationMs": 2489.1285409999837,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 7.01218799999333,
+      "durationMs": 2492.8543219999992,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2504.525780999975,
+      "durationMs": 49.75666600000113,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2499.98723899998,
+      "durationMs": 54.326250000012806,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2554.3194259999727,
+      "durationMs": 0.9919800000207033,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2555.3185929999745,
+      "durationMs": 1.650885000010021,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2558.744530999975,
+      "durationMs": 129.8128120000183,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2556.972863999981,
+      "durationMs": 131.67999999999302,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.8401040000026114,
+      "durationMs": 94.91088499999023,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.9384379999828525,
+      "durationMs": 94.70994800000335,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 12.724584000010509,
+      "durationMs": 2409.0795820000058,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 8.148593999998411,
+      "durationMs": 2413.738228000002,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2424.5757809999923,
+      "durationMs": 44.98229100002209,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2421.9994270000025,
+      "durationMs": 47.614583000016864,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2469.6265620000195,
+      "durationMs": 1.0891149999806657,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2470.726354000013,
+      "durationMs": 3.068801999994321,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2476.0351040000096,
+      "durationMs": 113.5665100000042,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2473.8003120000067,
+      "durationMs": 115.86025999998674,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.8818750000209548,
+      "durationMs": 98.77515599998878,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.3233329999784473,
+      "durationMs": 85.54156199999852,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 11.510103999986313,
+      "durationMs": 2428.096978000016,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 7.9181249999965075,
+      "durationMs": 2431.745624000003,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2443.3102070000023,
+      "durationMs": 41.702447999996366,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2439.7877070000104,
+      "durationMs": 45.25630199999432,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2485.054842999991,
+      "durationMs": 0.9055720000178553,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2485.9689570000046,
+      "durationMs": 1.6706769999873359,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2489.7990090000094,
+      "durationMs": 110.23963599998388,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2487.6430199999886,
+      "durationMs": 112.45838500000536,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 7.09489599999506,
+      "durationMs": 2421.720885000017,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 4.368125000008149,
+      "durationMs": 2424.5779160000093,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2434.6086450000003,
+      "durationMs": 44.67083400001866,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2429.1768220000085,
+      "durationMs": 50.12932300000102,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2479.315364000009,
+      "durationMs": 1.7999999999883585,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2481.1238020000164,
+      "durationMs": 1.5033849999890663,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2484.6400520000025,
+      "durationMs": 89.34255200001644,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2482.6301040000108,
+      "durationMs": 91.41786399998819,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 8.767290999996476,
+      "durationMs": 2422.5370309999853,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 6.75119799998356,
+      "durationMs": 2424.613228000002,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2435.1451550000056,
+      "durationMs": 35.38135399998282,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2431.5283840000047,
+      "durationMs": 39.03088599999319,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2470.5750509999925,
+      "durationMs": 0.9274480000021867,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2471.5118220000004,
+      "durationMs": 1.6600000000034925,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2474.7258319999964,
+      "durationMs": 99.47312499998952,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2473.1758839999966,
+      "durationMs": 101.06796899999608,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 5.940363999980036,
+      "durationMs": 2361.500208000012,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 4.200676999986172,
+      "durationMs": 2363.295623999991,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2369.2742169999983,
+      "durationMs": 30.815208999993047,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2367.5736449999968,
+      "durationMs": 32.56104100000812,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2400.146248999983,
+      "durationMs": 1.4203640000196174,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2401.576249000005,
+      "durationMs": 1.821457999991253,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2405.3986449999793,
+      "durationMs": 107.30802000002586,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2403.402394999983,
+      "durationMs": 109.37270800000988,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.9883330000157002,
+      "durationMs": 98.95885399999679,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.7438540000002831,
+      "durationMs": 105.57911500000046,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 12.579635999980383,
+      "durationMs": 2449.707706999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 8.280364999984158,
+      "durationMs": 2454.1546859999944,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2467.181821999984,
+      "durationMs": 41.65390699999989,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2462.6046869999846,
+      "durationMs": 46.27390599998762,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2508.887915999978,
+      "durationMs": 0.9634380000061356,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2509.859686999989,
+      "durationMs": 2.274478999985149,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2513.5541139999987,
+      "durationMs": 85.21713499998441,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2512.1377079999947,
+      "durationMs": 86.71156199998222,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.8007290000095963,
+      "durationMs": 103.9177090000012,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.1328130000038072,
+      "durationMs": 75.14958300002036,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 13.993905999988783,
+      "durationMs": 2439.4852079999982,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 11.013593999989098,
+      "durationMs": 2442.5647379999864,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2457.007186999981,
+      "durationMs": 35.87848899999517,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2453.7065619999776,
+      "durationMs": 39.235052000003634,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2492.955154999974,
+      "durationMs": 0.9615630000189412,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2493.927186999994,
+      "durationMs": 1.6266659999964759,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2497.050831999979,
+      "durationMs": 114.4197400000121,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2495.5575509999762,
+      "durationMs": 116.01432300001034,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.485780999995768,
+      "durationMs": 93.23479099999531,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.6378130000084639,
+      "durationMs": 86.90567700000247,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 11.631874999991851,
+      "durationMs": 2425.7788010000077,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 8.151875000010477,
+      "durationMs": 2429.5699989999994,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2442.162811999995,
+      "durationMs": 40.797864000021946,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2437.8971350000065,
+      "durationMs": 45.15124999999534,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2483.0622389999917,
+      "durationMs": 1.2221870000066701,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2484.2944260000077,
+      "durationMs": 3.2895319999952335,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2490.0540099999926,
+      "durationMs": 94.5683850000205,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2487.5965619999915,
+      "durationMs": 97.09218700000201,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.8631769999919925,
+      "durationMs": 97.54541600000812,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.8007289999804925,
+      "durationMs": 100.38953200000105,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 12.071406000002753,
+      "durationMs": 2468.8496349999914,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 7.935364999982994,
+      "durationMs": 2473.084426000016,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2484.451562000002,
+      "durationMs": 51.01890599998296,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2481.158593,
+      "durationMs": 54.386822999978904,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2535.557707,
+      "durationMs": 1.1791669999947771,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2536.7477070000023,
+      "durationMs": 1.8628650000027847,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2540.964894999983,
+      "durationMs": 112.32119800001965,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2538.6182279999775,
+      "durationMs": 114.74718800000846,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.0888550000090618,
+      "durationMs": 102.02869700000156,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.7094799999904353,
+      "durationMs": 85.6211970000004,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 13.562342999997782,
+      "durationMs": 2466.5745830000087,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 9.608749999984866,
+      "durationMs": 2470.624322000018,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2484.270623999997,
+      "durationMs": 45.58140599998296,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2480.3669780000055,
+      "durationMs": 49.57249999998021,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2529.952133999992,
+      "durationMs": 1.2775520000141114,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2531.242394000001,
+      "durationMs": 2.7038029999821447,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2535.9882799999905,
+      "durationMs": 103.79229099999066,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2533.95296699999,
+      "durationMs": 105.88828199999989,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.060624999983702,
+      "durationMs": 111.41989499999909,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.39010399999097,
+      "durationMs": 81.54359400001704,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 12.056302000011783,
+      "durationMs": 2493.4239050000033,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 8.620259999996051,
+      "durationMs": 2496.946301000018,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2510.030675999995,
+      "durationMs": 42.2676040000224,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2505.7335930000118,
+      "durationMs": 46.591405999992276,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2552.3369780000066,
+      "durationMs": 0.8517189999984112,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2553.196926000004,
+      "durationMs": 1.470311999990372,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2556.0790609999967,
+      "durationMs": 109.43791700000293,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2554.670780000015,
+      "durationMs": 110.91640599997481,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 7.786563000001479,
+      "durationMs": 2453.9658839999756,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 5.452499999984866,
+      "durationMs": 2456.3575509999937,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2464.4327079999784,
+      "durationMs": 40.85421800002223,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2461.923488999979,
+      "durationMs": 43.44973900000332,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2505.3935409999976,
+      "durationMs": 1.2646869999880437,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2506.668644999998,
+      "durationMs": 1.523957999976119,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2510.041509999981,
+      "durationMs": 94.49067699999432,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2508.196613999986,
+      "durationMs": 96.38505199999781,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 16.464531999983592,
+      "durationMs": 2518.3669780000055,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 10.694843999983277,
+      "durationMs": 2524.2197910000104,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2538.6510410000046,
+      "durationMs": 39.26302099999157,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2535.0646870000055,
+      "durationMs": 42.88302099998691,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2577.959062000009,
+      "durationMs": 1.24661499998183,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2579.213071999984,
+      "durationMs": 1.397969000012381,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2582.1148429999885,
+      "durationMs": 105.00734400001238,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2580.614895000006,
+      "durationMs": 106.57984399999259,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 9.618177000025753,
+      "durationMs": 2393.6981239999877,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 7.534583000000566,
+      "durationMs": 2395.901406000019,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2407.1085930000118,
+      "durationMs": 48.356406000006245,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2403.596978000016,
+      "durationMs": 51.92791699999361,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2455.5418219999992,
+      "durationMs": 1.0594790000177454,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2456.6110410000256,
+      "durationMs": 1.5073429999756627,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2460.0440090000047,
+      "durationMs": 124.36203200000455,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2458.1228640000045,
+      "durationMs": 126.38151000000653,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.429426999995485,
+      "durationMs": 118.88734300000942,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.820624999993015,
+      "durationMs": 99.71640599999228,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 12.277655999991111,
+      "durationMs": 2466.781925999996,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 8.771301999979187,
+      "durationMs": 2470.3235930000083,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2480.681717999978,
+      "durationMs": 21.600625000020955,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2479.1656239999866,
+      "durationMs": 23.152499999996508,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2502.3299989999796,
+      "durationMs": 1.024375000008149,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2503.359217999998,
+      "durationMs": 1.5207289999816567,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2506.3830199999793,
+      "durationMs": 106.47765600000275,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2504.8831239999854,
+      "durationMs": 108.06197899999097,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 3.0010940000065602,
+      "durationMs": 96.65364599999157,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 3.3232809999899473,
+      "durationMs": 101.86416699999245,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 13.683853999973508,
+      "durationMs": 2458.5517180000024,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 10.223853999981657,
+      "durationMs": 2462.186562000017,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2477.259946999984,
+      "durationMs": 35.54854200000409,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2472.6883319999906,
+      "durationMs": 40.16958399998839,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2512.867967999977,
+      "durationMs": 0.7986460000101943,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2513.672550999996,
+      "durationMs": 1.6826559999899473,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2517.1268739999796,
+      "durationMs": 104.2089580000029,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2515.359217999998,
+      "durationMs": 106.04374999998254,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.4992180000117514,
+      "durationMs": 107.44807300000684,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.896041999978479,
+      "durationMs": 101.18531200001598,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 11.475156000000425,
+      "durationMs": 2478.5828629999887,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 8.164478999999119,
+      "durationMs": 2482.0054679999885,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2493.8876549999986,
+      "durationMs": 44.880937000009,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2490.3043739999994,
+      "durationMs": 48.49567699999898,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2538.806404999981,
+      "durationMs": 1.375781000009738,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2540.186717000004,
+      "durationMs": 1.451145999977598,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2542.9370819999895,
+      "durationMs": 95.49046900001122,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2541.641509000008,
+      "durationMs": 96.85598999998183,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.22213500001817,
+      "durationMs": 95.80333399999654,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.6759369999927003,
+      "durationMs": 92.5271880000073,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 12.64010399999097,
+      "durationMs": 2458.5951029999997,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 9.432342999993125,
+      "durationMs": 2461.923592999985,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2474.857862999983,
+      "durationMs": 41.55067699999199,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2471.4756239999842,
+      "durationMs": 44.98218700001598,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2516.468904999987,
+      "durationMs": 1.041561999998521,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2517.516404999973,
+      "durationMs": 1.587031000002753,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2520.940935999999,
+      "durationMs": 104.19343799998751,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2519.10921699999,
+      "durationMs": 106.08041699999012,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.5440620000008494,
+      "durationMs": 102.36869800000568,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 1.764114999998128,
+      "durationMs": 87.28791600000113,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 13.41734399998677,
+      "durationMs": 2479.1906759999983,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 9.99656299999333,
+      "durationMs": 2482.6965090000012,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2496.217604000005,
+      "durationMs": 41.30697899998631,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2492.981040999992,
+      "durationMs": 44.581042000005255,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2537.570833000005,
+      "durationMs": 0.9705209999810904,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2538.5495829999854,
+      "durationMs": 1.4101559999980964,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2541.876510000002,
+      "durationMs": 109.20427099999506,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2539.962655999989,
+      "durationMs": 111.20088499999838,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.3859889999730512,
+      "durationMs": 97.10635400001775,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2.0273440000019036,
+      "durationMs": 95.20609300001524,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 13.227500000008149,
+      "durationMs": 2459.0365100000054,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 9.747136000019964,
+      "durationMs": 2462.7599990000017,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2475.900572000013,
+      "durationMs": 36.02406299998984,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2472.641614000022,
+      "durationMs": 39.30291699999361,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2511.978384999995,
+      "durationMs": 0.7996350000030361,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2512.7826559999958,
+      "durationMs": 1.4930720000120346,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2515.904895000014,
+      "durationMs": 91.04609399999026,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2514.280051000009,
+      "durationMs": 92.7145320000127,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 8.935415999992983,
+      "durationMs": 2420.7741659999883,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 4.221978999994462,
+      "durationMs": 2425.5497380000015,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2434.125883999979,
+      "durationMs": 43.47968800002127,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2429.925415000005,
+      "durationMs": 47.70703199997661,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2477.6427589999803,
+      "durationMs": 1.0278130000224337,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2478.6771339999977,
+      "durationMs": 4.228646000003209,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2485.700466999988,
+      "durationMs": 109.57281300000614,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2482.9111439999833,
+      "durationMs": 112.41437500002212,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 5.611250000016298,
+      "durationMs": 2412.389686999988,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 4.216615000012098,
+      "durationMs": 2413.821196999983,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2421.3464580000145,
+      "durationMs": 43.109009999985574,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2418.149114,
+      "durationMs": 46.33437500000582,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2464.4955720000144,
+      "durationMs": 1.0934899999992922,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2465.593958000012,
+      "durationMs": 1.9422909999848343,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2469.3848949999956,
+      "durationMs": 108.90130200001295,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2467.540571999998,
+      "durationMs": 110.7907819999964,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 17.60208299997612,
+      "durationMs": 2445.529687000002,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 14.04072899997118,
+      "durationMs": 2449.134739000001,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2466.2140619999846,
+      "durationMs": 49.37468700000318,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2463.2993739999947,
+      "durationMs": 52.312134999985574,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2515.621144999983,
+      "durationMs": 0.7911460000032093,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2516.416196999984,
+      "durationMs": 1.4024480000080075,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2519.3754159999953,
+      "durationMs": 112.42484299998614,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2517.8209359999746,
+      "durationMs": 114.01833400002215,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 15.217605000012554,
+      "durationMs": 2383.2293739999877,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 12.017032000003383,
+      "durationMs": 2386.4948950000107,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2402.21338500001,
+      "durationMs": 35.64947899998515,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2398.9090619999915,
+      "durationMs": 38.97713500002283,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2437.8943750000035,
+      "durationMs": 0.8810409999859985,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2438.779687000002,
+      "durationMs": 1.5744270000141114,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2441.6867180000118,
+      "durationMs": 106.30494800000452,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2440.3559890000033,
+      "durationMs": 107.67239600000903,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 9.623593999975128,
+      "durationMs": 2452.7749990000157,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 6.490520999999717,
+      "durationMs": 2455.958541,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2465.2959889999765,
+      "durationMs": 46.534167000005255,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2462.560415999993,
+      "durationMs": 49.30416699999478,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2511.8763529999997,
+      "durationMs": 1.0795839999918826,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2512.9627079999773,
+      "durationMs": 1.6840099999972153,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2516.629269999976,
+      "durationMs": 95.4685420000169,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2514.649114,
+      "durationMs": 97.47650999997859,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 4.727864999993471,
+      "durationMs": 2407.467187000002,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 3.3915630000119563,
+      "durationMs": 2408.857812000002,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2415.886301999999,
+      "durationMs": 43.51348900000448,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2412.4752600000065,
+      "durationMs": 46.94520799999009,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2459.427916000015,
+      "durationMs": 0.929426999995485,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2460.3619790000084,
+      "durationMs": 1.5836459999845829,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2463.4564580000006,
+      "durationMs": 98.86734399999841,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2461.9470830000064,
+      "durationMs": 100.4197920000006,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 11.473593000031542,
+      "durationMs": 2412.586040999973,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 7.087760000023991,
+      "durationMs": 2417.0779679999687,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2430.9376030000276,
+      "durationMs": 68.61119799996959,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2424.3853629999794,
+      "durationMs": 75.17984400002751,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2499.571196999983,
+      "durationMs": 0.6670310000190511,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2500.2421859999886,
+      "durationMs": 1.834688000031747,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2503.445155000023,
+      "durationMs": 96.57031199999619,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2502.079165000003,
+      "durationMs": 97.98729199997615,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 8.713801999983843,
+      "durationMs": 2432.0424470000435,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 6.253437999985181,
+      "durationMs": 2434.5564050000394,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2443.251301000011,
+      "durationMs": 43.431042000011075,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2441.0082810000167,
+      "durationMs": 45.70041599997785,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2486.7184889999917,
+      "durationMs": 1.2599480000208132,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2487.9847910000244,
+      "durationMs": 2.094061999989208,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2491.8891140000196,
+      "durationMs": 127.41333299997495,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2490.0813010000275,
+      "durationMs": 129.2555730000022,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 8.37572899996303,
+      "durationMs": 2409.1682290000026,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 4.36062499997206,
+      "durationMs": 2413.2497389999917,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2421.0348430000013,
+      "durationMs": 40.56786499998998,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2417.794530999963,
+      "durationMs": 43.82515600003535,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2461.6288539999514,
+      "durationMs": 1.3953639999963343,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2463.029998999962,
+      "durationMs": 1.826355000026524,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2468.1294259999995,
+      "durationMs": 95.99494799994864,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2464.858800999995,
+      "durationMs": 99.30984399997396,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 7.865832999988925,
+      "durationMs": 2442.8992699999944,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 5.866302000009455,
+      "durationMs": 2444.955467999971,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2453.687343000027,
+      "durationMs": 48.38713499996811,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2450.9561450000037,
+      "durationMs": 51.16119800001616,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2502.128541000013,
+      "durationMs": 1.1085929999826476,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2503.2440090000164,
+      "durationMs": 1.7949999999837019,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2506.967394999985,
+      "durationMs": 113.70453099999577,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2505.041978000023,
+      "durationMs": 115.67635399999563,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 13.718178000010084,
+      "durationMs": 2453.7982279999997,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 8.582553000014741,
+      "durationMs": 2459.0488529999857,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2472.0330200000317,
+      "durationMs": 53.41937499999767,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2467.86656200001,
+      "durationMs": 57.60442699998384,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2525.4795830000076,
+      "durationMs": 0.6343750000232831,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2526.117864000029,
+      "durationMs": 1.5525519999791868,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2529.59432199999,
+      "durationMs": 99.44073000003118,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2527.671979000035,
+      "durationMs": 101.43015599995852,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 8.195884999993723,
+      "durationMs": 2335.335936999996,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 6.2857289999956265,
+      "durationMs": 2337.2757279999787,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2344.8014049999765,
+      "durationMs": 27.667396000004373,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2343.6213010000065,
+      "durationMs": 28.874374999955762,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2372.50650899997,
+      "durationMs": 1.2209380000131205,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2373.733176000009,
+      "durationMs": 1.689687000005506,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2377.1888529999997,
+      "durationMs": 96.75078100000974,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2375.4264049999765,
+      "durationMs": 98.54166600003373,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 19.072448000020813,
+      "durationMs": 2355.3172379999887,
+      "outcome": "ok"
+    },
+    {
+      "stage": "device_dump",
+      "startMs": 15.924062000005506,
+      "durationMs": 2358.517760000017,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2377.4035930000246,
+      "durationMs": 39.89192700001877,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_transfer",
+      "startMs": 2374.561925999995,
+      "durationMs": 42.753333000000566,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_read",
+      "startMs": 2417.322447000013,
+      "durationMs": 0.7115619999822229,
+      "outcome": "ok"
+    },
+    {
+      "stage": "xml_parse",
+      "startMs": 2418.040364000015,
+      "durationMs": 1.368802000011783,
+      "outcome": "ok"
+    },
+    {
+      "stage": "adb_attempt",
+      "startMs": 2420.846561000042,
+      "durationMs": 97.56177099997876,
+      "outcome": "ok"
+    },
+    {
+      "stage": "foreground",
+      "startMs": 2419.410727999988,
+      "durationMs": 99.04437500005588,
+      "outcome": "ok"
+    }
+  ],
+  "captureSpansTruncated": false,
+  "publicOffers": [
+    {
+      "total": 19.99,
+      "perLitre": 2.5
+    },
+    {
+      "total": 19.99,
+      "perLitre": 2.5
+    },
+    {
+      "total": 18.94,
+      "perLitre": 2.37
+    }
+  ],
+  "captureCounts": {
+    "completedDeviceDumps": 74,
+    "captureStageErrors": 0,
+    "explicitOcrCalls": 1
+  },
+  "durationMs": 290991.75317100005
+}

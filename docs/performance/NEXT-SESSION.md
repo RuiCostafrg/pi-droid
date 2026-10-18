@@ -1,83 +1,108 @@
 # Next-session handoff
 
 Read `docs/performance/PLAN.md` first (mandatory real-phone acceptance gate),
-then `reports/screenshot-ocr-timing-2026-10-18.md` and `CAPTURE-BENCHMARK.md`.
-Earlier command checkpoint remains in COMMAND-TIMING.md and historical reports.
+then `reports/annotation-timing-2026-10-18.md`,
+`reports/annotation-audit-2026-10-18.json` and `CAPTURE-BENCHMARK.md`.
+Prior screenshot/OCR evidence remains in its unchanged report and checkpoint.
 
-## Latest checkpoint
+## Latest checkpoint — full-workflow acceptance OPEN
 
-- Screenshot/OCR opt-in spans implemented in screenshot.ts, ocr.ts and
-  capture-timing.ts: capture, pull, dimensions, local read+base64; availability,
-  engine and TSV parse. One clock across a source call and native OCR fallback.
-  Default-off, no retry/backend/timeout-policy change. Tesseract failures remain
-  unknown (even its own Node timeout), not invented ADB deadline provenance.
-- Capture IPC and companion OFFLINE importer accept seven new stages with
-  existing privacy/128-event/partial flags. Automatic runtime ingestion separate.
-- Fresh chronological baseline source `22af80b` ran BEFORE implementation:
-  workflow PASS 286223.78ms / 72 captures. After attempt1 FAIL 248255.74ms at exact
-  draft-card OCR identity: shopping and 30 writes pass, persisted reopen UNVERIFIED.
-  Unchanged after attempt2 PASS 309218.63ms / 74 captures, 30 writes + 30 persisted
-  values pass. All attempts preserved; same frozen driver/consumer, no weakened checks.
-- Passing after is **+8.03% slower**, two extra alignment cycles 7044.88ms explain
-  only part of +22994.85ms. Remaining variation unexplained. NO demonstrated
-  speedup, isolated instrumentation overhead or non-inferiority estimate.
-- Separate same-driver read-only Settings pair: 9/9 each, three samples per API.
-  Screenshot median −1.24%, quick-base64 **+7.43%**, OCR −0.68%. All seven new
-  stages covered, 24 command spans before → 63 spans after. Source clocks per
-  API call, synchronous-sink traceComplete; NOT IPC or tool-clock completeness.
-- Frozen workflow DOES NOT pass sink to explicit OCR call: no finer screenshot/
-  OCR spans are expected there. Scoped command attempts 276 → 282, NOT workflow
-  command counts. No independent screenshot count or workflow traceComplete flag.
-- Actual freshly started nonpersistent Pi JSON CLI loaded rebuilt dist/index.js
-  explicitly, with no other extensions/MCP and a three-tool allowlist. Real
-  registered native UI dump 2643ms (Termux + OPEN), screenshot 439ms (1080×2340),
-  current-screen OCR 1259ms (exact Termux). All pass, agent settled; dist hashes
-  saved and checked afterward. Parent active session NOT reloaded. No source/tool
-  clocks merged; registered tools use default-disabled diagnostics.
-- Three new TEST drafts remain: `E2E Lower v2 source-shot-before91`,
-  `E2E Lower v2 source-shot-after91` (failed reopen), `E2E Lower v2 source-shot-post88`.
-  **14 total** including prior 11. All 15 sets unchecked at 20kg × 8. No real
-  workout finished or Amazon mutation. Original Gboard/Termux independently
-  verified AFTER EACH full attempt, focused run and loaded check. No new phone
-  APK/helper/permission/debugging exposure. Hands-off use was requested.
-- Validation: **682/682 units, 52 files**, lint/build; **9 isolated integrations**
-  with existing 20s/30s allowances. Companion **37/37**, build/check. Source failure,
-  timeout-unknown, fallback/shared-clock, privacy/default-off/throwing sink and
-  partial IPC tests pass. Default parallel CI and automatic input lifecycle open.
-- New focused runner: scripts/screenshot-ocr-check.mjs (frozen across its pair).
-  New offline audit: scripts/validate-screenshot-ocr-pair.mjs (does NOT change old
-  migration comparator). Engine hashes independently recomputed from baseline
-  git source and measured current source. Full report has reproduction command.
-- Published implementation/evidence: pi-droid `5669bcd`, companion `93fbf54`, both
-  pushed to user-owned origin/main with remote hashes independently verified and
-  clean trees afterward. This subsequent docs-only checkpoint records the hashes.
-  Publish only to those origin forks; never upstream. Historical evidence/adapters/
-  drivers untouched. Private loaded JSONL stays temporary; allowlisted metadata only.
+- Annotation implemented as its own slice in annotate.ts/capture-timing.ts:
+  `annotation_screenshot`, `annotation_ui_dump`, `annotation_map`,
+  `annotation_text_index`. One context for parallel siblings and descendants,
+  or preserve caller's explicit captureClock. No compositing. Default-off;
+  no backend/concurrency/cache/retry/timeout/fallback/failure-policy changes.
+- Promise.all still rejects early without sibling cancellation. Sink can receive
+  later sibling completion; no fabricated mapping/index spans on acquisition
+  failure. Controlled tests cover both rejecting siblings and late successful
+  sibling events, explicit ADB timeout, fallback/cache, all/base64 options,
+  supplied-clock precedence, frozen options, throwing sinks and privacy.
+- Capture IPC and companion OFFLINE importer accept four stages with unchanged
+  privacy/128-event/partial rules. Actual capture CLI is hierarchy-only, does NOT
+  run annotation. Synthetic worker regression verifies retention, not live path
+  coverage or runtime ingestion. Runtime automatic ingestion remains separate.
+- FRESH chronological baseline source `09c3cc8` ran BEFORE production edits:
+  workflow PASS **290991.75ms / 74 captures / 282 scoped command spans**,
+  all shopping checks + 30 writes + 30 persisted values.
+- After attempt1 FAIL **28415.32ms**, unchanged after attempt2 FAIL **27662.10ms**,
+  each at exact Amazon `chosen_product_visible` guard: query/focus/readback and
+  three offers pass, chosen visible fails. Each 18 successful operation records,
+  6 captures / 18 scoped command spans; no Forge navigation, after drafts or
+  numeric writes. All attempts retained. NO passing workflow pair or wall delta.
+- Read-only native inspection AFTER second failure finds Barista result clipped
+  at y=2089, below frozen 200<y<1900 guard. Corroborates current changed fixture,
+  NOT exact historical coordinates or proof of failure cause. No relaxed checks,
+  scrolling intervention, driver edits or fake success. Gate remains OPEN.
+- Same frozen new focused Settings driver: **6/6 each**, three rounds/mode.
+  Interactive/no-base64 median 2552.23 → 2497.65ms (**−2.14%**);
+  all/base64 2503.80 → 2534.38ms (**+1.22%**). 87 → 111 spans, +24 (4×6).
+  Counts 10/46, exact labels/numbered index/PNG pass. Baseline independent sibling
+  clocks; after one clock/call with overlapping envelopes/contained descendants.
+  No isolated overhead, zero-overhead, non-inferiority or speedup claim.
+- Actual fresh nonpersistent Pi JSON CLI explicitly loads rebuilt dist/index.js,
+  no discovered extensions/MCP, only android_look allowed. Before 2799ms / after
+  2555ms, exact Settings/Termux/OPEN index, start/end + settled(not aborted),
+  build hashes independently rechecked. Tool/source clocks not merged; diagnostics
+  default-off. Parent interactive session NOT reloaded. Raw JSONL private/temp.
+- Two failed pre-code loaded-runner setup attempts retained. Child piped stdin
+  was left open; closing stdin makes probe pass. Both had no tool events; detailed
+  exception/deadline provenance not retained. Do not call them ADB timeout tests.
+  Corrected passing loaded driver frozen across its pair.
+- New scripts: `annotation-check.mjs`, `annotation-loaded-check.mjs`,
+  `audit-annotation-checkpoint.mjs`. Audit is CHECKPOINT-SPECIFIC and explicitly
+  emits fullWorkflowAcceptance:open and workflowDelta:null; not a passing-pair
+  comparator. Independent git baseline/current source/build hashes pass. Nine
+  adversarial offline audit probes rejected; reproduction in full report.
+- Workflow does NOT exercise annotation or hash annotate.ts in its nine-file
+  engine hash; focused source hash DOES. No workflow global span clock,
+  traceComplete flag or independent screenshot count. Scoped command counts NOT
+  whole workflow counts. Nested sums NOT elapsed wall time.
+- Frozen focused runner `traceComplete` is valid for measured SUCCESS samples;
+  its finally assignment on an error would NOT prove sibling completion. Treat
+  future failed traces as partial; version the runner separately for any fix,
+  never rewrite measured driver/history. Live failure/cache/OCR/reconnect paths
+  not forced. Controlled source seam is the disclosed evidence for those paths.
+- Validation: **694/694 units, 53 files**, lint/build; **9 isolated integrations**
+  with existing 20s/30s allowances. Companion **38/38**, build/check. Source red
+  (missing parent spans), IPC red (discarded stages), companion red (37/38) all
+  followed by green. Default parallel CI remains open.
+- One new TEST draft: `E2E Lower v2 source-ann-before88`, **15 total** including
+  prior 14; 15 unchecked sets at 20kg × 8, all persisted values verified. Neither
+  failed after created a draft. No real workout finished or Amazon mutation.
+  Original Gboard/Termux independently verified after every attempt/check and
+  read-only inspection. No new APK/helper/permission/debugging exposure.
+- Publication hashes recorded below after commit/push. Publish only user-owned
+  origin/main forks, never upstream. Historical drivers/adapters/evidence untouched.
 
 ## Next exact actions
 
-1. Discover the currently authorized phone afresh; ensure exclusive use, capture
-   original IME, verify Termux foreground and normal Forge navigation.
-2. Next implementation priority is **annotation as a separate slice**. Inspect
-   annotate.ts: screenshot and dump currently start in parallel with independent
-   contexts unless caller supplies one; mapping/text-index construction follow.
-   No compositing is performed. Preserve default backend/concurrency/retry/
-   timeout/failure behavior; sibling cancellation is NOT currently implemented.
-3. Capture a FRESH equivalent baseline BEFORE that change: full frozen Amazon.de
-   → Forge workflow PLUS relevant focused annotated fixture and loaded-tool check.
-   Today's pair is not an evergreen baseline. Preserve all attempts. Workflow
-   does not exercise annotation, so cannot substitute for focused path coverage.
-4. Use the pre-agreed public source/external process seam for controlled success/
-   failure/default-off/privacy/partial tests, then implement shared-clock sibling
-   and mapping/text-index spans. Do not count nested sums as wall elapsed.
-5. Repeat full workflow and actual freshly loaded registered annotation-tool check.
-   Validate shopping observations, 30 writes + 30 persisted values, elapsed,
-   failed/completed attempts, scoped counts and flags. Disclose unexercised paths.
-   Do not alter frozen driver, old migration comparator or historical evidence.
-6. Keep automatic runtime companion ingestion, finer reconnect discovery/connect,
-   cancellation, fixed remote PNG concurrency safety and production input
-   lifecycle as explicit later slices. Update tracker, validate, commit and push
-   only to origin forks. Retain unexplained regressions honestly.
+1. Rediscover authorized phone afresh; ensure exclusive hands-off use, capture
+   original IME, verify Termux and normal Forge navigation. No old endpoint reuse.
+2. **Close this slice's OPEN full-workflow gate before another implementation
+   slice.** Do NOT label annotation accepted solely from focused/loaded tests.
+   Both after failures are preserved real acceptance failures, not passing fast runs.
+3. Determine whether the unchanged frozen Amazon fixture is compatible again,
+   read-only. Do not change shopping state, viewport/settings or inject mid-run
+   scrolling merely to get a passing result. A new full attempt may be legitimate
+   only with an equivalent fixture; preserve it regardless of outcome and use NEW
+   output/run IDs. Current baseline is not indefinitely reusable.
+4. If current Amazon layout remains incompatible, ask user to agree a SEPARATELY
+   VERSIONED workflow protocol that can observe/align a currently offscreen chosen
+   product. Preserve frozen v2 and old comparator. Capture a fresh equivalent
+   pre-annotation reference BEFORE new measured after attempts (isolated extraction
+   of `09c3cc8`, no active-tree rollback, reuse host dependencies, no installs).
+   Disclose retrospective reference chronology; do not rebrand it pre-code evidence.
+   No changes to old checks or failed reports to manufacture acceptance.
+5. Under agreed protocol, verify shopping checks, 30 writes + 30 persisted values,
+   completed/failed attempts, elapsed/scoped counts/flags and actual newly loaded
+   relevant registered tool. Repeat focused fixture if measurement equivalence or
+   source changes require it. Preserve all attempts. Do not merge tool/source clocks.
+6. Later separate slices: automatic runtime companion ingestion; finer reconnect
+   discovery/connect; cancellation; fixed remote PNG concurrency; production input
+   lifecycle. Default full-parallel CI remains unverified. Do not start these
+   while silently dropping the current mandatory gate.
+7. Update tracker, validate/review, commit/push only origin forks. Never hide
+   regressions or claim zero overhead/speedup from a single descriptive pair.
 
 ## Mandatory boundaries
 

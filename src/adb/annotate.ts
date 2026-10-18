@@ -12,7 +12,8 @@
 import type { AdbExecOptions } from "./exec.js";
 import { takeScreenshot } from "./screenshot.js";
 import { dumpUiTree } from "./ui-tree.js";
-import type { ScreenshotResult, UITreeResult, UIElement } from "./types.js";
+import type { UIElement } from "./types.js";
+import { captureTiming } from "./capture-timing.js";
 
 export interface AnnotatedElement {
   /** Sequential label number */
@@ -72,42 +73,46 @@ function getType(el: UIElement): string {
 export async function annotatedScreenshot(
   options: AdbExecOptions & { includeBase64?: boolean; allElements?: boolean } = {},
 ): Promise<AnnotatedScreenshot> {
-  // Parallel capture: screenshot + UI dump at the same time
+  const timing = options.captureClock ?? captureTiming(options.onCaptureSpan);
+  options = { ...options, captureClock: timing };
+  // Preserve parallel acquisition and Promise.all rejection; no sibling cancellation.
   const [screenshot, uiTree] = await Promise.all([
-    takeScreenshot({ ...options, includeBase64: options.includeBase64 }),
-    dumpUiTree(options),
+    timing.async("annotation_screenshot", () => takeScreenshot({ ...options, includeBase64: options.includeBase64 })),
+    timing.async("annotation_ui_dump", () => dumpUiTree(options)),
   ]);
 
-  // Filter to interactive elements unless allElements requested
-  const sourceElements = options.allElements ? uiTree.elements : uiTree.interactive;
-
-  // Build annotated elements
-  const elements: AnnotatedElement[] = sourceElements.map((el, i) => ({
-    label: i,
-    displayText: getDisplayText(el),
-    type: getType(el),
-    center: el.center,
-    bounds: el.bounds,
-    clickable: el.clickable,
-    scrollable: el.scrollable,
-    resourceId: el.resourceId,
-  }));
-
-  // Generate text index for LLM
-  const lines = elements.map((el) => {
-    const flags: string[] = [];
-    if (el.scrollable) flags.push("scrollable");
-    if (!el.clickable && !el.scrollable) flags.push("focusable");
-    const flagStr = flags.length > 0 ? ` [${flags.join(", ")}]` : "";
-    return `[${el.label}] ${el.type}: "${el.displayText}" → tap(${el.center.x}, ${el.center.y})${flagStr}`;
+  const elements: AnnotatedElement[] = timing.sync("annotation_map", () => {
+    // Filter to interactive elements unless allElements requested.
+    const sourceElements = options.allElements ? uiTree.elements : uiTree.interactive;
+    return sourceElements.map((el, i) => ({
+      label: i,
+      displayText: getDisplayText(el),
+      type: getType(el),
+      center: el.center,
+      bounds: el.bounds,
+      clickable: el.clickable,
+      scrollable: el.scrollable,
+      resourceId: el.resourceId,
+    }));
   });
 
-  const textIndex = [
-    `Screen: ${uiTree.foregroundPackage}`,
-    `Interactive elements: ${elements.length}`,
-    "",
-    ...lines,
-  ].join("\n");
+  // Generate text index, not image compositing.
+  const textIndex = timing.sync("annotation_text_index", () => {
+    const lines = elements.map((el) => {
+      const flags: string[] = [];
+      if (el.scrollable) flags.push("scrollable");
+      if (!el.clickable && !el.scrollable) flags.push("focusable");
+      const flagStr = flags.length > 0 ? ` [${flags.join(", ")}]` : "";
+      return `[${el.label}] ${el.type}: "${el.displayText}" → tap(${el.center.x}, ${el.center.y})${flagStr}`;
+    });
+
+    return [
+      `Screen: ${uiTree.foregroundPackage}`,
+      `Interactive elements: ${elements.length}`,
+      "",
+      ...lines,
+    ].join("\n");
+  });
 
   return {
     screenshotPath: screenshot.path,
