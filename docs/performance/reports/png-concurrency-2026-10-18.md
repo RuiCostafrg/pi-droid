@@ -146,7 +146,11 @@ Two TEST drafts retained: `E2E Lower v3.2 source-png-before98` and
 No shopping mutation/completed workout/new APK/helper/permission/debug exposure.
 This continuation made no phone UI changes. Historical drivers/reports unchanged.
 
-Work is local and **not committed/pushed** at this checkpoint. Acceptance covers
-PNG ownership/cleanup, with the above costs and controlled-path limitations. Next
+User subsequently requested publication. Implementation/evidence commit
+**b050b7f6bfe3374cf049523ee4d4c170587884b0** was pushed to user-owned
+`RuiCostafrg/pi-droid` origin/main, without force. Remote full hash independently
+matched local HEAD; working tree was clean afterward. This follow-up docs-only
+commit records publication; no production or measured evidence changed.
+Acceptance covers PNG ownership/cleanup with the above limitations and costs. Next
 slice requires new approval and fresh equivalent baseline/live/loaded gates; do
 not silently bundle cleanup optimization, runtime ingestion or CI changes.

@@ -58,7 +58,7 @@ rollback and measurement plan, and ask before risky/out-of-scope work, new APKs,
 permissions, helpers or debugging exposure. Keep every failed report and historical
 driver; acceptance checks remain intact. Carry this policy into future handoffs.
 
-## Latest slice — PNG concurrency safety accepted locally
+## Latest slice — PNG concurrency safety accepted and published
 
 User approved the PNG isolation scope/validation sequence; implementation and live
 evidence survived the interrupted session. Continuation completed validation and
@@ -90,8 +90,10 @@ reporting. [Full evidence and regressions](reports/png-concurrency-2026-10-18.md
   persisted. Original Gboard/Termux independently verified after saved live blocks.
   No shopping mutation/completed workout/new APK/helper/permission/debug exposure.
 - Historical scripts/reports untouched; reconnect comparator tests use isolated
-  matching 0034706 source. Work remains **local, not committed/pushed**. Publication
-  is separate; never push upstream. Next bounded slice needs approval and NEW
+  matching 0034706 source. User requested publication: implementation/evidence
+  **b050b7f6bfe3374cf049523ee4d4c170587884b0** pushed to user-owned origin/main;
+  remote full hash independently matched, tree clean afterward. This subsequent
+  docs-only commit records publication. Never push upstream. Next slice needs approval and NEW
   equivalent before/after live/loaded gates; do not bundle overhead optimization.
 
 ## Previous slice — reconnect timing accepted; next scope was pending

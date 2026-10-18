@@ -1,6 +1,6 @@
 # Next-session handoff
 
-## Current continuation — PNG isolation accepted locally (supersedes older actions)
+## Current continuation — PNG isolation published (supersedes older actions)
 
 Read PLAN.md and [PNG acceptance evidence](reports/png-concurrency-2026-10-18.md)
 first. The previously recommended PNG concurrency scope was approved/implemented
@@ -26,8 +26,9 @@ completed those tasks without new phone interaction or production edits.
   Deterministic startup-delay RED → GREEN fixed the synthetic fixture only; both
   no-delay/400ms cases still assert timeout provenance + successful sibling.
   Default parallel CI unverified; companion unchanged/not rerun.
-- All work is **local and not committed/pushed** at this checkpoint. Do not claim
-  clean/published status from older sections. Two TEST drafts source-png-before98 /
+- Implementation/evidence published as **b050b7f6bfe3374cf049523ee4d4c170587884b0**
+  to user-owned origin/main. Remote full hash independently matched; tree was clean.
+  This follow-up docs-only commit records publication. Two TEST drafts source-png-before98 /
   source-png-after98 retained, 15 unchecked sets each, persisted 20kg × 8.
   No new APK/helper/permission/debug exposure/shopping mutation/completed workout.
 
@@ -35,10 +36,9 @@ completed those tasks without new phone interaction or production edits.
 
 1. Inspect git status/diff and the full PNG report. Do not repeat the baseline or
    phone workflow merely to resume: the recorded source/build hashes still match.
-2. If user requests publication, review all accumulated PNG source/tests/drivers/
-   raw numeric evidence/docs, commit and push only the user-owned origin fork,
-   independently verify remote full hash, then update this local-only checkpoint.
-   Do not silently push upstream. No publication performed by this continuation.
+2. Verify the published implementation/evidence checkpoint b050b7f and subsequent
+   docs-only publication record against user-owned origin/main. Publication was
+   explicitly requested and completed; never push upstream.
 3. Agree the next single bounded slice before implementation. Cleanup-command
    overhead is a measured candidate, not an approved optimization. Runtime
    ingestion, cancellation, input lifecycle and CI remain separate options.
