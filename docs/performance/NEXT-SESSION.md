@@ -39,9 +39,11 @@ acceptance remains closed; no historical drivers/comparators/reports changed.
   `source-recon-after96`: 15 unchecked sets at 20kg × 8, all values persisted.
   No Amazon mutation/completed workout/new APK/helper/permission/debug exposure.
   Original Gboard and Termux independently verified after live blocks.
-- Companion published as **7894df4** to user-owned origin/main; full remote/local
-  hash independently matched and tree clean. pi-droid publication pending final
-  commit/push verification; update this line afterward. Never push upstream.
+- Implementation/evidence published: pi-droid **0034706**, companion **7894df4**,
+  only to user-owned origin/main forks. Full remote/local hashes independently
+  matched and both trees were clean afterward. This subsequent docs-only commit
+  records publication; no production/driver/report changes after validation.
+  Never push upstream.
 
 ### Next exact actions (supersedes older lists)
 
@@ -58,7 +60,10 @@ acceptance remains closed; no historical drivers/comparators/reports changed.
    readbacks), focused affected-path coverage and actual fresh relevant registered
    tool verification with build hashes. Never reuse this pair indefinitely.
 4. Preserve every attempt, safety cleanup and regressions; version new comparators
-   if source assumptions change. Keep current tracker/handoff updated through
+   if source assumptions change. Reconnect comparator/tests are checkpoint-specific:
+   future source slices may need isolated matching 0034706 test fixtures, just as
+   annotation tests now use f061509; never rewrite measured drivers/reports.
+   Keep current tracker/handoff updated through
    validation, review and verified origin-only publication.
 
 ### Optimization latitude — preserve in future handoffs

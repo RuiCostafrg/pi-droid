@@ -85,7 +85,10 @@ Final validation: **761/761 units / 57 files (--maxWorkers=2)**, lint/build,
 CI remains unverified. Preserve disclosed expected RED runs, initial 733/736 unit
 failure (historical comparator now tested in isolated matching f061509 snapshot)
 and new comparator test's copied-delta-literal failure; see evidence. Historical
-drivers and every failed report unchanged. Publication recorded in NEXT-SESSION.md.
+drivers and every failed report unchanged. Implementation/evidence published to
+user-owned origin/main forks: pi-droid **0034706**, companion **7894df4**. Full
+remote/local hashes independently matched and both trees were clean afterward.
+This subsequent docs-only commit records publication; never push upstream.
 
 **Next recommendation, not approved/started:** fixed remote PNG concurrency safety.
 Agree one bounded scope/test seams first; no new implementation until confirmation.
