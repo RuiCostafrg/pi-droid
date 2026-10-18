@@ -32,20 +32,40 @@ completed those tasks without new phone interaction or production edits.
   source-png-after98 retained, 15 unchecked sets each, persisted 20kg × 8.
   No new APK/helper/permission/debug exposure/shopping mutation/completed workout.
 
-### Next exact actions — current
+### Next exact actions — current: screenshot latency
 
-1. Inspect git status/diff and the full PNG report. Do not repeat the baseline or
-   phone workflow merely to resume: the recorded source/build hashes still match.
-2. Verify the published implementation/evidence checkpoint b050b7f and subsequent
-   docs-only publication record against user-owned origin/main. Publication was
-   explicitly requested and completed; never push upstream.
-3. Agree the next single bounded slice before implementation. Cleanup-command
-   overhead is a measured candidate, not an approved optimization. Runtime
-   ingestion, cancellation, input lifecycle and CI remain separate options.
-4. Any subsequent implementation needs NEW equivalent pre-edit baseline, same
-   full frozen v3.2 phone checks, focused coverage and fresh actual relevant loaded
-   tools. Preserve failures; never weaken checks or hide overhead. Restore/verify
-   original IME and Termux; respect all PLAN.md approval/privacy/safety boundaries.
+1. Read PLAN.md and the full PNG report; inspect git status/diff. Verify published
+   implementation b050b7f and docs checkpoint c37e2e8 (plus later docs-only handoff
+   commits) against user-owned origin/main. No phone run merely to resume.
+2. Propose one bounded slice to reduce screenshot latency after PNG isolation.
+   Diagnose the measured **48.77–64.71% focused regression** before choosing a fix;
+   do not assume remote cleanup explains all of it. Preserve invocation-owned
+   remote/local files, concurrent frame correctness, cleanup/error semantics,
+   retained saved files, quick-file removal and public return shapes.
+3. Confirm proposed scope and public/process-boundary test seams with the user
+   BEFORE implementation. Unconventional reversible experiments are welcome under
+   PLAN.md; runtime ingestion, cancellation, input lifecycle and CI are separate.
+   This recommendation is not blanket approval for a specific optimization.
+4. After approval, save a NEW equivalent pre-edit baseline, then repeat the same
+   frozen full real-phone v3.2 workflow (shopping checks + all 30 exact writes and
+   30 persisted readbacks), focused affected-path checks and fresh actual relevant
+   registered-tool verification with build hashes. The prior pair is historical,
+   not a reusable baseline for the new optimization. Preserve all attempts and
+   failures, equivalent work and frozen historical drivers/reports.
+5. Report measured deltas including regressions. Claim speedup only where supported;
+   do not add percentages from different slices or infer causal speedup from the
+   PNG full-workflow pair. Existing demonstrated gains were capture-once field
+   selection (focused 5.32s → 2.81s) and its workflow migration (370.75s → 289.73s
+   in one pair, 104 → 73 captures; alignment difference disclosed). Latest PNG work
+   improved concurrency safety, not demonstrated speed. No cumulative end-to-end
+   improvement across all slices has been established.
+6. Restore and independently verify original IME and Termux after live blocks.
+   Keep Amazon read-only and Forge mutations in disclosed TEST drafts; no completed
+   real workout/new APK/helper/permission/debug exposure without explicit approval.
+7. Run full validation/review, update evidence/PLAN.md/this handoff, commit and push
+   completed work only to the user-owned origin fork, independently verify remote
+   full commit hash and clean status. Never push upstream. If a gate is blocked,
+   record it and leave acceptance open rather than claiming completion.
 
 ## Historical handoff below — superseded where noted
 
