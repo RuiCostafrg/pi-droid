@@ -1,6 +1,74 @@
 # Next-session handoff
 
-## Current continuation — screenshot diagnosis complete; optimization awaits approval
+## Current continuation — fusion experiment REJECTED; production restored
+
+Read PLAN.md and [complete experiment evidence](reports/fusion-experiment-2026-10-19.md)
+first. This section supersedes every older next-action list.
+
+- User approved binary-safe transfer+cleanup experiment, shared policy seam,
+  public/external-process tests and extra observability. Candidate was implemented
+  and fully measured, but NOT shipped: no reliable speed benefit. All active src/
+  bytes restored exactly to published35de2c6; six rebuilt baseline hashes match.
+- Archive: docs/performance/experiments/fusion-shell-v1/{exec.ts.txt,screenshot.ts.txt,
+  experiment.patch,README.md}. Exact isolated replay41/41, experimental rebuild
+  matches six measured after hashes. No production adbToFile/cleanup callback now.
+  Frozen fusion-transport-probe.mjs requires isolated candidate, NOT active main.
+- NEW pre-edit full baseline: before1 native dump exit FAIL9067.91ms/no writes;
+  before2 PASS318324.82ms. Candidate after1 native dump timeout FAIL43043.31ms/no
+  Forge writes; unchanged after2 PASS321845.17ms. All shopping +30 writes +30
+  persisted values each passing run. Six product cycles each; one/two field cycles.
+  +1.11% descriptive only; never subtract alignment work.17/17 archived functional
+  comparator gates PASS, NOT active-production optimization acceptance.
+- Focused frozen12/12 each: medians3.82–12.83% lower. Larger new32/32 each:
+  medians10.45–15.93% SLOWER. All32 after cleanup events confirmed transfer; no
+  fallback on successes; successful commands saved4→3/quick3→2. No speedup claim.
+- Eight-round transfer-only probe24/24: pull+rm88.60ms, shell-fused87.28ms,
+  exec-out-fused86.18ms medians with wide ranges. Tiny separation does not justify
+  complexity. exec-out is diagnostic ONLY, never a production variant.
+- Actual fresh registered screenshot/look baseline591/2544ms, candidate569/2600ms,
+  restored later1443/3784ms; all image/index/build guards PASS. Later restored
+  readings slower, preserved; not equivalent timing evidence. Parent NOT reloaded.
+- Full candidate units861/861/63 files; restored844/844/61 files (--maxWorkers=2),
+  9/9 restored isolated integrations, lint/build/syntax/whitespace PASS. Initial
+  candidate823/826: old PNG comparator positives expected its old source. Historical
+  script/reports untouched; fixture now isolated matching b050b7f. New archival
+  comparator35/35 adversarial checks. Default parallel CI unverified, companion
+  unchanged. Manual review only; no independent sub-agent available.
+- Secure wireless connection disappeared before transfer probe; no report/measurement
+  from that setup attempt. Continued host work; later freshly rediscovered authorized
+  transport and checked Gboard/Termux BEFORE resuming. No guessed endpoint/legacy
+  TCP/IP/pairing/network/debug change. All attempts and bounded provenance retained.
+- Two new TEST drafts source-fuse-before14 / source-fuse-after14, each15 unchecked
+  sets20kg ×8 persisted. Amazon read-only; no completed workout/new APK/helper/
+  permission/debug exposure. Original Gboard + Termux independently verified after
+  every live block, including final restored-build actual tools.
+
+### Next exact actions — DIFFERENT scope needs approval
+
+1. Inspect status/publication; read full evidence, archived comparison and replay
+   README. No phone run just to resume. Verify active src matches35de2c6 and don't
+   accidentally restore this rejected implementation or treat archived PASS as a
+   shipping recommendation. Preserve all original/failed reports and frozen drivers.
+2. Agree a DIFFERENT single bounded optimization or deeper device-capture diagnostic
+   with user BEFORE production edits. Command fusion is rejected, not pending auto-
+   adoption. PNG dimensions instead of wm size changes semantics/error behavior;
+   caching/pooling/capture backend changes also need explicit scope/tradeoff approval.
+   Runtime ingestion, cancellation, input lifecycle and CI remain separate.
+3. User prioritizes observability: opt-in, bounded/content-free, retain failures/
+   regressions, distinguish capture/transfer/cleanup/host/model clocks and do not
+   infer CPU/encoding/thermal cause from host envelopes. No cumulative speedup.
+4. Any new production slice needs NEW current equivalent pre-edit baseline, frozen
+   full v3.2 shopping +30 writes +30 persisted readbacks, focused pair and actual
+   freshly registered relevant tools/build hashes. Neither this old pair nor the
+   restored later tool check is reusable as a new optimization baseline.
+5. Rediscover authorized phone afresh, ensure hands-off use/original IME/Termux,
+   normal Forge navigation; restore and independently verify after every block.
+   No unapproved persistent device/security changes. Never complete real workouts.
+6. Validate/review/update evidence and handoff; publish completed work only to
+   user-owned origin/main, independently verify full remote hash and clean status.
+   Never push upstream. If blocked leave implementation acceptance open.
+
+## Previous continuation — screenshot diagnosis complete (superseded by experiment above)
 
 Read PLAN.md and [full diagnostic evidence](reports/screenshot-latency-diagnosis-2026-10-19.md)
 first. This section supersedes the previous next-action lists.

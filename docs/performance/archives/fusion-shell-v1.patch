@@ -1,0 +1,179 @@
+diff --git a/src/adb/exec.ts b/src/adb/exec.ts
+index 03df244..01a9170 100644
+--- a/src/adb/exec.ts
++++ b/src/adb/exec.ts
+@@ -8 +8,3 @@
+-import { execFile } from "node:child_process";
++import { execFile, spawn } from "node:child_process";
++import { createWriteStream } from "node:fs";
++import { pipeline } from "node:stream/promises";
+@@ -56,4 +58,7 @@ const DEFAULT_MAX_BUFFER = 10 * 1024 * 1024;
+-/**
+- * Execute an ADB command and return stdout.
+- */
+-export async function adb(args: string[], options: AdbExecOptions = {}): Promise<string> {
++type ProcessOptions = { signal: AbortSignal; maxBuffer: number };
++
++/** Both text and binary transports share selection, deadline, failure and retry policy. */
++async function executeAdb<T>(
++  args: string[], options: AdbExecOptions,
++  run: (args: string[], options: ProcessOptions) => Promise<T>,
++): Promise<T> {
+@@ -87,6 +92 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
+-        const { stdout } = await execAsync("adb", fullArgs, {
+-          // Disable Node's opaque timeout; our deadline above has explicit provenance.
+-          timeout: 0, signal: controller.signal,
+-          maxBuffer: options.maxBuffer ?? DEFAULT_MAX_BUFFER,
+-        });
+-        return stdout.trim();
++        return await run(fullArgs, { signal: controller.signal, maxBuffer: options.maxBuffer ?? DEFAULT_MAX_BUFFER });
+@@ -94 +94 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
+-        const error = err as { stderr?: string; code?: unknown; signal?: string; killed?: boolean };
++        const error = err as { stderr?: string; code?: unknown; signal?: string; killed?: boolean; failureKind?: ExecutionFailureKind };
+@@ -96 +96 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
+-        const failureKind: ExecutionFailureKind = interruption ?? (
++        const failureKind: ExecutionFailureKind = interruption ?? error.failureKind ?? (
+@@ -129 +129 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
+-      return adb(args, { ...options, serial: recovered, autoReconnect: false });
++      return executeAdb(args, { ...options, serial: recovered, autoReconnect: false }, run);
+@@ -137,0 +138,58 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
++/** Execute a text command; preserves the existing trim/buffer contract. */
++export async function adb(args: string[], options: AdbExecOptions = {}): Promise<string> {
++  return executeAdb(args, options, async (fullArgs, processOptions) => {
++    const { stdout } = await execAsync("adb", fullArgs, { timeout: 0, ...processOptions });
++    return stdout.trim();
++  });
++}
++
++/**
++ * Internal binary-to-file transport. stdout is streamed with backpressure, never
++ * decoded/trimmed/buffer-capped; maxBuffer still bounds diagnostic stderr. The
++ * caller owns partial-file removal, just as it did with adb pull.
++ */
++export async function adbToFile(args: string[], path: string, options: AdbExecOptions = {}): Promise<string> {
++  return executeAdb(args, options, async (fullArgs, { signal, maxBuffer }) => {
++    if (typeof maxBuffer !== "number" || Number.isNaN(maxBuffer) || maxBuffer < 0) throw new RangeError("Invalid ADB buffer limit");
++    const child = spawn("adb", fullArgs, { signal, stdio: ["ignore", "pipe", "pipe"] });
++    const chunks: Buffer[] = [];
++    let bytes = 0;
++    type ProcessFailure = Error & { code?: unknown; stderr?: string; signal?: string | null; killed?: boolean; failureKind?: ExecutionFailureKind };
++    let firstError: ProcessFailure | undefined;
++    const closed = new Promise<void>(resolve => {
++      // AbortError is emitted immediately even if a child ignores SIGTERM.
++      // The aborted pipeline settles disk writes; do not wait for remote/process
++      // termination that the existing cancellation contract never guaranteed.
++      child.on("error", error => { firstError ??= error; resolve(); });
++      child.stderr.on("data", (chunk: Buffer) => {
++        // Never retain unbounded stderr, including after a kill request.
++        const remaining = Math.max(0, maxBuffer - bytes);
++        if (remaining) chunks.push(chunk.subarray(0, remaining));
++        bytes += chunk.length;
++        if (bytes > maxBuffer && !firstError) {
++          firstError = Object.assign(new Error("ADB stderr buffer exceeded"), { code: "ERR_CHILD_PROCESS_STDIO_MAXBUFFER" });
++          child.kill();
++        }
++      });
++      child.on("close", (code, exitSignal) => {
++        if (code !== 0 && !firstError) firstError = Object.assign(new Error("ADB process failed"), {
++          code, signal: exitSignal, killed: child.killed,
++        });
++        resolve();
++      });
++    });
++    const transferred = pipeline(child.stdout, createWriteStream(path), { signal }).catch(error => {
++      if (!firstError) firstError = Object.assign(error, { failureKind: "unknown" as const });
++      child.kill();
++    });
++    await Promise.all([closed, transferred]);
++    const stderr = Buffer.concat(chunks).toString("utf8");
++    if (firstError) {
++      firstError.stderr = stderr;
++      firstError.killed = child.killed;
++      throw firstError;
++    }
++    return stderr;
++  });
++}
++
+diff --git a/src/adb/screenshot.ts b/src/adb/screenshot.ts
+index b333324..12e2579 100644
+--- a/src/adb/screenshot.ts
++++ b/src/adb/screenshot.ts
+@@ -5 +5 @@
+-import { mkdir, readFile, unlink } from "node:fs/promises";
++import { mkdir, readFile, unlink, open } from "node:fs/promises";
+@@ -10 +10 @@ import { randomUUID } from "node:crypto";
+-import { adb, adbShell, type AdbExecOptions } from "./exec.js";
++import { adbToFile, adbShell, AdbError, type AdbExecOptions } from "./exec.js";
+@@ -19,0 +20,9 @@ export function setScreenshotDir(dir: string): void {
++export interface ScreenshotOptions extends AdbExecOptions {
++  /** Opt-in content-free outcomes, not device cleanup duration. Sink errors are ignored. */
++  onScreenshotCleanup?: (event: { phase: "transfer" | "fallback"; outcome: "ok" | "error" | "unknown" }) => void;
++}
++
++function cleanupEvent(options: ScreenshotOptions, phase: "transfer" | "fallback", outcome: "ok" | "error" | "unknown"): void {
++  try { options.onScreenshotCleanup?.({ phase, outcome }); } catch { /* Diagnostics cannot alter capture. */ }
++}
++
+@@ -22,2 +31,37 @@ export function setScreenshotDir(dir: string): void {
+-async function removeRemote(path: string, options: AdbExecOptions): Promise<void> {
+-  await adbShell(`rm -f ${path}`, { ...options, autoReconnect: false }).catch(() => {});
++async function removeRemote(path: string, options: ScreenshotOptions): Promise<void> {
++  try {
++    await adbShell(`rm -f ${path}`, { ...options, autoReconnect: false });
++    cleanupEvent(options, "fallback", "ok");
++  } catch { cleanupEvent(options, "fallback", "error"); }
++}
++
++/**
++ * One non-PTY shell process streams binary bytes and removes only its owned PNG.
++ * A bounded random footer on stdout carries remote statuses even on legacy shell
++ * transports without separate stderr/exit status. It is verified/removed on disk,
++ * never by decoding or trimming the image. stderr remains diagnostic-only.
++ */
++async function transferAndRemove(remote: string, local: string, options: ScreenshotOptions): Promise<boolean> {
++  const token = `pi-droid-transfer-${randomUUID()}`;
++  const command = `cat ${remote}; transfer=$?; rm -f ${remote} >/dev/null 2>&1; cleanup=$?; printf '\\n${token}:%s:%s\\n' "$transfer" "$cleanup"; exit "$transfer"`;
++  let known = false;
++  try {
++    await adbToFile(["shell", "-T", command], local, options);
++    const file = await open(local, "r+");
++    try {
++      const { size } = await file.stat();
++      const tail = Buffer.alloc(Math.min(size, 128));
++      const { bytesRead } = await file.read(tail, 0, tail.length, size - tail.length);
++      const match = tail.subarray(0, bytesRead).toString("utf8").match(new RegExp(`\\n${token}:(\\d{1,3}):(\\d{1,3})\\n$`));
++      if (!match || Number(match[1]) > 255 || Number(match[2]) > 255) throw new Error("Missing screenshot transfer acknowledgement");
++      known = true;
++      const cleaned = Number(match[2]) === 0;
++      cleanupEvent(options, "transfer", cleaned ? "ok" : "error");
++      if (Number(match[1]) !== 0) throw new AdbError("Screenshot transfer failed", command, "", Number(match[1]), "exit");
++      await file.truncate(size - Buffer.byteLength(match[0]));
++      return cleaned;
++    } finally { await file.close(); }
++  } catch (error) {
++    if (!known) cleanupEvent(options, "transfer", "unknown");
++    throw error;
++  }
+@@ -31 +75 @@ export async function takeScreenshot(
+-  options: AdbExecOptions & { prefix?: string; includeBase64?: boolean } = {},
++  options: ScreenshotOptions & { prefix?: string; includeBase64?: boolean } = {},
+@@ -45,0 +90 @@ export async function takeScreenshot(
++  let remoteRemoved = false;
+@@ -48 +93 @@ export async function takeScreenshot(
+-    await timing.async("screenshot_transfer", () => adb(["pull", remotePath, localPath], options));
++    remoteRemoved = await timing.async("screenshot_transfer", () => transferAndRemove(remotePath, localPath, options));
+@@ -64 +109 @@ export async function takeScreenshot(
+-    await removeRemote(remotePath, options);
++    if (!remoteRemoved) await removeRemote(remotePath, options);
+@@ -71 +116 @@ export async function takeScreenshot(
+-export async function screenshotBase64(options: AdbExecOptions = {}): Promise<string> {
++export async function screenshotBase64(options: ScreenshotOptions = {}): Promise<string> {
+@@ -76,0 +122 @@ export async function screenshotBase64(options: AdbExecOptions = {}): Promise<st
++  let remoteRemoved = false;
+@@ -79 +125 @@ export async function screenshotBase64(options: AdbExecOptions = {}): Promise<st
+-    await timing.async("screenshot_transfer", () => adb(["pull", remotePath, tmpPath], options));
++    remoteRemoved = await timing.async("screenshot_transfer", () => transferAndRemove(remotePath, tmpPath, options));
+@@ -83 +129 @@ export async function screenshotBase64(options: AdbExecOptions = {}): Promise<st
+-    await removeRemote(remotePath, options);
++    if (!remoteRemoved) await removeRemote(remotePath, options);

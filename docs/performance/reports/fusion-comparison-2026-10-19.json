@@ -1,0 +1,352 @@
+{
+  "kind": "fusion-workflow-v3.2-comparison",
+  "passed": true,
+  "gates": {
+    "focusedPngCorrectnessAndProvenance": true,
+    "cleanupMetricsCorrectnessAndProvenance": true,
+    "bothPassed": true,
+    "correctPhases": true,
+    "sameFrozenDriver": true,
+    "sameBoundedConsumer": true,
+    "independentlyVerifiedSource": true,
+    "onlyApprovedSourceSlice": true,
+    "allRequiredChecks": true,
+    "identicalChecks": true,
+    "thirtyWritesAndPersistedValues": true,
+    "sameOffersAndChosenProduct": true,
+    "completeScopedAccounting": true,
+    "allOperationsOk": true,
+    "all30SelectionsAnd32Types": true,
+    "oneOcrEach": true,
+    "retainedOtherWork": true
+  },
+  "fullWorkflowAcceptance": "pass",
+  "referenceChronology": "Fresh chronological 35de2c6 baseline captured before transfer/cleanup fusion production edits.",
+  "before": {
+    "status": "pass",
+    "elapsedMs": 318324.81691,
+    "operations": 321,
+    "captures": 79,
+    "scopedCommandAttempts": 297,
+    "alignment": {
+      "product_scroll": {
+        "cycles": 6,
+        "ms": 27324.83707499999
+      },
+      "field_scroll": {
+        "cycles": 1,
+        "ms": 3657.0621339999925
+      }
+    },
+    "stageMetrics": {
+      "shell": {
+        "count": 36,
+        "totalMs": 3874.438851000049,
+        "medianMs": 107.31520799999998,
+        "p95Ms": 122.94510400004219,
+        "maxMs": 149.29906299999993
+      },
+      "screen_size": {
+        "count": 1,
+        "totalMs": 88.45301999999992,
+        "medianMs": 88.45301999999992,
+        "p95Ms": 88.45301999999992,
+        "maxMs": 88.45301999999992
+      },
+      "ui_dump": {
+        "count": 49,
+        "totalMs": 144811.90687699997,
+        "medianMs": 2662.9205199999997,
+        "p95Ms": 3805.37078,
+        "maxMs": 7788.754997000004
+      },
+      "tap": {
+        "count": 18,
+        "totalMs": 1671.274998999992,
+        "medianMs": 93.21468750000349,
+        "p95Ms": 113.18270900001517,
+        "maxMs": 113.18270900001517
+      },
+      "settle": {
+        "count": 99,
+        "totalMs": 49633.064878000085,
+        "medianMs": 501.20401099999435,
+        "p95Ms": 502.2771350000112,
+        "maxMs": 503.3432809999995
+      },
+      "type": {
+        "count": 32,
+        "totalMs": 5785.009584000185,
+        "medianMs": 181.55703150000772,
+        "p95Ms": 205.26322900000014,
+        "maxMs": 205.62354200001573
+      },
+      "key": {
+        "count": 34,
+        "totalMs": 3276.7125010000054,
+        "medianMs": 95.50674450000224,
+        "p95Ms": 117.90281299999333,
+        "maxMs": 128.46770899998955
+      },
+      "product_scroll": {
+        "count": 6,
+        "totalMs": 4046.2405209999997,
+        "medianMs": 674.3495055000021,
+        "p95Ms": 678.2901039999997,
+        "maxMs": 678.2901039999997
+      },
+      "app": {
+        "count": 1,
+        "totalMs": 5578.736040000003,
+        "medianMs": 5578.736040000003,
+        "p95Ms": 5578.736040000003,
+        "maxMs": 5578.736040000003
+      },
+      "swipe": {
+        "count": 11,
+        "totalMs": 5650.708745999873,
+        "medianMs": 516.9495829999796,
+        "p95Ms": 521.7783329999947,
+        "maxMs": 521.7783329999947
+      },
+      "field_scroll": {
+        "count": 1,
+        "totalMs": 500.43338499999663,
+        "medianMs": 500.43338499999663,
+        "p95Ms": 500.43338499999663,
+        "maxMs": 500.43338499999663
+      },
+      "select_tap": {
+        "count": 30,
+        "totalMs": 85842.03830000006,
+        "medianMs": 2854.4614830000064,
+        "p95Ms": 2927.750884000008,
+        "maxMs": 2976.7959360000095
+      },
+      "ocr": {
+        "count": 1,
+        "totalMs": 1653.2498430000269,
+        "medianMs": 1653.2498430000269,
+        "p95Ms": 1653.2498430000269,
+        "maxMs": 1653.2498430000269
+      },
+      "restore_ime": {
+        "count": 1,
+        "totalMs": 95.52479200001108,
+        "medianMs": 95.52479200001108,
+        "p95Ms": 95.52479200001108,
+        "maxMs": 95.52479200001108
+      },
+      "restore_termux": {
+        "count": 1,
+        "totalMs": 5618.395935999986,
+        "medianMs": 5618.395935999986,
+        "p95Ms": 5618.395935999986,
+        "maxMs": 5618.395935999986
+      }
+    }
+  },
+  "after": {
+    "status": "pass",
+    "elapsedMs": 321845.174721,
+    "operations": 324,
+    "captures": 80,
+    "scopedCommandAttempts": 300,
+    "alignment": {
+      "product_scroll": {
+        "cycles": 6,
+        "ms": 27263.48280299999
+      },
+      "field_scroll": {
+        "cycles": 2,
+        "ms": 7406.38900700002
+      }
+    },
+    "stageMetrics": {
+      "shell": {
+        "count": 36,
+        "totalMs": 3804.7795820000683,
+        "medianMs": 105.04447900000378,
+        "p95Ms": 121.81770900000993,
+        "maxMs": 149.18974000000003
+      },
+      "screen_size": {
+        "count": 1,
+        "totalMs": 80.39432299999999,
+        "medianMs": 80.39432299999999,
+        "p95Ms": 80.39432299999999,
+        "maxMs": 80.39432299999999
+      },
+      "ui_dump": {
+        "count": 50,
+        "totalMs": 146961.117232,
+        "medianMs": 2654.552967500029,
+        "p95Ms": 3595.3136969999996,
+        "maxMs": 7893.706298999998
+      },
+      "tap": {
+        "count": 18,
+        "totalMs": 1735.2161429999542,
+        "medianMs": 94.38025999999809,
+        "p95Ms": 115.31687499998952,
+        "maxMs": 115.31687499998952
+      },
+      "settle": {
+        "count": 100,
+        "totalMs": 50124.13404899989,
+        "medianMs": 501.1945045000102,
+        "p95Ms": 502.13000000000466,
+        "maxMs": 504.0977609999991
+      },
+      "type": {
+        "count": 32,
+        "totalMs": 6003.325987000006,
+        "medianMs": 187.08150999999634,
+        "p95Ms": 207.65937500001746,
+        "maxMs": 217.51093700000092
+      },
+      "key": {
+        "count": 34,
+        "totalMs": 3235.4913009999655,
+        "medianMs": 93.94151050000801,
+        "p95Ms": 112.45614599998225,
+        "maxMs": 120.82661399999051
+      },
+      "product_scroll": {
+        "count": 6,
+        "totalMs": 4057.6868740000027,
+        "medianMs": 676.5774479999982,
+        "p95Ms": 681.860781000003,
+        "maxMs": 681.860781000003
+      },
+      "app": {
+        "count": 1,
+        "totalMs": 5563.038540000001,
+        "medianMs": 5563.038540000001,
+        "p95Ms": 5563.038540000001,
+        "maxMs": 5563.038540000001
+      },
+      "swipe": {
+        "count": 11,
+        "totalMs": 5653.264893999978,
+        "medianMs": 515.0105730000068,
+        "p95Ms": 529.5499469999922,
+        "maxMs": 529.5499469999922
+      },
+      "field_scroll": {
+        "count": 2,
+        "totalMs": 1014.7831239999941,
+        "medianMs": 507.39156199999707,
+        "p95Ms": 512.9109369999933,
+        "maxMs": 512.9109369999933
+      },
+      "select_tap": {
+        "count": 30,
+        "totalMs": 85689.09965600014,
+        "medianMs": 2866.6829155000014,
+        "p95Ms": 2940.2680199999886,
+        "maxMs": 2957.2695819999935
+      },
+      "ocr": {
+        "count": 1,
+        "totalMs": 1923.8030729999882,
+        "medianMs": 1923.8030729999882,
+        "p95Ms": 1923.8030729999882,
+        "maxMs": 1923.8030729999882
+      },
+      "restore_ime": {
+        "count": 1,
+        "totalMs": 91.49880200001644,
+        "medianMs": 91.49880200001644,
+        "p95Ms": 91.49880200001644,
+        "maxMs": 91.49880200001644
+      },
+      "restore_termux": {
+        "count": 1,
+        "totalMs": 5645.185257999983,
+        "medianMs": 5645.185257999983,
+        "p95Ms": 5645.185257999983,
+        "maxMs": 5645.185257999983
+      }
+    }
+  },
+  "focusedMedians": [
+    {
+      "mode": "sequential",
+      "api": "screenshot",
+      "beforeMs": 570.7550520000004,
+      "afterMs": 548.9730729999992,
+      "deltaMs": -21.78197900000123,
+      "deltaPct": -3.8163444937849067
+    },
+    {
+      "mode": "sequential",
+      "api": "base64",
+      "beforeMs": 510.0917180000001,
+      "afterMs": 456.79697899999974,
+      "deltaMs": -53.29473900000039,
+      "deltaPct": -10.448069850842078
+    },
+    {
+      "mode": "concurrent",
+      "api": "screenshot",
+      "beforeMs": 584.6870829999998,
+      "afterMs": 509.64322899999934,
+      "deltaMs": -75.04385400000047,
+      "deltaPct": -12.834874616171488
+    },
+    {
+      "mode": "concurrent",
+      "api": "base64",
+      "beforeMs": 499.2799990000003,
+      "afterMs": 468.5717709999999,
+      "deltaMs": -30.708228000000418,
+      "deltaPct": -6.150502335664443
+    }
+  ],
+  "metricsMedians": [
+    {
+      "mode": "sequential",
+      "api": "saved",
+      "beforeMs": 523.8289320000001,
+      "afterMs": 578.5658330000006,
+      "deltaMs": 54.736901000000444,
+      "deltaPct": 10.449384838483965
+    },
+    {
+      "mode": "sequential",
+      "api": "base64",
+      "beforeMs": 451.1382034999997,
+      "afterMs": 500.3805465000005,
+      "deltaMs": 49.2423430000008,
+      "deltaPct": 10.915134789732095
+    },
+    {
+      "mode": "concurrent",
+      "api": "saved",
+      "beforeMs": 511.531927,
+      "afterMs": 593.0208589999966,
+      "deltaMs": 81.48893199999657,
+      "deltaPct": 15.930370657000381
+    },
+    {
+      "mode": "concurrent",
+      "api": "base64",
+      "beforeMs": 446.6284634999997,
+      "afterMs": 501.3236975000036,
+      "deltaMs": 54.69523400000389,
+      "deltaPct": 12.246249057076476
+    }
+  ],
+  "workflowDelta": {
+    "ms": 3520.3578110000235,
+    "pct": 1.1059011500178961
+  },
+  "limits": [
+    "Same-v3.2 source workflow only; no isolated fusion overhead or speedup claim.",
+    "One pair is descriptive, not causal/population/non-inferiority evidence.",
+    "Alignment cycles are reported, never subtracted from elapsed time; only complete cycles normalized for retained-work gate.",
+    "Per-capture source clocks, operation clocks and loaded-tool clocks are separate. Nested spans are not additive wall time.",
+    "Scoped commands not whole-workflow counts. The workflow OCR invokes screenshot once without a sink; focused PNG concurrency and fresh registered tools are separate evidence."
+  ]
+}

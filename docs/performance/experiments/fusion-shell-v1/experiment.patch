@@ -1,0 +1,518 @@
+diff --git a/src/adb/exec.ts b/src/adb/exec.ts
+index 03df244..01a9170 100644
+--- a/src/adb/exec.ts
++++ b/src/adb/exec.ts
+@@ -8 +8,3 @@
+-import { execFile } from "node:child_process";
++import { execFile, spawn } from "node:child_process";
++import { createWriteStream } from "node:fs";
++import { pipeline } from "node:stream/promises";
+@@ -56,4 +58,7 @@ const DEFAULT_MAX_BUFFER = 10 * 1024 * 1024;
+-/**
+- * Execute an ADB command and return stdout.
+- */
+-export async function adb(args: string[], options: AdbExecOptions = {}): Promise<string> {
++type ProcessOptions = { signal: AbortSignal; maxBuffer: number };
++
++/** Both text and binary transports share selection, deadline, failure and retry policy. */
++async function executeAdb<T>(
++  args: string[], options: AdbExecOptions,
++  run: (args: string[], options: ProcessOptions) => Promise<T>,
++): Promise<T> {
+@@ -87,6 +92 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
+-        const { stdout } = await execAsync("adb", fullArgs, {
+-          // Disable Node's opaque timeout; our deadline above has explicit provenance.
+-          timeout: 0, signal: controller.signal,
+-          maxBuffer: options.maxBuffer ?? DEFAULT_MAX_BUFFER,
+-        });
+-        return stdout.trim();
++        return await run(fullArgs, { signal: controller.signal, maxBuffer: options.maxBuffer ?? DEFAULT_MAX_BUFFER });
+@@ -94 +94 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
+-        const error = err as { stderr?: string; code?: unknown; signal?: string; killed?: boolean };
++        const error = err as { stderr?: string; code?: unknown; signal?: string; killed?: boolean; failureKind?: ExecutionFailureKind };
+@@ -96 +96 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
+-        const failureKind: ExecutionFailureKind = interruption ?? (
++        const failureKind: ExecutionFailureKind = interruption ?? error.failureKind ?? (
+@@ -129 +129 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
+-      return adb(args, { ...options, serial: recovered, autoReconnect: false });
++      return executeAdb(args, { ...options, serial: recovered, autoReconnect: false }, run);
+@@ -137,0 +138,58 @@ export async function adb(args: string[], options: AdbExecOptions = {}): Promise
++/** Execute a text command; preserves the existing trim/buffer contract. */
++export async function adb(args: string[], options: AdbExecOptions = {}): Promise<string> {
++  return executeAdb(args, options, async (fullArgs, processOptions) => {
++    const { stdout } = await execAsync("adb", fullArgs, { timeout: 0, ...processOptions });
++    return stdout.trim();
++  });
++}
++
++/**
++ * Internal binary-to-file transport. stdout is streamed with backpressure, never
++ * decoded/trimmed/buffer-capped; maxBuffer still bounds diagnostic stderr. The
++ * caller owns partial-file removal, just as it did with adb pull.
++ */
++export async function adbToFile(args: string[], path: string, options: AdbExecOptions = {}): Promise<string> {
++  return executeAdb(args, options, async (fullArgs, { signal, maxBuffer }) => {
++    if (typeof maxBuffer !== "number" || Number.isNaN(maxBuffer) || maxBuffer < 0) throw new RangeError("Invalid ADB buffer limit");
++    const child = spawn("adb", fullArgs, { signal, stdio: ["ignore", "pipe", "pipe"] });
++    const chunks: Buffer[] = [];
++    let bytes = 0;
++    type ProcessFailure = Error & { code?: unknown; stderr?: string; signal?: string | null; killed?: boolean; failureKind?: ExecutionFailureKind };
++    let firstError: ProcessFailure | undefined;
++    const closed = new Promise<void>(resolve => {
++      // AbortError is emitted immediately even if a child ignores SIGTERM.
++      // The aborted pipeline settles disk writes; do not wait for remote/process
++      // termination that the existing cancellation contract never guaranteed.
++      child.on("error", error => { firstError ??= error; resolve(); });
++      child.stderr.on("data", (chunk: Buffer) => {
++        // Never retain unbounded stderr, including after a kill request.
++        const remaining = Math.max(0, maxBuffer - bytes);
++        if (remaining) chunks.push(chunk.subarray(0, remaining));
++        bytes += chunk.length;
++        if (bytes > maxBuffer && !firstError) {
++          firstError = Object.assign(new Error("ADB stderr buffer exceeded"), { code: "ERR_CHILD_PROCESS_STDIO_MAXBUFFER" });
++          child.kill();
++        }
++      });
++      child.on("close", (code, exitSignal) => {
++        if (code !== 0 && !firstError) firstError = Object.assign(new Error("ADB process failed"), {
++          code, signal: exitSignal, killed: child.killed,
++        });
++        resolve();
++      });
++    });
++    const transferred = pipeline(child.stdout, createWriteStream(path), { signal }).catch(error => {
++      if (!firstError) firstError = Object.assign(error, { failureKind: "unknown" as const });
++      child.kill();
++    });
++    await Promise.all([closed, transferred]);
++    const stderr = Buffer.concat(chunks).toString("utf8");
++    if (firstError) {
++      firstError.stderr = stderr;
++      firstError.killed = child.killed;
++      throw firstError;
++    }
++    return stderr;
++  });
++}
++
+diff --git a/src/adb/screenshot.ts b/src/adb/screenshot.ts
+index b333324..12e2579 100644
+--- a/src/adb/screenshot.ts
++++ b/src/adb/screenshot.ts
+@@ -5 +5 @@
+-import { mkdir, readFile, unlink } from "node:fs/promises";
++import { mkdir, readFile, unlink, open } from "node:fs/promises";
+@@ -10 +10 @@ import { randomUUID } from "node:crypto";
+-import { adb, adbShell, type AdbExecOptions } from "./exec.js";
++import { adbToFile, adbShell, AdbError, type AdbExecOptions } from "./exec.js";
+@@ -19,0 +20,9 @@ export function setScreenshotDir(dir: string): void {
++export interface ScreenshotOptions extends AdbExecOptions {
++  /** Opt-in content-free outcomes, not device cleanup duration. Sink errors are ignored. */
++  onScreenshotCleanup?: (event: { phase: "transfer" | "fallback"; outcome: "ok" | "error" | "unknown" }) => void;
++}
++
++function cleanupEvent(options: ScreenshotOptions, phase: "transfer" | "fallback", outcome: "ok" | "error" | "unknown"): void {
++  try { options.onScreenshotCleanup?.({ phase, outcome }); } catch { /* Diagnostics cannot alter capture. */ }
++}
++
+@@ -22,2 +31,37 @@ export function setScreenshotDir(dir: string): void {
+-async function removeRemote(path: string, options: AdbExecOptions): Promise<void> {
+-  await adbShell(`rm -f ${path}`, { ...options, autoReconnect: false }).catch(() => {});
++async function removeRemote(path: string, options: ScreenshotOptions): Promise<void> {
++  try {
++    await adbShell(`rm -f ${path}`, { ...options, autoReconnect: false });
++    cleanupEvent(options, "fallback", "ok");
++  } catch { cleanupEvent(options, "fallback", "error"); }
++}
++
++/**
++ * One non-PTY shell process streams binary bytes and removes only its owned PNG.
++ * A bounded random footer on stdout carries remote statuses even on legacy shell
++ * transports without separate stderr/exit status. It is verified/removed on disk,
++ * never by decoding or trimming the image. stderr remains diagnostic-only.
++ */
++async function transferAndRemove(remote: string, local: string, options: ScreenshotOptions): Promise<boolean> {
++  const token = `pi-droid-transfer-${randomUUID()}`;
++  const command = `cat ${remote}; transfer=$?; rm -f ${remote} >/dev/null 2>&1; cleanup=$?; printf '\\n${token}:%s:%s\\n' "$transfer" "$cleanup"; exit "$transfer"`;
++  let known = false;
++  try {
++    await adbToFile(["shell", "-T", command], local, options);
++    const file = await open(local, "r+");
++    try {
++      const { size } = await file.stat();
++      const tail = Buffer.alloc(Math.min(size, 128));
++      const { bytesRead } = await file.read(tail, 0, tail.length, size - tail.length);
++      const match = tail.subarray(0, bytesRead).toString("utf8").match(new RegExp(`\\n${token}:(\\d{1,3}):(\\d{1,3})\\n$`));
++      if (!match || Number(match[1]) > 255 || Number(match[2]) > 255) throw new Error("Missing screenshot transfer acknowledgement");
++      known = true;
++      const cleaned = Number(match[2]) === 0;
++      cleanupEvent(options, "transfer", cleaned ? "ok" : "error");
++      if (Number(match[1]) !== 0) throw new AdbError("Screenshot transfer failed", command, "", Number(match[1]), "exit");
++      await file.truncate(size - Buffer.byteLength(match[0]));
++      return cleaned;
++    } finally { await file.close(); }
++  } catch (error) {
++    if (!known) cleanupEvent(options, "transfer", "unknown");
++    throw error;
++  }
+@@ -31 +75 @@ export async function takeScreenshot(
+-  options: AdbExecOptions & { prefix?: string; includeBase64?: boolean } = {},
++  options: ScreenshotOptions & { prefix?: string; includeBase64?: boolean } = {},
+@@ -45,0 +90 @@ export async function takeScreenshot(
++  let remoteRemoved = false;
+@@ -48 +93 @@ export async function takeScreenshot(
+-    await timing.async("screenshot_transfer", () => adb(["pull", remotePath, localPath], options));
++    remoteRemoved = await timing.async("screenshot_transfer", () => transferAndRemove(remotePath, localPath, options));
+@@ -64 +109 @@ export async function takeScreenshot(
+-    await removeRemote(remotePath, options);
++    if (!remoteRemoved) await removeRemote(remotePath, options);
+@@ -71 +116 @@ export async function takeScreenshot(
+-export async function screenshotBase64(options: AdbExecOptions = {}): Promise<string> {
++export async function screenshotBase64(options: ScreenshotOptions = {}): Promise<string> {
+@@ -76,0 +122 @@ export async function screenshotBase64(options: AdbExecOptions = {}): Promise<st
++  let remoteRemoved = false;
+@@ -79 +125 @@ export async function screenshotBase64(options: AdbExecOptions = {}): Promise<st
+-    await timing.async("screenshot_transfer", () => adb(["pull", remotePath, tmpPath], options));
++    remoteRemoved = await timing.async("screenshot_transfer", () => transferAndRemove(remotePath, tmpPath, options));
+@@ -83 +129 @@ export async function screenshotBase64(options: AdbExecOptions = {}): Promise<st
+-    await removeRemote(remotePath, options);
++    if (!remoteRemoved) await removeRemote(remotePath, options);
+diff --git a/tests/adb/annotation-boundary.test.ts b/tests/adb/annotation-boundary.test.ts
+index 2cfeab1..289cc25 100644
+--- a/tests/adb/annotation-boundary.test.ts
++++ b/tests/adb/annotation-boundary.test.ts
+@@ -28,0 +29,2 @@ async function main() {
++  } else if (cmd.includes("cat /sdcard/")) {
++    process.stdout.write("PRIVATE_PNG\\n" + cmd.match(/pi-droid-transfer-[a-f0-9-]+/)[0] + ":0:0\\n");
+diff --git a/tests/adb/png-concurrency-boundary.test.ts b/tests/adb/png-concurrency-boundary.test.ts
+index 547a96c..232fac5 100644
+--- a/tests/adb/png-concurrency-boundary.test.ts
++++ b/tests/adb/png-concurrency-boundary.test.ts
+@@ -28,0 +29,7 @@ if(command.includes('screencap -p ')) {
++} else if(command.includes('cat /sdcard/')) {
++ const name=command.match(/cat (\\S+);/)[1], token=command.match(/pi-droid-transfer-[a-f0-9-]+/)[0];
++ if(mode==='transfer-error'||mode==='transfer-cleanup-error'){process.stdout.write('PARTIAL');process.stderr.write('PRIVATE_PULL');process.exit(8);}
++ process.stdout.write(fs.readFileSync(remote(name)));
++ const cleanup=mode==='cleanup-error'?1:0;
++ if(!cleanup)fs.rmSync(remote(name),{force:true});
++ process.stdout.write('\\n'+token+':0:'+cleanup+'\\n');
+@@ -31 +38 @@ if(command.includes('screencap -p ')) {
+- if(mode!=='read-error')fs.copyFileSync(remote(args[1]),args[2]);
++ fs.copyFileSync(remote(args[1]),args[2]);
+@@ -49,0 +57 @@ import {readFile,access,readdir,unlink} from 'node:fs/promises';
++import {readdirSync,unlinkSync,existsSync} from 'node:fs';
+@@ -55 +63,6 @@ const spans=[], options=Object.freeze({serial:'PRIVATE_SERIAL',exactSerial:true,
+- includeBase64:true,onCaptureSpan:s=>spans.push(s)});
++ includeBase64:true,onCaptureSpan:s=>spans.push(s),onScreenshotCleanup:e=>{
++  if(process.env.PNG_MODE==='read-error'&&e.phase==='transfer'&&e.outcome==='ok'){
++   for(const folder of [join(root,'images'),process.env.TMPDIR])if(existsSync(folder))for(const name of readdirSync(folder))
++    if(name.endsWith('.png')&&!name.startsWith('remote-'))unlinkSync(join(folder,name));
++  }
++ }});
+diff --git a/tests/adb/portable-temp.test.ts b/tests/adb/portable-temp.test.ts
+index 8e0ffed..1868958 100644
+--- a/tests/adb/portable-temp.test.ts
++++ b/tests/adb/portable-temp.test.ts
+@@ -7,0 +8,10 @@ vi.mock("node:fs/promises", () => ({
++  open: vi.fn(async () => ({
++    stat: async () => ({ size: 128 }),
++    read: async (buffer: Buffer) => {
++      const token = vi.mocked(adbToFile).mock.calls.at(-1)![0][2].match(/pi-droid-transfer-[a-f0-9-]+/)![0];
++      const footer = Buffer.from("\n" + token + ":0:0\n");
++      footer.copy(buffer, 128 - footer.length);
++      return { bytesRead: 128 };
++    },
++    truncate: async () => {}, close: async () => {},
++  })),
+@@ -15,0 +26 @@ vi.mock("../../src/adb/exec.js", () => ({
++  adbToFile: vi.fn(async () => ""),
+@@ -22 +33 @@ import { mkdir } from "node:fs/promises";
+-import { adb } from "../../src/adb/exec.js";
++import { adbToFile } from "../../src/adb/exec.js";
+@@ -38,2 +49,3 @@ describe("portable temporary storage defaults", () => {
+-    expect(adb).toHaveBeenCalledWith(
+-      ["pull", expect.stringMatching(/^\/sdcard\/pi-droid-screen-[a-f0-9-]+\.png$/), expect.stringContaining(join("/custom-system-temp", "pi-droid-quick-"))],
++    expect(adbToFile).toHaveBeenCalledWith(
++      ["shell", "-T", expect.stringContaining("cat /sdcard/pi-droid-screen-")],
++      expect.stringContaining(join("/custom-system-temp", "pi-droid-quick-")),
+diff --git a/tests/adb/reconnect-timing.test.ts b/tests/adb/reconnect-timing.test.ts
+index 5465c82..34235a4 100644
+--- a/tests/adb/reconnect-timing.test.ts
++++ b/tests/adb/reconnect-timing.test.ts
+@@ -40 +40 @@ async function probe(mode = "success") {
+-import { adb } from ${JSON.stringify(resolve("src/adb/exec.ts"))};
++import { adb, adbToFile } from ${JSON.stringify(resolve("src/adb/exec.ts"))};
+@@ -60,0 +61,4 @@ try {
++  } else if(mode==="binary"||mode==="binary-exact") {
++    const file=${JSON.stringify(join(dir,"binary.png"))};
++    await adbToFile(["shell","PRIVATE_COMMAND"],file,{...options,exactSerial:mode==="binary-exact"});
++    result=await readFile(file,"utf8");
+@@ -71,0 +76,14 @@ console.log(JSON.stringify({result,failure,spans,follower,ignored,calls:(await r
++it("uses the same secure recovery policy for binary-to-file commands", async () => {
++  const r = await probe("binary");
++  expect(r.result).toBe("recovered\n");
++  expect(r.failure).toBeUndefined();
++  expect(r.calls.map((a: string[]) => a.includes("mdns") ? "discovery" : a.includes("connect") ? "connect" : a.includes("devices") ? "verify" : "command"))
++    .toEqual(["command", "discovery", "connect", "verify", "command"]);
++});
++
++it("does not recover an exact binary transport", async () => {
++  const r = await probe("binary-exact");
++  expect(r.failure).toEqual({ name: "AdbError", failureKind: "exit" });
++  expect(r.calls).toHaveLength(1);
++});
++
+diff --git a/tests/adb/screenshot-latency-diagnostic.test.ts b/tests/adb/screenshot-latency-diagnostic.test.ts
+index fde49fd..ed876af 100644
+--- a/tests/adb/screenshot-latency-diagnostic.test.ts
++++ b/tests/adb/screenshot-latency-diagnostic.test.ts
+@@ -17,0 +18 @@ else if(process.env.DIAG_MODE==='cleanup-fail'&&c.startsWith('shell rm -f')){pro
++else if(c.includes('cat /sdcard/')){process.stdout.write(Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aKxkAAAAASUVORK5CYII=','base64'));process.stdout.write('\\n'+c.match(/pi-droid-transfer-[a-f0-9-]+/)[0]+':0:'+(process.env.DIAG_MODE==='cleanup-fail'?1:0)+'\\n');}
+@@ -65,2 +66,2 @@ it("measures unchanged concurrent public APIs, validates bytes and attributes un
+-      ["screenshot_capture", "screenshot_transfer", "screenshot_dimensions", "unscoped"] :
+-      ["screenshot_capture", "screenshot_transfer", "unscoped"]);
++      ["screenshot_capture", "screenshot_transfer", "screenshot_dimensions"] :
++      ["screenshot_capture", "screenshot_transfer"]);
+diff --git a/tests/adb/screenshot-ocr-boundary.test.ts b/tests/adb/screenshot-ocr-boundary.test.ts
+index 271d11c..27323c8 100644
+--- a/tests/adb/screenshot-ocr-boundary.test.ts
++++ b/tests/adb/screenshot-ocr-boundary.test.ts
+@@ -20 +20 @@ if ((mode === "capture-error" && cmd.includes("screencap")) ||
+-    (mode === "transfer-error" && args[0] === "pull") ||
++    (mode === "transfer-error" && (args[0] === "pull" || cmd.includes("cat /sdcard/"))) ||
+@@ -24 +24,2 @@ if ((mode === "capture-error" && cmd.includes("screencap")) ||
+-if (args[0] === "pull") { if (mode !== "read-error") fs.writeFileSync(args[2], args[1].endsWith(".xml") ? "<hierarchy/>" : "PRIVATE_PNG"); }
++if (cmd.includes("cat /sdcard/")) process.stdout.write("PRIVATE_PNG\\n" + cmd.match(/pi-droid-transfer-[a-f0-9-]+/)[0] + ":0:0\\n");
++else if (args[0] === "pull") { fs.writeFileSync(args[2], args[1].endsWith(".xml") ? "<hierarchy/>" : "PRIVATE_PNG"); }
+@@ -52,0 +54 @@ setScreenshotDir(${JSON.stringify(join(dir, "images"))});
++import {readdirSync,unlinkSync} from 'node:fs';
+@@ -56 +58,3 @@ const options = { serial: "PRIVATE_SERIAL", exactSerial: true, autoReconnect: fa
+-  includeBase64: true, onCaptureSpan: mode.endsWith("disabled") ? undefined : span => {
++  includeBase64: true, onScreenshotCleanup:e=>{
++    if(mode==='read-error'&&e.phase==='transfer'&&e.outcome==='ok')for(const name of readdirSync(${JSON.stringify(join(dir, "images"))}))unlinkSync(${JSON.stringify(join(dir, "images"))}+'/'+name);
++  }, onCaptureSpan: mode.endsWith("disabled") ? undefined : span => {
+@@ -96 +100 @@ it("returns unchanged image data and nests command attempts in screenshot stages
+-    "adb_attempt", "screenshot_dimensions", "screenshot_read", "adb_attempt", // owned remote cleanup
++    "adb_attempt", "screenshot_dimensions", "screenshot_read", // cleanup confirmed inside transfer
+@@ -115,2 +119,3 @@ it.each([
+-  expect(result.spans.at(-2)).toMatchObject({ stage, outcome: "error", failureKind: kind });
+-  expect(result.spans.at(-1)).toMatchObject({ stage: "adb_attempt", outcome: "ok" });
++  const fallback = ["capture-error", "transfer-error"].includes(mode);
++  expect(result.spans.at(fallback ? -2 : -1)).toMatchObject({ stage, outcome: "error", failureKind: kind });
++  if (fallback) expect(result.spans.at(-1)).toMatchObject({ stage: "adb_attempt", outcome: "ok" });
+@@ -127 +132 @@ it.each(["disabled", "screenshot-disabled", "throwing", "ocr-throwing", "base64"
+-    "adb_attempt", "screenshot_capture", "adb_attempt", "screenshot_transfer", "screenshot_read", "adb_attempt",
++    "adb_attempt", "screenshot_capture", "adb_attempt", "screenshot_transfer", "screenshot_read",
+@@ -166 +171 @@ it("shares the screenshot clock with OCR availability, engine and parse stages",
+-    "adb_attempt", "screenshot_dimensions", "screenshot_read", "adb_attempt",
++    "adb_attempt", "screenshot_dimensions", "screenshot_read",
+@@ -169,2 +174,2 @@ it("shares the screenshot clock with OCR availability, engine and parse stages",
+-  for (const span of result.spans.slice(8))
+-    expect(span.startMs).toBeGreaterThanOrEqual(result.spans[7].startMs + result.spans[7].durationMs);
++  for (const span of result.spans.slice(7))
++    expect(span.startMs).toBeGreaterThanOrEqual(result.spans[6].startMs + result.spans[6].durationMs);
+diff --git a/tests/adb/screenshot.test.ts b/tests/adb/screenshot.test.ts
+index e1de2cc..2181794 100644
+--- a/tests/adb/screenshot.test.ts
++++ b/tests/adb/screenshot.test.ts
+@@ -8,0 +9 @@ vi.mock("../../src/adb/exec.js", () => ({
++  adbToFile: vi.fn(async () => ""),
+@@ -12,0 +14,10 @@ vi.mock("node:fs/promises", () => ({
++  open: vi.fn(async () => ({
++    stat: async () => ({ size: 128 }),
++    read: async (buffer: Buffer) => {
++      const token = vi.mocked(adbToFile).mock.calls.at(-1)![0][2].match(/pi-droid-transfer-[a-f0-9-]+/)![0];
++      const footer = Buffer.from("\n" + token + ":0:0\n");
++      footer.copy(buffer, 128 - footer.length);
++      return { bytesRead: 128 };
++    },
++    truncate: async () => {}, close: async () => {},
++  })),
+@@ -22 +33 @@ vi.mock("node:fs", () => ({
+-import { adbShell, adb } from "../../src/adb/exec.js";
++import { adbShell, adbToFile } from "../../src/adb/exec.js";
+@@ -28 +39 @@ const mockAdbShell = vi.mocked(adbShell);
+-const mockAdb = vi.mocked(adb);
++const mockAdb = vi.mocked(adbToFile);
+@@ -57 +68,2 @@ describe("takeScreenshot()", () => {
+-      ["pull", expect.stringMatching(/^\/sdcard\/pi-droid-screen-[a-f0-9-]+\.png$/), expect.stringContaining("screen_")],
++      ["shell", "-T", expect.stringContaining("cat /sdcard/pi-droid-screen-")],
++      expect.stringContaining("screen_"),
+@@ -118 +130 @@ describe("takeScreenshot()", () => {
+-      expect.any(Array),
++      expect.any(Array), expect.any(String),
+@@ -140 +152,2 @@ describe("screenshotBase64()", () => {
+-      ["pull", expect.stringMatching(/^\/sdcard\/pi-droid-screen-[a-f0-9-]+\.png$/), expect.stringContaining(join(tmpdir(), "pi-droid-quick-"))],
++      ["shell", "-T", expect.stringContaining("cat /sdcard/pi-droid-screen-")],
++      expect.stringContaining(join(tmpdir(), "pi-droid-quick-")),
+diff --git a/tests/tools/ui-dump.test.ts b/tests/tools/ui-dump.test.ts
+index 062813c..81fb608 100644
+--- a/tests/tools/ui-dump.test.ts
++++ b/tests/tools/ui-dump.test.ts
+@@ -34,0 +35 @@ else if(cmd.includes('uiautomator dump')) {
++else if(cmd.includes('cat /sdcard/')) process.stdout.write('PRIVATE_PNG\\n'+cmd.match(/pi-droid-transfer-[a-f0-9-]+/)[0]+':0:0\\n');
+diff --git a/tests/adb/fusion-transfer.test.ts b/tests/adb/fusion-transfer.test.ts
+new file mode 100644
+index 0000000..61294a2
+--- /dev/null
++++ b/tests/adb/fusion-transfer.test.ts
+@@ -0,0 +1,69 @@
++import { afterEach, beforeEach, expect, it } from "vitest";
++import { mkdtemp, writeFile, chmod, rm } from "node:fs/promises";
++import { tmpdir } from "node:os";
++import { join, resolve } from "node:path";
++import { execFile } from "node:child_process";
++import { promisify } from "node:util";
++const exec = promisify(execFile);
++let dir: string;
++beforeEach(async () => {
++  dir = await mkdtemp(join(tmpdir(), "fusion-transfer-"));
++  await writeFile(join(dir, "adb"), `#!${process.execPath}
++const mode=process.env.FUSION_MODE;
++if(mode==='timeout-ignores'){require('node:fs').writeFileSync(process.env.FUSION_PID,String(process.pid));process.on('SIGTERM',()=>{});setInterval(()=>{},1000);}
++else if(mode==='timeout')setInterval(()=>{},1000);
++else if(mode==='exit'){process.stderr.write('PRIVATE_ERROR');process.exit(7);}
++else if(mode==='stderr-overflow'){process.stderr.write('x'.repeat(100000));setInterval(()=>{},1000);}
++else {const b=Buffer.alloc(12*1024*1024,0xff);b[0]=0x20;b[1]=0;b[2]=0x80;b[b.length-1]=0x0a;process.stdout.write(b);process.stderr.write('ACK');}
++`);
++  await chmod(join(dir, "adb"), 0o700);
++});
++afterEach(async () => { await rm(dir, { recursive: true, force: true }); });
++async function probe(mode = "success") {
++  const script = join(dir, "probe.mjs");
++  await writeFile(script, `
++import * as execution from ${JSON.stringify(resolve("src/adb/exec.ts"))};
++import {readFile,access} from 'node:fs/promises';
++import {readFileSync} from 'node:fs';
++const spans=[],controller=new AbortController();
++if(process.env.FUSION_MODE==='cancelled')controller.abort();
++const file=${JSON.stringify(join(dir, "image.png"))};
++let result,forced=false;
++const started=performance.now();
++const kill=()=>{try{process.kill(Number(readFileSync(process.env.FUSION_PID,'utf8')),'SIGKILL');}catch{}};
++const rescue=process.env.FUSION_MODE==='timeout-ignores'?setTimeout(()=>{forced=true;kill();},2500):undefined;
++try {
++ const stderr=await execution.adbToFile(['exec-out','PRIVATE_COMMAND'],file,{serial:'PRIVATE_SERIAL',exactSerial:true,autoReconnect:false,
++  timeout:process.env.FUSION_MODE==='timeout'?100:process.env.FUSION_MODE==='timeout-ignores'?1000:5000,signal:controller.signal,maxBuffer:1024,onCaptureSpan:s=>spans.push(s)});
++ const b=await readFile(file);result={length:b.length,start:[...b.subarray(0,3)],end:b.at(-1),ack:stderr==='ACK'};
++}catch(e){result={failureKind:e.failureKind,exitCode:e.exitCode};}
++finally{clearTimeout(rescue);if(process.env.FUSION_MODE==='timeout-ignores')kill();}
++console.log(JSON.stringify({...result,spans,forced,elapsedMs:performance.now()-started}));
++`);
++  const { stdout } = await exec(process.execPath, ["--import", "tsx", script], {
++    timeout: 12000, env: { ...process.env, PATH: `${dir}:${process.env.PATH}`, FUSION_MODE: mode, FUSION_PID: join(dir, "pid") },
++  });
++  return JSON.parse(stdout);
++}
++it("does not wait for a SIGTERM-ignoring child after explicit timeout", async () => {
++  const r = await probe("timeout-ignores");
++  expect(r).toMatchObject({ failureKind: "timeout", forced: false });
++  expect(r.elapsedMs).toBeLessThan(2000);
++}, 15000);
++
++it.each([
++  ["timeout", "timeout"], ["cancelled", "cancelled"], ["exit", "exit"], ["stderr-overflow", "buffer"],
++])("shares explicit execution failure classification: %s", async (mode, kind) => {
++  const r = await probe(mode);
++  expect(r.failureKind).toBe(kind);
++  expect(r.spans.at(-1)).toMatchObject({ stage: "adb_attempt", outcome: "error", failureKind: kind });
++  expect(JSON.stringify(r)).not.toContain("PRIVATE_");
++}, 15000);
++
++it("streams hostile binary bytes beyond the text buffer limit without trimming or decoding", async () => {
++  const r = await probe();
++  expect(r).toMatchObject({ length: 12 * 1024 * 1024, start: [32, 0, 128], end: 10, ack: true });
++  expect(r.spans).toHaveLength(1);
++  expect(r.spans[0]).toMatchObject({ stage: "adb_attempt", outcome: "ok" });
++  expect(JSON.stringify(r)).not.toContain("PRIVATE_");
++}, 15000);
+diff --git a/tests/adb/fusion-screenshot.test.ts b/tests/adb/fusion-screenshot.test.ts
+new file mode 100644
+index 0000000..6a4b629
+--- /dev/null
++++ b/tests/adb/fusion-screenshot.test.ts
+@@ -0,0 +1,84 @@
++import { afterEach, beforeEach, expect, it } from "vitest";
++import { mkdtemp, writeFile, chmod, rm } from "node:fs/promises";
++import { tmpdir } from "node:os";
++import { join, resolve } from "node:path";
++import { execFile } from "node:child_process";
++import { promisify } from "node:util";
++const exec = promisify(execFile);
++let dir: string;
++beforeEach(async () => {
++  dir = await mkdtemp(join(tmpdir(), "fusion-image-"));
++  await writeFile(join(dir, "adb"), `#!${process.execPath}
++const fs=require('node:fs'),p=require('node:path'),root=process.env.FUSION_ROOT,mode=process.env.FUSION_MODE;
++const a=process.argv.slice(4),c=a.join(' '),remote=n=>p.join(root,'remote-'+p.basename(n));
++const bytes=Buffer.from([32,0,128,255,10,13,32]);
++if(c.includes('screencap -p ')){fs.writeFileSync(remote(c.split(' ').at(-1)),bytes);}
++else if(a[0]==='pull'){fs.copyFileSync(remote(a[1]),a[2]);}
++else if(c==='shell wm size'){if(mode==='dimensions'){process.stderr.write('PRIVATE_ERROR');process.exit(9);}console.log('Physical size: 1080x2340');}
++else if(c.includes('cat /sdcard/')){
++ const name=c.match(/cat (\\S+);/)[1],token=c.match(/pi-droid-transfer-[a-f0-9-]+/)[0];
++ if(mode==='transfer'){process.stdout.write('PARTIAL');process.stderr.write('PRIVATE_ERROR');process.exit(7);}
++ process.stdout.write(fs.readFileSync(remote(name)));
++ const cleanup=mode==='cleanup'||mode==='both-cleanups'?1:0;
++ if(!cleanup)fs.rmSync(remote(name),{force:true});
++ if(mode!=='missing-ack')process.stdout.write('\\n'+token+':'+(mode==='legacy-exit'?7:mode==='invalid-status'?999:0)+':'+cleanup+'\\n');
++}else if(c.startsWith('shell rm -f ')){
++ if(mode==='both-cleanups'){process.stderr.write('PRIVATE_ERROR');process.exit(8);}
++ fs.rmSync(remote(c.split(' ').at(-1)),{force:true});
++}else process.exit(10);
++`);
++  await chmod(join(dir, "adb"), 0o700);
++});
++afterEach(async () => { await rm(dir, { recursive: true, force: true }); });
++async function probe(mode = "success") {
++  const script = join(dir, "probe.mjs");
++  await writeFile(script, `
++import{takeScreenshot,screenshotBase64,setScreenshotDir}from ${JSON.stringify(resolve("src/adb/screenshot.ts"))};
++import{readFile,readdir}from'node:fs/promises';
++setScreenshotDir(${JSON.stringify(join(dir, "images"))});
++const events=[],spans=[],o=Object.freeze({serial:'PRIVATE_SERIAL',exactSerial:true,autoReconnect:false,timeout:3000,
++ onCaptureSpan:s=>spans.push(s),onScreenshotCleanup:e=>{events.push(e);if(process.env.FUSION_MODE==='throwing')throw Error('PRIVATE_SINK');}});
++let result,failure;
++try{const r=await takeScreenshot({...o,includeBase64:true});result={bytes:[...await readFile(r.path)],base64:r.base64,width:r.width,height:r.height};}
++catch(e){failure={kind:e.failureKind??'unknown',exitCode:e.exitCode};}
++console.log(JSON.stringify({result,failure,events,spans,remote:(await readdir(process.env.FUSION_ROOT)).filter(s=>s.startsWith('remote-')).length,
++ files:(await readdir(${JSON.stringify(join(dir, "images"))})).length}));
++`);
++  const { stdout } = await exec(process.execPath, ["--import", "tsx", script], {
++    timeout: 10000, env: { ...process.env, PATH: `${dir}:${process.env.PATH}`, FUSION_ROOT: dir, FUSION_MODE: mode },
++  });
++  return JSON.parse(stdout);
++}
++it.each(["cleanup", "both-cleanups"])("exposes cleanup failure without replacing successful image: %s", async mode => {
++  const r = await probe(mode);
++  expect(r.result.bytes).toEqual([32, 0, 128, 255, 10, 13, 32]);
++  expect(r.events).toEqual([{ phase: "transfer", outcome: "error" },
++    { phase: "fallback", outcome: mode === "cleanup" ? "ok" : "error" }]);
++  expect(r.remote).toBe(mode === "cleanup" ? 0 : 1);
++});
++
++it.each([["transfer", "exit", 7], ["missing-ack", "unknown", undefined], ["legacy-exit", "exit", 7], ["invalid-status", "unknown", undefined], ["dimensions", "exit", 9]])(
++  "retains primary failure and removes partial local images: %s", async (mode, kind, exitCode) => {
++    const r = await probe(mode as string);
++    expect(r.failure).toMatchObject({ kind, ...(exitCode === undefined ? {} : { exitCode }) });
++    expect(r.files).toBe(0);
++    expect(r.remote).toBe(0);
++    if (mode !== "dimensions") expect(r.events.at(-1)).toEqual({ phase: "fallback", outcome: "ok" });
++  },
++);
++
++it("ignores throwing cleanup sinks", async () => {
++  const r = await probe("throwing");
++  expect(r.result.bytes).toEqual([32, 0, 128, 255, 10, 13, 32]);
++  expect(r.remote).toBe(0);
++});
++
++it("preserves exact binary image and saved file while confirming cleanup inside transfer", async () => {
++  const r = await probe();
++  expect(r.result).toMatchObject({ bytes: [32, 0, 128, 255, 10, 13, 32], width: 1080, height: 2340 });
++  expect(r.events).toEqual([{ phase: "transfer", outcome: "ok" }]);
++  expect(r.remote).toBe(0);
++  expect(r.files).toBe(1);
++  expect(r.spans.filter((s: { stage: string }) => s.stage === "adb_attempt")).toHaveLength(3);
++  expect(JSON.stringify({ events: r.events, spans: r.spans })).not.toContain("PRIVATE_");
++});

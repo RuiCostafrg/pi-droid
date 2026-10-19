@@ -1,0 +1,258 @@
+{
+  "kind": "fusion-transport-probe-v1",
+  "status": "pass",
+  "driverHash": "9e9c4a391be3b886ca08905b7e53c3a7dc605e00ead5bb67c7d3c2919af27577",
+  "sourceHashes": {
+    "exec.ts": "455d2d84815bb3239d46a77f966ab7e640c3e3b0f422f25fcb9cf76a741ecad1",
+    "screenshot.ts": "8583515e86154a7de5b91b032744a0a37dfdbcf20d909aa55ef12aad609ce11b"
+  },
+  "samples": [
+    {
+      "variant": "pull-rm",
+      "round": 1,
+      "outcome": "ok",
+      "captureMs": 341.07505200000014,
+      "transferCleanupMs": 87.89979200000016,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "shell-fused",
+      "round": 1,
+      "outcome": "ok",
+      "captureMs": 323.30875000000015,
+      "transferCleanupMs": 99.64375000000018,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "exec-out-fused",
+      "round": 1,
+      "outcome": "ok",
+      "captureMs": 304.18286499999977,
+      "transferCleanupMs": 72.87630200000058,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "exec-out-fused",
+      "round": 2,
+      "outcome": "ok",
+      "captureMs": 330.2030730000006,
+      "transferCleanupMs": 109.59937499999978,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "shell-fused",
+      "round": 2,
+      "outcome": "ok",
+      "captureMs": 283.8568750000004,
+      "transferCleanupMs": 85.75624999999945,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "pull-rm",
+      "round": 2,
+      "outcome": "ok",
+      "captureMs": 348.42875000000004,
+      "transferCleanupMs": 89.29708300000038,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "pull-rm",
+      "round": 3,
+      "outcome": "ok",
+      "captureMs": 323.35328200000004,
+      "transferCleanupMs": 86.08041599999979,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "shell-fused",
+      "round": 3,
+      "outcome": "ok",
+      "captureMs": 316.46114599999964,
+      "transferCleanupMs": 64.78453100000024,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "exec-out-fused",
+      "round": 3,
+      "outcome": "ok",
+      "captureMs": 354.0130199999994,
+      "transferCleanupMs": 69.46260499999971,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "exec-out-fused",
+      "round": 4,
+      "outcome": "ok",
+      "captureMs": 319.38124999999945,
+      "transferCleanupMs": 87.04468699999961,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "shell-fused",
+      "round": 4,
+      "outcome": "ok",
+      "captureMs": 319.6201039999996,
+      "transferCleanupMs": 88.80567700000029,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "pull-rm",
+      "round": 4,
+      "outcome": "ok",
+      "captureMs": 305.222135,
+      "transferCleanupMs": 73.50203200000033,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "pull-rm",
+      "round": 5,
+      "outcome": "ok",
+      "captureMs": 348.14224000000104,
+      "transferCleanupMs": 146.8401040000008,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "shell-fused",
+      "round": 5,
+      "outcome": "ok",
+      "captureMs": 321.72567700000036,
+      "transferCleanupMs": 80.65578199999982,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "exec-out-fused",
+      "round": 5,
+      "outcome": "ok",
+      "captureMs": 314.6492699999999,
+      "transferCleanupMs": 86.62562500000058,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "exec-out-fused",
+      "round": 6,
+      "outcome": "ok",
+      "captureMs": 305.68171900000016,
+      "transferCleanupMs": 111.44380199999978,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "shell-fused",
+      "round": 6,
+      "outcome": "ok",
+      "captureMs": 316.05203099999926,
+      "transferCleanupMs": 93.80093699999998,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "pull-rm",
+      "round": 6,
+      "outcome": "ok",
+      "captureMs": 325.86083300000064,
+      "transferCleanupMs": 82.6560419999987,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "pull-rm",
+      "round": 7,
+      "outcome": "ok",
+      "captureMs": 301.56328100000064,
+      "transferCleanupMs": 98.28380199999992,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "shell-fused",
+      "round": 7,
+      "outcome": "ok",
+      "captureMs": 320.4271359999984,
+      "transferCleanupMs": 78.54135399999905,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "exec-out-fused",
+      "round": 7,
+      "outcome": "ok",
+      "captureMs": 306.7944270000007,
+      "transferCleanupMs": 85.73171899999943,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "exec-out-fused",
+      "round": 8,
+      "outcome": "ok",
+      "captureMs": 311.43348999999944,
+      "transferCleanupMs": 79.05354200000147,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "shell-fused",
+      "round": 8,
+      "outcome": "ok",
+      "captureMs": 334.1085409999996,
+      "transferCleanupMs": 115.00609399999848,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    },
+    {
+      "variant": "pull-rm",
+      "round": 8,
+      "outcome": "ok",
+      "captureMs": 329.65520800000013,
+      "transferCleanupMs": 93.50833300000158,
+      "bytes": 125590,
+      "width": 1080,
+      "height": 2340
+    }
+  ],
+  "limits": [
+    "Capture is retained separately but excluded from transfer+cleanup interval. No production change.",
+    "Eight reversed-order rounds, descriptive only; transfer wall includes footer verification/truncation when applicable, excludes PNG validation.",
+    "exec-out merges stderr into stdout and loses remote exit status; footer must carry statuses. Not a production acceptance check."
+  ],
+  "imeRestored": true,
+  "termuxRestored": true
+}

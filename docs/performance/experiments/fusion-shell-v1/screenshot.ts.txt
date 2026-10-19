@@ -1,0 +1,131 @@
+/**
+ * Screenshot capture — pull screenshots from device to local storage.
+ */
+
+import { mkdir, readFile, unlink, open } from "node:fs/promises";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
+import { existsSync } from "node:fs";
+import { randomUUID } from "node:crypto";
+import { adbToFile, adbShell, AdbError, type AdbExecOptions } from "./exec.js";
+import { captureTiming } from "./capture-timing.js";
+import type { ScreenshotResult } from "./types.js";
+
+let screenshotDir = join(tmpdir(), "pi-droid", "screenshots");
+
+export function setScreenshotDir(dir: string): void {
+  screenshotDir = dir;
+}
+
+export interface ScreenshotOptions extends AdbExecOptions {
+  /** Opt-in content-free outcomes, not device cleanup duration. Sink errors are ignored. */
+  onScreenshotCleanup?: (event: { phase: "transfer" | "fallback"; outcome: "ok" | "error" | "unknown" }) => void;
+}
+
+function cleanupEvent(options: ScreenshotOptions, phase: "transfer" | "fallback", outcome: "ok" | "error" | "unknown"): void {
+  try { options.onScreenshotCleanup?.({ phase, outcome }); } catch { /* Diagnostics cannot alter capture. */ }
+}
+
+// Only internally generated paths reach the shell. Cleanup must not initiate
+// recovery, mask the primary result/error, or delete another call's image.
+async function removeRemote(path: string, options: ScreenshotOptions): Promise<void> {
+  try {
+    await adbShell(`rm -f ${path}`, { ...options, autoReconnect: false });
+    cleanupEvent(options, "fallback", "ok");
+  } catch { cleanupEvent(options, "fallback", "error"); }
+}
+
+/**
+ * One non-PTY shell process streams binary bytes and removes only its owned PNG.
+ * A bounded random footer on stdout carries remote statuses even on legacy shell
+ * transports without separate stderr/exit status. It is verified/removed on disk,
+ * never by decoding or trimming the image. stderr remains diagnostic-only.
+ */
+async function transferAndRemove(remote: string, local: string, options: ScreenshotOptions): Promise<boolean> {
+  const token = `pi-droid-transfer-${randomUUID()}`;
+  const command = `cat ${remote}; transfer=$?; rm -f ${remote} >/dev/null 2>&1; cleanup=$?; printf '\\n${token}:%s:%s\\n' "$transfer" "$cleanup"; exit "$transfer"`;
+  let known = false;
+  try {
+    await adbToFile(["shell", "-T", command], local, options);
+    const file = await open(local, "r+");
+    try {
+      const { size } = await file.stat();
+      const tail = Buffer.alloc(Math.min(size, 128));
+      const { bytesRead } = await file.read(tail, 0, tail.length, size - tail.length);
+      const match = tail.subarray(0, bytesRead).toString("utf8").match(new RegExp(`\\n${token}:(\\d{1,3}):(\\d{1,3})\\n$`));
+      if (!match || Number(match[1]) > 255 || Number(match[2]) > 255) throw new Error("Missing screenshot transfer acknowledgement");
+      known = true;
+      const cleaned = Number(match[2]) === 0;
+      cleanupEvent(options, "transfer", cleaned ? "ok" : "error");
+      if (Number(match[1]) !== 0) throw new AdbError("Screenshot transfer failed", command, "", Number(match[1]), "exit");
+      await file.truncate(size - Buffer.byteLength(match[0]));
+      return cleaned;
+    } finally { await file.close(); }
+  } catch (error) {
+    if (!known) cleanupEvent(options, "transfer", "unknown");
+    throw error;
+  }
+}
+
+/**
+ * Take a screenshot and pull it to local storage. Successful local files are
+ * retained for the caller; partial/failed results are removed best-effort.
+ */
+export async function takeScreenshot(
+  options: ScreenshotOptions & { prefix?: string; includeBase64?: boolean } = {},
+): Promise<ScreenshotResult> {
+  const timing = options.captureClock ?? captureTiming(options.onCaptureSpan);
+  options = { ...options, captureClock: timing };
+  if (!existsSync(screenshotDir)) {
+    await mkdir(screenshotDir, { recursive: true });
+  }
+
+  // UUIDs isolate both device and host files, including across processes and
+  // calls sharing a timestamp. No global lock serializes unrelated captures.
+  const id = randomUUID();
+  const remotePath = `/sdcard/pi-droid-screen-${id}.png`;
+  const ts = new Date().toISOString().replace(/[:.]/g, "-");
+  const prefix = options.prefix ?? "screen";
+  const localPath = join(screenshotDir, `${prefix}_${ts}_${id}.png`);
+  let remoteRemoved = false;
+  try {
+    await timing.async("screenshot_capture", () => adbShell(`screencap -p ${remotePath}`, options));
+    remoteRemoved = await timing.async("screenshot_transfer", () => transferAndRemove(remotePath, localPath, options));
+
+    const { width, height } = await timing.async("screenshot_dimensions", async () => {
+      const sizeOutput = await adbShell("wm size", options);
+      const match = sizeOutput.match(/(\d+)x(\d+)/);
+      return { width: match ? parseInt(match[1]) : 0, height: match ? parseInt(match[2]) : 0 };
+    });
+    const result: ScreenshotResult = { path: localPath, width, height };
+    if (options.includeBase64) {
+      result.base64 = await timing.async("screenshot_read", async () => (await readFile(localPath)).toString("base64"));
+    }
+    return result;
+  } catch (error) {
+    await unlink(localPath).catch(() => {});
+    throw error;
+  } finally {
+    if (!remoteRemoved) await removeRemote(remotePath, options);
+  }
+}
+
+/**
+ * Take a screenshot and return base64 directly (no retained file).
+ */
+export async function screenshotBase64(options: ScreenshotOptions = {}): Promise<string> {
+  const timing = options.captureClock ?? captureTiming(options.onCaptureSpan);
+  options = { ...options, captureClock: timing };
+  const id = randomUUID();
+  const remotePath = `/sdcard/pi-droid-screen-${id}.png`;
+  const tmpPath = join(tmpdir(), `pi-droid-quick-${id}.png`);
+  let remoteRemoved = false;
+  try {
+    await timing.async("screenshot_capture", () => adbShell(`screencap -p ${remotePath}`, options));
+    remoteRemoved = await timing.async("screenshot_transfer", () => transferAndRemove(remotePath, tmpPath, options));
+    return await timing.async("screenshot_read", async () => (await readFile(tmpPath)).toString("base64"));
+  } finally {
+    await unlink(tmpPath).catch(() => {});
+    if (!remoteRemoved) await removeRemote(remotePath, options);
+  }
+}

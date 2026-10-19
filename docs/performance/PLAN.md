@@ -58,7 +58,44 @@ rollback and measurement plan, and ask before risky/out-of-scope work, new APKs,
 permissions, helpers or debugging exposure. Keep every failed report and historical
 driver; acceptance checks remain intact. Carry this policy into future handoffs.
 
-## Latest continuation — screenshot latency diagnosed; next optimization pending
+## Latest continuation — fusion experiment rejected; active production restored
+
+User approved binary-safe transfer/cleanup consolidation after diagnosis. It was
+implemented/measured, then rejected for lack of demonstrated latency improvement.
+[Full evidence/failures/rollback](reports/fusion-experiment-2026-10-19.md),
+[isolated candidate replay](experiments/fusion-shell-v1/README.md).
+
+- Candidate changed only exec.ts/screenshot.ts: shared execution policy, binary
+  streaming/no image cap, one transfer+owned deletion, bounded status footer and
+  opt-in content-free cleanup outcomes. Return/frame/error/cleanup contracts tested.
+  This is archived experimental code, NOT an active API or shipped optimization.
+- NEW chronological baseline318324.82ms vs candidate321845.17ms, all shopping +30
+  writes +30 persisted values. +1.11% descriptive, one extra after field alignment;
+  two preserved failed native-dump attempts (exit/timeout), neither wrote Forge.
+ 17/17 archival functional gates PASS does NOT imply optimization acceptance.
+- Frozen12/12 focused each showed3.82–12.83% lower medians; larger32/32 each showed
+ 10.45–15.93% SLOWER medians. Transfer-only24/24 counterbalanced probe: pull+rm88.60,
+ shell-fused87.28, exec-out diagnostic86.18ms medians, broad ranges. Fewer successful
+ commands not a reliable speedup. No causal/cumulative/non-inferiority claim.
+- Reversed only our runtime/fixture edits using exact archived patch. Active src/
+  matches published35de2c6; six baseline rebuilt hashes independently match. Fresh
+  restored registered screenshot/look also PASS, later1443/3784ms readings retained
+  (not equivalent performance evidence); prior baseline591/2544, candidate569/2600.
+- Candidate units861/861; isolated patch replay41/41 and rebuild matches six after
+  hashes. Restored active844/844 units/61 files (--maxWorkers=2),9/9 integrations,
+  lint/build/new syntax/whitespace. Initial823/826 old PNG comparator fixture failure
+  preserved; fixed by matching b050b7f snapshot, not rewriting historical reports or
+  comparator. New archived-evidence comparator35/35. Manual, not independent review.
+- Two TEST drafts source-fuse-before14/after14 retained,15 unchecked sets20kg ×8 each.
+  Gboard/Termux independently verified after every live block. Wireless interruption
+  handled with fresh secure rediscovery; no guessed port/legacy TCP/IP/network change.
+  No Amazon mutation/completed workout/APK/helper/permission/debug exposure. Parent
+  not reloaded, companion unchanged, default fully parallel CI still unverified.
+- Next requires a DIFFERENT bounded scope confirmed before production edits. Any
+  future slice needs NEW equivalent pre-edit/full v3.2/focused/actual loaded gates;
+  archived measurements are not evergreen baselines. See current NEXT-SESSION.md.
+
+## Previous continuation — screenshot latency diagnosed (superseded by rejected experiment)
 
 User approved a diagnostic-first slice and additional observability where useful.
 [Full evidence, failures and next approval](reports/screenshot-latency-diagnosis-2026-10-19.md).
