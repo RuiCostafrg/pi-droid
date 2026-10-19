@@ -156,3 +156,12 @@ Audits are checkpoint-specific. Future source changes require isolated matching 
 ## Next decision
 
 No further implementation scope is approved automatically. Agree one different bounded optimization or deeper measurement with the user. More detailed device internals need explicit capability/privacy/overhead scope; do not infer cause from this envelope or reinstall rejected fusion. Preserve these diagnostic-only scripts as measured. Any next production slice requires a NEW equivalent pre-edit full v3.2 baseline, full Amazon +30 writes/+30 persisted readbacks after, focused pair and actual freshly loaded relevant tools/build hashes. These passing runs are not evergreen baselines. No speedup or cumulative gain claim.
+
+## Verified publication
+
+Diagnostic implementation/tests/all evidence published as
+**5d5c140e26bb0808a926d2cc3a9e30d080a924e2** to user-owned origin/main.
+An independent full `git ls-remote origin refs/heads/main` hash matched local HEAD;
+tree was clean afterward. No upstream push. This follow-up docs-only checkpoint
+records publication; production, measured diagnostic scripts and artifacts remain
+unchanged after validation. No accepted screenshot optimization is implied.

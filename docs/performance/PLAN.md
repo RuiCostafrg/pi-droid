@@ -64,6 +64,9 @@ driver; acceptance checks remain intact. Carry this policy into future handoffs.
 bounded device elapsed capture/plain/control diagnostics and full validation, then
 requested retry after two baseline failures. Unchanged third baseline passed;
 no workflow/guard edits. All src remains35de2c6-identical; fusion stays rejected.
+Diagnostic/tests/evidence published as **5d5c140e26bb0808a926d2cc3a9e30d080a924e2**
+to user-owned origin/main; full remote hash independently matched and tree clean.
+This follow-up docs-only checkpoint records publication, not a new measurement.
 
 - New diagnostic runner, strict offline audit, unchanged-source workflow comparator,
   two new test files. Fixed content-free records, separate host/device clocks,

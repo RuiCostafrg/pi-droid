@@ -5,6 +5,10 @@
 Read PLAN.md and [complete diagnostic evidence](reports/capture-envelope-diagnostic-2026-10-19.md)
 first. This section supersedes older blocked/experiment next actions.
 
+- Diagnostic implementation/tests/all evidence published as
+  **5d5c140e26bb0808a926d2cc3a9e30d080a924e2** to user-owned origin/main.
+  Independent full remote hash matched; tree clean after push. This follow-up
+  docs-only checkpoint records publication; measured source/artifacts unchanged.
 - User approved diagnostic-only device elapsed-time capture brackets/plain capture/
   no-capture controls and tests, reiterated full Amazon → Forge validation, then
   requested another baseline retry. Unchanged before3 PASS304955.36ms; after1
