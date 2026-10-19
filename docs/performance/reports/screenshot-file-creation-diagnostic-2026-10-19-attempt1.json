@@ -1,0 +1,1250 @@
+{
+  "kind": "screenshot-file-creation-diagnostic-v1",
+  "status": "pass",
+  "rounds": 8,
+  "sourceBefore": {
+    "src/adb/screenshot.ts": "39abeaf8881be67d2a2b7a4c43c3052d4a6750fe8e51fff0dafad76366124570",
+    "src/adb/exec.ts": "f98b7d0eb141959cbf19cf8f16a86606e4bb01c5e81d912b923491f7678b1c32",
+    "scripts/screenshot-latency-diagnostic.mjs": "f533a39aa61cf276a0654826befd1fd5890418ea2e17a46e03377618e851f43b",
+    "scripts/screenshot-file-creation-diagnostic.mjs": "b79bcf45cac8b9f5554372d2c42913a11522ef1a4744c806f458763c02172a94"
+  },
+  "samples": [
+    {
+      "variant": "sdcard-fresh",
+      "round": 1,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.6703120000001945,
+          "closeMs": 72.56838499999958
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.058697999999822,
+        "closeMs": 577.8321870000004
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.82546899999943,
+        "closeMs": 376.35406299999977
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 11.645989999999983,
+        "closeMs": 35.82223999999951
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-overwrite",
+      "round": 1,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.637136000000282,
+          "closeMs": 64.50510400000076
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.629062999999405,
+        "closeMs": 340.52385400000003
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.36895800000002,
+        "closeMs": 354.86562500000036
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 12.185781000000134,
+        "closeMs": 39.70291600000019
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-fresh",
+      "round": 1,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.988749999999527,
+          "closeMs": 55.106718
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.898958999999195,
+        "closeMs": 323.49848999999995
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 5.190885999999409,
+        "closeMs": 335.5626569999995
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 6.435937999999624,
+        "closeMs": 25.212760999999773
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-overwrite",
+      "round": 1,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 7.025520999999571,
+          "closeMs": 55.595155999999406
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.709114000000227,
+        "closeMs": 351.09911400000055
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.58770800000002,
+        "closeMs": 319.58421799999996
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 7.259270999999899,
+        "closeMs": 32.513176999999814
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-overwrite",
+      "round": 2,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 5.944062000000486,
+          "closeMs": 47.60218700000041
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.734635999999227,
+        "closeMs": 335.8534899999995
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 12.979999999999563,
+        "closeMs": 349.8224999999993
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 11.72375000000011,
+        "closeMs": 32.242395000000215
+      },
+      "bytes": 122611,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-fresh",
+      "round": 2,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.183071999999811,
+          "closeMs": 50.047968000000765
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.083958000000166,
+        "closeMs": 312.1055729999998
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 12.84359399999994,
+        "closeMs": 341.9005210000005
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 5.6361459999989165,
+        "closeMs": 23.906041000000187
+      },
+      "bytes": 122611,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-overwrite",
+      "round": 2,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 10.129063000000315,
+          "closeMs": 78.0217190000003
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.677396000000954,
+        "closeMs": 339.7719269999998
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.762604999999894,
+        "closeMs": 302.97249999999985
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 5.719947999999931,
+        "closeMs": 31.06708399999843
+      },
+      "bytes": 122611,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-fresh",
+      "round": 2,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.616667000000234,
+          "closeMs": 67.00697899999977
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.93838599999981,
+        "closeMs": 387.27291700000023
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.258125000000291,
+        "closeMs": 365.38150999999925
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 9.953854000001229,
+        "closeMs": 32.44958399999996
+      },
+      "bytes": 122611,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-fresh",
+      "round": 3,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 8.607968000000255,
+          "closeMs": 72.82900999999947
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.984167000000525,
+        "closeMs": 328.9026560000002
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 5.102136000001337,
+        "closeMs": 339.7468750000007
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 8.161041999999725,
+        "closeMs": 32.39619799999855
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-overwrite",
+      "round": 3,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 14.928281000000425,
+          "closeMs": 76.66630200000145
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.773959000000104,
+        "closeMs": 349.1326050000007
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.185051999998905,
+        "closeMs": 337.5690620000005
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 126,
+        "spawnMs": 6.787136000000828,
+        "closeMs": 69.50796900000023
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-fresh",
+      "round": 3,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.52593700000034,
+          "closeMs": 51.082186999999976
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.242500000000291,
+        "closeMs": 320.8814060000004
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.7469789999995555,
+        "closeMs": 309.6189059999997
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 8.114166999999725,
+        "closeMs": 30.539843999998993
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-overwrite",
+      "round": 3,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.727239000001646,
+          "closeMs": 56.177395000000615
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.66791700000067,
+        "closeMs": 346.10697900000014
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.242551999999705,
+        "closeMs": 339.05734400000074
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 8.222395999999208,
+        "closeMs": 28.51046899999892
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-overwrite",
+      "round": 4,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 5.690207999999984,
+          "closeMs": 50.055521000000226
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.863749999998618,
+        "closeMs": 325.9148959999984
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.338593000000401,
+        "closeMs": 331.6905200000001
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 8.87724000000162,
+        "closeMs": 27.350781000001007
+      },
+      "bytes": 122626,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-fresh",
+      "round": 4,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 9.511196999999811,
+          "closeMs": 62.60494699999981
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 9.447968000000401,
+        "closeMs": 332.49187399999937
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.057655999999042,
+        "closeMs": 369.79447900000014
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 6.039844000000812,
+        "closeMs": 32.478282000000036
+      },
+      "bytes": 122626,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-overwrite",
+      "round": 4,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 9.532186999998885,
+          "closeMs": 79.80098899999939
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.336614999998346,
+        "closeMs": 329.2864579999987
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.094584000000395,
+        "closeMs": 328.6020320000007
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 126,
+        "spawnMs": 6.47760500000004,
+        "closeMs": 70.78567699999985
+      },
+      "bytes": 122626,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-fresh",
+      "round": 4,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 10.669009999997797,
+          "closeMs": 91.484375
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 9.908644999999524,
+        "closeMs": 352.84187399999973
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.575365000000602,
+        "closeMs": 351.7891670000008
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 126,
+        "spawnMs": 9.25927099999899,
+        "closeMs": 73.09072899999956
+      },
+      "bytes": 122626,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-fresh",
+      "round": 5,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 7.07723900000201,
+          "closeMs": 64.69140600000173
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 16.852240000000165,
+        "closeMs": 368.6444789999987
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 5.807186999998521,
+        "closeMs": 321.88005200000043
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 9.961301999999705,
+        "closeMs": 43.91520799999853
+      },
+      "bytes": 122626,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-overwrite",
+      "round": 5,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.79156299999886,
+          "closeMs": 67.68041699999958
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.796562999999878,
+        "closeMs": 359.6304689999997
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.466354000000138,
+        "closeMs": 353.0596880000012
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 5.325417000000016,
+        "closeMs": 25.693386000002647
+      },
+      "bytes": 122626,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-fresh",
+      "round": 5,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.865938000002643,
+          "closeMs": 56.27994799999942
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.888749999998254,
+        "closeMs": 341.57869800000117
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.229843000000983,
+        "closeMs": 351.1159890000017
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 10.242448000000877,
+        "closeMs": 37.19812499999898
+      },
+      "bytes": 122626,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-overwrite",
+      "round": 5,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.006092999999964,
+          "closeMs": 53.30874899999981
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.003749999999854,
+        "closeMs": 337.47182299999986
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 18.1807289999997,
+        "closeMs": 320.1985940000013
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 7.108854000001884,
+        "closeMs": 23.446406999999454
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-overwrite",
+      "round": 6,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.630364000000554,
+          "closeMs": 51.76041600000099
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 9.35906199999954,
+        "closeMs": 314.7744270000003
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.263386000002356,
+        "closeMs": 334.21406299999944
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 10.670521000000008,
+        "closeMs": 33.7071360000009
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-fresh",
+      "round": 6,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 9.1958859999977,
+          "closeMs": 61.01234399999885
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 12.607030999999552,
+        "closeMs": 343.3073430000004
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 12.602083999998285,
+        "closeMs": 328.79880200000116
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 10.974894999999378,
+        "closeMs": 44.82692700000189
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-overwrite",
+      "round": 6,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.698334000000614,
+          "closeMs": 70.43651099999988
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 9.665156000002753,
+        "closeMs": 340.3216140000004
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 5.066614999999729,
+        "closeMs": 319.6729689999993
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 8.116250000002765,
+        "closeMs": 33.90838600000279
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-fresh",
+      "round": 6,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 8.237186999998812,
+          "closeMs": 83.6359369999991
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 9.084427999998297,
+        "closeMs": 348.2171879999987
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.014322999999422,
+        "closeMs": 338.34776099999726
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 6.014634999999544,
+        "closeMs": 28.922655999998824
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-fresh",
+      "round": 7,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.059999999997672,
+          "closeMs": 58.76650999999765
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.142343999999866,
+        "closeMs": 349.9614589999983
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.413490000002639,
+        "closeMs": 319.43734400000176
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 8.755365000000893,
+        "closeMs": 32.08078200000091
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-overwrite",
+      "round": 7,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 12.385833000000275,
+          "closeMs": 82.27119799999855
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.211978999999701,
+        "closeMs": 333.18932300000233
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.149792000000161,
+        "closeMs": 318.47046899999987
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 126,
+        "spawnMs": 9.049166000000696,
+        "closeMs": 75.4022389999991
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-fresh",
+      "round": 7,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.137343999998848,
+          "closeMs": 54.1781770000016
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.403802000000724,
+        "closeMs": 344.9247910000013
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 12.028385999998136,
+        "closeMs": 327.3673959999978
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 10.73645899999974,
+        "closeMs": 32.43562500000189
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-overwrite",
+      "round": 7,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 6.794323000001896,
+          "closeMs": 39.66515600000275
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 14.225469000000885,
+        "closeMs": 353.04088599999886
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.559375000000728,
+        "closeMs": 333.8817190000009
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 5.187396000001172,
+        "closeMs": 25.44224000000031
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-overwrite",
+      "round": 8,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 7.482187999998132,
+          "closeMs": 40.33739599999899
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.561302000001888,
+        "closeMs": 317.1942190000009
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.920469000000594,
+        "closeMs": 326.34968800000206
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 5.785208999997849,
+        "closeMs": 31.87145899999814
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "localtmp-fresh",
+      "round": 8,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 11.11494699999821,
+          "closeMs": 68.0293219999985
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.720365000001038,
+        "closeMs": 327.07031199999983
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.972344000001613,
+        "closeMs": 318.52859400000307
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 134,
+        "spawnMs": 9.800051999998686,
+        "closeMs": 84.20057299999826
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-overwrite",
+      "round": 8,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 5.660313000000315,
+          "closeMs": 61.0977610000009
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.675989000003028,
+        "closeMs": 345.29880200000116
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.122969000000012,
+        "closeMs": 310.88687500000015
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 8.275832999999693,
+        "closeMs": 32.70994799999971
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    },
+    {
+      "variant": "sdcard-fresh",
+      "round": 8,
+      "cleanup": [
+        {
+          "outcome": "ok",
+          "stdoutBytes": 0,
+          "stderrBytes": 0,
+          "spawnMs": 5.193021000002773,
+          "closeMs": 64.64046900000176
+        }
+      ],
+      "prime": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.349270999999135,
+        "closeMs": 361.8697919999977
+      },
+      "measured": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.24822900000072,
+        "closeMs": 322.2304170000025
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 7.824479999999312,
+        "closeMs": 35.265157000001636
+      },
+      "bytes": 122610,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true
+    }
+  ],
+  "limits": [
+    "Diagnostic only, no production change or full-workflow acceptance.",
+    "Each sample primes a new UUID-owned file, then captures to the same file or a second fresh owned file.",
+    "Prime and measurement both retained. Fixed prime-before-measure order does not isolate all cache/thermal effects.",
+    "Reversed variant order is counterbalancing, not randomization. Independent host process clocks; no device CPU claims.",
+    "PNG signature/IHDR/dimensions checked; not a full image decode. No images, identifiers, paths or raw errors exported."
+  ],
+  "fixture": {
+    "nativeLabelsMatch": true,
+    "width": 1080,
+    "height": 2340
+  },
+  "imeRestored": true,
+  "termuxRestored": true,
+  "sourceAfter": {
+    "src/adb/screenshot.ts": "39abeaf8881be67d2a2b7a4c43c3052d4a6750fe8e51fff0dafad76366124570",
+    "src/adb/exec.ts": "f98b7d0eb141959cbf19cf8f16a86606e4bb01c5e81d912b923491f7678b1c32",
+    "scripts/screenshot-latency-diagnostic.mjs": "f533a39aa61cf276a0654826befd1fd5890418ea2e17a46e03377618e851f43b",
+    "scripts/screenshot-file-creation-diagnostic.mjs": "b79bcf45cac8b9f5554372d2c42913a11522ef1a4744c806f458763c02172a94"
+  },
+  "sourceUnchanged": true
+}

@@ -1,0 +1,2936 @@
+{
+  "kind": "screenshot-latency-diagnostic-v1",
+  "status": "pass",
+  "rounds": 8,
+  "sourceBefore": {
+    "src/adb/screenshot.ts": "39abeaf8881be67d2a2b7a4c43c3052d4a6750fe8e51fff0dafad76366124570",
+    "src/adb/exec.ts": "f98b7d0eb141959cbf19cf8f16a86606e4bb01c5e81d912b923491f7678b1c32",
+    "src/adb/capture-timing.ts": "a2a9748af4f6e1cd3294debaea8ceb435e7b5aee6380e0bffcdedbd9abd545fb",
+    "scripts/screenshot-latency-diagnostic.mjs": "f533a39aa61cf276a0654826befd1fd5890418ea2e17a46e03377618e851f43b"
+  },
+  "samples": [
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "sequential",
+      "round": 1,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 4.8467710000004445,
+          "durationMs": 435.568542,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 2.244531999999708,
+          "durationMs": 438.82890600000064,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 444.8878130000003,
+          "durationMs": 31.656301999999414,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 441.11875000000055,
+          "durationMs": 35.4983859999993,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 478.66812500000015,
+          "durationMs": 66.57364599999983,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 476.6321360000002,
+          "durationMs": 68.95494700000017,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 545.6967190000005,
+          "durationMs": 1.3217709999998988,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 549.0751559999999,
+          "durationMs": 65.34671900000012,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 615.704479,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 620.6287489999995
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "sequential",
+      "round": 1,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 5.172707999999147,
+          "durationMs": 368.08927100000074,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 1.0870310000000245,
+          "durationMs": 372.2767189999995,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 375.3831249999994,
+          "durationMs": 32.943906000000425,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 373.4052079999992,
+          "durationMs": 34.95005200000014,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 408.36520799999926,
+          "durationMs": 1.430938000000424,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 411.6485419999999,
+          "durationMs": 55.10421799999949,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 467.1114579999994,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 467.3654689999994
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "concurrent",
+      "round": 1,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 4.283697999999276,
+          "durationMs": 353.8884900000003,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.3586459999996805,
+          "durationMs": 357.8973960000003,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 361.7823439999993,
+          "durationMs": 35.57734400000027,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 358.2863019999995,
+          "durationMs": 39.09708299999966,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 399.03244799999993,
+          "durationMs": 76.93104199999925,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 397.4042709999994,
+          "durationMs": 78.83291700000063,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 476.2767189999995,
+          "durationMs": 1.3057810000000245,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 479.014271,
+          "durationMs": 64.80328099999952,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 544.137135,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 545.4307289999997
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "concurrent",
+      "round": 1,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 11.003230000000258,
+          "durationMs": 357.9085930000001,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.28328200000032666,
+          "durationMs": 368.65479099999993,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 372.9483340000006,
+          "durationMs": 31.218488999999863,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 368.95567700000083,
+          "durationMs": 35.230313000000024,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 404.19979200000034,
+          "durationMs": 0.9130729999997129,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 407.44416700000056,
+          "durationMs": 66.64619799999946,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 474.2776560000002,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 474.39687499999945
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "sequential",
+      "round": 2,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 3.2436980000002222,
+          "durationMs": 389.8426040000004,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.1692189999994298,
+          "durationMs": 392.9542700000011,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 396.24838499999987,
+          "durationMs": 78.061823,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 393.14234300000044,
+          "durationMs": 81.2178129999993,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 474.3938019999996,
+          "durationMs": 2.343698000000586,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 480.82458300000053,
+          "durationMs": 88.57130199999847,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 569.9440619999996,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 570.2321349999993
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "sequential",
+      "round": 2,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 3.6938019999997778,
+          "durationMs": 382.41927100000066,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.42338500000005297,
+          "durationMs": 385.7380209999992,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 389.4157290000003,
+          "durationMs": 34.17229099999895,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 386.1870829999989,
+          "durationMs": 37.42213500000071,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 425.14505199999985,
+          "durationMs": 67.70130199999949,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 423.62395800000013,
+          "durationMs": 69.33786499999951,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 493.00676999999996,
+          "durationMs": 1.1321360000001732,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 496.2643229999994,
+          "durationMs": 78.39109300000018,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 575.4300519999997,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 578.6495830000003
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "concurrent",
+      "round": 2,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 6.984635999999227,
+          "durationMs": 384.5386980000003,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.445676999999705,
+          "durationMs": 391.1126569999997,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 393.66067699999985,
+          "durationMs": 30.941093999999794,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 391.5743229999989,
+          "durationMs": 33.056250000001455,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 424.6473960000003,
+          "durationMs": 1.0063539999991917,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 427.18286499999886,
+          "durationMs": 69.95114600000124,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 497.56192699999883,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 497.92135400000006
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "concurrent",
+      "round": 2,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 16.69781299999886,
+          "durationMs": 382.5957290000006,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.6410939999987022,
+          "durationMs": 398.68510400000014,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 401.0717189999996,
+          "durationMs": 41.88104199999907,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 399.3456249999999,
+          "durationMs": 43.63666699999885,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 444.4755729999997,
+          "durationMs": 58.16937499999949,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 442.9965109999994,
+          "durationMs": 59.80192700000043,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 502.8453649999992,
+          "durationMs": 1.3225519999996322,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 506.7823959999987,
+          "durationMs": 78.47187500000109,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 585.607188,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 587.0882290000009
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "sequential",
+      "round": 3,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 4.705364000001282,
+          "durationMs": 371.5981249999986,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.6152080000010756,
+          "durationMs": 375.7148959999995,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 380.6905200000001,
+          "durationMs": 43.21776099999988,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 376.3456240000014,
+          "durationMs": 47.58713599999828,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 426.14775999999983,
+          "durationMs": 72.33661399999983,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 423.9481770000002,
+          "durationMs": 74.76078100000086,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 498.85187399999995,
+          "durationMs": 2.7146880000000237,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 505.7545829999999,
+          "durationMs": 85.25531200000114,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 591.5927080000001,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 593.9339060000002
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "sequential",
+      "round": 3,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 2.720729000000574,
+          "durationMs": 346.58479199999965,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.31510399999933725,
+          "durationMs": 349.032709000001,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 351.1161979999997,
+          "durationMs": 79.7665620000007,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 349.36239600000044,
+          "durationMs": 81.56385399999999,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 430.95119800000066,
+          "durationMs": 2.790207999998529,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 437.1626560000004,
+          "durationMs": 88.19510400000036,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 526.0888020000002,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 526.3595839999998
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "concurrent",
+      "round": 3,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 6.883438000000751,
+          "durationMs": 387.03229099999953,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.6339590000006865,
+          "durationMs": 393.310363999999,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 395.72541699999965,
+          "durationMs": 27.24645799999962,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 393.96041700000023,
+          "durationMs": 29.03890599999977,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 425.127031,
+          "durationMs": 76.70458399999916,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 423.0144789999995,
+          "durationMs": 78.94099000000097,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 501.9809380000006,
+          "durationMs": 1.3837499999990541,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 505.00765599999977,
+          "durationMs": 66.22781299999951,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 571.7753119999998,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 574.0231249999997
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "concurrent",
+      "round": 3,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 17.166301999999632,
+          "durationMs": 382.14598900000055,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.2483329999995476,
+          "durationMs": 399.0869270000003,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 400.67130200000065,
+          "durationMs": 75.04807299999993,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 399.34755199999927,
+          "durationMs": 76.39458300000115,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 475.7577600000004,
+          "durationMs": 1.7342189999999391,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 479.4826040000007,
+          "durationMs": 62.83182299999862,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 542.7397920000003,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 542.8781770000005
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "sequential",
+      "round": 4,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 2.3772919999992155,
+          "durationMs": 372.6084890000002,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.17078199999923527,
+          "durationMs": 374.83817700000145,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 378.8602609999998,
+          "durationMs": 42.71916600000077,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 375.022864999999,
+          "durationMs": 46.58229100000062,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 421.6200520000002,
+          "durationMs": 0.9404689999992115,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 424.6069270000007,
+          "durationMs": 56.28671899999972,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 481.26942699999927,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 481.37192700000014
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "sequential",
+      "round": 4,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 4.0015629999998055,
+          "durationMs": 399.17229100000077,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.3689589999994496,
+          "durationMs": 402.8539060000003,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 407.08406300000024,
+          "durationMs": 41.99281200000041,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 403.2458339999994,
+          "durationMs": 45.865052000001015,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 451.20078099999955,
+          "durationMs": 81.25234400000045,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 449.1298960000004,
+          "durationMs": 83.49515599999904,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 532.6766150000003,
+          "durationMs": 2.1147909999999683,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 537.6667710000002,
+          "durationMs": 74.90588500000013,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 612.9820830000008,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 615.1542709999994
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "concurrent",
+      "round": 4,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 6.029062999999951,
+          "durationMs": 392.68307300000015,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.3361459999996441,
+          "durationMs": 398.39645799999926,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 400.41041699999914,
+          "durationMs": 29.057292000001326,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 398.74958399999923,
+          "durationMs": 30.742968000000474,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 429.5088020000003,
+          "durationMs": 1.5418229999995674,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 433.57119799999964,
+          "durationMs": 61.13213600000017,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 494.9870320000009,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 495.0595320000011
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "concurrent",
+      "round": 4,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 14.28979199999958,
+          "durationMs": 388.54979099999946,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.4281249999985448,
+          "durationMs": 402.43145800000093,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 404.37583300000006,
+          "durationMs": 33.07630199999949,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 402.873646,
+          "durationMs": 34.601457999999184,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 439.1320829999986,
+          "durationMs": 68.21906300000046,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 437.4890099999993,
+          "durationMs": 69.98036499999944,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 507.56781299999966,
+          "durationMs": 1.6655719999998837,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 511.09572899999876,
+          "durationMs": 68.608698,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 580.1303120000011,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 581.8982290000004
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "sequential",
+      "round": 5,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 4.978177000000869,
+          "durationMs": 434.882239999999,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.46020900000075926,
+          "durationMs": 439.4321349999991,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 441.8797919999997,
+          "durationMs": 29.346614000001864,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 439.9123440000003,
+          "durationMs": 31.34640600000057,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 474.65724000000046,
+          "durationMs": 70.5340099999994,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 471.2760420000013,
+          "durationMs": 74.0842190000003,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 545.4021360000006,
+          "durationMs": 1.2940100000014354,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 548.8676039999991,
+          "durationMs": 72.60947900000247,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 622.0479689999993,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 623.6676559999978
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "sequential",
+      "round": 5,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 3.119062000001577,
+          "durationMs": 384.7534889999988,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.2422389999992447,
+          "durationMs": 387.66354200000205,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 389.8481759999995,
+          "durationMs": 72.76041700000133,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 387.92161399999895,
+          "durationMs": 74.72427100000277,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 462.66911400000026,
+          "durationMs": 2.6892709999992803,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 468.8147390000013,
+          "durationMs": 76.95239600000059,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 546.1904159999976,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 546.3013019999999
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "concurrent",
+      "round": 5,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 6.301562000000558,
+          "durationMs": 395.38671899999827,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.4492710000013176,
+          "durationMs": 401.2698429999982,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 403.7888019999991,
+          "durationMs": 40.076145999999426,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 401.73197900000014,
+          "durationMs": 42.149843999999575,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 445.4375519999994,
+          "durationMs": 63.44791600000099,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 443.8923429999995,
+          "durationMs": 65.1105209999987,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 509.03781199999867,
+          "durationMs": 0.9952080000002752,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 511.76578099999824,
+          "durationMs": 68.08255200000349,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 580.325155999999,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 582.922967999999
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "concurrent",
+      "round": 5,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 11.603542000000743,
+          "durationMs": 398.63328099999853,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.27067800000077114,
+          "durationMs": 409.98947899999985,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 411.9060419999987,
+          "durationMs": 27.39031199999954,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 410.2714070000002,
+          "durationMs": 29.064791000000696,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 439.3505210000003,
+          "durationMs": 9.275832999999693,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 450.5090109999983,
+          "durationMs": 47.31802100000277,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 498.198333999997,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 498.3052089999983
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "sequential",
+      "round": 6,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 3.720000000001164,
+          "durationMs": 376.18015599999853,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.23901000000114436,
+          "durationMs": 379.72286499999973,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 385.32848899999954,
+          "durationMs": 43.590573000001314,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 379.98203099999955,
+          "durationMs": 48.96687500000189,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 428.9607290000022,
+          "durationMs": 0.9945829999996931,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 432.1571870000007,
+          "durationMs": 64.34427099999812,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 496.9451040000022,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 497.2800000000025
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "sequential",
+      "round": 6,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 4.327448000000004,
+          "durationMs": 375.7791139999972,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.4239059999999881,
+          "durationMs": 379.7057289999975,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 381.77958299999955,
+          "durationMs": 43.46328100000028,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 380.13765599999897,
+          "durationMs": 45.13697899999897,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 427.487968999998,
+          "durationMs": 73.42338500000187,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 425.28963499999736,
+          "durationMs": 75.79682300000059,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 501.23270799999955,
+          "durationMs": 2.2171359999993,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 507.93375000000015,
+          "durationMs": 76.14999999999782,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 584.5033330000006,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 587.2169269999977
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "concurrent",
+      "round": 6,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 6.5841140000011364,
+          "durationMs": 377.22999999999956,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.4246869999988121,
+          "durationMs": 383.42531300000337,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 385.44369799999913,
+          "durationMs": 33.41802000000098,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 383.85994800000117,
+          "durationMs": 35.03343699999823,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 418.90338500000144,
+          "durationMs": 1.040052000000287,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 421.7189580000013,
+          "durationMs": 54.20062499999767,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 476.1388020000013,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 476.29171900000074
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "concurrent",
+      "round": 6,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 13.989947999998549,
+          "durationMs": 377.60765600000013,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.258176999999705,
+          "durationMs": 391.3616669999974,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 393.15755199999694,
+          "durationMs": 70.58015599999999,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 391.6297919999997,
+          "durationMs": 72.14900999999736,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 465.226666999999,
+          "durationMs": 65.72598899999866,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 463.7928639999991,
+          "durationMs": 67.35828199999742,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 531.169582999999,
+          "durationMs": 2.0628649999998743,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 537.0796349999982,
+          "durationMs": 80.79161499999827,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 618.1420309999994,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 619.7093219999988
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "sequential",
+      "round": 7,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 3.519584000001487,
+          "durationMs": 408.13958300000013,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.19697900000028312,
+          "durationMs": 411.5001039999988,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 414.78677099999913,
+          "durationMs": 91.21385400000145,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 411.7201559999994,
+          "durationMs": 94.35411500000191,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 511.08750000000146,
+          "durationMs": 101.117291999999,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 506.10270800000217,
+          "durationMs": 106.26874999999927,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 612.4083329999994,
+          "durationMs": 5.397344000000885,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 625.9063539999988,
+          "durationMs": 93.7723960000003,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 720.2532289999981,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 724.1062500000007
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "sequential",
+      "round": 7,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 3.833385999998427,
+          "durationMs": 376.5723429999998,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.27479200000016135,
+          "durationMs": 380.15572899999825,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 384.3618749999987,
+          "durationMs": 34.23072899999897,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 380.43947899999694,
+          "durationMs": 38.19489600000088,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 418.6488539999991,
+          "durationMs": 1.6409899999998743,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 422.5140109999993,
+          "durationMs": 69.68458299999838,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 492.57302100000015,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 492.6791140000023
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "concurrent",
+      "round": 7,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 4.485468999999284,
+          "durationMs": 377.5616149999987,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.36213599999973667,
+          "durationMs": 381.71890599999824,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 384.58046900000045,
+          "durationMs": 35.59833299999809,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 382.0936980000006,
+          "durationMs": 38.1098439999987,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 421.8438019999994,
+          "durationMs": 61.20729199999914,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 420.21546899999885,
+          "durationMs": 62.87739599999986,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 483.1026559999991,
+          "durationMs": 1.1814589999994496,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 486.81421899999987,
+          "durationMs": 62.57156199999736,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 549.6597919999986,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 551.2536979999968
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "concurrent",
+      "round": 7,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 10.38724000000002,
+          "durationMs": 355.2570830000004,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.11104200000045239,
+          "durationMs": 365.5649479999993,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 367.527865,
+          "durationMs": 39.40020800000275,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 365.6870310000013,
+          "durationMs": 41.270416999999725,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 406.9675520000019,
+          "durationMs": 1.3852090000000317,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 410.3129170000029,
+          "durationMs": 69.42562499999985,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 480.0140109999993,
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 480.091042
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "sequential",
+      "round": 8,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 4.480313000000024,
+          "durationMs": 360.84697900000174,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.21020900000075926,
+          "durationMs": 365.1586449999995,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 369.5313019999994,
+          "durationMs": 41.81020900000294,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 365.3891670000012,
+          "durationMs": 45.9822920000006,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 411.38296900000205,
+          "durationMs": 1.031197999996948,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 414.77661499999886,
+          "durationMs": 67.89885400000276,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 483.0462499999994,
+      "bytes": 122145,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 483.151511
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "sequential",
+      "round": 8,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 3.2164580000026035,
+          "durationMs": 371.74645899999814,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.3530730000020412,
+          "durationMs": 374.64505199999985,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 377.5524480000022,
+          "durationMs": 43.42994800000088,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 375.0770310000007,
+          "durationMs": 45.93838600000163,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 422.74713500000144,
+          "durationMs": 77.0665110000009,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 421.02708300000086,
+          "durationMs": 78.86838600000192,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 499.9115100000017,
+          "durationMs": 2.637865000000602,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 505.5855730000003,
+          "durationMs": 73.63427100000263,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 579.6458330000023,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122145,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 581.6397920000018
+    },
+    {
+      "kind": "public",
+      "api": "base64",
+      "mode": "concurrent",
+      "round": 8,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 6.385468000000401,
+          "durationMs": 387.65994800000044,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.5871350000015809,
+          "durationMs": 393.4939579999991,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 396.09275999999954,
+          "durationMs": 34.655729000001884,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 394.0933330000007,
+          "durationMs": 36.680260000001,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 430.7822390000001,
+          "durationMs": 1.0452079999995476,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 433.49437500000204,
+          "durationMs": 60.514478999997664,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 494.28177100000175,
+      "bytes": 122145,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 494.3438019999994
+    },
+    {
+      "kind": "public",
+      "api": "saved",
+      "mode": "concurrent",
+      "round": 8,
+      "outcome": "ok",
+      "spans": [
+        {
+          "stage": "adb_attempt",
+          "startMs": 15.52786500000002,
+          "durationMs": 404.14036399999895,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "screenshot_capture",
+          "startMs": 0.2999999999992724,
+          "durationMs": 419.3972390000017,
+          "outcome": "ok",
+          "scope": "screenshot_capture"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 421.1332289999991,
+          "durationMs": 28.097240000002785,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "screenshot_transfer",
+          "startMs": 419.7090100000023,
+          "durationMs": 29.55390599999737,
+          "outcome": "ok",
+          "scope": "screenshot_transfer"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 450.7739580000016,
+          "durationMs": 68.67520800000057,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_dimensions",
+          "startMs": 449.2747390000004,
+          "durationMs": 70.26448000000164,
+          "outcome": "ok",
+          "scope": "screenshot_dimensions"
+        },
+        {
+          "stage": "screenshot_read",
+          "startMs": 519.5613540000013,
+          "durationMs": 3.1839059999983874,
+          "outcome": "ok",
+          "scope": "screenshot_read"
+        },
+        {
+          "stage": "adb_attempt",
+          "startMs": 527.1272390000013,
+          "durationMs": 86.69401099999959,
+          "outcome": "ok",
+          "scope": "unscoped"
+        }
+      ],
+      "spansTruncated": false,
+      "traceComplete": true,
+      "publicMs": 614.1278639999982,
+      "fileMatchesBase64": true,
+      "returnedDimensionsMatch": true,
+      "bytes": 122145,
+      "width": 1080,
+      "height": 2340,
+      "totalMs": 615.6416140000001
+    }
+  ],
+  "probes": [
+    {
+      "variant": "noop",
+      "round": 1,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.476407000000108,
+        "closeMs": 45.138646000000335
+      }
+    },
+    {
+      "variant": "sdcard-long",
+      "round": 1,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.356979000000138,
+        "closeMs": 371.85723899999994
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 11.4933860000001,
+        "closeMs": 31.366980000000694
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.2945830000007845,
+        "closeMs": 68.7726560000001
+      }
+    },
+    {
+      "variant": "sdcard-short",
+      "round": 1,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.8973430000005465,
+        "closeMs": 333.0328639999998
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 111,
+        "spawnMs": 10.071823000000222,
+        "closeMs": 36.17817699999978
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.940781000000243,
+        "closeMs": 75.83625000000029
+      }
+    },
+    {
+      "variant": "localtmp-long",
+      "round": 1,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.293072999999822,
+        "closeMs": 353.71119699999963
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 9.632657000000108,
+        "closeMs": 36.340885999999955
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 9.804895999999644,
+        "closeMs": 55.57328099999995
+      }
+    },
+    {
+      "variant": "localtmp-long",
+      "round": 2,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 9.06718699999874,
+        "closeMs": 357.52098899999874
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 9.545521000000008,
+        "closeMs": 37.14005200000065
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.393540999999459,
+        "closeMs": 59.62322900000072
+      }
+    },
+    {
+      "variant": "sdcard-short",
+      "round": 2,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.752031999998508,
+        "closeMs": 371.8333859999984
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 111,
+        "spawnMs": 7.801406000000497,
+        "closeMs": 34.31775999999991
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 5.359166000000187,
+        "closeMs": 112.53583299999991
+      }
+    },
+    {
+      "variant": "sdcard-long",
+      "round": 2,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.264791999999943,
+        "closeMs": 369.1943749999991
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 8.033801999999923,
+        "closeMs": 32.85479200000009
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.239427000000433,
+        "closeMs": 57.95713500000056
+      }
+    },
+    {
+      "variant": "noop",
+      "round": 2,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 12.299478999999337,
+        "closeMs": 59.55052099999921
+      }
+    },
+    {
+      "variant": "noop",
+      "round": 3,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.157812999999805,
+        "closeMs": 60.621250000000146
+      }
+    },
+    {
+      "variant": "sdcard-long",
+      "round": 3,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.42984400000023,
+        "closeMs": 406.07416700000067
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 126,
+        "spawnMs": 8.641978999999992,
+        "closeMs": 78.16838499999903
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.678697999999713,
+        "closeMs": 69.55666700000074
+      }
+    },
+    {
+      "variant": "sdcard-short",
+      "round": 3,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 12.22244800000044,
+        "closeMs": 384.094427
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 110,
+        "spawnMs": 8.191197999998622,
+        "closeMs": 83.79369699999916
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 16.151040999999168,
+        "closeMs": 97.07104099999924
+      }
+    },
+    {
+      "variant": "localtmp-long",
+      "round": 3,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.198177000000214,
+        "closeMs": 366.68453099999897
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 5.809010000000853,
+        "closeMs": 31.345573000000513
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 5.9091669999997976,
+        "closeMs": 44.279114999999365
+      }
+    },
+    {
+      "variant": "localtmp-long",
+      "round": 4,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 9.669844000000012,
+        "closeMs": 313.3223960000014
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 4.877394999999524,
+        "closeMs": 23.173644999998942
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.205155999999988,
+        "closeMs": 49.23817699999927
+      }
+    },
+    {
+      "variant": "sdcard-short",
+      "round": 4,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.121250000000146,
+        "closeMs": 387.90187499999956
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 111,
+        "spawnMs": 7.932603999997809,
+        "closeMs": 37.1651039999997
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.768332999999984,
+        "closeMs": 58.724999999998545
+      }
+    },
+    {
+      "variant": "sdcard-long",
+      "round": 4,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 9.985728999999992,
+        "closeMs": 370.9024989999998
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 6.040729000000283,
+        "closeMs": 29.657916000000114
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 5.558124999999563,
+        "closeMs": 66.26276099999814
+      }
+    },
+    {
+      "variant": "noop",
+      "round": 4,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.615365000001475,
+        "closeMs": 51.94557300000088
+      }
+    },
+    {
+      "variant": "noop",
+      "round": 5,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.749009999999544,
+        "closeMs": 55.89489599999797
+      }
+    },
+    {
+      "variant": "sdcard-long",
+      "round": 5,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.460624999999709,
+        "closeMs": 372.458802000001
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 10.830519999999524,
+        "closeMs": 33.96176999999807
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.376926999997522,
+        "closeMs": 58.936249999998836
+      }
+    },
+    {
+      "variant": "sdcard-short",
+      "round": 5,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.529270999999426,
+        "closeMs": 376.3342190000003
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 111,
+        "spawnMs": 5.974947999999131,
+        "closeMs": 30.54187499999898
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 5.853541000000405,
+        "closeMs": 55.36307300000044
+      }
+    },
+    {
+      "variant": "localtmp-long",
+      "round": 5,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.35510400000203,
+        "closeMs": 361.9917710000009
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 9.5568749999984,
+        "closeMs": 38.38104199999725
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.542084000000614,
+        "closeMs": 48.903802000000724
+      }
+    },
+    {
+      "variant": "localtmp-long",
+      "round": 6,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.4955210000007355,
+        "closeMs": 352.4676040000013
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 134,
+        "spawnMs": 11.209010999999009,
+        "closeMs": 79.62869800000044
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.720625000001746,
+        "closeMs": 78.4792180000004
+      }
+    },
+    {
+      "variant": "sdcard-short",
+      "round": 6,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 13.402813000000606,
+        "closeMs": 363.8598439999987
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 110,
+        "spawnMs": 11.834844000000885,
+        "closeMs": 74.69671899999958
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.460312999999587,
+        "closeMs": 69.49557300000015
+      }
+    },
+    {
+      "variant": "sdcard-long",
+      "round": 6,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.204115000000456,
+        "closeMs": 376.74588500000027
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 7.354375000002619,
+        "closeMs": 35.35447900000145
+      },
+      "bytes": 122152,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.421926999999414,
+        "closeMs": 70.83635399999912
+      }
+    },
+    {
+      "variant": "noop",
+      "round": 6,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 18.51239599999826,
+        "closeMs": 60.24427099999957
+      }
+    },
+    {
+      "variant": "noop",
+      "round": 7,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 5.868280999999115,
+        "closeMs": 47.24187499999971
+      }
+    },
+    {
+      "variant": "sdcard-long",
+      "round": 7,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.246041999998852,
+        "closeMs": 396.838072999999
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 126,
+        "spawnMs": 9.90536499999871,
+        "closeMs": 72.13099000000147
+      },
+      "bytes": 122145,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.788176999998541,
+        "closeMs": 74.82156199999736
+      }
+    },
+    {
+      "variant": "sdcard-short",
+      "round": 7,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.360521000002336,
+        "closeMs": 353.54312500000015
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 111,
+        "spawnMs": 8.628072999999858,
+        "closeMs": 36.3686979999984
+      },
+      "bytes": 122145,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 5.904791999997542,
+        "closeMs": 59.64557299999797
+      }
+    },
+    {
+      "variant": "localtmp-long",
+      "round": 7,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 9.498177000001306,
+        "closeMs": 360.15281200000027
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 134,
+        "spawnMs": 11.175052000002324,
+        "closeMs": 82.45338500000071
+      },
+      "bytes": 122145,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.2470309999989695,
+        "closeMs": 55.39281200000187
+      }
+    },
+    {
+      "variant": "localtmp-long",
+      "round": 8,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.429270999997243,
+        "closeMs": 339.09546899999987
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 135,
+        "spawnMs": 4.884844000000157,
+        "closeMs": 21.980051999998977
+      },
+      "bytes": 122145,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.488436999999976,
+        "closeMs": 49.679895999997825
+      }
+    },
+    {
+      "variant": "sdcard-short",
+      "round": 8,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.412344000000303,
+        "closeMs": 388.1651039999997
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 111,
+        "spawnMs": 9.040259999997943,
+        "closeMs": 34.52552099999957
+      },
+      "bytes": 122145,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 5.624426999998832,
+        "closeMs": 56.01947899999868
+      }
+    },
+    {
+      "variant": "sdcard-long",
+      "round": 8,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.171719000001758,
+        "closeMs": 357.27078099999926
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 9.232344000000012,
+        "closeMs": 32.23979200000031
+      },
+      "bytes": 122145,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.505052000000433,
+        "closeMs": 77.1247919999987
+      }
+    },
+    {
+      "variant": "noop",
+      "round": 8,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.902031000001443,
+        "closeMs": 67.42114600000059
+      }
+    }
+  ],
+  "cleanup": [],
+  "limits": [
+    "Diagnostic only, not full-workflow acceptance or a speedup claim.",
+    "Independent per-call clocks; nested spans/medians are not additive wall time.",
+    "Host spawn/first-output/close times do not measure device CPU or isolate network latency.",
+    "Unscoped adb_attempt is recorded without inventing a production cleanup stage.",
+    "Public calls always trace: diagnostics overhead not isolated. Direct probes use a separate transport implementation.",
+    "Reversed round order reduces ordering bias, not thermal/network confounding or population-tail evidence.",
+    "PNG signature/IHDR/dimensions and byte equality checked, not full PNG decoding or concurrent frame identity.",
+    "No images, commands, paths, raw errors, IME identities or device identifiers exported."
+  ],
+  "fixture": {
+    "nativeLabelsMatch": true,
+    "width": 1080,
+    "height": 2340
+  },
+  "imeRestored": true,
+  "termuxRestored": true,
+  "sourceAfter": {
+    "src/adb/screenshot.ts": "39abeaf8881be67d2a2b7a4c43c3052d4a6750fe8e51fff0dafad76366124570",
+    "src/adb/exec.ts": "f98b7d0eb141959cbf19cf8f16a86606e4bb01c5e81d912b923491f7678b1c32",
+    "src/adb/capture-timing.ts": "a2a9748af4f6e1cd3294debaea8ceb435e7b5aee6380e0bffcdedbd9abd545fb",
+    "scripts/screenshot-latency-diagnostic.mjs": "f533a39aa61cf276a0654826befd1fd5890418ea2e17a46e03377618e851f43b"
+  },
+  "sourceUnchanged": true
+}

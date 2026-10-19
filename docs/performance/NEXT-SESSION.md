@@ -1,6 +1,61 @@
 # Next-session handoff
 
-## Current continuation — PNG isolation published (supersedes older actions)
+## Current continuation — screenshot diagnosis complete; optimization awaits approval
+
+Read PLAN.md and [full diagnostic evidence](reports/screenshot-latency-diagnosis-2026-10-19.md)
+first. This section supersedes the previous next-action lists.
+
+- User approved diagnostic-first scope/public-API + external-process seams and
+  requested more observability as needed. No production optimization approved or
+  implemented. All src/, historical drivers/reports and full-workflow protocols
+  remain unchanged. Starting published checkpoint d211b537 matched origin/main.
+- New opt-in public-API diagnostic: bounded per-call scopes/spans, API-vs-validation
+  times, otherwise-unscoped commands, byte/dimension checks; independent direct ADB
+  spawn/first-output/close timings. No content/identifier exports. Separate fresh/
+  overwrite diagnostic; offline source-hash/count/disjoint-interval audit.
+- Chronology: diagnostic1 PASS (32 public +32 probes), creation1 PASS (32 probes,
+  each prime + measured capture), identical diagnostic2 PASS (32 public +32 probes).
+  Capture medians 377–396ms → 338–355ms without source/driver changes. Cleanup
+  roughly 60–76ms; no-op 50–58ms. Per-call uncovered medians roughly 3ms.
+  Shorter UUID filename no useful signal; localtmp modest/variable; sdcard overwrite
+  about15ms lower, localtmp essentially equal. Historical regression NOT fully
+  explained. No demonstrated speedup, causal root cause or cumulative gain.
+- Final 809/809 units /60 files (--maxWorkers=2), 9/9 isolated integrations,
+  lint/build/three script syntax checks PASS. Initial full command hit180s deadline
+  after an existing reconnect privacy-regex failure; retained. Unchanged isolated
+  reconnect14/14, combined targeted22/22, longer full233.13s PASS. No existing
+  tests fixed/relaxed. Default parallel CI remains unverified; companion unchanged.
+- Original Gboard/Termux independently verified after each live block. Amazon/Forge
+  untouched; no drafts/typing/workout/APK/helper/permission/debug exposure. No fresh
+  actual loaded-tool check/full workflow: no production changed, no new acceptance.
+
+### Next exact actions — scope confirmation required
+
+1. Inspect status/diff/publication, read full evidence and summary JSON. No phone
+   interaction just to resume; preserve all three live reports and frozen scripts.
+2. Ask user to confirm ONE next experiment: candidate is binary-safe transfer +
+   best-effort owned remote deletion in one ADB process, failure cleanup retained.
+   This targets observed round-trip cost; not yet implemented/benchmarked/approved.
+   Explain src/adb/exec.ts binary-to-file seam plus screenshot integration, binary
+   integrity/no new image-size cap, unchanged timeout/recovery/error/cleanup and
+   return contracts. Reject if bounded policy-preserving implementation is not feasible.
+3. User welcomes extra metrics/logs: keep opt-in, bounded/content-free, expose
+   failures and stage attribution; never infer device CPU/encoding/thermal cause
+   from host spans. Runtime ingestion/cancellation/input lifecycle/CI separate.
+4. After exact optimization approval, rediscover authorized phone, confirm exclusive
+   hands-off use, original IME/Termux, save a NEW equivalent pre-production-edit
+   baseline. Repeat frozen v3.2 full shopping +30 writes +30 persisted readbacks,
+   focused pair and fresh actual registered screenshot/look with build hashes.
+   Diagnostic/historical PNG runs are NOT reusable full-workflow baselines.
+5. Preserve public/frame ownership, saved retention/quick removal/error semantics;
+   public-API/external-process tests for binary bytes, concurrent interleavings,
+   partial/failure cleanup and explicit timeout provenance. Restore/independently
+   verify original IME + Termux after every block. No unapproved persistent change.
+6. Validate/review/report all attempts and regressions; update docs, publish completed
+   work only to user-owned origin, verify full remote hash + clean tree. Never push
+   upstream or claim acceptance while any mandatory implementation gate is open.
+
+## Previous continuation — PNG isolation published (superseded by diagnosis above)
 
 Read PLAN.md and [PNG acceptance evidence](reports/png-concurrency-2026-10-18.md)
 first. The previously recommended PNG concurrency scope was approved/implemented

@@ -58,7 +58,43 @@ rollback and measurement plan, and ask before risky/out-of-scope work, new APKs,
 permissions, helpers or debugging exposure. Keep every failed report and historical
 driver; acceptance checks remain intact. Carry this policy into future handoffs.
 
-## Latest slice — PNG concurrency safety accepted and published
+## Latest continuation — screenshot latency diagnosed; next optimization pending
+
+User approved a diagnostic-first slice and additional observability where useful.
+[Full evidence, failures and next approval](reports/screenshot-latency-diagnosis-2026-10-19.md).
+No production src/, historical measured driver/report or acceptance-protocol changes.
+
+- Added opt-in per-call public screenshot metrics/scope attribution, unscoped ADB
+  command visibility, separate API/validation time, byte/dimension checks and
+  independent host process startup/output/close probes. Separate fresh/overwrite
+  experiment and offline source-hash/count/disjoint-interval audit. No content or
+  device identifiers exported; failed/partial traces remain explicit.
+- Two identical eight-round blocks each PASS32 public captures +32 probes; creation
+  block PASS32 prime/measured probes. Capture medians changed377–396 →338–355ms
+  without source/driver change. Cleanup about60–76ms, shell no-op50–58ms, per-call
+  uncovered median about3ms. Path/name/overwrite effects do NOT explain the full
+  historical48.77–64.71% regression. No causal root cause or speedup established.
+- Validation: 809/809 units/60 files (--maxWorkers=2), 9/9 isolated integrations,
+  lint/build/three script syntax checks. Initial full command exceeded180s after
+  an existing reconnect privacy-regex failure; retained, unchanged isolated14/14
+  and full233.13s rerun PASS. New diagnostics8/8, combined targeted22/22. Default
+  parallel CI unverified; no companion or existing test edits.
+- Original Gboard/Termux independently verified after each live block. No shopping/
+  Forge changes, new draft, completed workout, APK/helper/permission/debug exposure.
+  No new full-workflow/actual registered-tool gate was run: production unchanged,
+  and no performance implementation acceptance is claimed.
+- Candidate requiring NEW user confirmation: binary-safe transfer plus best-effort
+  owned remote deletion in one ADB process, fallback cleanup on failure. Explain
+  the binary-to-file transport seam/unchanged policy contracts before edits. It is
+  not implemented or benchmarked; only observed round-trip cost motivates it.
+  Preserve ownership, primary errors, no new image-size cap, public returns and
+  existing timeout/recovery/cancellation policy. Other backlog work stays separate.
+- Any approved production change still needs NEW pre-edit equivalent baseline,
+  frozen full v3.2 shopping +30 writes +30 persisted values, focused paired checks
+  and actual freshly loaded relevant tools/build hashes. These diagnostic runs and
+  the historical PNG pair do not substitute. See current NEXT-SESSION.md.
+
+## Previous slice — PNG concurrency safety accepted and published
 
 User approved the PNG isolation scope/validation sequence; implementation and live
 evidence survived the interrupted session. Continuation completed validation and
