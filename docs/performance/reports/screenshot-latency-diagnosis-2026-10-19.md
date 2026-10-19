@@ -245,3 +245,9 @@ node scripts/summarize-screenshot-latency.mjs \
 
 No speedup, population/non-inferiority, cumulative end-to-end gain or completed
 optimization acceptance is claimed. This is an observability/diagnosis checkpoint.
+
+Diagnostic implementation/evidence published as
+**927d0da547403159203542969e3b54e5694bf8ac** to user-owned origin/main. Independent
+`git ls-remote origin refs/heads/main` exactly matched the full local hash; tree
+was clean afterward. This follow-up docs-only checkpoint records publication.
+No production, diagnostic driver or measured JSON changed after validation.

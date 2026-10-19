@@ -20,6 +20,10 @@ first. This section supersedes the previous next-action lists.
   Shorter UUID filename no useful signal; localtmp modest/variable; sdcard overwrite
   about15ms lower, localtmp essentially equal. Historical regression NOT fully
   explained. No demonstrated speedup, causal root cause or cumulative gain.
+- Diagnostic implementation/evidence published as
+  **927d0da547403159203542969e3b54e5694bf8ac** to user-owned origin/main. Full
+  remote hash independently matched and tree was clean. This follow-up docs-only
+  checkpoint records publication; no production or measured evidence changed.
 - Final 809/809 units /60 files (--maxWorkers=2), 9/9 isolated integrations,
   lint/build/three script syntax checks PASS. Initial full command hit180s deadline
   after an existing reconnect privacy-regex failure; retained. Unchanged isolated
