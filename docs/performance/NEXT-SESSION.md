@@ -9,6 +9,10 @@ first. This section supersedes every older next-action list.
   public/external-process tests and extra observability. Candidate was implemented
   and fully measured, but NOT shipped: no reliable speed benefit. All active src/
   bytes restored exactly to published35de2c6; six rebuilt baseline hashes match.
+- Rejected experiment/evidence published as
+  **40cbb332f0ff6a030c42ef687e8a27e85e869b5d** to user-owned origin/main. Full
+  remote hash independently matched, tree clean. This follow-up docs-only checkpoint
+  records publication; no active source or measured artifacts changed.
 - Archive: docs/performance/experiments/fusion-shell-v1/{exec.ts.txt,screenshot.ts.txt,
   experiment.patch,README.md}. Exact isolated replay41/41, experimental rebuild
   matches six measured after hashes. No production adbToFile/cleanup callback now.

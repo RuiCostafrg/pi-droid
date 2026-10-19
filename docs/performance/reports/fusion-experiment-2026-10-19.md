@@ -267,3 +267,12 @@ equivalent chronological baseline/full v3.2 pair/focused metrics/actual freshly
 loaded relevant tools with build hashes. These historical experimental runs are
 not indefinitely reusable. No speedup, cumulative gain or accepted optimization
 has been established by this experiment.
+
+## Verified publication
+
+Rejected experiment/source archive/tests/evidence published as
+**40cbb332f0ff6a030c42ef687e8a27e85e869b5d** to user-owned origin/main.
+`git ls-remote origin refs/heads/main` independently matched the full local hash;
+working tree was clean. No upstream push. This follow-up docs-only checkpoint
+records publication, not an accepted optimization. Active source and measured
+artifacts remain unchanged after validation/rollback.
