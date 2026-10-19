@@ -1,0 +1,282 @@
+{
+  "kind": "capture-envelope-workflow-v1-comparison",
+  "passed": true,
+  "gates": {
+    "bothPassed": true,
+    "correctPhases": true,
+    "sameFrozenDriver": true,
+    "sameBoundedConsumer": true,
+    "independentlyVerifiedSource": true,
+    "unchangedProductionSource": true,
+    "allRequiredChecks": true,
+    "identicalChecks": true,
+    "thirtyWritesAndPersistedValues": true,
+    "sameOffersAndChosenProduct": true,
+    "completeScopedAccounting": true,
+    "allOperationsOk": true,
+    "all30SelectionsAnd32Types": true,
+    "oneOcrEach": true,
+    "retainedOtherWork": true
+  },
+  "fullWorkflowAcceptance": "pass",
+  "referenceChronology": "Fresh chronological current-source baseline before new diagnostic implementation; production source unchanged.",
+  "before": {
+    "status": "pass",
+    "elapsedMs": 304955.355873,
+    "operations": 315,
+    "captures": 77,
+    "scopedCommandAttempts": 291,
+    "alignment": {
+      "product_scroll": {
+        "cycles": 3,
+        "ms": 13285.468536999993
+      },
+      "field_scroll": {
+        "cycles": 2,
+        "ms": 7216.9814540000225
+      }
+    },
+    "stageMetrics": {
+      "shell": {
+        "count": 36,
+        "totalMs": 3848.0942680000503,
+        "medianMs": 108.67367200000444,
+        "p95Ms": 118.09093700000085,
+        "maxMs": 154.4294789999999
+      },
+      "screen_size": {
+        "count": 1,
+        "totalMs": 78.39166599999999,
+        "medianMs": 78.39166599999999,
+        "p95Ms": 78.39166599999999,
+        "maxMs": 78.39166599999999
+      },
+      "ui_dump": {
+        "count": 47,
+        "totalMs": 134799.32369799996,
+        "medianMs": 2609.8335919999954,
+        "p95Ms": 3891.1716129999995,
+        "maxMs": 7733.490101000003
+      },
+      "tap": {
+        "count": 18,
+        "totalMs": 1629.2842189999628,
+        "medianMs": 91.17526050000015,
+        "p95Ms": 101.33026099999552,
+        "maxMs": 101.33026099999552
+      },
+      "settle": {
+        "count": 97,
+        "totalMs": 48603.957793999965,
+        "medianMs": 501.0370830000029,
+        "p95Ms": 502.0114580000227,
+        "maxMs": 502.7919259999999
+      },
+      "type": {
+        "count": 32,
+        "totalMs": 5996.460676999879,
+        "medianMs": 186.77182300000277,
+        "p95Ms": 212.8661979999888,
+        "maxMs": 214.17671900001005
+      },
+      "key": {
+        "count": 34,
+        "totalMs": 3320.4753639999144,
+        "medianMs": 96.56330749999324,
+        "p95Ms": 122.24494800000684,
+        "maxMs": 130.95062499999767
+      },
+      "product_scroll": {
+        "count": 3,
+        "totalMs": 2048.818852999997,
+        "medianMs": 686.044582999999,
+        "p95Ms": 692.5464579999971,
+        "maxMs": 692.5464579999971
+      },
+      "app": {
+        "count": 1,
+        "totalMs": 5573.368955999998,
+        "medianMs": 5573.368955999998,
+        "p95Ms": 5573.368955999998,
+        "maxMs": 5573.368955999998
+      },
+      "swipe": {
+        "count": 11,
+        "totalMs": 5617.355417000101,
+        "medianMs": 515.5357809999841,
+        "p95Ms": 528.3993230000196,
+        "maxMs": 528.3993230000196
+      },
+      "field_scroll": {
+        "count": 2,
+        "totalMs": 996.210207000011,
+        "medianMs": 498.1051035000055,
+        "p95Ms": 500.8328119999933,
+        "maxMs": 500.8328119999933
+      },
+      "select_tap": {
+        "count": 30,
+        "totalMs": 84705.61892800003,
+        "medianMs": 2828.4491655000093,
+        "p95Ms": 2910.7008849999984,
+        "maxMs": 2925.0797380000004
+      },
+      "ocr": {
+        "count": 1,
+        "totalMs": 1758.4837490000064,
+        "medianMs": 1758.4837490000064,
+        "p95Ms": 1758.4837490000064,
+        "maxMs": 1758.4837490000064
+      },
+      "restore_ime": {
+        "count": 1,
+        "totalMs": 92.51770900003612,
+        "medianMs": 92.51770900003612,
+        "p95Ms": 92.51770900003612,
+        "maxMs": 92.51770900003612
+      },
+      "restore_termux": {
+        "count": 1,
+        "totalMs": 5645.398071000003,
+        "medianMs": 5645.398071000003,
+        "p95Ms": 5645.398071000003,
+        "maxMs": 5645.398071000003
+      }
+    }
+  },
+  "after": {
+    "status": "pass",
+    "elapsedMs": 304765.489258,
+    "operations": 315,
+    "captures": 77,
+    "scopedCommandAttempts": 291,
+    "alignment": {
+      "product_scroll": {
+        "cycles": 3,
+        "ms": 13399.839734000008
+      },
+      "field_scroll": {
+        "cycles": 2,
+        "ms": 7136.015102000063
+      }
+    },
+    "stageMetrics": {
+      "shell": {
+        "count": 36,
+        "totalMs": 3808.002970000105,
+        "medianMs": 106.5931250000067,
+        "p95Ms": 116.2393230000016,
+        "maxMs": 180.75349000000006
+      },
+      "screen_size": {
+        "count": 1,
+        "totalMs": 91.93166599999995,
+        "medianMs": 91.93166599999995,
+        "p95Ms": 91.93166599999995,
+        "maxMs": 91.93166599999995
+      },
+      "ui_dump": {
+        "count": 47,
+        "totalMs": 134665.2541689999,
+        "medianMs": 2607.4739579999587,
+        "p95Ms": 3664.403488,
+        "maxMs": 7625.23906
+      },
+      "tap": {
+        "count": 18,
+        "totalMs": 1640.2714579999974,
+        "medianMs": 91.45632850000038,
+        "p95Ms": 103.22796899999958,
+        "maxMs": 103.22796899999958
+      },
+      "settle": {
+        "count": 97,
+        "totalMs": 48616.402382999964,
+        "medianMs": 501.13552100001834,
+        "p95Ms": 501.88760399998864,
+        "maxMs": 502.64937499999905
+      },
+      "type": {
+        "count": 32,
+        "totalMs": 5860.266352999959,
+        "medianMs": 185.1487235000095,
+        "p95Ms": 207.7325520000013,
+        "maxMs": 208.12932300000102
+      },
+      "key": {
+        "count": 34,
+        "totalMs": 3351.0224440000384,
+        "medianMs": 96.15786449999723,
+        "p95Ms": 121.19682299999113,
+        "maxMs": 127.86057299998356
+      },
+      "product_scroll": {
+        "count": 3,
+        "totalMs": 2032.7819770000024,
+        "medianMs": 677.7173949999997,
+        "p95Ms": 681.1586970000026,
+        "maxMs": 681.1586970000026
+      },
+      "app": {
+        "count": 1,
+        "totalMs": 5611.245153999997,
+        "medianMs": 5611.245153999997,
+        "p95Ms": 5611.245153999997,
+        "maxMs": 5611.245153999997
+      },
+      "swipe": {
+        "count": 11,
+        "totalMs": 5623.950464000009,
+        "medianMs": 512.4406250000175,
+        "p95Ms": 529.2454679999937,
+        "maxMs": 529.2454679999937
+      },
+      "field_scroll": {
+        "count": 2,
+        "totalMs": 981.8373950000241,
+        "medianMs": 490.91869750001206,
+        "p95Ms": 494.14942700002575,
+        "maxMs": 494.14942700002575
+      },
+      "select_tap": {
+        "count": 30,
+        "totalMs": 84929.13075099998,
+        "medianMs": 2829.9343219999864,
+        "p95Ms": 2914.966406000007,
+        "maxMs": 2947.580468
+      },
+      "ocr": {
+        "count": 1,
+        "totalMs": 1556.5876030000218,
+        "medianMs": 1556.5876030000218,
+        "p95Ms": 1556.5876030000218,
+        "maxMs": 1556.5876030000218
+      },
+      "restore_ime": {
+        "count": 1,
+        "totalMs": 96.41249999997672,
+        "medianMs": 96.41249999997672,
+        "p95Ms": 96.41249999997672,
+        "maxMs": 96.41249999997672
+      },
+      "restore_termux": {
+        "count": 1,
+        "totalMs": 5672.601665000024,
+        "medianMs": 5672.601665000024,
+        "p95Ms": 5672.601665000024,
+        "maxMs": 5672.601665000024
+      }
+    }
+  },
+  "workflowDelta": {
+    "ms": -189.86661500000628,
+    "pct": -0.06226046250490391
+  },
+  "limits": [
+    "Same-v3.2 unchanged-source workflow only; no optimization or isolated instrumentation-overhead claim.",
+    "One pair is descriptive, not causal/population/non-inferiority evidence.",
+    "Alignment cycles are reported, never subtracted from elapsed time; only complete cycles normalized for retained-work gate.",
+    "Per-capture source clocks, operation clocks and loaded-tool clocks are separate. Nested spans are not additive wall time.",
+    "Scoped commands not whole-workflow counts. Source workflow does not exercise annotation; focused/loaded checks required separately."
+  ]
+}

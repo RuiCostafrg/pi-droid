@@ -58,7 +58,61 @@ rollback and measurement plan, and ask before risky/out-of-scope work, new APKs,
 permissions, helpers or debugging exposure. Keep every failed report and historical
 driver; acceptance checks remain intact. Carry this policy into future handoffs.
 
-## Latest continuation — fusion experiment rejected; active production restored
+## Latest continuation — capture-envelope diagnostic validated; production unchanged
+
+[Full evidence](reports/capture-envelope-diagnostic-2026-10-19.md). User approved
+bounded device elapsed capture/plain/control diagnostics and full validation, then
+requested retry after two baseline failures. Unchanged third baseline passed;
+no workflow/guard edits. All src remains35de2c6-identical; fusion stays rejected.
+
+- New diagnostic runner, strict offline audit, unchanged-source workflow comparator,
+  two new test files. Fixed content-free records, separate host/device clocks,
+ 1024-byte marker buffer, exclusive outputs/phase progress and partial/interruption
+  retention; independent owned cleanup even on progress-write failure. No production
+  runtime/API/backend/cancellation/input/CI change or phone helper/permission install.
+- New full frozen v3.2 before3 PASS304955.36ms / after1 PASS304765.49ms; shopping +30
+  writes +30 persisted values each,77 captures/291 scoped attempts,3 product/2 field
+  cycles each.15/15 gates PASS; −0.0623% descriptive, not causal speedup/overhead.
+  Before1 visibility FAIL80952.85ms and before2 foreground FAIL66004.37ms retained,
+  no Forge writes either. Earlier blocked checkpoint preserved but superseded.
+- Two unchanged diagnostic blocks24/24 each:16 PNGs+8 controls/block. Device bracket
+  median315/325ms, control20/10ms, representation quantum10ms. Host plain343.87/
+  343.04ms versus bracketed377.07/388.18ms. Wrapper is intrusive; device interval
+  includes printf/read/scheduling/capture/encoding/write. No control/median subtraction,
+  CPU/thermal/FUSE/encoder/network root cause or optimization selected from this.
+- Frozen focused12/12 each, medians+0.14/+1.37/+6.68/+4.28% slower, retained. Actual
+  fresh registered screenshot/look628/2531ms before,582/2546ms after; all guards,
+  six unchanged rebuilt hashes PASS. Parent not reloaded; no clocks merged.
+- Final864/864 units/63 files (--maxWorkers=2),9/9 isolated integrations, lint/build/
+  syntax/whitespace PASS. New tests20/20,26 diagnostic+11 workflow rejected mutations.
+  Initial RED/fixture output-collision failure retained, no existing tests relaxed.
+  Companion unchanged, default parallel CI unverified; manual review only.
+- Secure rediscovery after transport change, failed setup/readiness attempts retained;
+  no guessed endpoint/legacy TCP/IP/pairing/network/security change. Original Gboard/
+  Termux independently verified after every block. Two retained TEST drafts source-
+  capenv-before27/after27,15 unchecked sets20kg×8 each. Amazon read-only, no real
+  workout completed/APK/helper/permission/debug exposure. Next scope needs approval
+  and NEW full/focused/actual registered-tool gates; these are not evergreen baselines.
+
+## Previous continuation — capture-envelope diagnostic approved; fresh baseline blocked
+
+See [new blocker evidence](reports/capture-envelope-baseline-blocked-2026-10-19.md).
+User approved diagnostic-only capture elapsed-time probes and reiterated mandatory
+full Amazon → Forge validation. No diagnostic/production code edits made yet.
+Fresh frozen v3.2 baseline1 FAIL80952.85ms at chosen_product_visible after eight
+cycles; unchanged baseline2 FAIL66004.37ms at foreground during sixth product cycle.
+Both pass search/focus/query/three offers, neither reaches Forge; zero writes/
+persisted values/new drafts. Both reports retained, original Gboard/Termux
+independently verified after each block. Later read-only native Brave inspection
+still finds chosen Barista at y2089; no cause inferred or manual alignment inserted.
+Fresh build matches all six restored baseline hashes; src remains35de2c6-identical.
+No fresh actual registered-tool/focused pair/unit/integration acceptance claim.
+Full-workflow baseline OPEN/BLOCKED: ask before a separate bounded alignment
+investigation or any versioned protocol change; never relax frozen checks. Then
+resume approved diagnostic with NEW full/focused/registered-tool gates. Current
+failure evidence/docs are local and not published. Fusion remains rejected.
+
+## Previous continuation — fusion experiment rejected; active production restored
 
 User approved binary-safe transfer/cleanup consolidation after diagnosis. It was
 implemented/measured, then rejected for lack of demonstrated latency improvement.

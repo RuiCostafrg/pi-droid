@@ -1,0 +1,874 @@
+{
+  "kind": "capture-envelope-diagnostic-v1",
+  "status": "pass",
+  "rounds": 8,
+  "sourceBefore": {
+    "src/adb/exec.ts": "f98b7d0eb141959cbf19cf8f16a86606e4bb01c5e81d912b923491f7678b1c32",
+    "src/adb/capture-timing.ts": "a2a9748af4f6e1cd3294debaea8ceb435e7b5aee6380e0bffcdedbd9abd545fb",
+    "src/adb/ui-tree.ts": "f33f82544290d09dbd534b29e946a2dd526ace558d39a594d9563f7642b616a2",
+    "src/adb/cache.ts": "494d93ad114dec388b277919eadf336f82f5f6c427175e8e99f1096dcef8a752",
+    "src/adb/input.ts": "eb81ded44946935a1337a93718e38103fd337b1b8b6d3ad2277c6924c68e74a9",
+    "src/adb/read-select-tap.ts": "3d226d1baa600a95f10862c4629a79f18afe34b854f31c0779b4acf8a7ad439d",
+    "src/adb/app.ts": "0e1f136cbdda47f7e1063728d2372a84afb27549a32b1a5443f7a0e8ff04c3c8",
+    "src/adb/ocr.ts": "bae521c164a1ca74efb5987f20887e79f39f8ae75117fdaad3082ecdf6744cdd",
+    "src/adb/screenshot.ts": "39abeaf8881be67d2a2b7a4c43c3052d4a6750fe8e51fff0dafad76366124570",
+    "src/adb/annotate.ts": "37350ed094cba64a8d1c776a2f257449becedbb334e7a502ae4aef199dcb3a13",
+    "scripts/capture-envelope-diagnostic.mjs": "d87cca55eb20ffb517622dee182ce7a1ab5da676df3630e7e37fc6033618093c",
+    "scripts/screenshot-latency-diagnostic.mjs": "f533a39aa61cf276a0654826befd1fd5890418ea2e17a46e03377618e851f43b",
+    "scripts/audit-capture-envelope.mjs": "2832bb10143d0a1f748caa41b86462ff5a88e5834300f4243b40a0349a1d0b77",
+    "scripts/compare-workflow-capture-envelope-v1.mjs": "4daeced61e35a855a4545dc88df1b5d52e494d5510bf7eed30258ce0c92398c8"
+  },
+  "samples": [
+    {
+      "variant": "plain",
+      "round": 1,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 472.60953100000006,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.721250000000055,
+        "closeMs": 366.2086979999999
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 7.388020999999753,
+        "closeMs": 25.823594000000412
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 2.4509900000002744,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 10.270155999999588,
+        "closeMs": 72.67151000000013
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "bracketed",
+      "round": 1,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 559.0018740000005,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 7.783124999999927,
+        "firstStdoutMs": 57.20593800000006,
+        "beginReceivedMs": 57.999479000000065,
+        "endReceivedMs": 405.02437499999996,
+        "closeMs": 407.8465100000003,
+        "deviceMs": 340,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 126,
+        "spawnMs": 6.518749999999272,
+        "closeMs": 68.97807299999931
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 1.3717179999994187,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.729740000000675,
+        "closeMs": 73.72432300000037
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "control",
+      "round": 1,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 77.62505199999941,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 6.437342999999601,
+        "firstStdoutMs": 54.36348899999939,
+        "beginReceivedMs": 54.544269999999415,
+        "endReceivedMs": 72.99354099999982,
+        "closeMs": 75.73812499999985,
+        "deviceMs": 10,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "control",
+      "round": 2,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 71.06541600000037,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 6.5402610000001005,
+        "firstStdoutMs": 45.56755199999952,
+        "beginReceivedMs": 45.77151099999992,
+        "endReceivedMs": 62.19177099999979,
+        "closeMs": 66.42786499999966,
+        "deviceMs": 10,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "bracketed",
+      "round": 2,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 496.9468219999999,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 9.88489600000048,
+        "firstStdoutMs": 57.4594790000001,
+        "beginReceivedMs": 57.59812500000044,
+        "endReceivedMs": 396.252708,
+        "closeMs": 400.23901000000023,
+        "deviceMs": 330,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 8.466354000000138,
+        "closeMs": 26.894427000000178
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 0.582604999999603,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.727864999999838,
+        "closeMs": 63.32166699999925
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "plain",
+      "round": 2,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 480.26614599999994,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.345572999999604,
+        "closeMs": 333.6662500000002
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 126,
+        "spawnMs": 6.225625000000036,
+        "closeMs": 66.91208299999926
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 1.0532809999995152,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.280832999999802,
+        "closeMs": 72.94479199999932
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "plain",
+      "round": 3,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 443.4115099999999,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.338124999999309,
+        "closeMs": 343.54166599999917
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 8.378125000000182,
+        "closeMs": 30.11145800000031
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 0.761145999999826,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.18838500000038,
+        "closeMs": 59.88958300000013
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "bracketed",
+      "round": 3,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 547.595937,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 7.393229000000247,
+        "firstStdoutMs": 56.04625000000033,
+        "beginReceivedMs": 56.11369800000011,
+        "endReceivedMs": 387.6087500000003,
+        "closeMs": 389.44687499999964,
+        "deviceMs": 330,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 126,
+        "spawnMs": 8.586145999999644,
+        "closeMs": 71.27708299999995
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 1.3497919999999795,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.680105000000367,
+        "closeMs": 76.96739600000001
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "control",
+      "round": 3,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 94.20005200000014,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 9.616770999999972,
+        "firstStdoutMs": 63.97927100000015,
+        "beginReceivedMs": 64.06968700000016,
+        "endReceivedMs": 82.35984400000052,
+        "closeMs": 85.95150999999987,
+        "deviceMs": 20,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "control",
+      "round": 4,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 81.20838499999991,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 11.408853999999337,
+        "firstStdoutMs": 56.16025999999965,
+        "beginReceivedMs": 56.24213499999951,
+        "endReceivedMs": 70.23468799999955,
+        "closeMs": 74.61833299999944,
+        "deviceMs": 10,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "bracketed",
+      "round": 4,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 478.05932200000007,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 12.772448000000622,
+        "firstStdoutMs": 62.64619800000037,
+        "beginReceivedMs": 62.72197900000083,
+        "endReceivedMs": 369.9752090000002,
+        "closeMs": 373.1592190000001,
+        "deviceMs": 310,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 5.263698000000659,
+        "closeMs": 38.16776000000027
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 0.6743749999995998,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 5.989792000000307,
+        "closeMs": 59.842500000000655
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "plain",
+      "round": 4,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 412.4636980000005,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.458281999999599,
+        "closeMs": 322.4617710000002
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 6.625207999999475,
+        "closeMs": 27.061353999999483
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 0.9625519999999597,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.807135000000017,
+        "closeMs": 55.29151000000002
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "plain",
+      "round": 5,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 524.3657810000004,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 9.342708999999559,
+        "closeMs": 364.7835419999992
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 126,
+        "spawnMs": 10.730103999998391,
+        "closeMs": 72.40536399999837
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 0.9960940000000846,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.578176999999414,
+        "closeMs": 73.60072899999977
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "bracketed",
+      "round": 5,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 543.237188000001,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 7.732759999998962,
+        "firstStdoutMs": 59.7577599999986,
+        "beginReceivedMs": 59.8318220000001,
+        "endReceivedMs": 385.0881759999993,
+        "closeMs": 388.63067599999886,
+        "deviceMs": 330,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 13.238280999999915,
+        "closeMs": 41.6411449999996
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 0.8997910000016418,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.095261000000392,
+        "closeMs": 102.75656300000082
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "control",
+      "round": 5,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 72.4807810000002,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 5.790155999999115,
+        "firstStdoutMs": 47.025415999998586,
+        "beginReceivedMs": 47.07046900000023,
+        "endReceivedMs": 63.014634999999544,
+        "closeMs": 66.56604100000004,
+        "deviceMs": 10,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "control",
+      "round": 6,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 89.31854200000089,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 11.354999999999563,
+        "firstStdoutMs": 67.16687499999898,
+        "beginReceivedMs": 67.26723999999922,
+        "endReceivedMs": 82.91130199999861,
+        "closeMs": 84.93843799999922,
+        "deviceMs": 20,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "bracketed",
+      "round": 6,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 544.7183339999992,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 7.173072999999931,
+        "firstStdoutMs": 49.296980000000985,
+        "beginReceivedMs": 49.48750000000109,
+        "endReceivedMs": 366.85963600000105,
+        "closeMs": 369.2492710000006,
+        "deviceMs": 320,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 126,
+        "spawnMs": 7.467291999999361,
+        "closeMs": 75.60796899999877
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 2.4433330000010756,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 12.678698000001532,
+        "closeMs": 83.70239600000059
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "plain",
+      "round": 6,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 466.21557199999916,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 11.340885999999955,
+        "closeMs": 354.020625000001
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 8.379322999999204,
+        "closeMs": 31.619166999998924
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 0.5282289999995555,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 8.678853999999774,
+        "closeMs": 62.36499999999978
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "plain",
+      "round": 7,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 438.6288540000005,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 9.780885999998645,
+        "closeMs": 331.8949479999992
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 8.219218000000183,
+        "closeMs": 33.84812500000044
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 0.43385400000079244,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.7440630000000965,
+        "closeMs": 63.9345830000002
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "bracketed",
+      "round": 7,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 499.0976040000005,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 13.533280999999988,
+        "firstStdoutMs": 66.35572899999897,
+        "beginReceivedMs": 66.44031299999915,
+        "endReceivedMs": 384.2547400000003,
+        "closeMs": 387.73656200000005,
+        "deviceMs": 320,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 8.262917000000016,
+        "closeMs": 34.84036500000002
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 0.5441670000000158,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.083333999999013,
+        "closeMs": 67.96015699999953
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "control",
+      "round": 7,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 87.87265599999955,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 8.39119799999935,
+        "firstStdoutMs": 58.54411499999878,
+        "beginReceivedMs": 58.640989999999874,
+        "endReceivedMs": 76.22833399999945,
+        "closeMs": 79.90541699999994,
+        "deviceMs": 20,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "control",
+      "round": 8,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 83.43869799999993,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 10.373593000000255,
+        "firstStdoutMs": 58.27375000000029,
+        "beginReceivedMs": 58.343698000000586,
+        "endReceivedMs": 72.52000000000044,
+        "closeMs": 75.90187499999956,
+        "deviceMs": 10,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "bracketed",
+      "round": 8,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 467.3709889999991,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 38,
+        "stderrBytes": 0,
+        "spawnMs": 11.463176999999632,
+        "firstStdoutMs": 60.01119800000015,
+        "beginReceivedMs": 60.097083000000566,
+        "endReceivedMs": 367.77458300000035,
+        "closeMs": 371.0661459999992,
+        "deviceMs": 310,
+        "clockQuantumMs": 10,
+        "commandExit": 0,
+        "markerStatus": "valid"
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 8.59697899999992,
+        "closeMs": 29.281718000000183
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 0.9601560000010068,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.690833000000566,
+        "closeMs": 57.83046900000045
+      },
+      "localRemoved": true
+    },
+    {
+      "variant": "plain",
+      "round": 8,
+      "outcome": "ok",
+      "traceComplete": true,
+      "activePhase": "settled",
+      "totalMs": 461.19468699999925,
+      "capture": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 7.504947999999786,
+        "closeMs": 342.5334380000004
+      },
+      "transfer": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 127,
+        "spawnMs": 9.986042000000452,
+        "closeMs": 31.189895999999862
+      },
+      "bytes": 123635,
+      "width": 1080,
+      "height": 2340,
+      "dimensionsMatch": true,
+      "validationMs": 1.29156200000034,
+      "cleanup": {
+        "outcome": "ok",
+        "stdoutBytes": 0,
+        "stderrBytes": 0,
+        "spawnMs": 6.090259999999034,
+        "closeMs": 75.546198
+      },
+      "localRemoved": true
+    }
+  ],
+  "limits": [
+    "Diagnostic only; no production optimization or fusion.",
+    "Host and device elapsed clocks are separate; marker arrival is not device execution time.",
+    "Device bracket includes printf/read/scheduling/capture/encoding/write overhead; no CPU/thermal/storage/network cause inferred.",
+    "Clock quantum is representation precision, not independently calibrated accuracy; control is reported, not subtracted.",
+    "PNG signature/IHDR/dimensions only; not full decoding or frame-identity proof.",
+    "Alternating reversed order is counterbalancing, not randomization or population/tail evidence.",
+    "No absolute uptime, raw output/errors/commands, paths, images or device identifiers exported.",
+    "Host timeout/cancellation kills local ADB child only; device-side termination is not established.",
+    "Progress is saved after each phase; an abruptly killed active phase may remain incomplete."
+  ],
+  "fixture": {
+    "nativeLabelsMatch": true,
+    "width": 1080,
+    "height": 2340
+  },
+  "capability": {
+    "outcome": "ok",
+    "stdoutBytes": 38,
+    "stderrBytes": 0,
+    "spawnMs": 11.543905999999879,
+    "firstStdoutMs": 65.93828099999973,
+    "beginReceivedMs": 66.6183329999999,
+    "endReceivedMs": 153.29765599999973,
+    "closeMs": 159.59989599999972,
+    "deviceMs": 80,
+    "clockQuantumMs": 10,
+    "commandExit": 0,
+    "markerStatus": "valid"
+  },
+  "clockSupported": true,
+  "imeRestored": true,
+  "termuxRestored": true,
+  "localRemoved": true,
+  "sourceAfter": {
+    "src/adb/exec.ts": "f98b7d0eb141959cbf19cf8f16a86606e4bb01c5e81d912b923491f7678b1c32",
+    "src/adb/capture-timing.ts": "a2a9748af4f6e1cd3294debaea8ceb435e7b5aee6380e0bffcdedbd9abd545fb",
+    "src/adb/ui-tree.ts": "f33f82544290d09dbd534b29e946a2dd526ace558d39a594d9563f7642b616a2",
+    "src/adb/cache.ts": "494d93ad114dec388b277919eadf336f82f5f6c427175e8e99f1096dcef8a752",
+    "src/adb/input.ts": "eb81ded44946935a1337a93718e38103fd337b1b8b6d3ad2277c6924c68e74a9",
+    "src/adb/read-select-tap.ts": "3d226d1baa600a95f10862c4629a79f18afe34b854f31c0779b4acf8a7ad439d",
+    "src/adb/app.ts": "0e1f136cbdda47f7e1063728d2372a84afb27549a32b1a5443f7a0e8ff04c3c8",
+    "src/adb/ocr.ts": "bae521c164a1ca74efb5987f20887e79f39f8ae75117fdaad3082ecdf6744cdd",
+    "src/adb/screenshot.ts": "39abeaf8881be67d2a2b7a4c43c3052d4a6750fe8e51fff0dafad76366124570",
+    "src/adb/annotate.ts": "37350ed094cba64a8d1c776a2f257449becedbb334e7a502ae4aef199dcb3a13",
+    "scripts/capture-envelope-diagnostic.mjs": "d87cca55eb20ffb517622dee182ce7a1ab5da676df3630e7e37fc6033618093c",
+    "scripts/screenshot-latency-diagnostic.mjs": "f533a39aa61cf276a0654826befd1fd5890418ea2e17a46e03377618e851f43b",
+    "scripts/audit-capture-envelope.mjs": "2832bb10143d0a1f748caa41b86462ff5a88e5834300f4243b40a0349a1d0b77",
+    "scripts/compare-workflow-capture-envelope-v1.mjs": "4daeced61e35a855a4545dc88df1b5d52e494d5510bf7eed30258ce0c92398c8"
+  },
+  "sourceUnchanged": true
+}

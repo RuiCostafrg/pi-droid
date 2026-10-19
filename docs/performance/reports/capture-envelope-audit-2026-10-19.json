@@ -1,0 +1,240 @@
+{
+  "kind": "capture-envelope-audit-v1",
+  "status": "pass",
+  "blocks": [
+    {
+      "status": "pass",
+      "samples": 24,
+      "groups": {
+        "plain": {
+          "captureHostMs": {
+            "n": 8,
+            "medianMs": 343.86987000000045,
+            "minMs": 310.3235930000001,
+            "maxMs": 353.26796799999966
+          },
+          "totalHostMs": {
+            "n": 8,
+            "medianMs": 445.7737239999997,
+            "minMs": 409.3516660000005,
+            "maxMs": 464.95526100000006
+          },
+          "transferHostMs": {
+            "n": 8,
+            "medianMs": 29.197994500000732,
+            "minMs": 24.45005200000014,
+            "maxMs": 74.43401099999937
+          },
+          "cleanupHostMs": {
+            "n": 8,
+            "medianMs": 62.149609500000224,
+            "minMs": 50.381718999999975,
+            "maxMs": 71.57208300000002
+          },
+          "validationHostMs": {
+            "n": 8,
+            "medianMs": 0.8045569999994768,
+            "minMs": 0.5913540000001376,
+            "maxMs": 2.17010399999981
+          },
+          "pngBytes": {
+            "n": 8,
+            "medianBytes": 123635,
+            "minBytes": 123635,
+            "maxBytes": 123889
+          }
+        },
+        "bracketed": {
+          "captureHostMs": {
+            "n": 8,
+            "medianMs": 377.0737234999997,
+            "minMs": 345.6423959999993,
+            "maxMs": 406.1005719999994
+          },
+          "totalHostMs": {
+            "n": 8,
+            "medianMs": 497.3731770000004,
+            "minMs": 427.51052100000015,
+            "maxMs": 530.1456239999989
+          },
+          "captureDeviceMs": {
+            "n": 8,
+            "medianMs": 315,
+            "minMs": 290,
+            "maxMs": 340
+          },
+          "clockQuantumMs": [
+            10
+          ],
+          "transferHostMs": {
+            "n": 8,
+            "medianMs": 29.406458499999644,
+            "minMs": 26.44072899999992,
+            "maxMs": 68.13239600000088
+          },
+          "cleanupHostMs": {
+            "n": 8,
+            "medianMs": 68.39643249999972,
+            "minMs": 50.058906000000206,
+            "maxMs": 86.39520799999991
+          },
+          "validationHostMs": {
+            "n": 8,
+            "medianMs": 0.8826825000001008,
+            "minMs": 0.5575529999996434,
+            "maxMs": 3.4921880000001693
+          },
+          "pngBytes": {
+            "n": 8,
+            "medianBytes": 123635,
+            "minBytes": 123635,
+            "maxBytes": 123889
+          }
+        },
+        "control": {
+          "captureHostMs": {
+            "n": 8,
+            "medianMs": 80.13328150000052,
+            "minMs": 70.02140599999984,
+            "maxMs": 93.59713499999998
+          },
+          "totalHostMs": {
+            "n": 8,
+            "medianMs": 86.1638025000002,
+            "minMs": 72.15755199999967,
+            "maxMs": 100.71244800000022
+          },
+          "captureDeviceMs": {
+            "n": 8,
+            "medianMs": 20,
+            "minMs": 10,
+            "maxMs": 20
+          },
+          "clockQuantumMs": [
+            10
+          ]
+        }
+      }
+    },
+    {
+      "status": "pass",
+      "samples": 24,
+      "groups": {
+        "plain": {
+          "captureHostMs": {
+            "n": 8,
+            "medianMs": 343.0375519999998,
+            "minMs": 322.4617710000002,
+            "maxMs": 366.2086979999999
+          },
+          "totalHostMs": {
+            "n": 8,
+            "medianMs": 463.7051294999992,
+            "minMs": 412.4636980000005,
+            "maxMs": 524.3657810000004
+          },
+          "transferHostMs": {
+            "n": 8,
+            "medianMs": 31.404531499999393,
+            "minMs": 25.823594000000412,
+            "maxMs": 72.40536399999837
+          },
+          "cleanupHostMs": {
+            "n": 8,
+            "medianMs": 68.30304650000016,
+            "minMs": 55.29151000000002,
+            "maxMs": 75.546198
+          },
+          "validationHostMs": {
+            "n": 8,
+            "medianMs": 0.9793230000000221,
+            "minMs": 0.43385400000079244,
+            "maxMs": 2.4509900000002744
+          },
+          "pngBytes": {
+            "n": 8,
+            "medianBytes": 123635,
+            "minBytes": 123635,
+            "maxBytes": 123635
+          }
+        },
+        "bracketed": {
+          "captureHostMs": {
+            "n": 8,
+            "medianMs": 388.18361899999945,
+            "minMs": 369.2492710000006,
+            "maxMs": 407.8465100000003
+          },
+          "totalHostMs": {
+            "n": 8,
+            "medianMs": 521.1673960000007,
+            "minMs": 467.3709889999991,
+            "maxMs": 559.0018740000005
+          },
+          "captureDeviceMs": {
+            "n": 8,
+            "medianMs": 325,
+            "minMs": 310,
+            "maxMs": 340
+          },
+          "clockQuantumMs": [
+            10
+          ],
+          "transferHostMs": {
+            "n": 8,
+            "medianMs": 39.904452499999934,
+            "minMs": 26.894427000000178,
+            "maxMs": 75.60796899999877
+          },
+          "cleanupHostMs": {
+            "n": 8,
+            "medianMs": 70.84223999999995,
+            "minMs": 57.83046900000045,
+            "maxMs": 102.75656300000082
+          },
+          "validationHostMs": {
+            "n": 8,
+            "medianMs": 0.9299735000013243,
+            "minMs": 0.5441670000000158,
+            "maxMs": 2.4433330000010756
+          },
+          "pngBytes": {
+            "n": 8,
+            "medianBytes": 123635,
+            "minBytes": 123635,
+            "maxBytes": 123635
+          }
+        },
+        "control": {
+          "captureHostMs": {
+            "n": 8,
+            "medianMs": 75.81999999999971,
+            "minMs": 66.42786499999966,
+            "maxMs": 85.95150999999987
+          },
+          "totalHostMs": {
+            "n": 8,
+            "medianMs": 82.32354149999992,
+            "minMs": 71.06541600000037,
+            "maxMs": 94.20005200000014
+          },
+          "captureDeviceMs": {
+            "n": 8,
+            "medianMs": 10,
+            "minMs": 10,
+            "maxMs": 20
+          },
+          "clockQuantumMs": [
+            10
+          ]
+        }
+      }
+    }
+  ],
+  "limits": [
+    "Two unchanged-source diagnostic repetitions, not an optimization before/after or causal experiment.",
+    "Host and device clocks separate; control and representation precision reported, never subtracted from medians.",
+    "No CPU/encoding/storage/thermal/network attribution; no speedup, population-tail or cumulative-gain claim.",
+    "Strict offline invariants/provenance cannot attest arbitrary JSON was honestly measured."
+  ]
+}

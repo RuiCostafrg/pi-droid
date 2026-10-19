@@ -1,6 +1,101 @@
 # Next-session handoff
 
-## Current continuation — fusion experiment REJECTED; production restored
+## Current continuation — capture-envelope diagnostic validated; production unchanged
+
+Read PLAN.md and [complete diagnostic evidence](reports/capture-envelope-diagnostic-2026-10-19.md)
+first. This section supersedes older blocked/experiment next actions.
+
+- User approved diagnostic-only device elapsed-time capture brackets/plain capture/
+  no-capture controls and tests, reiterated full Amazon → Forge validation, then
+  requested another baseline retry. Unchanged before3 PASS304955.36ms; after1
+  PASS304765.49ms. Both shopping +30 exact writes +30 persisted values,77 captures/
+  291 scoped attempts,3 product/2 field cycles.15/15 gates PASS. −0.0623% descriptive
+  only, not speedup/overhead/non-inferiority. Earlier before1/2 failures retained.
+- NEW opt-in scripts capture-envelope-diagnostic.mjs, audit-capture-envelope.mjs,
+  compare-workflow-capture-envelope-v1.mjs; two new test files. All src remains
+  byte-identical35de2c6. Frozen historical scripts/reports/protocols unchanged.
+  Rejected fusion is NOT active/reintroduced. No production optimization shipped.
+- Two unchanged eight-round blocks24/24 each:16 PNGs+8 controls per block; separate
+  capability probe. Device bracket medians315/325ms at10ms representation quantum;
+  control20/10ms. Plain host343.87/343.04ms, bracketed377.07/388.18ms. Bracket is
+  intrusive and includes printf/read/scheduling/capture/encode/write; never subtract
+  control/medians or call host-device difference network time. Root cause unresolved.
+- Separate host spawn/marker/close, transfer/cleanup/validation, bounded fixed exports,
+  exclusive outputs, phase progress/interrupt/failure retention and independent owned
+  cleanup. No absolute uptime/images/raw output/errors/device IDs. Harness-only
+  cancellation does NOT establish production/device-side termination guarantees.
+- Frozen focused12/12 each: medians+0.14/+1.37/+6.68/+4.28% slower (seq saved/base64,
+  concurrent saved/base64), retained. Fresh actual registered screenshot/look
+  before628/2531ms, after582/2546ms; all guards/six unchanged build hashes PASS.
+  Parent NOT reloaded. No source/tool/device/model clock merging or speedup claim.
+- Final864/864 units/63 files (--maxWorkers=2),9/9 isolated integrations, lint/build/
+  syntax/whitespace PASS. New tests20/20 incl26 diagnostic+11 workflow adversarial
+  mutations. Initial13 missing-module RED and expanded fixture15/16 output collision
+  retained; fixture fixed without weakening exclusive outputs. Companion unchanged,
+  default fully parallel CI unverified. Manual review; no sub-agent tool available.
+- Secure transport changed before diagnostic; empty-selection launch had no report/
+  measurement, initial rediscovered readiness failed. Fresh rediscovery/refresh/
+  readiness/exact state checks succeeded before resuming. No guessed endpoint,
+  pairing/legacy TCP/IP/network/debugging/permission/helper changes. All attempts
+  retained. Original Gboard/Termux independently verified after EVERY live block.
+- Two retained TEST drafts source-capenv-before27/after27,15 unchecked sets20kg×8
+  each, all numeric persistence verified. No completed workouts/shopping mutations/
+  new phone APK/helper/permissions. No workflow edits or manual alignment needed.
+
+### Next exact actions — new scope needs confirmation
+
+1. Inspect status/publication; read full evidence plus workflow comparison/diagnostic
+   audit. No phone run merely to resume. Preserve blocked checkpoint and failures.
+2. Agree ONE next bounded optimization/deeper diagnostic BEFORE production edits.
+   Device envelope has no internal root-cause attribution; do not infer CPU/thermal/
+   FUSE/encoding/network cause or auto-adopt fusion/backend/caching/pooling/PNG-size
+   semantics changes. Runtime ingestion/input lifecycle/cancellation/CI stay separate.
+3. Any new production slice needs NEW equivalent pre-edit baseline/full frozen v3.2
+   pair (shopping +30 writes +30 persisted readbacks), focused affected-path pair,
+   actual fresh relevant registered tools/build hashes, complete failure provenance.
+   Existing passing evidence is not reusable indefinitely. Never subtract alignment.
+4. Freshly rediscover authorized phone, exclusive hands-off use/original IME/Termux;
+   restore and independently verify after each block. No unapproved persistent change.
+5. Audit scripts are checkpoint-specific. Use isolated matching future fixtures/new
+   comparators when source assumptions change; never rewrite historical evidence.
+6. Validate/review/update handoff; publish completed work only to user-owned origin/
+   main, independently verify full remote hash+clean tree. Never push upstream.
+
+## Previous continuation — capture-envelope diagnostic approved; fresh baseline BLOCKED
+
+This section supersedes older next actions. Read
+[blocked-baseline evidence](reports/capture-envelope-baseline-blocked-2026-10-19.md).
+
+- User approved diagnostic-only device elapsed-time bracketed capture versus plain
+  capture and no-capture wrapper controls, conditional clock capability/resolution
+  checks, external-process/public screenshot/offline-audit seams. Transfer/cleanup
+  stay separate. Full Amazon → Forge validation remains mandatory.
+- Clean/published starting HEAD independently verified as full
+  `21b30855ae70a262ea22fc9559d741484798c1ce`. Active src matches35de2c6;
+  fresh build matched all six historical restored baseline hashes. Fusion stays
+  rejected/archived. No production/diagnostic script/test edits made.
+- NEW frozen v3.2 baseline attempt1 FAIL80952.85ms chosen_product_visible after
+  eight allowed cycles; unchanged attempt2 FAIL66004.37ms foreground check during
+  sixth product cycle. Search/focus/query/three offers pass both. Zero Forge
+  navigation/writes/persisted readbacks/drafts. Both full failure reports retained.
+- Read-only subsequent Brave/native inspection finds chosen Barista at y2089;
+  not proof of failure cause or exact prior geometry. No manual alignment/guard
+  relaxation/protocol edits. Original Gboard/Termux independently verified after
+  each attempt and inspection. Authorized secure transport freshly discovered;
+  no installation/helper/permission/debug/network/security change.
+- No capture-clock capability probe, focused pair, actual registered-tool baseline,
+  new units/integration run, diagnostic implementation or acceptance yet. Fresh
+  build is NOT fresh loaded-tool proof. Full-workflow acceptance OPEN/BLOCKED.
+- Next: ASK user to approve separate bounded read-only workflow-alignment diagnosis.
+  Do not blindly retry or silently revise v3.2. Any necessary protocol change needs
+  explicit approval, new version/tests/freeze, strict guards intact and NEW full
+  equivalent baseline. Then resume approved capture diagnostic with full before/
+  after shopping +30 writes/+30 persisted values, focused pair and fresh actual
+  registered screenshot/look/build-hash gates. Preserve every failure/regression.
+- Current local changes are only new failure evidence and docs; not committed or
+  published yet. Do not claim clean/published current tree. Never push upstream.
+
+## Previous continuation — fusion experiment REJECTED; production restored
 
 Read PLAN.md and [complete experiment evidence](reports/fusion-experiment-2026-10-19.md)
 first. This section supersedes every older next-action list.
