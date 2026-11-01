@@ -77,7 +77,10 @@
     "test:ci": "vitest run tests/adb/ tests/plugins/ tests/notifications/ tests/tools/ tests/integration/extension-load.test.ts tests/integration/sandbox-install.test.ts",
     "test:integration": "vitest run tests/integration/",
     "test:device": "vitest run tests/integration/device-e2e.test.ts tests/integration/agent-device.test.ts",
-    "prepublishOnly": "npm run build && npm run test:ci"
+    "prepublishOnly": "npm run build && npm run test:ci",
+    "lint:oxc": "npx --yes oxlint@1.90.0 .",
+    "format": "npx --yes oxfmt@0.74.0 .",
+    "format:check": "npx --yes oxfmt@0.74.0 --check ."
   },
   "repository": {
     "type": "git",
