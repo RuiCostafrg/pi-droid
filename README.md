@@ -1,6 +1,6 @@
 # Pi-Droid
 
-![Pi-Droid](./banner.jpeg)
+![Pi-Droid banner](assets/readme-banner.svg)
 
 **Give your AI agent hands on an Android phone.**
 
