@@ -57,14 +57,14 @@ stage_tests() { npm run test:ci -- --no-file-parallelism --testTimeout=30000 --h
 
 # ── runner ────────────────────────────────────────────────────────────────────
 
-declare -F prepare >/dev/null && prepare
-
 # Validate all selected stage names before running anything.
 for s in "${SELECTED[@]}"; do
   declare -F "stage_$s" >/dev/null || _fail "unknown stage '$s' (stages: ${AVAILABLE_STAGES[*]})"
 done
 
-if git status --porcelain | grep -q .; then
+declare -F prepare >/dev/null && prepare
+
+if [ -n "$(git status --porcelain)" ]; then
   # gh-signoff refuses to attest a dirty tree, so fail fast BEFORE the long
   # stages instead of finishing a full run with nothing posted.
   if [ "$NO_SIGNOFF" = 0 ]; then
