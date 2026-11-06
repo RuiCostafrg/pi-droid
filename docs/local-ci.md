@@ -30,7 +30,9 @@ a red `signoff/<stage>` status automatically.
 
 ```bash
 gh signoff install lint build tests
-gh signoff uninstall
+
+# To remove the requirement later (run as its own step):
+# gh signoff uninstall
 ```
 
 ## Notes
