@@ -57,6 +57,10 @@ stage_tests() { npm run test:ci -- --no-file-parallelism --testTimeout=30000 --h
 
 # ── runner ────────────────────────────────────────────────────────────────────
 
+# Run from the repo root regardless of the invocation directory — stages and
+# status posting use repo-relative paths (cubic P3).
+cd "$(git rev-parse --show-toplevel)" || _fail "not inside the repository"
+
 # Validate all selected stage names before running anything.
 for s in "${SELECTED[@]}"; do
   declare -F "stage_$s" >/dev/null || _fail "unknown stage '$s' (stages: ${AVAILABLE_STAGES[*]})"
