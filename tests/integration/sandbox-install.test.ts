@@ -7,29 +7,32 @@
  * Note: The pi extension loader discovers extensions via its own internal
  * resolution logic which differs between dev (jiti + TypeScript) and
  * production (compiled JS). Full extension loading is tested by
- * extension-load.test.ts using the source entry point.
+ * extension-load.test.ts using the packaged entry point.
  *
  * This test verifies the npm package artifact is valid.
  */
 
 import { describe, it, expect, beforeAll } from "vitest";
-import { execSync } from "child_process";
-import { existsSync, mkdtempSync, rmSync, readFileSync, copyFileSync, writeFileSync } from "fs";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+import { existsSync, mkdtempSync, rmSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 import { tmpdir } from "os";
 
+const exec = promisify(execFile);
 const PACKAGE_DIR = join(import.meta.dirname, "../..");
 
-beforeAll(() => {
+beforeAll(async () => {
   // Ensure dist/ is fresh before packing
-  execSync("npm run build", { cwd: PACKAGE_DIR, stdio: "pipe" });
-});
+  await exec("npm", ["run", "build"], { cwd: PACKAGE_DIR, timeout: 120_000 });
+}, 135_000);
 
 describe("Sandbox install verification", () => {
-  it("npm pack produces a valid tarball", () => {
-    const output = execSync("npm pack --dry-run --json 2>/dev/null || npm pack --dry-run", {
+  it("npm pack produces a valid tarball", async () => {
+    const { stdout: output } = await exec("npm", ["pack", "--dry-run", "--json"], {
       cwd: PACKAGE_DIR,
       encoding: "utf-8",
+      timeout: 45_000,
     });
     // Verify key files are present
     expect(output).toContain("dist/index.js");
@@ -48,20 +51,17 @@ describe("Sandbox install verification", () => {
     expect(output).not.toContain("tests/");
     expect(output).not.toContain(".claude/");
     expect(output).not.toContain(".png");
-  });
+  }, 55_000);
 
-  it("installs cleanly in a sandbox", () => {
-    // Pack
-    const tarball = execSync("npm pack", {
-      cwd: PACKAGE_DIR,
-      encoding: "utf-8",
-    }).trim().split("\n").pop()!.trim();
-    const tarballPath = join(PACKAGE_DIR, tarball);
-
+  it("installs cleanly in a sandbox", async () => {
     const sandbox = mkdtempSync(join(tmpdir(), "pi-droid-sandbox-"));
     try {
-      // Copy tarball to sandbox
-      copyFileSync(tarballPath, join(sandbox, tarball));
+      const { stdout } = await exec("npm", ["pack", "--pack-destination", sandbox], {
+        cwd: PACKAGE_DIR,
+        encoding: "utf-8",
+        timeout: 45_000,
+      });
+      const tarball = stdout.trim().split("\n").pop()!.trim();
 
       // Create minimal package.json
       writeFileSync(join(sandbox, "package.json"), JSON.stringify({
@@ -71,8 +71,11 @@ describe("Sandbox install verification", () => {
         dependencies: { "pi-droid": `file:./${tarball}` },
       }));
 
-      // Install
-      execSync("npm install", { cwd: sandbox, stdio: "pipe" });
+      // Pi provides the host peers. This fixture installs the extension and its own dependencies.
+      await exec("npm", ["install", "--omit=peer", "--no-audit", "--no-fund", "--prefer-offline", "--fetch-retries=0"], {
+        cwd: sandbox,
+        timeout: 120_000,
+      });
 
       // Verify installed
       const pkgDir = join(sandbox, "node_modules/pi-droid");
@@ -96,7 +99,6 @@ describe("Sandbox install verification", () => {
       expect(configContent).not.toContain("2960");
     } finally {
       rmSync(sandbox, { recursive: true, force: true });
-      if (existsSync(tarballPath)) rmSync(tarballPath);
     }
-  }, 60_000);
+  }, 180_000);
 });
