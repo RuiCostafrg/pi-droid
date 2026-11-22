@@ -5,15 +5,32 @@
  * extension. ADB tools are mocked — no physical device needed.
  */
 
-import { describe, it, expect, afterEach, beforeAll } from "vitest";
+import { describe, it, expect, afterAll, afterEach, beforeAll } from "vitest";
 import { createTestSession, when, calls, says } from "@marcfargas/pi-test-harness";
 import type { TestSession } from "@marcfargas/pi-test-harness";
-import { join } from "path";
+import { execFile } from "node:child_process";
+import { cp, mkdtemp, rm } from "node:fs/promises";
+import { promisify } from "node:util";
+import { join } from "node:path";
 import { patchAgentForHarness } from "./harness-patch.js";
 
-const EXTENSION_PATH = join(import.meta.dirname, "../../src/index.ts");
+const exec = promisify(execFile);
+const ROOT = join(import.meta.dirname, "../..");
+let fixtureRoot: string | undefined;
+let extensionPath: string;
 
-beforeAll(() => {
+beforeAll(async () => {
+  // Keep this build separate from npm pack fixtures using the checkout dist/.
+  fixtureRoot = await mkdtemp(join(ROOT, ".extension-test-"));
+  const dist = join(fixtureRoot, "dist");
+  for (const name of ["package.json", "config", "skills"]) {
+    await cp(join(ROOT, name), join(fixtureRoot, name), { recursive: true });
+  }
+  await exec(process.execPath, [join(ROOT, "node_modules/typescript/bin/tsc"), "--outDir", dist], {
+    cwd: ROOT,
+    timeout: 120_000,
+  });
+  extensionPath = join(dist, "index.js");
   patchAgentForHarness();
   // The harness replaces the stream function so no real LLM calls happen,
   // but the session validates API key presence before delegating to the agent.
@@ -21,6 +38,10 @@ beforeAll(() => {
   if (!process.env.OPENAI_API_KEY) {
     process.env.OPENAI_API_KEY = "test-key-not-used";
   }
+}, 135_000);
+
+afterAll(async () => {
+  if (fixtureRoot) await rm(fixtureRoot, { recursive: true, force: true });
 });
 
 /** Minimal mock responses for ADB tools so the extension loads cleanly. */
@@ -99,7 +120,7 @@ describe("Extension loading", () => {
 
   it("loads extension and registers all tools", async () => {
     t = await createTestSession({
-      extensions: [EXTENSION_PATH],
+      extensions: [extensionPath],
       mockTools: ADB_MOCKS,
       mockUI: { confirm: true },
       propagateErrors: true,
@@ -121,7 +142,7 @@ describe("Extension loading", () => {
 
   it("handles multi-tool perception sequence", async () => {
     t = await createTestSession({
-      extensions: [EXTENSION_PATH],
+      extensions: [extensionPath],
       mockTools: ADB_MOCKS,
       mockUI: { confirm: true },
       propagateErrors: true,
@@ -146,7 +167,7 @@ describe("Extension loading", () => {
 
   it("exercises tap and type tools", async () => {
     t = await createTestSession({
-      extensions: [EXTENSION_PATH],
+      extensions: [extensionPath],
       mockTools: ADB_MOCKS,
       mockUI: { confirm: true },
       propagateErrors: true,
@@ -177,7 +198,7 @@ describe("Multi-turn conversations", () => {
 
   it("maintains session state across turns", async () => {
     t = await createTestSession({
-      extensions: [EXTENSION_PATH],
+      extensions: [extensionPath],
       mockTools: ADB_MOCKS,
       mockUI: { confirm: true },
       propagateErrors: true,
@@ -211,7 +232,7 @@ describe("Plugin tools", () => {
 
   it("calls plugin status tool", async () => {
     t = await createTestSession({
-      extensions: [EXTENSION_PATH],
+      extensions: [extensionPath],
       mockTools: ADB_MOCKS,
       mockUI: { confirm: true },
       propagateErrors: true,
@@ -229,7 +250,7 @@ describe("Plugin tools", () => {
 
   it("calls skills discovery tool", async () => {
     t = await createTestSession({
-      extensions: [EXTENSION_PATH],
+      extensions: [extensionPath],
       mockTools: ADB_MOCKS,
       mockUI: { confirm: true },
       propagateErrors: true,
@@ -256,7 +277,7 @@ describe("Account tools", () => {
 
   it("lists accounts", async () => {
     t = await createTestSession({
-      extensions: [EXTENSION_PATH],
+      extensions: [extensionPath],
       mockTools: ADB_MOCKS,
       mockUI: { confirm: true },
       propagateErrors: true,

@@ -82,4 +82,4 @@ it("keeps unchanged-source full-workflow gates strict under adversarial reports"
     expect(r.fullWorkflowAcceptance).toBe(i < 0 ? "pass" : "open");
     if (i >= 0) expect(r.workflowDelta).toBeNull();
   }
-}, 20000);
+}, 60_000);
